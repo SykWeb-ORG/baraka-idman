@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuicideCausesTable extends Migration
+class CreateBeneficiaireViolenceTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSuicideCausesTable extends Migration
      */
     public function up()
     {
-        Schema::create('suicide_causes', function (Blueprint $table) {
+        Schema::create('beneficiaire_violence_type', function (Blueprint $table) {
             $table->id();
-            $table->string('cause');
             $table->foreignId('beneficiaire_id')
+                    ->constrained()
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+            $table->foreignId('violence_type_id')
                     ->constrained()
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
@@ -31,6 +34,6 @@ class CreateSuicideCausesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suicide_causes');
+        Schema::dropIfExists('beneficiaire_violence_type');
     }
 }
