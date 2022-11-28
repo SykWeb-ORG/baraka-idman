@@ -19,7 +19,7 @@ class CreateBeneficiaireDrogueTypeTable extends Migration
                     ->constrained()
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
-            $table->foreignId('type_drogue_id')
+            $table->foreignId('drogue_type_id')
                     ->constrained()
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
