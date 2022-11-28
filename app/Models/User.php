@@ -71,7 +71,7 @@ class User extends Authenticatable
      */
     public function social_assistant()
     {
-        return $this->hasOne(Admin::class);
+        return $this->hasOne(SocialAssistant::class);
     }
 
     /**

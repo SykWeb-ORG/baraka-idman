@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use App\Models\Role;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
@@ -29,7 +31,7 @@ class UserRequest extends FormRequest
         $roles = Role::all(['role_nom'])->map(function($role, $key){
             return $role['role_nom'];
         });
-        return [
+        $rules = [
             'first_name' => [
                 'required',
                 'alpha',
@@ -56,5 +58,9 @@ class UserRequest extends FormRequest
                 Rule::in($roles)
             ],
         ];
+        if ($this->method() == Request::METHOD_PUT) {
+            $rules = Arr::add($rules, 'password', ['required', 'size:8']);
+        }
+        return $rules;
     }
 }
