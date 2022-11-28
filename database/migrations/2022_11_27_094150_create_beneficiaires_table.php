@@ -27,16 +27,16 @@ class CreateBeneficiairesTable extends Migration
                     ->constrained()
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->string('niveau_scolaire');
-            $table->string('situation_familial');
-            $table->boolean('orphelin');
-            $table->string('profession');
-            $table->string('zone_habitation');
-            $table->string('localisation');
-            $table->boolean('famille_informee');
-            $table->boolean('age_debut_addiction');
-            $table->string('duree_addiction');
-            $table->boolean('ts');
+            $table->string('niveau_scolaire')->nullable();
+            $table->string('situation_familial')->nullable();
+            $table->boolean('orphelin')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('zone_habitation')->nullable();
+            $table->string('localisation')->nullable();
+            $table->boolean('famille_informee')->nullable();
+            $table->boolean('age_debut_addiction')->nullable();
+            $table->string('duree_addiction')->nullable();
+            $table->boolean('ts')->nullable();
             $table->timestamps();
         });
     }
