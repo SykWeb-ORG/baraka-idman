@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Intervenant;
+use App\Models\MedicalAssistant;
+use App\Models\SocialAssistant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,4 +46,127 @@ class UserController extends Controller
 
         }
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(UserRequest $request)
+    {
+        $user = new User;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->cin = $request->cin;
+        $user->phone_number = $request->phone_number;
+        $user->birthday_date = $request->birthday_date;
+        $user->email = $request->email;
+        $user->password = Hash::make('demo0000');
+        if ($user->save()) {
+            if ($request->role == 'admin') {
+                $admin = new Admin;
+                if (($result = $admin->user()->associate($user)) && $admin->save()) {
+                    $status = 200;
+                } else {
+                    $result = 'probleme au serveur.';
+                    $status = 500;
+                }
+            }elseif ($request->role == 'social assistant') {
+                $socialAssistant = new SocialAssistant;
+                if (($result = $socialAssistant->user()->associate($user)) && $socialAssistant->save()) {
+                    $status = 200;
+                } else {
+                    $result = 'probleme au serveur.';
+                    $status = 500;
+                }
+            }elseif ($request->role == 'medical assistant') {
+                $medicalAssistant = new MedicalAssistant;
+                if (($result = $medicalAssistant->user()->associate($user)) && $medicalAssistant->save()) {
+                    $status = 200;
+                } else {
+                    $result = 'probleme au serveur.';
+                    $status = 500;
+                }
+            }elseif ($request->role == 'intervenant') {
+                $intervenant = new Intervenant;
+                if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
+                    $status = 200;
+                } else {
+                    $result = 'probleme au serveur.';
+                    $status = 500;
+                }
+            }
+        } else {
+            $result = 'probleme au serveur.';
+            $status = 500;
+        }
+        
+        return response()->json($result, $status);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        //
+    }
+    
 }
