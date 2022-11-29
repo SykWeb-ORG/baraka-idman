@@ -22,3 +22,7 @@ Route::resource('users', UserController::class)
     ->missing(function (Request $request) {
         return response()->json("pas d'utilisateur", 404);
     });
+
+Route::get('/inter_terrain', function () {
+    return view('inter_terrain.listing');
+});
