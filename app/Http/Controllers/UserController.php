@@ -247,7 +247,20 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if ($user != null) {
+            if ($user->delete()) {
+                $result = $user;
+                $status = 200;
+            } else {
+                $result = 'probleme au serveur.';
+                $status = 500;
+            }
+        } else {
+            $result = "l'utilisateur n'existe pas.";
+            $status = 404;
+        }
+        
+        return response()->json($result, $status);
     }
     
 }
