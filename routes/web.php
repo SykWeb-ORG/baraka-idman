@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)
+    ->missing(function (Request $request) {
+        return response()->json("pas d'utilisateur", 404);
+    });
