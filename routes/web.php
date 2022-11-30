@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -28,3 +29,11 @@ Route::get('roles-permissions', [ManagementRolePermissionController::class, 'ind
 Route::get('/inter_terrain', function () {
     return view('inter_terrain.listing');
 });
+Route::get('/donnees-user/{user}', [ManagementDonneeUserController::class, 'index'])
+    ->missing(function (Request $request) {
+        return response()->json("pas d'utilisateur", 404);
+    });
+Route::post('/match-donnee-user/{user}', [ManagementDonneeUserController::class, 'matchDonneeUser'])
+    ->missing(function (Request $request) {
+        return response()->json("pas d'utilisateur", 404);
+    });

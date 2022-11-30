@@ -16,5 +16,6 @@ class VerifyCsrfToken extends Middleware
         '/users',
         '/users/*',
         'match-role-permission',
+        '/match-donnee-user/*',
     ];
 }
