@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,8 @@ Route::resource('users', UserController::class)
     ->missing(function (Request $request) {
         return response()->json("pas d'utilisateur", 404);
     });
-
+Route::post('match-role-permission', [ManagementRolePermissionController::class, 'matchRolePermission']);
+Route::get('roles-permissions', [ManagementRolePermissionController::class, 'index']);
 Route::get('/inter_terrain', function () {
     return view('inter_terrain.listing');
 });
