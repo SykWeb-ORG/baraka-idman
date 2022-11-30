@@ -275,3 +275,18 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+/* permission */
+.div_perm{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-content: center;
+}
+.div_perm .cusSelectbox{
+    width: 200px;
+}
+.div_perm .permissions_check{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
