@@ -43,6 +43,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['donnees'];
+
+
+    /**
      * Get the admin associated with the user.
      */
     public function admin()
