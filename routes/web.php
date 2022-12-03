@@ -38,7 +38,7 @@ Route::post('/match-donnee-user/{user}', [ManagementDonneeUserController::class,
     ->missing(function (Request $request) {
         return response()->json("pas d'utilisateur", 404);
     });
-Route::resource('beneficaires', BeneficiaireController::class)
+Route::resource('beneficiaires', BeneficiaireController::class)
     ->missing(function (Request $request) {
         return response()->json('pas de beneficiaire', 404);
     });
