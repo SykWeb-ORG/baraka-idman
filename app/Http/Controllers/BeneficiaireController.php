@@ -17,7 +17,8 @@ class BeneficiaireController extends Controller
      */
     public function index()
     {
-        //
+        $beneficiaires = Beneficiaire::all();
+        return response()->json($beneficiaires);
     }
 
     /**
