@@ -84,7 +84,7 @@ class BeneficiaireController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\BeneficiaireRequest $request
      * @param  \App\Models\Beneficiaire  $beneficiaire
      * @return \Illuminate\Http\Response
      */
