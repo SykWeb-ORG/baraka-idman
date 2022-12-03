@@ -27,7 +27,7 @@ Route::resource('users', UserController::class)
 Route::post('match-role-permission', [ManagementRolePermissionController::class, 'matchRolePermission']);
 Route::get('roles-permissions', [ManagementRolePermissionController::class, 'index']);
 Route::get('/inter_terrain', function () {
-    return view('inter_terrain.listing');
+    return view('superUser.addnewuser');
 });
 Route::get('/donnees-user/{user}', [ManagementDonneeUserController::class, 'index'])
     ->missing(function (Request $request) {
