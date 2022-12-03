@@ -115,6 +115,13 @@ class BeneficiaireController extends Controller
      */
     public function destroy(Beneficiaire $beneficiaire)
     {
-        //
+        if ($beneficiaire->delete()) {
+            $result = $beneficiaire;
+            $status = 200;
+        } else {
+            $result = 'probleme au serveur.';
+            $status = 500;
+        }
+        return response()->json($result, $status);
     }
 }
