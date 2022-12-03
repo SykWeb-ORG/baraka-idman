@@ -57,7 +57,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="jsApi/mainFnctions.js"></script>
 
     @yield('custom_scripts')
 </body>
