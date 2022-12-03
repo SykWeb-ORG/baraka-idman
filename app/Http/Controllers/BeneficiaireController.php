@@ -88,9 +88,23 @@ class BeneficiaireController extends Controller
      * @param  \App\Models\Beneficiaire  $beneficiaire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Beneficiaire $beneficiaire)
+    public function update(BeneficiaireRequest $request, Beneficiaire $beneficiaire)
     {
-        //
+        $beneficiaire->prenom = $request->prenom;
+        $beneficiaire->nom = $request->nom;
+        $beneficiaire->adresse = $request->adresse;
+        $beneficiaire->sexe = $request->sexe;
+        $beneficiaire->cin = $request->cin;
+        $beneficiaire->telephone = $request->telephone;
+        $beneficiaire->type_travail = $request->type_travail;
+        if ($beneficiaire->update()) {
+            $result = $beneficiaire;
+            $status = 200;
+        } else {
+            $result = 'probleme au serveur.';
+            $status = 500;
+        }
+        return response()->json($result, $status);
     }
 
     /**
