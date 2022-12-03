@@ -7,7 +7,7 @@
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Ajouter Utilisateur</h6>
-                    <form>
+                    <form class="form-user">
                         <div class="mb-3">
                             <label for="first-name-user" class="form-label">Prénom</label>
                             <input type="text" class="form-control" id="first-name-user">
@@ -21,8 +21,8 @@
                             <input type="text" class="form-control" id="cin-user">
                         </div>
                         <div class="mb-3">
-                            <label for="adresse-user" class="form-label">Date de naissance</label>
-                            <input type="text" class="form-control" id="adresse-user">
+                            <label for="birtday-user" class="form-label">Date de naissance</label>
+                            <input type="text" class="form-control" id="birtday-user">
                         </div>
                         <div class="mb-3">
                             <label for="phone-number-user" class="form-label">N° de telephone</label>
@@ -43,9 +43,10 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <button id="btn-add-user" class="btn btn-primary" onclick="postData();">Ajouter</button>
+                            <button id="btn-add-user" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
+                    <div id="message-alert" class="mb-3"></div>
                 </div>
             </div>
         </div>
@@ -54,5 +55,5 @@
 @endsection
 
 @section('custom_scripts')
-<script src="jsApi/superadmin/main.js"></script>
+<script src="jsApi/superadmin/manipulationUsers.js"></script>
 @endsection

@@ -12,13 +12,15 @@
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
                     <thead>
                         <tr class="text-dark">
-                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th scope="col">Nom complet</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Adresse</th>
-                            <th scope="col">CIN</th>
-                            <th scope="col">N° de telephone</th>
-                            <th scope="col">Action</th>
+                            <th><input class="form-check-input" type="checkbox"></th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>CIN</th>
+                            <th>N° de telephone</th>
+                            <th>Date de naissance</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,4 +31,8 @@
         </div>
     </div>
     <!-- Show All Users End -->
+@endsection
+
+@section('custom_scripts')
+<script src="jsApi/superadmin/fetchapi.js"></script>
 @endsection
