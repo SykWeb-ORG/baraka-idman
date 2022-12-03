@@ -9,6 +9,16 @@ class Beneficiaire extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'prenom',
+        'nom',
+        'adresse',
+        'sexe',
+        'cin',
+        'telephone',
+        'type_travail',
+    ];
+
     /**
      * Get the suicide causes for the beneficiaire.
      */
