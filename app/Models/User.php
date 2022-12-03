@@ -47,7 +47,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $with = ['donnees'];
+    protected $with = [
+        'donnees',
+        'admin',
+        'intervenant',
+        'medical_assistant',
+        'social_assistant',
+    ];
 
 
     /**
