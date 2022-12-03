@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
@@ -36,4 +37,8 @@ Route::get('/donnees-user/{user}', [ManagementDonneeUserController::class, 'inde
 Route::post('/match-donnee-user/{user}', [ManagementDonneeUserController::class, 'matchDonneeUser'])
     ->missing(function (Request $request) {
         return response()->json("pas d'utilisateur", 404);
+    });
+Route::resource('beneficaires', BeneficiaireController::class)
+    ->missing(function (Request $request) {
+        return response()->json('pas de beneficiaire', 404);
     });
