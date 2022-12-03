@@ -9,32 +9,41 @@
                     <h6 class="mb-4">Ajouter Utilisateur</h6>
                     <form>
                         <div class="mb-3">
-                            <label for="exampleInputnom" class="form-label">Nom et prénom</label>
-                            <input type="text" class="form-control" id="exampleInputnom">
+                            <label for="first-name-user" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="first-name-user">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputadresse" class="form-label">Adresse</label>
-                            <input type="text" class="form-control" id="exampleInputadresse">
+                            <label for="last-name-user" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="last-name-user">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputcin" class="form-label">CIN</label>
-                            <input type="text" class="form-control" id="exampleInputcin">
+                            <label for="cin-user" class="form-label">CIN</label>
+                            <input type="text" class="form-control" id="cin-user">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputntel" class="form-label">N° de telephone</label>
-                            <input type="number" class="form-control" id="exampleInputntel">
+                            <label for="adresse-user" class="form-label">Date de naissance</label>
+                            <input type="text" class="form-control" id="adresse-user">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputntel" class="form-label">Rôles</label>
-                            <select class="form-select mb-3" aria-label="Default select example">
+                            <label for="phone-number-user" class="form-label">N° de telephone</label>
+                            <input type="number" class="form-control" id="phone-number-user">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email-user" class="form-label">Adresse Email</label>
+                            <input type="text" class="form-control" id="email-user">
+                        </div>
+                        <div class="mb-3">
+                            <label for="roles-user" class="form-label">Rôles</label>
+                            <select class="form-select mb-3" aria-label="Default select example" id="roles-user">
                                 <option selected="">Choisir rôle</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="admin">Admin</option>
+                                <option value="intervenant">Intervenant</option>
+                                <option value="social assistant">Social Assistant</option>
+                                <option value="medical assistant">Medical Assistant</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-user" class="btn btn-primary" onclick="postData();">Ajouter</button>
                         </div>
                     </form>
                 </div>
@@ -42,4 +51,8 @@
         </div>
     </div>
     <!-- Form End -->
+@endsection
+
+@section('custom_scripts')
+<script src="jsApi/superadmin/main.js"></script>
 @endsection
