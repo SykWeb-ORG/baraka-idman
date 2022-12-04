@@ -46,5 +46,5 @@ Route::resource('beneficiaires', BeneficiaireController::class)
         return view('auth.login');
     });
 Route::get('management-permissions-roles', function(Request $request){
-    return view('permission');
+    return view('superUser.permission');
 });
