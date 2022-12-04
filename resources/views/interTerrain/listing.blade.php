@@ -13,12 +13,15 @@
                     <thead>
                         <tr class="text-dark">
                             <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th scope="col">Nom complet</th>
-                            <th scope="col">Date de naissance</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">prénom</th>
+                            <th scope="col">Nom</th>
                             <th scope="col">Adresse</th>
+                            <th scope="col">Sexe</th>
                             <th scope="col">CIN</th>
                             <th scope="col">N° de telephone</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Type de travail</th>
+                            <th scope="col" colspan="2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
