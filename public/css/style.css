@@ -65,6 +65,7 @@
     height: 48px;
 }
 
+
 .btn-square,
 .btn-sm-square,
 .btn-lg-square {
@@ -291,7 +292,7 @@
 /* permission */
 .div_perm{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 25% 1fr;
     align-items: center;
     justify-content: center;
 }
@@ -300,5 +301,8 @@
 }
 .div_perm .permissions_check{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(2,1fr);
+}
+.div_perm .permissions_check .perm{
+    margin-bottom: 10px;
 }
