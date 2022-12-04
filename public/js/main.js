@@ -43,3 +43,12 @@
     
 })(jQuery);
 
+//--> Presentation de message retourner par ajax
+function messageComponants(message, className, iconFa) {
+    const messageComponant = `
+    <div class="alert alert-${className} alert-dismissible fade show" role="alert">
+        <i class="fas ${iconFa}"></i> ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+    return messageComponant;
+}
