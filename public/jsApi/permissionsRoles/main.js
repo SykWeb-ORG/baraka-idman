@@ -38,11 +38,14 @@ function displayAllPermissions(permissions) {
         action_input.name = 'permissions[]';
         action_input.value = action.id;
         action_input.id = action.id;
-        divPermissions.appendChild(action_input);
         let action_label = document.createElement('label');
         action_label.htmlFor = action.id;
         action_label.textContent = action.action_nom;
-        divPermissions.appendChild(action_label);
+        let divContainer = document.createElement('div');
+        divContainer.className = 'perm';
+        divContainer.appendChild(action_input);
+        divContainer.appendChild(action_label);
+        divPermissions.appendChild(divContainer);
     });
 
 }
