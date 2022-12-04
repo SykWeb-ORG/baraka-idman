@@ -49,3 +49,6 @@ Route::resource('beneficiaires', BeneficiaireController::class)
 Route::get('management-permissions-roles', function(Request $request){
     return view('superUser.permission');
 });
+Route::get('/assistant', function () {
+    return view('assistSocial.listing');
+});
