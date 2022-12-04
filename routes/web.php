@@ -45,3 +45,6 @@ Route::resource('beneficiaires', BeneficiaireController::class)
     Route::get('/login', function () {
         return view('auth.login');
     });
+Route::get('management-permissions-roles', function(Request $request){
+    return view('permission');
+});
