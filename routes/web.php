@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/list-beneficiaires', function () {
     return view('inter_terrain.listing');
 });
+Route::post('/login',[UserController::class, 'login'])->name('login');
 Route::resource('users', UserController::class)
     ->missing(function (Request $request) {
         return response()->json("pas d'utilisateur", 404);

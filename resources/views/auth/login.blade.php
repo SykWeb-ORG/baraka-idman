@@ -42,28 +42,40 @@
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3 pos_login">
-                        <img src={{asset("images/LOGO-DROGUES.png")}} alt="" class="logo-login">
-                        <div class="d-flex flex-column align-items-center justify-content-between mb-1 mt-5">
-                            <h3>Sign In</h3>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        {{-- <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="remember">
-                                <label class="form-check-label" for="remember">Remember me</label>
+                    <form action="{{ route('login') }}" method="post">
+                        @csrf
+                        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3 pos_login">
+                            <img src={{asset("images/LOGO-DROGUES.png")}} alt="" class="logo-login">
+                            <div class="d-flex flex-column align-items-center justify-content-between mb-1 mt-5">
+                                <h3>Sign In</h3>
                             </div>
-                            <a href="">Forgot Password</a>
-                        </div> --}}
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                    </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            {{-- <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="remember">
+                                    <label class="form-check-label" for="remember">Remember me</label>
+                                </div>
+                                <a href="">Forgot Password</a>
+                            </div> --}}
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+                        </div>
+                    </form>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

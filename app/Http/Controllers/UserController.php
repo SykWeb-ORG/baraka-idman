@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\Admin;
@@ -9,41 +10,28 @@ use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\SocialAssistant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function register(Request $request){
-        $this->validate($request ,[
-            "name"=>"required",
-            "email" => "required",
-            "password" => "required"
-        ]);
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' =>Hash::make( $request->password)
-        ]);
-        return response()->json([
-            'message' => "register with successufult"
-        ]);
-    }
-    public function login(Request $request){
-        $user = User::whereEmail($request->email)->first();
-        if(isset($user->id)){
-            if(Hash::check($request->password, $user->password)){
-                $token = $user->createToken('auth_token')->plainTextToken;
-                return response()->json([
-                    'message' => 'login with successufly',
-                    'token' => $token
-                ]);
+    public function login(LoginRequest $request){
+        if (Auth::attempt($request->only(['email', 'password']))) {
+            $request->session()->regenerate();
+            $user = Auth::user();
+            if ($user->admin) {
+                return $user;
+            }elseif ($user->medical_assistant) {
+                return $user;
+            }elseif ($user->social_assistant) {
+                return $user;
+            }elseif ($user->intervenant) {
+                return redirect('/inter_terrain');
             }
-            else{
-                return response()->json([
-                    'message' => "invalid login"
-                ]);
-            }
-
+        }else {
+            $result = 'Email ou(et) mot de passe no valid';
+            $status = 403;
+            return response()->json($result, $status);
         }
     }
     /**
