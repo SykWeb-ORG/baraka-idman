@@ -16,63 +16,6 @@
             <fieldset class="">
                 <legend>Permissions</legend>
                 <div class="permissions_check" id="permissions_check">
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1 ajouter ahdjsds</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1 ajouter ahdjsds</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1 ajouter ahdjsds</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1 ajouter ahdjssxsxsxsxsxsxds</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1</label>
-                    </div>
-                    <div class="perm">
-                        <input type="checkbox" name="" id=""><label for="">Permission1 ajouter ahdjsdsxqxsxsxsxsxsx</label>
-                    </div>
                 </div>
             </fieldset>
             <div>
