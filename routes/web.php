@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/list-beneficiaires', function () {
+    return view('inter_terrain.listing');
 });
 Route::resource('users', UserController::class)
     ->missing(function (Request $request) {
