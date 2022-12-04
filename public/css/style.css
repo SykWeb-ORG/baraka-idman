@@ -5,6 +5,18 @@
     --dark: #191C24;
 }
 
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+::-webkit-scrollbar {
+    width: .5rem;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
 .back-to-top {
     position: fixed;
     display: none;
@@ -91,7 +103,10 @@
     transition: 0.5s;
     z-index: 999;
 }
-
+.sidebar .logo_sidebar{
+    width: 150px;
+    height: auto;
+}
 .content {
     margin-left: 250px;
     min-height: 100vh;
