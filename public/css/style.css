@@ -12,7 +12,19 @@
     bottom: 45px;
     z-index: 99;
 }
-
+.pos_login{
+    position: relative;
+}
+.logo-login{
+    position: absolute;
+    left: 50%;
+    top: -90px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
 
 /*** Spinner ***/
 #spinner {
@@ -37,7 +49,7 @@
 .btn.btn-primary {
     color: #FFFFFF;
 }
-
+!
 .btn-square {
     width: 38px;
     height: 38px;
