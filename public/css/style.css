@@ -49,7 +49,7 @@
 .btn.btn-primary {
     color: #FFFFFF;
 }
-!
+
 .btn-square {
     width: 38px;
     height: 38px;
@@ -206,7 +206,6 @@
     justify-content: center;
     background: #FFFFFF;
     border-radius: 40px;
-    text-decoration: none;
 }
 
 .content .navbar .dropdown-toggle::after {

@@ -22,7 +22,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="birtday-user" class="form-label">Date de naissance</label>
-                            <input type="text" class="form-control" id="birtday-user">
+                            <input type="date" class="form-control" id="birtday-user">
                         </div>
                         <div class="mb-3">
                             <label for="phone-number-user" class="form-label">N° de telephone</label>
