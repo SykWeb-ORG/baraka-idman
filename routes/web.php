@@ -42,3 +42,6 @@ Route::resource('beneficiaires', BeneficiaireController::class)
     ->missing(function (Request $request) {
         return response()->json('pas de beneficiaire', 404);
     });
+    Route::get('/login', function () {
+        return view('auth.login');
+    });
