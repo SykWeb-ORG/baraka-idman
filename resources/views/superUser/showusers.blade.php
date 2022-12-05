@@ -34,5 +34,5 @@
 @endsection
 
 @section('custom_scripts')
-<script src="jsApi/superadmin/fetchapi.js"></script>
+<script src="{{asset("jsApi/superadmin/fetchapi.js")}}"></script>
 @endsection
