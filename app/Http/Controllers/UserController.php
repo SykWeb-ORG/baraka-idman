@@ -15,7 +15,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    public function __construct() {
+        $this->authorizeResource(User::class, 'user');
+    }
+
     public function login(LoginRequest $request){
+        if (Auth::check()) {
+            return redirect()->back();
+        }
         if (Auth::attempt($request->only(['email', 'password']))) {
             $request->session()->regenerate();
             $user = Auth::user();
@@ -26,7 +34,7 @@ class UserController extends Controller
             }elseif ($user->social_assistant) {
                 return $user;
             }elseif ($user->intervenant) {
-                return redirect('/inter_terrain');
+                return redirect('/new-user-form');
             }
         }else {
             $result = 'Email ou(et) mot de passe no valid';

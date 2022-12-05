@@ -34,5 +34,5 @@
     <!-- Recent Sales End -->
 @endsection
 @section('custom_scripts')
-<script src="jsApi/intervenant/main.js"></script>
+<script src="{{asset("jsApi/intervenant/main.js")}}"></script>
 @endsection

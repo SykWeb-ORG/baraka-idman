@@ -55,5 +55,5 @@
 @endsection
 
 @section('custom_scripts')
-<script src="jsApi/superadmin/manipulationUsers.js"></script>
+<script src="{{asset("jsApi/superadmin/manipulationUsers.js")}}"></script>
 @endsection

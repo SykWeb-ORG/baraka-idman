@@ -5,6 +5,7 @@ use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,36 +19,55 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/list-beneficiaires', function () {
-    return view('inter_terrain.listing');
+Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect()->back();
+    }
+    return view('auth.login');
 });
 Route::post('/login',[UserController::class, 'login'])->name('login');
-Route::resource('users', UserController::class)
-    ->missing(function (Request $request) {
-        return response()->json("pas d'utilisateur", 404);
-    });
-Route::post('match-role-permission', [ManagementRolePermissionController::class, 'matchRolePermission']);
-Route::get('roles-permissions', [ManagementRolePermissionController::class, 'index']);
-Route::get('/inter_terrain', function () {
-    return view('superUser.addnewuser');
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/list-beneficiaires', function () {
+        return view('inter_terrain.listing');
+    })->name('list-beneficiaires');
+    Route::resource('users', UserController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas d'utilisateur", 404);
+        });
+    Route::post('match-role-permission', [ManagementRolePermissionController::class, 'matchRolePermission']);
+    Route::get('roles-permissions', [ManagementRolePermissionController::class, 'index']);
+    Route::get('/new-user-form', function () {
+        return view('superUser.addnewuser');
+    })->name('new-user-form');
+    Route::get('/donnees-user/{user}', [ManagementDonneeUserController::class, 'index'])
+        ->missing(function (Request $request) {
+            return response()->json("pas d'utilisateur", 404);
+        });
+    Route::post('/match-donnee-user/{user}', [ManagementDonneeUserController::class, 'matchDonneeUser'])
+        ->missing(function (Request $request) {
+            return response()->json("pas d'utilisateur", 404);
+        });
+    Route::resource('beneficiaires', BeneficiaireController::class)
+        ->missing(function (Request $request) {
+            return response()->json('pas de beneficiaire', 404);
+        });
+    Route::get('management-permissions-roles', function(Request $request){
+        return view('superUser.permission');
+    })->name('roles-permissions');
+    Route::get('logout', function (Request $request)
+    {
+        Auth::guard('web')->logout();
+     
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+     
+        return redirect()->route('login');
+    
+    })->name('logout');
 });
-Route::get('/donnees-user/{user}', [ManagementDonneeUserController::class, 'index'])
-    ->missing(function (Request $request) {
-        return response()->json("pas d'utilisateur", 404);
-    });
-Route::post('/match-donnee-user/{user}', [ManagementDonneeUserController::class, 'matchDonneeUser'])
-    ->missing(function (Request $request) {
-        return response()->json("pas d'utilisateur", 404);
-    });
-Route::resource('beneficiaires', BeneficiaireController::class)
-    ->missing(function (Request $request) {
-        return response()->json('pas de beneficiaire', 404);
-    });
-    Route::get('/login', function () {
-        return view('auth.login');
-    });
-Route::get('management-permissions-roles', function(Request $request){
-    return view('superUser.permission');
+Route::get('/assistant', function () {
+    return view('assistSocial.listing');
 });
 Route::get('/assistant', function () {
     return view('assistSocial.listing');

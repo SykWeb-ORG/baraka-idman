@@ -16,13 +16,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{asset("fontawesome-free-5.10.0-web/css/all.min.css")}}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{asset("css/style.css")}}" rel="stylesheet">
 </head>
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
@@ -44,19 +44,19 @@
         </div>
         <!-- Content End -->
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        {{-- <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> --}}
     </div>
 
 
 
     <!-- JavaScript Libraries -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/waypoints/waypoints.min.js"></script>
+    <script src="{{asset("js/jquery-3.4.1.min.js")}}"></script>
+    <script src="{{asset("js/bootstrap.bundle.min.js")}}"></script>
+    <script src="{{asset("js/waypoints/waypoints.min.js")}}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{asset("js/main.js")}}"></script>
 
     @yield('custom_scripts')
 </body>
