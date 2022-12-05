@@ -28,7 +28,7 @@ Route::get('/login', function () {
 Route::post('/login',[UserController::class, 'login'])->name('login');
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/list-beneficiaires', function () {
-        return view('inter_terrain.listing');
+        return view('interTerrain.listing');
     })->name('list-beneficiaires');
     Route::resource('users', UserController::class)
         ->missing(function (Request $request) {
@@ -69,6 +69,6 @@ Route::middleware('auth:sanctum')->group(function(){
 Route::get('/assistant', function () {
     return view('assistSocial.listing');
 });
-Route::get('/assistant', function () {
-    return view('assistSocial.listing');
-});
+Route::get('/all-users', function () {
+    return view('superUser.showusers');
+})->name("all-users");

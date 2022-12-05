@@ -6,7 +6,6 @@ function getAllUsers(users) {
     var tbodyData = "";
     $.each(users, function (key, user) {
         tbodyData += `<tr>
-            <td><input class="form-check-input" type="checkbox"></td>
             <td>${user.first_name}</td>
             <td>${user.last_name}</td>
             <td>${user.cin}</td>
@@ -18,7 +17,7 @@ function getAllUsers(users) {
             <td><button type="button" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-tag"></i></button></td>
         </tr>`
     });    
-    $('#tablebenificiere tbody').html(tbodyData);
+    $('#tableUser tbody').html(tbodyData);
 }
 
 
@@ -26,3 +25,4 @@ function getAllUsers(users) {
 fetch(url)
     .then(response => response.json())
     .then(data => getAllUsers(data))
+    
