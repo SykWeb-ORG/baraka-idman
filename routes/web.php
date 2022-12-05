@@ -66,3 +66,6 @@ Route::middleware('auth:sanctum')->group(function(){
     
     })->name('logout');
 });
+Route::get('/assistant', function () {
+    return view('assistSocial.listing');
+});
