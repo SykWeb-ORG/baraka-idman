@@ -54,7 +54,7 @@ class BeneficiairePolicy
      */
     public function update(User $user, Beneficiaire $beneficiaire)
     {
-        //
+        return $this->checkAbilityByAction($user, 'modifier beneficiaire');
     }
 
     /**
@@ -66,7 +66,7 @@ class BeneficiairePolicy
      */
     public function delete(User $user, Beneficiaire $beneficiaire)
     {
-        //
+        return $this->checkAbilityByAction($user, 'supprimer beneficiaire');
     }
 
     /**

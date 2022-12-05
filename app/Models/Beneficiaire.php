@@ -76,4 +76,12 @@ class Beneficiaire extends Model
                     ->as('beneficiaire_drogue_type')
                     ->withTimestamps();
     }
+
+    /**
+     * Get the intervenant that register thie beneficiaire.
+     */
+    public function intervenant()
+    {
+        return $this->belongsTo(Intervenant::class);
+    }
 }

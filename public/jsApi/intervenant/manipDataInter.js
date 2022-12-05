@@ -11,7 +11,6 @@ function postDataBenefs() {
         url: url,
         async: false,
         data: {
-            code : $('#code-benef').val(),
             prenom : $('#first-name-benef').val(),
             nom : $('#last-name-benef').val(),
             adresse : $('#adresse-benef').val(),
@@ -19,7 +18,6 @@ function postDataBenefs() {
             cin : $('#cin-benef').val(),
             telephone : $('#phone-number-benef').val(),
             type_travail : $('#type-travail-benef').val(),
-            intervenant_id : $('#intervenant-benef').val(),
             
         },
         dataType: "json",
@@ -52,4 +50,27 @@ function clearInputs() {
 $( ".form-benefaicaire" ).submit(function( event ) {
     event.preventDefault();
     postDataBenefs();
-}) 
+})
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+            'X-XSRF-TOKEN':getCookie('XSRF-TOKEN'),
+        }
+    });
+});
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}

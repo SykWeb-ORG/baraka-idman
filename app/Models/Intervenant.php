@@ -16,4 +16,12 @@ class Intervenant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the beneficiaires for the intervenant.
+     */
+    public function beneficiaires()
+    {
+        return $this->hasMany(Beneficiaire::class);
+    }
 }

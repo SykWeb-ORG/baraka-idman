@@ -28,13 +28,13 @@ class UserController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             if ($user->admin) {
-                return $user;
+                return redirect()->route('new-user-form');
             }elseif ($user->medical_assistant) {
                 return $user;
             }elseif ($user->social_assistant) {
                 return $user;
             }elseif ($user->intervenant) {
-                return redirect('/new-user-form');
+                return redirect()->route('new-beneficiaire-form');
             }
         }else {
             $result = 'Email ou(et) mot de passe no valid';
