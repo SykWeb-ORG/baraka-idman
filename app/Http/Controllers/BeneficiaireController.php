@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class BeneficiaireController extends Controller
 {
+
+    public function __construct() {
+        $this->authorizeResource(Beneficiaire::class, 'beneficiaire');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,7 @@ class BeneficiaireController extends Controller
     public function index()
     {
         $beneficiaires = Beneficiaire::all();
-        return response()->json($beneficiaires);
+        return view('interTerrain.listing', compact('beneficiaires'));
     }
 
     /**
@@ -48,16 +53,41 @@ class BeneficiaireController extends Controller
         $beneficiaire->cin = $request->cin;
         $beneficiaire->telephone = $request->telephone;
         $beneficiaire->type_travail = $request->type_travail;
-        $beneficiaire->intervenant_id = 1;
-        // Auth::user()->intervenant->beneficiares($beneficiaire)->save() // waiting for authentication to be completed ...
-        if ($beneficiaire->save()) {
-            $result = $beneficiaire;
-            $status = 200;
+        $beneficiaire->niveau_scolaire = $request->niveau_scolaire;
+        $beneficiaire->situation_familial = $request->situation_familial;
+        $beneficiaire->orphelin = $request->orphelin;
+        $beneficiaire->profession = $request->profession;
+        $beneficiaire->zone_habitation = $request->zone_habitation;
+        $beneficiaire->localisation = $request->localisation;
+        $beneficiaire->famille_informee = $request->famille_informee;
+        $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
+        $beneficiaire->duree_addiction = $request->duree_addiction;
+        $beneficiaire->ts = $request->ts;
+        // if (Auth::user()->intervenant->beneficiaires()->save($beneficiaire)) {
+        //     $result = $beneficiaire;
+        //     $status = 200;
+        // } else {
+        //     $result = 'probleme au serveur.';
+        //     $status = 500;
+        // }
+        // return response()->json($result, $status);
+        if (Auth::user()->intervenant->beneficiaires()->save($beneficiaire)) {
+            // $result = $beneficiaire;
+            // $status = 200;
+            $result = 'Utilisateur ajouté avec success';
+            $status = 'success';
+            $icon = 'fa-check';
         } else {
             $result = 'probleme au serveur.';
-            $status = 500;
+            // $status = 500;
+            $status = 'danger';
+            $icon = 'fa-times';
         }
-        return response()->json($result, $status);
+        // return response()->json($result, $status);
+        $request->session()->flash('new-user', $result);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
     }
 
     /**
@@ -79,7 +109,7 @@ class BeneficiaireController extends Controller
      */
     public function edit(Beneficiaire $beneficiaire)
     {
-        //
+        return view('interTerrain.modifier', compact('beneficiaire'));
     }
 
     /**
@@ -98,14 +128,33 @@ class BeneficiaireController extends Controller
         $beneficiaire->cin = $request->cin;
         $beneficiaire->telephone = $request->telephone;
         $beneficiaire->type_travail = $request->type_travail;
+        $beneficiaire->niveau_scolaire = $request->niveau_scolaire;
+        $beneficiaire->situation_familial = $request->situation_familial;
+        $beneficiaire->orphelin = $request->orphelin;
+        $beneficiaire->profession = $request->profession;
+        $beneficiaire->zone_habitation = $request->zone_habitation;
+        $beneficiaire->localisation = $request->localisation;
+        $beneficiaire->famille_informee = $request->famille_informee;
+        $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
+        $beneficiaire->duree_addiction = $request->duree_addiction;
+        $beneficiaire->ts = $request->ts;
         if ($beneficiaire->update()) {
-            $result = $beneficiaire;
-            $status = 200;
+            // $result = $beneficiaire;
+            // $status = 200;
+            $result = 'Utilisateur modifié avec succés';
+            $status = 'success';
+            $icon = 'fa-check';
         } else {
             $result = 'probleme au serveur.';
-            $status = 500;
+            // $status = 500;
+            $status = 'danger';
+            $icon = 'fa-times';
         }
-        return response()->json($result, $status);
+        // return response()->json($result, $status);
+        $request->session()->flash('user-updated', $result);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
     }
 
     /**
@@ -117,12 +166,21 @@ class BeneficiaireController extends Controller
     public function destroy(Beneficiaire $beneficiaire)
     {
         if ($beneficiaire->delete()) {
-            $result = $beneficiaire;
-            $status = 200;
+            // $result = $beneficiaire;
+            // $status = 200;
+            $result = 'Utilisateur supprimé avec succés';
+            $status = 'success';
+            $icon = 'fa-check';
         } else {
             $result = 'probleme au serveur.';
-            $status = 500;
+            // $status = 500;
+            $status = 'danger';
+            $icon = 'fa-times';
         }
-        return response()->json($result, $status);
+        // return response()->json($result, $status);
+        session()->flash('user-deleted', $result);
+        session()->flash('status', $status);
+        session()->flash('icon', $icon);
+        return back();
     }
 }
