@@ -69,3 +69,6 @@ Route::middleware('auth:sanctum')->group(function(){
 Route::get('/assistant', function () {
     return view('assistSocial.listing');
 });
+Route::get('/assistant', function () {
+    return view('assistSocial.listing');
+});

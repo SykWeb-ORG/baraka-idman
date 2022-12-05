@@ -157,5 +157,8 @@
 @endsection
 
 @section('custom_scripts')
+
 <script src="{{asset("jsApi/intervenant/manipDataInter.js")}}"></script>
+
 @endsection
+
