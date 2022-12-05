@@ -10,6 +10,15 @@ class Role extends Model
     use HasFactory;
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'permissions',
+    ];
+    
+    /**
      * The permissions that belong to the role.
      */
     public function permissions()

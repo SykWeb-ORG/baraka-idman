@@ -5,6 +5,7 @@ use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/list-beneficiaires', function () {
     return view('inter_terrain.listing');
-});
+})->name('list-beneficiaires');
 Route::post('/login',[UserController::class, 'login'])->name('login');
 Route::resource('users', UserController::class)
     ->missing(function (Request $request) {
@@ -28,9 +29,9 @@ Route::resource('users', UserController::class)
     });
 Route::post('match-role-permission', [ManagementRolePermissionController::class, 'matchRolePermission']);
 Route::get('roles-permissions', [ManagementRolePermissionController::class, 'index']);
-Route::get('/inter_terrain', function () {
+Route::get('/new-user-form', function () {
     return view('superUser.addnewuser');
-});
+})->name('new-user-form');
 Route::get('/donnees-user/{user}', [ManagementDonneeUserController::class, 'index'])
     ->missing(function (Request $request) {
         return response()->json("pas d'utilisateur", 404);
@@ -48,4 +49,15 @@ Route::resource('beneficiaires', BeneficiaireController::class)
     });
 Route::get('management-permissions-roles', function(Request $request){
     return view('superUser.permission');
-});
+})->name('roles-permissions');
+Route::get('logout', function (Request $request)
+{
+    Auth::logout();
+ 
+    $request->session()->invalidate();
+ 
+    $request->session()->regenerateToken();
+ 
+    return redirect()->route('login');
+
+})->name('logout');
