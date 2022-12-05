@@ -5,7 +5,7 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Béneficiaires</h6>
+                <h6 class="mb-0">Tous Les Béneficiaires</h6>
                 {{-- <a href="">Show All</a> --}}
             </div>
             <div class="table-responsive">
@@ -44,7 +44,5 @@
     <!-- Recent Sales End -->
 @endsection
 @section('custom_scripts')
-
-<script src="{{asset("jsApi/assistant/main.js")}}"></script>
-
+<script src="{{asset("jsApi/assistantSocial/main.js")}}"></script>
 @endsection

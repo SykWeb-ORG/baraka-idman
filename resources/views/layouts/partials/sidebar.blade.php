@@ -24,7 +24,7 @@
                             <a href="{{ route('new-user-form') }}" class="dropdown-item">Ajouter</a>
                         @endcan
                         @can('viewAny', App\Models\User::class)
-                            <a href="button.html" class="dropdown-item">Afficher</a>
+                            <a href="{{ route('all-users') }}" class="dropdown-item">Afficher</a>
                         @endcan
                     </div>
                 </div>
