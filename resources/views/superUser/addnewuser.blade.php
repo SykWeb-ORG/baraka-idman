@@ -6,7 +6,7 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Ajouter Utilisateur</h6>
+                    <h6 id="title-form" class="mb-4">Ajouter Utilisateur</h6>
                     <form class="form-user">
                         <div class="mb-3">
                             <label for="first-name-user" class="form-label">Prénom</label>
@@ -43,7 +43,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <button id="btn-add-user" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-manip-user" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                     <div id="message-alert" class="mb-3"></div>
