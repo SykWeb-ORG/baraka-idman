@@ -6,7 +6,6 @@ function getAllBenefaicaires(benefs) {
     var tbodyData = "";
     $.each(benefs, function (key, benef) {
         tbodyData += `<tr>
-            <td><input class="form-check-input" type="checkbox"></td>
             <td>${benef.id}</td>
             <td>${benef.prenom}</td>
             <td>${benef.nom}</td>

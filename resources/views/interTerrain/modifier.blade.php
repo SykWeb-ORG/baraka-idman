@@ -6,7 +6,7 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Inscription Form</h6>
+                    <h6 class="mb-4">Modification Form</h6>
                     <form class="form-benefaicaire">
                         <div class="mb-3">
                             <label for="code-benef" class="form-label">Code Bénéficiaire</label>
@@ -145,7 +145,7 @@
                             </div>
                         </fieldset>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="submit" class="btn btn-primary">Modifier</button>
                         </div>
                         <div id="message-alert" class="mb-3"></div>
                     </form>
