@@ -21,6 +21,9 @@ class UserController extends Controller
     }
 
     public function login(LoginRequest $request){
+        if (Auth::check()) {
+            return redirect()->back();
+        }
         if (Auth::attempt($request->only(['email', 'password']))) {
             $request->session()->regenerate();
             $user = Auth::user();
