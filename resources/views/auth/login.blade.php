@@ -76,6 +76,12 @@
                             </ul>
                         </div>
                     @endif
+                    @if ($msg = session()->get('msg'))
+                        <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
+                            <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>;
+                    @endif
                 </div>
             </div>
         </div>

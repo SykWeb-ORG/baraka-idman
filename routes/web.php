@@ -4,8 +4,12 @@ use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
+use App\Models\Beneficiaire;
+use App\Models\User;
+use App\Models\ValidationDossier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +70,27 @@ Route::middleware('auth:sanctum')->group(function(){
     
     })->name('logout');
     Route::view('new-beneficiaire-form', 'interTerrain.inscription')->name('new-beneficiaire-form');
+    Route::put('validation-state/{beneficiaire}/{user}', function(Beneficiaire $beneficiaire, User $user){
+        if ($user->social_assistant) {
+            $beneficiaire->validation_social_assistant = 1;
+        }elseif ($user->admin) {
+            $beneficiaire->validation_directive = 1;
+        }
+        if ($beneficiaire->update()) {
+            $result = 'Utilisateur validé avec succés';
+            $status = 'success';
+            $icon = 'fa-check';
+        } else {
+            $result = 'probleme au serveur.';
+            // $status = 500;
+            $status = 'danger';
+            $icon = 'fa-times';
+        }
+        session()->flash('msg', $result);
+        session()->flash('status', $status);
+        session()->flash('icon', $icon);
+        return back();
+    })->name('validation-state');
 });
 Route::get('/assistant', function () {
     return view('assistSocial.listing');

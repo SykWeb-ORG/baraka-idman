@@ -30,16 +30,22 @@ class UserController extends Controller
             if ($user->admin) {
                 return redirect()->route('new-user-form');
             }elseif ($user->medical_assistant) {
-                return $user;
+                return redirect()->route('beneficiaires.index');
             }elseif ($user->social_assistant) {
-                return $user;
+                return redirect()->route('beneficiaires.index');
             }elseif ($user->intervenant) {
                 return redirect()->route('new-beneficiaire-form');
             }
         }else {
             $result = 'Email ou(et) mot de passe no valid';
-            $status = 403;
-            return response()->json($result, $status);
+            // $status = 403;
+            $status = 'danger';
+            $icon = 'fa-times'; 
+            // return response()->json($result, $status);
+            $request->session()->flash('msg', $result);
+            $request->session()->flash('status', $status);
+            $request->session()->flash('icon', $icon);
+            return back();
         }
     }
     /**
@@ -142,7 +148,7 @@ class UserController extends Controller
         }
         
         // return response()->json($result, $status);
-        $request->session()->flash('new-user', $result);
+        $request->session()->flash('msg', $result);
         $request->session()->flash('status', $status);
         $request->session()->flash('icon', $icon);
         return back();
@@ -185,7 +191,7 @@ class UserController extends Controller
         $user->phone_number = $request->phone_number;
         $user->birthday_date = $request->birthday_date;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        // $user->password = Hash::make($request->password);
         // get the role of the user .. 
         if ($user->admin != null) {
             $role = 'admin';
@@ -291,7 +297,7 @@ class UserController extends Controller
             }
         }
         // return response()->json($result, $status);
-        $request->session()->flash('user-updated', $result);
+        $request->session()->flash('msg', $result);
         $request->session()->flash('status', $status);
         $request->session()->flash('icon', $icon);
         return back();
@@ -326,7 +332,7 @@ class UserController extends Controller
         }
         
         // return response()->json($result, $status);
-        session()->flash('user-deleted', $result);
+        session()->flash('msg', $result);
         session()->flash('status', $status);
         session()->flash('icon', $icon);
         return back();
