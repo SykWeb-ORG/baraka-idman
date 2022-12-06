@@ -8,8 +8,8 @@
                 <h6 class="mb-0">Couverture médical</h6>
             </div>
             <fieldset>
-                <div class="couv-medic">
-                    <div class="couv">
+                <div class="couv-medic" id="couv-medic">
+                    {{-- <div class="couv">
                         <input type="checkbox" name="" id=""><label for="">Sans</label>
                     </div>
                     <div class="couv">
@@ -23,8 +23,9 @@
                     </div>
                     <div class="couv">
                         <input type="checkbox" name="" id=""><label for="">CNOPS</label>
-                    </div>
+                    </div> --}}
                 </div>
+                <button id="btnMatchCouvertures">Attacher</button>
             </fieldset>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
@@ -59,4 +60,8 @@
     <!-- Recent Sales End -->
 @endsection
 @section('custom_scripts')
+<script>
+    var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }};
+</script>
+<script src="{{asset("jsApi\intervenant\couverture-beneficiaire.js")}}"></script>
 @endsection

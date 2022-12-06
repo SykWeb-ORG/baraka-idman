@@ -20,6 +20,15 @@ class Beneficiaire extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'couvertures',
+    ];
+
+    /**
      * Get the suicide causes for the beneficiaire.
      */
     public function suicide_causes()
