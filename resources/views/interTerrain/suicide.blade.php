@@ -13,24 +13,13 @@
                         <tr class="text-dark">
                             {{-- <th scope="col"><input class="form-check-input" type="checkbox"></th> --}}
                             <th scope="col" colspan="2">Pensée au suicide</th>
+                            <th scope="col">Les Causes</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><input type="checkbox" name="" id=""><label for="">Oui</label></td>
                             <td><input type="checkbox" name="" id=""><label for="">Non</label></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
-                    <thead>
-                        <tr class="text-dark">
-                            {{-- <th scope="col"><input class="form-check-input" type="checkbox"></th> --}}
-                            <th scope="col">Les Causes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
                             <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
                         </tr>
                     </tbody>
