@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\BeneficiaireController;
+use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Beneficiaire;
 use App\Models\User;
-use App\Models\ValidationDossier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -98,8 +98,8 @@ Route::get('/assistant', function () {
 Route::get('/all-users', function () {
     return view('superUser.showusers');
 })->name("all-users");
-Route::get('/couverture-medical', function () {
-    return view('interTerrain.Couverture-medical');
+Route::get('/couverture-medical/{beneficiaire}', function (Beneficiaire $beneficiaire) {
+    return view('interTerrain.Couverture-medical', compact('beneficiaire'));
 });
 Route::get('/violence', function () {
     return view('interTerrain.violence');
@@ -107,3 +107,5 @@ Route::get('/violence', function () {
 Route::get('/suicide', function () {
     return view('interTerrain.suicide');
 });
+Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
+Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
