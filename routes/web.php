@@ -109,3 +109,6 @@ Route::get('/suicide', function () {
 });
 Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
 Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
+Route::get('/service', function () {
+    return view('interTerrain.service');
+});

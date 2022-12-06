@@ -26,7 +26,7 @@
                     <thead>
                         <tr class="text-dark">
                             {{-- <th scope="col"><input class="form-check-input" type="checkbox"></th> --}}
-                            <th scope="col" colspan="2">Les Causes</th>
+                            <th scope="col">Les Causes</th>
                         </tr>
                     </thead>
                     <tbody>
