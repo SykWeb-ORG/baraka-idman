@@ -84,7 +84,7 @@ class BeneficiaireController extends Controller
             $icon = 'fa-times';
         }
         // return response()->json($result, $status);
-        $request->session()->flash('new-user', $result);
+        $request->session()->flash('msg', $result);
         $request->session()->flash('status', $status);
         $request->session()->flash('icon', $icon);
         return back();
@@ -151,7 +151,7 @@ class BeneficiaireController extends Controller
             $icon = 'fa-times';
         }
         // return response()->json($result, $status);
-        $request->session()->flash('user-updated', $result);
+        $request->session()->flash('msg', $result);
         $request->session()->flash('status', $status);
         $request->session()->flash('icon', $icon);
         return back();
@@ -178,7 +178,7 @@ class BeneficiaireController extends Controller
             $icon = 'fa-times';
         }
         // return response()->json($result, $status);
-        session()->flash('user-deleted', $result);
+        session()->flash('msg', $result);
         session()->flash('status', $status);
         session()->flash('icon', $icon);
         return back();

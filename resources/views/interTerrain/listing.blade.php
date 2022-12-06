@@ -32,11 +32,23 @@
                             <th scope="col">Age Debut Addiction</th>
                             <th scope="col">Duree Addiction</th>
                             <th scope="col">TS</th>
-                            <th scope="col" colspan="2">Action</th>
+                            @if (Auth::user()->admin || Auth::user()->social_assistant)
+                                <th scope="col">Validation sociale</th>
+                            @endif
+                            @if (Auth::user()->admin)
+                                <th scope="col">Validation directive</th>
+                            @endif
+                            @if (Auth::user()->medical_assistant)
+                                <th scope="col">Validation médicale</th>
+                            @endif
+                            <th scope="col" colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($beneficiaires as $beneficiaire)
+                        @if ((!$beneficiaire->validation_social_assistant && !$beneficiaire->validation_directive) && Auth::user()->medical_assistant)
+                            @continue
+                        @endif
                         <tr>
                             {{-- <td><input class="form-check-input" type="checkbox"></td> --}}
                             <td>{{$loop->iteration}}</td>
@@ -58,12 +70,28 @@
                             <td>{{$beneficiaire->age_debut_addiction}}</td>
                             <td>{{$beneficiaire->duree_addiction}}</td>
                             <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
+                            @if (Auth::user()->admin || Auth::user()->social_assistant)
+                                <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
+                            @endif
+                            @if (Auth::user()->admin)
+                                <td>{{($beneficiaire->validation_directive)? "oui" : "non"}}</td>
+                            @endif
+                            @if (Auth::user()->medical_assistant)
+                                <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
+                            @endif
                             <td><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
                             <td>
                                 <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -83,7 +111,7 @@
             </ul>
         </div>
     @endif
-    @if ($msg = session()->get('user-deleted'))
+    @if ($msg = session()->get('msg'))
         <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
             <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
