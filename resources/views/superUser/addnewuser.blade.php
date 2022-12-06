@@ -7,34 +7,35 @@
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 id="title-form" class="mb-4">Ajouter Utilisateur</h6>
-                    <form class="form-user">
+                    <form class="form-user" action="{{ route('users.store') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="first-name-user" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" id="first-name-user">
+                            <input type="text" name="first_name" class="form-control" id="first-name-user">
                         </div>
                         <div class="mb-3">
                             <label for="last-name-user" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="last-name-user">
+                            <input type="text" name="last_name" class="form-control" id="last-name-user">
                         </div>
                         <div class="mb-3">
                             <label for="cin-user" class="form-label">CIN</label>
-                            <input type="text" class="form-control" id="cin-user">
+                            <input type="text" name="cin" class="form-control" id="cin-user">
                         </div>
                         <div class="mb-3">
                             <label for="birtday-user" class="form-label">Date de naissance</label>
-                            <input type="date" class="form-control" id="birtday-user">
+                            <input type="date" name="birthday_date" class="form-control" id="birtday-user">
                         </div>
                         <div class="mb-3">
                             <label for="phone-number-user" class="form-label">N° de telephone</label>
-                            <input type="number" class="form-control" id="phone-number-user">
+                            <input type="number" name="phone_number" class="form-control" id="phone-number-user">
                         </div>
                         <div class="mb-3">
                             <label for="email-user" class="form-label">Adresse Email</label>
-                            <input type="text" class="form-control" id="email-user">
+                            <input type="text" name="email" class="form-control" id="email-user">
                         </div>
                         <div class="mb-3">
                             <label for="roles-user" class="form-label">Rôles</label>
-                            <select class="form-select mb-3" aria-label="Default select example" id="roles-user">
+                            <select name="role" class="form-select mb-3" aria-label="Default select example" id="roles-user">
                                 <option selected="">Choisir rôle</option>
                                 <option value="admin">Admin</option>
                                 <option value="intervenant">Intervenant</option>
@@ -52,8 +53,23 @@
         </div>
     </div>
     <!-- Form End -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if ($msg = session()->get('new-user'))
+        <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
+            <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>;
+    @endif
 @endsection
 
-@section('custom_scripts')
+{{-- @section('custom_scripts')
 <script src="{{asset("jsApi/superadmin/manipulationUsers.js")}}"></script>
-@endsection
+@endsection --}}

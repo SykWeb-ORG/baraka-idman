@@ -53,7 +53,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        //
+        return $this->checkAbilityByAction($user, 'modifier utilisateur');
     }
 
     /**
@@ -65,7 +65,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        return $this->checkAbilityByAction($user, 'supprimer utilisateur');
     }
 
     /**
