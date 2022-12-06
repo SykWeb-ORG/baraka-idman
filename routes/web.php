@@ -101,3 +101,9 @@ Route::get('/all-users', function () {
 Route::get('/couverture-medical', function () {
     return view('interTerrain.Couverture-medical');
 });
+Route::get('/violence', function () {
+    return view('interTerrain.violence');
+});
+Route::get('/suicide', function () {
+    return view('interTerrain.suicide');
+});

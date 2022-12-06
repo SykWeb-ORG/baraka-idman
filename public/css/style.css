@@ -334,3 +334,8 @@
 .couv-medic .couv input{
     margin-right: 5px;
 }
+/* violence */
+.table2{
+    display: flex;
+    flex-direction: row;
+}
