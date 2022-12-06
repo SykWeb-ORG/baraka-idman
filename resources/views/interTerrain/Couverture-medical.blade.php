@@ -51,6 +51,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="mt-4 mb-3">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
         </div>
     </div>
     <!-- Recent Sales End -->
