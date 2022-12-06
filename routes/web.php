@@ -98,3 +98,6 @@ Route::get('/assistant', function () {
 Route::get('/all-users', function () {
     return view('superUser.showusers');
 })->name("all-users");
+Route::get('/couverture-medical', function () {
+    return view('interTerrain.Couverture-medical');
+});

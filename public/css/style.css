@@ -326,3 +326,11 @@
 .div_perm .permissions_check .perm{
     margin-bottom: 10px;
 }
+/* couverture medical */
+.couv-medic {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.couv-medic .couv input{
+    margin-right: 5px;
+}
