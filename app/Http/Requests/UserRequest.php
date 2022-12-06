@@ -58,9 +58,9 @@ class UserRequest extends FormRequest
                 Rule::in($roles)
             ],
         ];
-        if ($this->method() == Request::METHOD_PUT) {
-            $rules = Arr::add($rules, 'password', ['required', 'size:8']);
-        }
+        // if ($this->method() == Request::METHOD_PUT) {
+        //     $rules = Arr::add($rules, 'password', ['required', 'size:8']);
+        // }
         return $rules;
     }
 }

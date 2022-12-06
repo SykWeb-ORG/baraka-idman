@@ -50,7 +50,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->json($users);
+        // return response()->json($users);
+        return view('superUser.showusers', compact('users'));
     }
 
     /**
@@ -83,42 +84,68 @@ class UserController extends Controller
             if ($request->role == 'admin') {
                 $admin = new Admin;
                 if (($result = $admin->user()->associate($user)) && $admin->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur ajouté avec success';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';        
                 }
             }elseif ($request->role == 'social assistant') {
                 $socialAssistant = new SocialAssistant;
                 if (($result = $socialAssistant->user()->associate($user)) && $socialAssistant->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur ajouté avec success';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';        
                 }
             }elseif ($request->role == 'medical assistant') {
                 $medicalAssistant = new MedicalAssistant;
                 if (($result = $medicalAssistant->user()->associate($user)) && $medicalAssistant->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur ajouté avec success';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';        
                 }
             }elseif ($request->role == 'intervenant') {
                 $intervenant = new Intervenant;
                 if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur ajouté avec success';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';        
                 }
             }
         } else {
             $result = 'probleme au serveur.';
-            $status = 500;
+            // $status = 500;
+            $status = 'danger';
+            $icon = 'fa-times';
         }
         
-        return response()->json($result, $status);
+        // return response()->json($result, $status);
+        $request->session()->flash('new-user', $result);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
     }
 
     /**
@@ -140,7 +167,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('superUser.modifieruser', compact('user'));
     }
 
     /**
@@ -185,55 +212,89 @@ class UserController extends Controller
             if ($request->role == 'admin') {
                 $admin = new Admin;
                 if (($result = $admin->user()->associate($user)) && $admin->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur modifié avec succés';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';
                 }
             }elseif ($request->role == 'social assistant') {
                 $socialAssistant = new SocialAssistant;
                 if (($result = $socialAssistant->user()->associate($user)) && $socialAssistant->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur modifié avec succés';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';
                 }
             }elseif ($request->role == 'medical assistant') {
                 $medicalAssistant = new MedicalAssistant;
                 if (($result = $medicalAssistant->user()->associate($user)) && $medicalAssistant->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur modifié avec succés';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';
                 }
             }elseif ($request->role == 'intervenant') {
                 $intervenant = new Intervenant;
                 if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
-                    $status = 200;
+                    // $status = 200;
+                    $result = 'Utilisateur modifié avec succés';
+                    $status = 'success';
+                    $icon = 'fa-check';
                 } else {
                     $result = 'probleme au serveur.';
-                    $status = 500;
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';
                 }
             }
             // update the user with new data ..
             if ($user->update()) {
-                $result = $user;
-                $status = 200;
+                // $result = $user;
+                // $status = 200;
+                $result = 'Utilisateur modifié avec succés';
+                $status = 'success';
+                $icon = 'fa-check';
             } else {
                 $result = 'probleme au serveur.';
-                $status = 500;
+                // $status = 500;
+                $status = 'danger';
+                $icon = 'fa-times';
             }
         }else {
             // just update the data of the user without changing his role ..
             if ($user->update()) {
-                $result = $user;
-                $status = 200;
+                // $result = $user;
+                // $status = 200;
+                $result = 'Utilisateur modifié avec succés';
+                $status = 'success';
+                $icon = 'fa-check';
             } else {
                 $result = 'probleme au serveur.';
-                $status = 500;
+                // $status = 500;
+                $status = 'danger';
+                $icon = 'fa-times';
             }
         }
-        return response()->json($result, $status);
+        // return response()->json($result, $status);
+        $request->session()->flash('user-updated', $result);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
     }
 
     /**
@@ -246,18 +307,29 @@ class UserController extends Controller
     {
         if ($user != null) {
             if ($user->delete()) {
-                $result = $user;
-                $status = 200;
+                // $result = $user;
+                // $status = 200;
+                $result = 'Utilisateur supprimé avec succés';
+                $status = 'success';
+                $icon = 'fa-check';
             } else {
-                $result = 'probleme au serveur.';
-                $status = 500;
+                // $result = 'probleme au serveur.';
+                // $status = 500;
+                $status = 'danger';
+                $icon = 'fa-times';    
             }
         } else {
             $result = "l'utilisateur n'existe pas.";
-            $status = 404;
+            // $status = 404;
+            $status = 'danger';
+            $icon = 'fa-times';
         }
         
-        return response()->json($result, $status);
+        // return response()->json($result, $status);
+        session()->flash('user-deleted', $result);
+        session()->flash('status', $status);
+        session()->flash('icon', $icon);
+        return back();
     }
     
 }
