@@ -32,7 +32,9 @@
                             <th scope="col">Age Debut Addiction</th>
                             <th scope="col">Duree Addiction</th>
                             <th scope="col">TS</th>
-                            <th scope="col">Validation sociale</th>
+                            @if (Auth::user()->intervenant == null)
+                                <th scope="col">Validation sociale</th>
+                            @endif
                             @if (Auth::user()->admin || Auth::user()->medical_assistant)
                                 <th scope="col">Validation directive</th>
                             @endif
@@ -68,7 +70,9 @@
                             <td>{{$beneficiaire->age_debut_addiction}}</td>
                             <td>{{$beneficiaire->duree_addiction}}</td>
                             <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
-                            <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
+                            @if (Auth::user()->intervenant == null)
+                                <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
+                            @endif
                             @if (Auth::user()->admin || Auth::user()->medical_assistant)
                                 <td>{{($beneficiaire->validation_directive)? "oui" : "non"}}</td>
                             @endif
