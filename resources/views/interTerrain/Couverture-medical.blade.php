@@ -25,7 +25,9 @@
                         <input type="checkbox" name="" id=""><label for="">CNOPS</label>
                     </div> --}}
                 </div>
-                <button id="btnMatchCouvertures">Attacher</button>
+                <div class="mt-4 mb-3">
+                    <button class="btn btn-primary" id="btnMatchCouvertures">Attacher</button>
+                </div>
             </fieldset>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
@@ -36,8 +38,8 @@
                             <th scope="col">Quantité utilisée / fréquence</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="tbodyDrogueTypes">
+                        {{-- <tr>
                             <td><input type="checkbox" name="" id=""><label for="">Cigarette</label></td>
                             <td><input type="number" name="" id=""></td>
                         </tr>
@@ -48,12 +50,12 @@
                         <tr>
                             <td><input type="checkbox" name="" id=""><label for="">Alcool</label></td>
                             <td><input type="number" name="" id=""></td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
             <div class="mt-4 mb-3">
-                <button type="submit" class="btn btn-primary">Valider</button>
+                <button type="submit" class="btn btn-primary" id="btnMatchDrogueTypes">Valider</button>
             </div>
         </div>
     </div>
@@ -64,4 +66,5 @@
     var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }};
 </script>
 <script src="{{asset("jsApi\intervenant\couverture-beneficiaire.js")}}"></script>
+<script src="{{asset("jsApi\intervenant\drogueType-beneficiaire.js")}}"></script>
 @endsection
