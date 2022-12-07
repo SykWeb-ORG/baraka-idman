@@ -104,6 +104,7 @@ $(document).ready(function(){
                 success: (role) => {
                     console.log(role);
                     alert("Les changements sont bien effectués.");
+                    document.location.reload();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(xhr.status);
