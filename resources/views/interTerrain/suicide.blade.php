@@ -18,20 +18,38 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" name="" id=""><label for="">Oui</label></td>
-                            <td><input type="checkbox" name="" id=""><label for="">Non</label></td>
-                            <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+                            <form id="form_beneficiaire_suicide" action="{{ route('match-beneficiaire-suicide_causes', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
+                                @csrf
+                                <td><input type="checkbox" name="" id="oui" {{(count($beneficiaire->suicide_causes))? 'checked': ''}}><label for="oui">Oui</label></td>
+                                <td><input type="checkbox" name="" id="non" {{(count($beneficiaire->suicide_causes) == 0)? 'checked': ''}}><label for="non">Non</label></td>
+                                <td><textarea name="suicide_causes" id="" cols="30" rows="10">{{(count($beneficiaire->suicide_causes))? $beneficiaire->suicide_causes[0]->cause : ''}}</textarea></td>
+                            </form>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <span>NB:Mettre une croix dans la case approprié</span>
             <div class="mt-4 mb-3">
-                <button type="submit" class="btn btn-primary">Valider</button>
+                <button form="form_beneficiaire_suicide" type="submit" class="btn btn-primary">Valider</button>
             </div>
         </div>
     </div>
     <!-- Recent Sales End -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if ($msg = session()->get('msg'))
+        <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
+            <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>;
+    @endif
 @endsection
 @section('custom_scripts')
 @endsection
