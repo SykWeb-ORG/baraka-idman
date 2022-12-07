@@ -16,8 +16,8 @@
                             <th scope="col">Service</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="tbodyServices">
+                        {{-- <tr>
                             <td><input type="checkbox" name="" id=""></td>
                             <td>Accompagnement sanitaire</td>
 
@@ -29,16 +29,20 @@
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
                             <td>Accompagnement juridique/administratif</td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
             <div class="mt-4 mb-3">
-                <button type="submit" class="btn btn-primary">Valider</button>
+                <button type="submit" class="btn btn-primary" id="btnMatchServices">Valider</button>
             </div>
         </div>
     </div>
     <!-- Recent Sales End -->
 @endsection
 @section('custom_scripts')
+<script>
+    var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }};
+</script>
+<script src="{{asset("jsApi\intervenant\service-beneficiaire.js")}}"></script>
 @endsection
