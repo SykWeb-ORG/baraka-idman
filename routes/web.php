@@ -103,18 +103,18 @@ Route::get('/all-users', function () {
 })->name("all-users");
 Route::get('/couverture-medical/{beneficiaire}', function (Beneficiaire $beneficiaire) {
     return view('interTerrain.Couverture-medical', compact('beneficiaire'));
-});
+})->name('couverture-medical');
 Route::get('/violence/{beneficiaire}', function (Beneficiaire $beneficiaire) {
     return view('interTerrain.violence', compact('beneficiaire'));
-});
+})->name('violence');
 Route::get('/suicide/{beneficiaire}', function (Beneficiaire $beneficiaire) {
     return view('interTerrain.suicide', compact('beneficiaire'));
-});
+})->name('suicide');
 Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
 Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
 Route::get('/service/{beneficiaire}', function (Beneficiaire $beneficiaire) {
     return view('interTerrain.service', compact('beneficiaire'));
-});
+})->name('service');
 Route::get('all-drogue_types', [ManagementBeneficiaireDrogueTypeController::class, 'index']);
 Route::post('match-beneficiaire-drogue_types/{beneficiaire}', [ManagementBeneficiaireDrogueTypeController::class, 'matchBeneficiaireDrogueTypes']);
 Route::get('all-violence_types', [ManagementBeneficiaireViolenceTypeController::class, 'index']);
