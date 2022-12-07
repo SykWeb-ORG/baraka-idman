@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
+use App\Http\Controllers\ManagementBeneficiaireDrogueTypeController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
@@ -9,7 +10,6 @@ use App\Models\Beneficiaire;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,3 +112,5 @@ Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBenefici
 Route::get('/service', function () {
     return view('interTerrain.service');
 });
+Route::get('all-drogue_types', [ManagementBeneficiaireDrogueTypeController::class, 'index']);
+Route::post('match-beneficiaire-drogue_types/{beneficiaire}', [ManagementBeneficiaireDrogueTypeController::class, 'matchBeneficiaireDrogueTypes']);

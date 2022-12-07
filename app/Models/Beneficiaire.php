@@ -26,6 +26,7 @@ class Beneficiaire extends Model
      */
     protected $with = [
         'couvertures',
+        'drogue_types',
     ];
 
     /**
@@ -82,6 +83,7 @@ class Beneficiaire extends Model
     public function drogue_types()
     {
         return $this->belongsToMany(DrogueType::class)
+                    ->withPivot('frequence')
                     ->as('beneficiaire_drogue_type')
                     ->withTimestamps();
     }
