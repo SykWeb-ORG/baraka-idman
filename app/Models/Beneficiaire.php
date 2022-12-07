@@ -28,6 +28,7 @@ class Beneficiaire extends Model
         'couvertures',
         'drogue_types',
         'violence_types',
+        'services',
     ];
 
     /**
