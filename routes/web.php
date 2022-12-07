@@ -4,6 +4,7 @@ use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
 use App\Http\Controllers\ManagementBeneficiaireDrogueTypeController;
 use App\Http\Controllers\ManagementBeneficiaireServiceController;
+use App\Http\Controllers\ManagementBeneficiaireSuicideController;
 use App\Http\Controllers\ManagementBeneficiaireViolenceTypeController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
@@ -106,8 +107,8 @@ Route::get('/couverture-medical/{beneficiaire}', function (Beneficiaire $benefic
 Route::get('/violence/{beneficiaire}', function (Beneficiaire $beneficiaire) {
     return view('interTerrain.violence', compact('beneficiaire'));
 });
-Route::get('/suicide', function () {
-    return view('interTerrain.suicide');
+Route::get('/suicide/{beneficiaire}', function (Beneficiaire $beneficiaire) {
+    return view('interTerrain.suicide', compact('beneficiaire'));
 });
 Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
 Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
@@ -120,3 +121,4 @@ Route::get('all-violence_types', [ManagementBeneficiaireViolenceTypeController::
 Route::post('match-beneficiaire-violence_types/{beneficiaire}', [ManagementBeneficiaireViolenceTypeController::class, 'matchBeneficiaireViolenceTypes']);
 Route::get('all-services', [ManagementBeneficiaireServiceController::class, 'index']);
 Route::post('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
+Route::post('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
