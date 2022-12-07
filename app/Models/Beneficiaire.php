@@ -27,6 +27,7 @@ class Beneficiaire extends Model
     protected $with = [
         'couvertures',
         'drogue_types',
+        'violence_types',
     ];
 
     /**
