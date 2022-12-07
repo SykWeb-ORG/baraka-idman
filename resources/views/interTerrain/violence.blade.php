@@ -17,8 +17,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" name="" id=""><label for="">Oui</label></td>
-                            <td><input type="checkbox" name="" id=""><label for="">Non</label></td>
+                            <td><input type="checkbox" name="" id="oui"><label for="">Oui</label></td>
+                            <td><input type="checkbox" name="" id="non"><label for="">Non</label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -29,8 +29,8 @@
                             <th scope="col" colspan="2">Type de violence</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="tbodyViolenceTypes">
+                        {{-- <tr>
                             <td><input type="checkbox" name="" id=""></td>
                             <td>Psychologique</td>
                         </tr>
@@ -41,17 +41,21 @@
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
                             <td>Physique</td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
             <span>NB:Mettre une croix dans la case approprié</span>
             <div class="mt-4 mb-3">
-                <button type="submit" class="btn btn-primary">Valider</button>
+                <button type="submit" class="btn btn-primary" id="btnMatchViolenceTypes">Valider</button>
             </div>
         </div>
     </div>
     <!-- Recent Sales End -->
 @endsection
 @section('custom_scripts')
+<script>
+    var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }};
+</script>
+<script src="{{asset("jsApi\intervenant\\violenceType-beneficiaire.js")}}"></script>
 @endsection
