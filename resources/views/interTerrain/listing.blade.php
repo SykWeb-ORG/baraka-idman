@@ -41,7 +41,7 @@
                             @if (Auth::user()->medical_assistant)
                                 <th scope="col">Validation médicale</th>
                             @endif
-                            <th scope="col" colspan="3">Action</th>
+                            <th scope="col" colspan="7">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -94,6 +94,10 @@
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
                                 </form>
                             </td>
+                            <td><a href='{{ route('couverture-medical', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2">Couverture et types de drogues</a></td>
+                            <td><a href='{{ route('violence', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Types de violence</a></td>
+                            <td><a href='{{ route('suicide', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Causes de suicide</a></td>
+                            <td><a href='{{ route('service', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Services</a></td>
                         </tr>
                         @endforeach
                     </tbody>
