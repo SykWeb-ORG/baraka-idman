@@ -32,10 +32,8 @@
                             <th scope="col">Age Debut Addiction</th>
                             <th scope="col">Duree Addiction</th>
                             <th scope="col">TS</th>
-                            @if (Auth::user()->admin || Auth::user()->social_assistant)
-                                <th scope="col">Validation sociale</th>
-                            @endif
-                            @if (Auth::user()->admin)
+                            <th scope="col">Validation sociale</th>
+                            @if (Auth::user()->admin || Auth::user()->medical_assistant)
                                 <th scope="col">Validation directive</th>
                             @endif
                             @if (Auth::user()->medical_assistant)
@@ -46,7 +44,7 @@
                     </thead>
                     <tbody>
                         @foreach ($beneficiaires as $beneficiaire)
-                        @if ((!$beneficiaire->validation_social_assistant && !$beneficiaire->validation_directive) && Auth::user()->medical_assistant)
+                        @if ((!$beneficiaire->validation_social_assistant || !$beneficiaire->validation_directive) && Auth::user()->medical_assistant)
                             @continue
                         @endif
                         <tr>
@@ -70,10 +68,8 @@
                             <td>{{$beneficiaire->age_debut_addiction}}</td>
                             <td>{{$beneficiaire->duree_addiction}}</td>
                             <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
-                            @if (Auth::user()->admin || Auth::user()->social_assistant)
-                                <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
-                            @endif
-                            @if (Auth::user()->admin)
+                            <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
+                            @if (Auth::user()->admin || Auth::user()->medical_assistant)
                                 <td>{{($beneficiaire->validation_directive)? "oui" : "non"}}</td>
                             @endif
                             @if (Auth::user()->medical_assistant)
