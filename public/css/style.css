@@ -339,3 +339,19 @@
     display: flex;
     flex-direction: row;
 }
+/* Niveau Scolaire */
+.Nv-scolaire{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.Nv-scolaire .nv input{
+    margin-right: 5px;
+}
+/* situation familiale */
+.situ-familiale{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.situ-familiale .sit_fam input{
+    margin-right: 5px;
+}
