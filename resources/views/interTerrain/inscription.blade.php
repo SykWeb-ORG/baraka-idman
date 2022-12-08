@@ -192,14 +192,14 @@
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios1"
+                                        <input class="form-check-input" type="radio" name="habitation" id="gridRadios1"
                                             value="1">
                                         <label class="form-check-label" for="gridRadios1">
                                             Urbain
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios2"
+                                        <input class="form-check-input" type="radio" name="habitation" id="gridRadios2"
                                             value="0">
                                         <label class="form-check-label" for="gridRadios2">
                                             Village
@@ -213,14 +213,14 @@
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios1"
+                                        <input class="form-check-input" type="radio" name="Localisation" id="gridRadios1"
                                             value="1">
                                         <label class="form-check-label" for="gridRadios1">
                                             A l'intérieur de la clôture
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios2"
+                                        <input class="form-check-input" type="radio" name="Localisation" id="gridRadios2"
                                             value="0">
                                         <label class="form-check-label" for="gridRadios2">
                                             A l'extérieur de la clôture
