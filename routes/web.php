@@ -13,6 +13,7 @@ use App\Models\Beneficiaire;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -115,4 +116,24 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('all-services', [ManagementBeneficiaireServiceController::class, 'index']);
     Route::post('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
     Route::post('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
+    Route::put('reinit/{user}', function(Request $request, User $user){
+        $user->password = Hash::make('demo0000');
+        if ($user->update()) {
+            // $result = $user;
+            // $status = 200;
+            $result = 'Réinitialisation du compte avec succés';
+            $status = 'success';
+            $icon = 'fa-check';
+        } else {
+            $result = 'probleme au serveur.';
+            // $status = 500;
+            $status = 'danger';
+            $icon = 'fa-times';
+        }
+        // return response()->json($result, $status);
+        $request->session()->flash('msg', $result);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
+    })->name('reinit');
 });
