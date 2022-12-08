@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+Gestion des roles avec les permissions
+@endsection
 @section('content_page')
     <div class="container-fluid pt-4 px-4">
         <div class="d-flex align-items-center justify-content-between mb-4">

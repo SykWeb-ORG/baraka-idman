@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+Liste des utilisateurs
+@endsection
 @section('content_page')
     <!-- Show All Users Start -->
     <div class="container-fluid pt-4 px-4">
