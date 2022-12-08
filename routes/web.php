@@ -94,31 +94,25 @@ Route::middleware('auth:sanctum')->group(function(){
         session()->flash('icon', $icon);
         return back();
     })->name('validation-state');
+    Route::get('/couverture-medical/{beneficiaire}', function (Beneficiaire $beneficiaire) {
+        return view('interTerrain.Couverture-medical', compact('beneficiaire'));
+    })->name('couverture-medical');
+    Route::get('/violence/{beneficiaire}', function (Beneficiaire $beneficiaire) {
+        return view('interTerrain.violence', compact('beneficiaire'));
+    })->name('violence');
+    Route::get('/suicide/{beneficiaire}', function (Beneficiaire $beneficiaire) {
+        return view('interTerrain.suicide', compact('beneficiaire'));
+    })->name('suicide');
+    Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
+    Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
+    Route::get('/service/{beneficiaire}', function (Beneficiaire $beneficiaire) {
+        return view('interTerrain.service', compact('beneficiaire'));
+    })->name('service');
+    Route::get('all-drogue_types', [ManagementBeneficiaireDrogueTypeController::class, 'index']);
+    Route::post('match-beneficiaire-drogue_types/{beneficiaire}', [ManagementBeneficiaireDrogueTypeController::class, 'matchBeneficiaireDrogueTypes']);
+    Route::get('all-violence_types', [ManagementBeneficiaireViolenceTypeController::class, 'index']);
+    Route::post('match-beneficiaire-violence_types/{beneficiaire}', [ManagementBeneficiaireViolenceTypeController::class, 'matchBeneficiaireViolenceTypes']);
+    Route::get('all-services', [ManagementBeneficiaireServiceController::class, 'index']);
+    Route::post('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
+    Route::post('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
 });
-Route::get('/assistant', function () {
-    return view('assistSocial.listing');
-});
-Route::get('/all-users', function () {
-    return view('superUser.showusers');
-})->name("all-users");
-Route::get('/couverture-medical/{beneficiaire}', function (Beneficiaire $beneficiaire) {
-    return view('interTerrain.Couverture-medical', compact('beneficiaire'));
-})->name('couverture-medical');
-Route::get('/violence/{beneficiaire}', function (Beneficiaire $beneficiaire) {
-    return view('interTerrain.violence', compact('beneficiaire'));
-})->name('violence');
-Route::get('/suicide/{beneficiaire}', function (Beneficiaire $beneficiaire) {
-    return view('interTerrain.suicide', compact('beneficiaire'));
-})->name('suicide');
-Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
-Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
-Route::get('/service/{beneficiaire}', function (Beneficiaire $beneficiaire) {
-    return view('interTerrain.service', compact('beneficiaire'));
-})->name('service');
-Route::get('all-drogue_types', [ManagementBeneficiaireDrogueTypeController::class, 'index']);
-Route::post('match-beneficiaire-drogue_types/{beneficiaire}', [ManagementBeneficiaireDrogueTypeController::class, 'matchBeneficiaireDrogueTypes']);
-Route::get('all-violence_types', [ManagementBeneficiaireViolenceTypeController::class, 'index']);
-Route::post('match-beneficiaire-violence_types/{beneficiaire}', [ManagementBeneficiaireViolenceTypeController::class, 'matchBeneficiaireViolenceTypes']);
-Route::get('all-services', [ManagementBeneficiaireServiceController::class, 'index']);
-Route::post('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
-Route::post('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
