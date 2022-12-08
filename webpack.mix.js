@@ -11,7 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/role-permissions.js', 'public/jsApi/permissionsRoles')
+    .js('resources/js/intervenant/couverture-beneficiaire.js', 'public/jsApi/intervenant')
+    .js('resources/js/intervenant/drogueType-beneficiaire.js', 'public/jsApi/intervenant')
+    .js('resources/js/intervenant/service-beneficiaire.js', 'public/jsApi/intervenant')
+    .js('resources/js/intervenant/violenceType-beneficiaire.js', 'public/jsApi/intervenant')

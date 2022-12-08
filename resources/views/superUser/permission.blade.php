@@ -25,5 +25,5 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/permissionsRoles/main.js') }}"></script>
+    <script src="{{ asset('jsApi/permissionsRoles/role-permissions.js') }}"></script>
 @endsection
