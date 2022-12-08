@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+Liste des Bénéficiaires
+@endsection
 @section('content_page')
     <!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">

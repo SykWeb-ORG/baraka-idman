@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+Modification d'un utilisateur
+@endsection
 @section('content_page')
     <!-- Form Start -->
     <div class="container-fluid pt-4 px-4">
