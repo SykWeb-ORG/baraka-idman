@@ -192,7 +192,7 @@ class UserController extends Controller
         $user->phone_number = $request->phone_number;
         $user->birthday_date = $request->birthday_date;
         $user->email = $request->email;
-        // $user->password = Hash::make($request->password);
+        $user->password = Hash::make($request->password);
         // get the role of the user .. 
         if ($user->admin != null) {
             $role = 'admin';

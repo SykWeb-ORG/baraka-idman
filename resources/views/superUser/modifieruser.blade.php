@@ -6,7 +6,7 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Modifier Utilisateur</h6>
+                    <h6 class="mb-4">{{(!request()->has('page'))? 'Modifier Utilisateur' : 'Mon profile'}}</h6>
                     <form class="form-user" action="{{ route('users.update', ['user' => $user->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -33,6 +33,10 @@
                         <div class="mb-3">
                             <label for="email-user" class="form-label">Adresse Email</label>
                             <input type="text" name="email" class="form-control" id="email-user" value="{{$user->email}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-user" class="form-label">Adresse Email</label>
+                            <input type="text" name="password" class="form-control" id="password-user" placeholder="nouveau mot de passe">
                         </div>
                         <div class="mb-3">
                             <label for="roles-user" class="form-label">Rôles</label>
