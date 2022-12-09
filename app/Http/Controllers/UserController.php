@@ -35,7 +35,7 @@ class UserController extends Controller
             }elseif ($user->social_assistant) {
                 return redirect()->route('beneficiaires.index');
             }elseif ($user->intervenant) {
-                return redirect()->route('new-beneficiaire-form');
+                return redirect()->route('beneficiaires.create');
             }
         }else {
             $result = 'Email ou(et) mot de passe no valid';

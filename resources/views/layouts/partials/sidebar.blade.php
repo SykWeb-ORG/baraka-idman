@@ -34,7 +34,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-shield me-2"></i>Bénéficiaires</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Beneficiaire::class)
-                            <a href="{{ route('new-beneficiaire-form') }}" class="dropdown-item">Ajouter</a>
+                            <a href="{{ route('beneficiaires.create') }}" class="dropdown-item">Ajouter</a>
                         @endcan
                         @can('viewAny', App\Models\Beneficiaire::class)
                             <a href="{{ route('beneficiaires.index') }}" class="dropdown-item">Afficher</a>

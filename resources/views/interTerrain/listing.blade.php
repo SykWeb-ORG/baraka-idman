@@ -82,7 +82,10 @@ Liste des Bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
                             @endif
+                            @can('update', $beneficiaire)
                             <td><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
+                            @endcan
+                            @can('delete', $beneficiaire)
                             <td>
                                 <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
                                     @csrf
@@ -90,6 +93,10 @@ Liste des Bénéficiaires
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
                                 </form>
                             </td>
+                            @endcan
+                            @can('view', $beneficiaire)
+                            <td><a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user"></i></a></td>
+                            @endcan
                             <td>
                                 <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
                                     @csrf
@@ -97,10 +104,10 @@ Liste des Bénéficiaires
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
                                 </form>
                             </td>
-                            <td><a href='{{ route('couverture-medical', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2">Couverture et types de drogues</a></td>
+                            {{-- <td><a href='{{ route('couverture-medical', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2">Couverture et types de drogues</a></td>
                             <td><a href='{{ route('violence', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Types de violence</a></td>
                             <td><a href='{{ route('suicide', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Causes de suicide</a></td>
-                            <td><a href='{{ route('service', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Services</a></td>
+                            <td><a href='{{ route('service', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Services</a></td> --}}
                         </tr>
                         @endforeach
                     </tbody>

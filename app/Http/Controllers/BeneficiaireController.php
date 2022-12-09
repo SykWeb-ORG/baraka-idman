@@ -4,7 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BeneficiaireRequest;
 use App\Models\Beneficiaire;
+use App\Models\Couverture;
+use App\Models\DrogueType;
+use App\Models\Service;
+use App\Models\SuicideCause;
+use App\Models\ViolenceType;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,7 +40,16 @@ class BeneficiaireController extends Controller
      */
     public function create()
     {
-        //
+        $couvertures = Couverture::all();
+        $drogue_types = DrogueType::all();
+        $services = Service::all();
+        $violence_types = ViolenceType::all();
+        return view('interTerrain.inscription', compact(
+            'couvertures',
+            'drogue_types',
+            'services',
+            'violence_types',
+        ));
     }
 
     /**
@@ -72,6 +88,38 @@ class BeneficiaireController extends Controller
         // }
         // return response()->json($result, $status);
         if (Auth::user()->intervenant->beneficiaires()->save($beneficiaire)) {
+            // couvertures attachement
+            $beneficiaire->couvertures()->attach($request->couvertures);
+            // drogue types attachement
+            $indexes = [];
+            $drogue_types = [];
+            foreach ($request->drogue_types as $drogue_type) {
+                $index_and_drogue_type = Str::of($drogue_type)->explode(',');
+                $index_to_add = $index_and_drogue_type->get(1);
+                $indexes[$index_to_add] = $index_to_add;
+                $drogue_types[] = $index_and_drogue_type->get(0);
+            }
+            $frequences = [];
+            for ($i=0; $i < count($request->frequences); $i++) {
+                if (!Arr::exists($indexes, strval($i))) {
+                    continue;
+                }
+                $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
+            }
+            for ($i=0; $i < count($drogue_types); $i++) {
+                $frequence = ['frequence' => $frequences[$i]];
+                $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
+            }
+            // violence types attachement
+            $beneficiaire->violence_types()->attach($request->violence_types);
+            // suicide causes attachement
+            if ($request->suicide_causes != '') {
+                $suicide_cause = new SuicideCause;
+                $suicide_cause->cause = $request->suicide_causes;
+                $beneficiaire->suicide_causes()->save($suicide_cause);
+            }
+            // services attachement
+            $beneficiaire->services()->attach($request->services);
             // $result = $beneficiaire;
             // $status = 200;
             $result = 'Utilisateur ajouté avec success';
@@ -98,7 +146,7 @@ class BeneficiaireController extends Controller
      */
     public function show(Beneficiaire $beneficiaire)
     {
-        //
+        return view('interTerrain.modifier', compact('beneficiaire'));
     }
 
     /**
@@ -109,7 +157,17 @@ class BeneficiaireController extends Controller
      */
     public function edit(Beneficiaire $beneficiaire)
     {
-        return view('interTerrain.modifier', compact('beneficiaire'));
+        $couvertures = Couverture::all();
+        $drogue_types = DrogueType::all();
+        $services = Service::all();
+        $violence_types = ViolenceType::all();
+        return view('interTerrain.modifier', compact(
+            'beneficiaire',
+            'couvertures',
+            'drogue_types',
+            'services',
+            'violence_types',
+        ));
     }
 
     /**
@@ -139,6 +197,42 @@ class BeneficiaireController extends Controller
         $beneficiaire->duree_addiction = $request->duree_addiction;
         $beneficiaire->ts = $request->ts;
         if ($beneficiaire->update()) {
+            // couvertures attachement
+            $beneficiaire->couvertures()->detach();
+            $beneficiaire->couvertures()->attach($request->couvertures);
+            // drogue types attachement
+            $beneficiaire->drogue_types()->detach();
+            $indexes = [];
+            $drogue_types = [];
+            foreach ($request->drogue_types as $drogue_type) {
+                $index_and_drogue_type = Str::of($drogue_type)->explode(',');
+                $index_to_add = $index_and_drogue_type->get(1);
+                $indexes[$index_to_add] = $index_to_add;
+                $drogue_types[] = $index_and_drogue_type->get(0);
+            }
+            $frequences = [];
+            for ($i=0; $i < count($request->frequences); $i++) {
+                if (!Arr::exists($indexes, strval($i))) {
+                    continue;
+                }
+                $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
+            }
+            for ($i=0; $i < count($drogue_types); $i++) {
+                $frequence = ['frequence' => $frequences[$i]];
+                $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
+            }
+            // violence types attachement
+            $beneficiaire->violence_types()->attach($request->violence_types);
+            // suicide causes attachement
+            $beneficiaire->suicide_causes()->delete();
+            if ($request->suicide_causes != '') {
+                $suicide_cause = new SuicideCause;
+                $suicide_cause->cause = $request->suicide_causes;
+                $beneficiaire->suicide_causes()->save($suicide_cause);
+            }
+            // services attachement
+            $beneficiaire->services()->detach();
+            $beneficiaire->services()->attach($request->services);
             // $result = $beneficiaire;
             // $status = 200;
             $result = 'Utilisateur modifié avec succés';
