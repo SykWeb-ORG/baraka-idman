@@ -64,37 +64,37 @@ Inscription du Bénéficiaire
                             <fieldset>
                                 <div class="Nv-scolaire">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="niveau" id="gridRadios1"
-                                            value="1">
+                                        <input class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios1"
+                                            value="NON Scolarisé">
                                         <label class="form-check-label" for="gridRadios1">
                                             NON Scolarisé
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="niveau" id="gridRadios2"
-                                            value="0">
+                                        <input class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios2"
+                                            value="Primaire">
                                         <label class="form-check-label" for="gridRadios2">
                                             Primaire
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="niveau" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios3"
+                                            value="Collège">
+                                        <label class="form-check-label" for="gridRadios3">
                                             Collège
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="niveau" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios4"
+                                            value="Lycée">
+                                        <label class="form-check-label" for="gridRadios4">
                                             Lycée
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="niveau" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios5"
+                                            value="bac+">
+                                        <label class="form-check-label" for="gridRadios5">
                                             bac+
                                         </label>
                                     </div>
@@ -106,31 +106,31 @@ Inscription du Bénéficiaire
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios1"
-                                            value="1">
+                                        <input class="form-check-input" type="radio" name="situation_familial" id="gridRadios1"
+                                            value="Célibataire">
                                         <label class="form-check-label" for="gridRadios1">
                                             Célibataire
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios2"
-                                            value="0">
+                                        <input class="form-check-input" type="radio" name="situation_familial" id="gridRadios2"
+                                            value="marié">
                                         <label class="form-check-label" for="gridRadios2">
-                                            marié(e)
+                                            marié
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
-                                            divorcé(e)
+                                        <input class="form-check-input" type="radio" name="situation_familial" id="gridRadios3"
+                                            value="divorcé">
+                                        <label class="form-check-label" for="gridRadios3">
+                                            divorcé
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="situation" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
-                                            veuf(ve)
+                                        <input class="form-check-input" type="radio" name="situation_familial" id="gridRadios4"
+                                            value="veuf">
+                                        <label class="form-check-label" for="gridRadios4">
+                                            veuf
                                         </label>
                                     </div>
                                 </div>
@@ -161,29 +161,29 @@ Inscription du Bénéficiaire
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
                                         <input class="form-check-input" type="radio" name="profession" id="gridRadios1"
-                                            value="1">
+                                            value="SANS">
                                         <label class="form-check-label" for="gridRadios1">
                                             SANS
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
                                         <input class="form-check-input" type="radio" name="profession" id="gridRadios2"
-                                            value="0">
+                                            value="Salarié">
                                         <label class="form-check-label" for="gridRadios2">
                                             Salarié
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="profession" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="profession" id="gridRadios3"
+                                            value="Ouvrier">
+                                        <label class="form-check-label" for="gridRadios3">
                                             Ouvrier
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="profession" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="profession" id="gridRadios4"
+                                            value="Autres">
+                                        <label class="form-check-label" for="gridRadios4">
                                             Autres
                                         </label>
                                     </div>
@@ -195,15 +195,15 @@ Inscription du Bénéficiaire
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="habitation" id="gridRadios1"
-                                            value="1">
+                                        <input class="form-check-input" type="radio" name="zone_habitation" id="gridRadios1"
+                                            value="Urbain">
                                         <label class="form-check-label" for="gridRadios1">
                                             Urbain
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="habitation" id="gridRadios2"
-                                            value="0">
+                                        <input class="form-check-input" type="radio" name="zone_habitation" id="gridRadios2"
+                                            value="Village">
                                         <label class="form-check-label" for="gridRadios2">
                                             Village
                                         </label>
@@ -216,15 +216,15 @@ Inscription du Bénéficiaire
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="Localisation" id="gridRadios1"
-                                            value="1">
+                                        <input class="form-check-input" type="radio" name="localisation" id="gridRadios1"
+                                            value="A l'intérieur de la clôture">
                                         <label class="form-check-label" for="gridRadios1">
                                             A l'intérieur de la clôture
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="Localisation" id="gridRadios2"
-                                            value="0">
+                                        <input class="form-check-input" type="radio" name="localisation" id="gridRadios2"
+                                            value="A l'extérieur de la clôture">
                                         <label class="form-check-label" for="gridRadios2">
                                             A l'extérieur de la clôture
                                         </label>
@@ -238,14 +238,16 @@ Inscription du Bénéficiaire
                             </div>
                             <fieldset>
                                 <div class="Nv-scolaire">
-                                    <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="medical" id="gridRadios1"
-                                            value="1">
-                                        <label class="form-check-label" for="gridRadios1">
-                                            SANS
-                                        </label>
-                                    </div>
-                                    <div class="form-check d-inline-block">
+                                    @foreach ($couvertures as $couverture)
+                                        <div class="form-check d-inline-block mr-5">
+                                            <input class="form-check-input" type="checkbox" name="couvertures[]" id="couverture{{$loop->iteration}}"
+                                                value="{{$couverture->id}}">
+                                            <label class="form-check-label" for="couverture{{$loop->iteration}}">
+                                                {{$couverture->couverture_nom}}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                    {{-- <div class="form-check d-inline-block">
                                         <input class="form-check-input" type="radio" name="medical" id="gridRadios2"
                                             value="0">
                                         <label class="form-check-label" for="gridRadios2">
@@ -272,30 +274,32 @@ Inscription du Bénéficiaire
                                         <label class="form-check-label" for="gridRadios2">
                                             CNOPS
                                         </label>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </fieldset>
                             <div class="table-responsive">
                                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
                                     <thead>
                                         <tr class="text-dark">
-                                            <th scope="col">Type de drogue</th>
+                                            <th scope="col">Types de drogue</th>
                                             <th scope="col">Quantité utilisée / fréquence</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyDrogueTypes">
-                                        <tr>
-                                            <td><input type="checkbox" class="form-check-input" name="" id=""><label for="">Cigarette</label></td>
-                                            <td><input type="number" name="" id=""></td>
-                                        </tr>
-                                        <tr>
+                                        @foreach ($drogue_types as $drogue_type)
+                                            <tr>
+                                                <td><input type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}},{{$loop->index}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
+                                                <td><input type="number" name="frequences[]" id=""></td>
+                                            </tr>
+                                        @endforeach
+                                        {{-- <tr>
                                             <td><input type="checkbox" class="form-check-input" name="" id=""><label for="">Cannabis</label></td>
                                             <td><input type="number" name="" id=""></td>
                                         </tr>
                                         <tr>
                                             <td><input type="checkbox" class="form-check-input" name="" id=""><label for="">Alcool</label></td>
                                             <td><input type="number" name="" id=""></td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -323,14 +327,14 @@ Inscription du Bénéficiaire
                             <legend class="col-form-label col-sm-2 pt-0">Intégrer la famille dans le traitement</legend>
                             <div id="sexe-benef" class="col-sm-10">
                                 <div class="form-check d-inline-block mr-5">
-                                    <input class="form-check-input" type="radio" name="intégrer_famille" id="gridRadios1"
+                                    <input class="form-check-input" type="radio" name="famille_integre" id="gridRadios1"
                                         value="1">
                                     <label class="form-check-label" for="gridRadios1">
                                         Oui
                                     </label>
                                 </div>
                                 <div class="form-check d-inline-block">
-                                    <input class="form-check-input" type="radio" name="intégrer_famille" id="gridRadios2"
+                                    <input class="form-check-input" type="radio" name="famille_integre" id="gridRadios2"
                                         value="0">
                                     <label class="form-check-label" for="gridRadios2">
                                         Non
@@ -343,30 +347,30 @@ Inscription du Bénéficiaire
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input class="form-check-input" type="radio" name="cause" id="gridRadios1"
-                                            value="1">
+                                        <input class="form-check-input" type="radio" name="addiction_cause" id="gridRadios1"
+                                            value="Famille">
                                         <label class="form-check-label" for="gridRadios1">
                                             Famille
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="cause" id="gridRadios2"
-                                            value="0">
+                                        <input class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                                            value="Amis">
                                         <label class="form-check-label" for="gridRadios2">
                                             Amis
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="cause" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="addiction_cause" id="gridRadios3"
+                                            value="Entourage">
+                                        <label class="form-check-label" for="gridRadios3">
                                             Entourage
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input class="form-check-input" type="radio" name="cause" id="gridRadios2"
-                                            value="0">
-                                        <label class="form-check-label" for="gridRadios2">
+                                        <input class="form-check-input" type="radio" name="addiction_cause" id="gridRadios4"
+                                            value="Autres">
+                                        <label class="form-check-label" for="gridRadios4">
                                             Autres
                                         </label>
                                     </div>
@@ -383,17 +387,17 @@ Inscription du Bénéficiaire
                                             <th scope="col">Age de Début de l'Addiction</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tbodyDrogueTypes">
+                                    <tbody id="tbodyAges">
                                         <tr>
-                                            <td><input type="radio" class="form-check-input" name="age" id=""></td>
+                                            <td><input type="radio" class="form-check-input" name="age_debut_addiction" id="10" value="10"></td>
                                             <td>Entre 10 et 15ans</td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" class="form-check-input" name="age" id=""></td>
+                                            <td><input type="radio" class="form-check-input" name="age_debut_addiction" id="15" value="15"></td>
                                             <td>Entre 15 et 20ans</td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" class="form-check-input" name="age" id=""></td>
+                                            <td><input type="radio" class="form-check-input" name="age_debut_addiction" id="20" value="20"></td>
                                             <td>Plus de 20ans</td>
                                         </tr>
                                     </tbody>
@@ -450,18 +454,20 @@ Inscription du Bénéficiaire
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyViolenceTypes">
-                                        <tr>
-                                            <td><input type="radio" class="form-check-input" name="typeViol" id=""></td>
-                                            <td>Psychologique</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="radio" class="form-check-input" name="typeViol" id=""></td>
+                                        @foreach ($violence_types as $violence_type)
+                                            <tr>
+                                                <td><input type="checkbox" class="form-check-input" name="violence_types[]" value="{{$violence_type->id}}" id=""></td>
+                                                <td>{{$violence_type->violence_nom}}</td>
+                                            </tr>
+                                        @endforeach
+                                        {{-- <tr>
+                                            <td><input type="radio" class="form-check-input" name="violence_types[]" id=""></td>
                                             <td>Sexuelle</td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" class="form-check-input" name="typeViol" id=""></td>
+                                            <td><input type="radio" class="form-check-input" name="violence_types[]" id=""></td>
                                             <td>Physique</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -482,12 +488,9 @@ Inscription du Bénéficiaire
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            {{-- <form id="form_beneficiaire_suicide" action="{{ route('match-beneficiaire-suicide_causes', ['beneficiaire' => $beneficiaire->id]) }}" method="post"> --}}
-                                                @csrf
-                                                {{-- <td><input type="radio" class="form-check-input" name="suicide" id="oui" {{(count($beneficiaire->suicide_causes))? 'checked': ''}}><label for="oui">Oui</label></td> --}}
-                                                {{-- <td><input type="radio" class="form-check-input" name="suicide" id="non" {{(count($beneficiaire->suicide_causes) == 0)? 'checked': ''}}><label for="non">Non</label></td> --}}
-                                                {{-- <td><textarea name="suicide_causes" id="" cols="30" rows="10">{{(count($beneficiaire->suicide_causes))? $beneficiaire->suicide_causes[0]->cause : ''}}</textarea></td> --}}
-                                            </form>
+                                            <td><input type="radio" class="form-check-input" name="suicide" id="oui"><label for="oui">Oui</label></td>
+                                            <td><input type="radio" class="form-check-input" name="suicide" id="non"><label for="non">Non</label></td>
+                                            <td><textarea name="suicide_causes" id="" cols="30" rows="10"></textarea></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -507,19 +510,21 @@ Inscription du Bénéficiaire
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyServices">
-                                        <tr>
-                                            <td><input type="checkbox" class="form-check-input" name="" id=""></td>
-                                            <td>Accompagnement sanitaire</td>
-                
-                                        </tr>
-                                        <tr>
+                                        @foreach ($services as $service)
+                                            <tr>
+                                                <td><input type="checkbox" class="form-check-input" name="services[]" value="{{$service->id}}" id=""></td>
+                                                <td>{{$service->service_nom}}</td>
+                    
+                                            </tr>
+                                        @endforeach
+                                        {{-- <tr>
                                             <td><input type="checkbox" class="form-check-input" name="" id=""></td>
                                             <td>Accompagnement sociale</td>
                                         </tr>
                                         <tr>
                                             <td><input type="checkbox" class="form-check-input" name="" id=""></td>
                                             <td>Accompagnement juridique/administratif</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>

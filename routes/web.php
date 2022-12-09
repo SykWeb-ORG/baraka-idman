@@ -70,7 +70,7 @@ Route::middleware('auth:sanctum')->group(function(){
      
         $request->session()->regenerateToken();
      
-        return redirect()->route('login');
+        return redirect('/');
     
     })->name('logout');
     Route::view('new-beneficiaire-form', 'interTerrain.inscription')->name('new-beneficiaire-form');

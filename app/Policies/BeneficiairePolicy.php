@@ -31,7 +31,7 @@ class BeneficiairePolicy
      */
     public function view(User $user, Beneficiaire $beneficiaire)
     {
-        //
+        return $this->checkAbilityByAction($user, 'afficher beneficiaire');
     }
 
     /**
