@@ -17,8 +17,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" name="" id="oui"><label for="">Oui</label></td>
-                            <td><input type="checkbox" name="" id="non"><label for="">Non</label></td>
+                            <td><input type="radio" class="form-check-input" name="violence" id="oui"><label for="">Oui</label></td>
+                            <td><input type="radio" class="form-check-input" name="violence" id="non"><label for="">Non</label></td>
                         </tr>
                     </tbody>
                 </table>
