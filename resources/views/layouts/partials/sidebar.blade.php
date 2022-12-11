@@ -45,7 +45,7 @@
             @can('roles-permissions-ability')
                 <a href="{{ route('roles-permissions') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Gérer les roles</a>
             @endcan
-            <a href="{{ route('logout') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Quitter</a>
+            <a href="{{ route('logout') }}" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Quitter</a>
         </div>
     </nav>
 </div>
