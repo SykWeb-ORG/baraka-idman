@@ -148,7 +148,7 @@ class BeneficiaireController extends Controller
      */
     public function show(Beneficiaire $beneficiaire)
     {
-        return view('interTerrain.modifier', compact('beneficiaire'));
+        return $this->edit($beneficiaire);
     }
 
     /**
