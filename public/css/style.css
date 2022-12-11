@@ -355,3 +355,16 @@
 .situ-familiale .sit_fam input{
     margin-right: 5px;
 }
+/* Style table */
+.table th{
+    background-color: var(--bs-primary);
+    color: white;
+}
+.table-responsive{
+    height: 600px;
+    overflow-y: scroll;
+}
+table thead th {
+    position: sticky;
+    inset-block-start: 0;
+}
