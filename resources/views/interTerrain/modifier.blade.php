@@ -291,14 +291,14 @@ Modification du Bénéficiaire
                             <div id="sexe-benef" class="col-sm-10">
                                 <div class="form-check d-inline-block mr-5">
                                     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_integre" id="gridRadios1"
-                                        value="1">
+                                        value="1" {{($beneficiaire->famille_integre == "1")? "checked" : ""}}>
                                     <label class="form-check-label" for="gridRadios1">
                                         Oui
                                     </label>
                                 </div>
                                 <div class="form-check d-inline-block">
                                     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_integre" id="gridRadios2"
-                                        value="0">
+                                        value="0" {{($beneficiaire->famille_integre == "0")? "checked" : ""}}>
                                     <label class="form-check-label" for="gridRadios2">
                                         Non
                                     </label>
@@ -310,29 +310,29 @@ Modification du Bénéficiaire
                             <fieldset class="row mb-3">
                                 <div id="sexe-benef" class="col-sm-10">
                                     <div class="form-check d-inline-block mr-5">
-                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="cause" id="gridRadios1"
-                                            value="Famille">
+                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios1"
+                                            value="Famille" {{($beneficiaire->addiction_cause == 'Famille')? 'checked': ''}} >
                                         <label class="form-check-label" for="gridRadios1">
                                             Famille
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="cause" id="gridRadios2"
-                                            value="Amis">
+                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                                            value="Amis" {{($beneficiaire->addiction_cause == 'Amis')? 'checked': ''}} >
                                         <label class="form-check-label" for="gridRadios2">
                                             Amis
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="cause" id="gridRadios2"
-                                            value="Entourage">
+                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                                            value="Entourage" {{($beneficiaire->addiction_cause == 'Entourage')? 'checked': ''}} >
                                         <label class="form-check-label" for="gridRadios2">
                                             Entourage
                                         </label>
                                     </div>
                                     <div class="form-check d-inline-block">
-                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="cause" id="gridRadios2"
-                                            value="Autres">
+                                        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                                            value="Autres" {{($beneficiaire->addiction_cause == 'Autres')? 'checked': ''}} >
                                         <label class="form-check-label" for="gridRadios2">
                                             Autres
                                         </label>

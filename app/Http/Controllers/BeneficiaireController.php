@@ -76,6 +76,8 @@ class BeneficiaireController extends Controller
         $beneficiaire->zone_habitation = $request->zone_habitation;
         $beneficiaire->localisation = $request->localisation;
         $beneficiaire->famille_informee = $request->famille_informee;
+        $beneficiaire->famille_integre = $request->famille_integre;
+        $beneficiaire->addiction_cause = $request->addiction_cause;
         $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
         $beneficiaire->duree_addiction = $request->duree_addiction;
         $beneficiaire->ts = $request->ts;
