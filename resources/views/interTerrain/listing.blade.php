@@ -31,7 +31,9 @@ Liste des Bénéficiaires
                             <th scope="col">Profession</th>
                             <th scope="col">Zone Habitation</th>
                             <th scope="col">Localisation</th>
-                            <th scope="col">Famille Informé</th>
+                            <th scope="col">Famille Informée</th>
+                            <th scope="col">Famille intégrée</th>
+                            <th scope="col">Cause d'addiction</th>
                             <th scope="col">Age Debut Addiction</th>
                             <th scope="col">Duree Addiction</th>
                             <th scope="col">TS</th>
@@ -70,6 +72,8 @@ Liste des Bénéficiaires
                             <td>{{$beneficiaire->zone_habitation}}</td>
                             <td>{{$beneficiaire->localisation}}</td>
                             <td>{{($beneficiaire->famille_informee)? "oui" : "non"}}</td>
+                            <td>{{($beneficiaire->famille_integre)? "oui" : "non"}}</td>
+                            <td>{{$beneficiaire->addiction_cause}}</td>
                             <td>{{$beneficiaire->age_debut_addiction}}</td>
                             <td>{{$beneficiaire->duree_addiction}}</td>
                             <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
