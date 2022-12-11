@@ -38,8 +38,8 @@ Modification d'un utilisateur
                             <input type="text" name="email" class="form-control" id="email-user" value="{{$user->email}}">
                         </div>
                         <div class="mb-3">
-                            <label for="password-user" class="form-label">Adresse Email</label>
-                            <input type="text" name="password" class="form-control" id="password-user" placeholder="nouveau mot de passe">
+                            <label for="password-user" class="form-label">Nouveau mot de passe</label>
+                            <input type="text" name="password" class="form-control" id="password-user">
                         </div>
                         <div class="mb-3">
                             <label for="roles-user" class="form-label">Rôles</label>
