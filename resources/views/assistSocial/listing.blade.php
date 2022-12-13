@@ -8,7 +8,7 @@
                 <h6 class="mb-0">Tous Les Béneficiaires</h6>
                 {{-- <a href="">Show All</a> --}}
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive table-height">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
                     <thead>
                         <tr class="text-dark">

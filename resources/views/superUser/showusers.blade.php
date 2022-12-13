@@ -11,7 +11,7 @@ Liste des utilisateurs
                 <h6 class="mb-0">Tous Les Utilisateurs</h6>
                 {{-- <a href="">Show All</a> --}}
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive table-height">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>
                         <tr class="text-dark">
@@ -50,21 +50,24 @@ Liste des utilisateurs
                                         }
                                     @endphp
                                 </td>
-                                <td><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
-                                <td>
+                                <td class="userEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
+                                <td class="userDest">
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
                                     </form>
                                 </td>
-                                <td>
+                                <td class="userRein">
                                     <form action="{{ route('reinit', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-sync"></i></button>
                                     </form>
                                 </td>
+                                <td class="actionMenu">
+                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>
+                                </td>    
                             </tr>
                         @endforeach
                     </tbody>
