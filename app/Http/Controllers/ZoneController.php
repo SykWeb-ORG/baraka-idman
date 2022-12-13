@@ -81,13 +81,29 @@ class ZoneController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ZoneRequest  $request
      * @param  \App\Models\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Zone $zone)
+    public function update(ZoneRequest $request, Zone $zone)
     {
-        
+        $zone->zone_nom = $request->zone_nom;
+        if ($zone->update()) {
+            $result = $zone;
+            $status = 200;
+            $msg = "Zone modifiée avec success.";
+        }else {
+            $result = null;
+            $status = 200;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
