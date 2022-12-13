@@ -10,7 +10,7 @@ Liste des Bénéficiaires
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Béneficiaires</h6>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive table-height">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
                     <thead>
                         <tr class="text-dark">
@@ -86,10 +86,10 @@ Liste des Bénéficiaires
                                 <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
                             @endif
                             @can('update', $beneficiaire)
-                            <td><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
+                            <td class="actionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
                             @endcan
                             @can('delete', $beneficiaire)
-                            <td>
+                            <td class="actionD">
                                 <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -98,15 +98,18 @@ Liste des Bénéficiaires
                             </td>
                             @endcan
                             @can('view', $beneficiaire)
-                            <td><a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user"></i></a></td>
+                            <td class="actionS"><a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user"></i></a></td>
                             @endcan
                             @if (!Auth::user()->intervenant)
-                            <td>
+                            <td class="actionV">
                                 <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
                                 </form>
+                            </td>
+                            <td class="actionMenu">
+                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>
                             </td>
                             @endif
                             {{-- <td><a href='{{ route('couverture-medical', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2">Couverture et types de drogues</a></td>

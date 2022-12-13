@@ -243,11 +243,6 @@
     transform: rotate(-180deg);
 }
 
-@media (max-width: 575.98px) {
-    .content .navbar .navbar-nav .nav-link {
-        margin-left: 15px;
-    }
-}
 
 
 /*** Date Picker ***/
@@ -355,16 +350,75 @@
 .situ-familiale .sit_fam input{
     margin-right: 5px;
 }
+table tbody tr .actionMenu{
+    display: none;
+    position: sticky;
+    inset-inline-end:-3px;
+    background-color: var(--light);;
+}
+@media (max-width: 575.98px) {
+    .content .navbar .navbar-nav .nav-link {
+        margin-left: 15px;
+    }
+    table tbody tr .actionV,table tbody tr .actionS,table tbody tr .actionD,table tbody tr .actionU,table tbody tr .userEdit
+    ,table tbody tr .userRein,table tbody tr .userDest{
+        display: none;
+    }
+    table tbody tr .actionMenu{
+        display: block;
+        padding: 45px 20px;
+    }
+}
 /* Style table */
 .table th{
     background-color: var(--bs-primary);
     color: white;
 }
-.table-responsive{
+.table-height{
     height: 600px;
     overflow-y: scroll;
 }
 table thead th {
     position: sticky;
-    inset-block-start: 0;
+    inset-block-start: -5px;
+}
+table tbody tr .actionV{
+    position: sticky;
+    inset-inline-end: 0;
+    background-color: var(--light);
+}
+table tbody tr .actionS{
+    position: sticky;
+    inset-inline-end: 60px;
+    background-color: var(--light);
+}
+table tbody tr .actionD{
+    position: sticky;
+    inset-inline-end: 120px;
+    background-color: var(--light);
+}
+table tbody tr .actionU{
+    position: sticky;
+    inset-inline-end: 180px;
+    background-color: var(--light);
+}
+table tr th:last-child {
+    position: sticky;
+    inset-inline-end: -3px;
+    z-index: 100;
+}
+table tbody tr .userRein{
+    position: sticky;
+    inset-inline-end:-3px;
+    background-color: var(--light);
+}
+table tbody tr .userDest{
+    position: sticky;
+    inset-inline-end:63px;
+    background-color: var(--light);
+}
+table tbody tr .userEdit{
+    position: sticky;
+    inset-inline-end:125px;
+    background-color: var(--light);
 }
