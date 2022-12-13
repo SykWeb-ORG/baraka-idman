@@ -44,7 +44,7 @@ class ZoneController extends Controller
             $msg = "Zone ajoutée avec success.";
         }else {
             $result = null;
-            $status = 200;
+            $status = 500;
             $msg = "Probléme au serveur.";
         }
         return response()->json(
@@ -94,7 +94,7 @@ class ZoneController extends Controller
             $msg = "Zone modifiée avec success.";
         }else {
             $result = null;
-            $status = 200;
+            $status = 500;
             $msg = "Probléme au serveur.";
         }
         return response()->json(
@@ -114,6 +114,21 @@ class ZoneController extends Controller
      */
     public function destroy(Zone $zone)
     {
-        
+        if ($zone->delete()) {
+            $result = $zone;
+            $status = 200;
+            $msg = "Zone supprimée avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 }
