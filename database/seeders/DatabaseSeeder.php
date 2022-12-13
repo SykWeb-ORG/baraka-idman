@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 ZoneSeeder::class,
+                ProgrammeSeeder::class,
+                PlaceSeeder::class,
             ]
         );
     }
