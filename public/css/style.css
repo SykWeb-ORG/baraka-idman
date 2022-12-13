@@ -306,10 +306,10 @@
 
 /* permission */
 .div_perm{
-    display: grid;
-    grid-template-columns: 25% 1fr;
+    display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .div_perm .cusSelectbox{
     width: 200px;
