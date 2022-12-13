@@ -15,7 +15,8 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        
+        $zones = Zone::all();
+        return response()->json($zones);
     }
 
     /**
