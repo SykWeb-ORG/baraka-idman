@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagementBeneficiaireViolenceTypeController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ZoneController;
 use App\Models\Beneficiaire;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -136,4 +137,5 @@ Route::middleware('auth:sanctum')->group(function(){
         $request->session()->flash('icon', $icon);
         return back();
     })->name('reinit');
+    Route::resource('zones', ZoneController::class);
 });

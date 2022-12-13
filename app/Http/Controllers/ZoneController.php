@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ZoneRequest;
 use App\Models\Zone;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,26 @@ class ZoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ZoneRequest $request)
     {
-        
+        $zone = new Zone;
+        $zone->zone_nom = $request->zone_nom;
+        if ($zone->save()) {
+            $result = $zone;
+            $status = 200;
+            $msg = "Zone ajoutée avec success.";
+        }else {
+            $result = null;
+            $status = 200;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
