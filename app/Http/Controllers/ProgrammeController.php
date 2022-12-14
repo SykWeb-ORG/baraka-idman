@@ -142,6 +142,21 @@ class ProgrammeController extends Controller
      */
     public function destroy(Programme $programme)
     {
-        
+        if ($programme->delete()) {
+            $result = $programme;
+            $status = 200;
+            $msg = "Programme supprimé avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 }
