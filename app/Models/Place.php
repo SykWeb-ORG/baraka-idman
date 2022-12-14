@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Programme extends Model
+class Place extends Model
 {
     use HasFactory;
 
@@ -15,14 +15,16 @@ class Programme extends Model
      * @var array
      */
     protected $fillable = [
-        'programme_type',
+        'lieu',
+        'programme_date',
+        'programme_resultat',
     ];
 
     /**
-     * Get the places for the programme.
+     * Get the programme that owns the place.
      */
-    public function places()
+    public function programme()
     {
-        return $this->hasMany(Place::class);
+        return $this->belongsTo(Programme::class);
     }
 }

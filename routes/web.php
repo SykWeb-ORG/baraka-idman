@@ -8,6 +8,7 @@ use App\Http\Controllers\ManagementBeneficiaireSuicideController;
 use App\Http\Controllers\ManagementBeneficiaireViolenceTypeController;
 use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementRolePermissionController;
+use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
 use App\Models\Beneficiaire;
@@ -138,4 +139,5 @@ Route::middleware('auth:sanctum')->group(function(){
         return back();
     })->name('reinit');
     Route::resource('zones', ZoneController::class);
+    Route::resource('programmes', ProgrammeController::class);
 });
