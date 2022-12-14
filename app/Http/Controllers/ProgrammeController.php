@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgrammeRequest;
+use App\Models\Place;
 use App\Models\Programme;
 use Illuminate\Http\Request;
 
@@ -30,12 +32,42 @@ class ProgrammeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProgrammeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProgrammeRequest $request)
     {
-        
+        $programme = new Programme;
+        $programme->programme_type = $request->programme_type;
+        if ($programme->save()) {
+            if ($request->has('places')) {
+                $places = collect([]);
+                foreach($request->places as $place)
+                {
+                    $new_place = new Place([
+                        'lieu' => $place['lieu'],
+                        'programme_date' => $place['programme_date'],
+                    ]);
+                    $places->push($new_place);
+                }
+                $programme->places()->saveMany($places->all());
+                $programme->refresh();
+            }
+            $result = $programme;
+            $status = 200;
+            $msg = "Programme ajouté avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
