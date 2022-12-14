@@ -16,7 +16,10 @@ class ProgrammeController extends Controller
      */
     public function index()
     {
-        
+        $programmes = Programme::all();
+        return response()->json(
+            $programmes
+        );
     }
 
     /**

@@ -19,6 +19,15 @@ class Programme extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'places',
+    ];
+
+    /**
      * Get the places for the programme.
      */
     public function places()
