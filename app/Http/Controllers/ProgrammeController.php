@@ -95,13 +95,43 @@ class ProgrammeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProgrammeRequest  $request
      * @param  \App\Models\Programme  $programme
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Programme $programme)
+    public function update(ProgrammeRequest $request, Programme $programme)
     {
-        
+        $programme->programme_type = $request->programme_type;
+        if ($programme->update()) {
+            if ($request->has('places')) {
+                $programme->places()->delete();
+                $places = collect([]);
+                foreach($request->places as $place)
+                {
+                    $new_place = new Place([
+                        'lieu' => $place['lieu'],
+                        'programme_date' => $place['programme_date'],
+                    ]);
+                    $places->push($new_place);
+                }
+                $programme->places()->saveMany($places->all());
+                $programme->refresh();
+            }
+            $result = $programme;
+            $status = 200;
+            $msg = "Programme modifié avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
