@@ -46,6 +46,7 @@ function displayAllPermissions(permissions) {
         let action_input = document.createElement('input');
         action_input.type = 'checkbox';
         action_input.name = 'permissions[]';
+        action_input.classList.add("form-check-input");
         action_input.value = action.id;
         action_input.id = action.id;
         let action_label = document.createElement('label');

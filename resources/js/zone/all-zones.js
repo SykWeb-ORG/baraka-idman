@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('../bootstrap');
 const baseUrl = "http://localhost:8000/";
 $(document).ready(function(){
     axios.get('/sanctum/csrf-cookie').then(response => {

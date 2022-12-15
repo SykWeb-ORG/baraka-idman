@@ -146,4 +146,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/zone', function (Beneficiaire $beneficiaire) {
         return view('superUser.addzoneIntervenant', compact('beneficiaire'));
     });
+    Route::get('/affectation_zone', function (Beneficiaire $beneficiaire) {
+        return view('superUser.affectationzone', compact('beneficiaire'));
+    });
 });
