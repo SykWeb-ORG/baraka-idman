@@ -83,6 +83,8 @@ Route::middleware('auth:sanctum')->group(function(){
             $beneficiaire->validation_social_assistant = 1;
         }elseif ($user->admin) {
             $beneficiaire->validation_directive = 1;
+        }elseif ($user->medical_assistant) {
+            $beneficiaire->validation_medical_assistant = 1;
         }
         if ($beneficiaire->update()) {
             $result = 'Utilisateur validé avec succés';
