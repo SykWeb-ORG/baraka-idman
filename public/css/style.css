@@ -422,3 +422,22 @@ table tbody tr .userEdit{
     inset-inline-end:125px;
     background-color: var(--light);
 }
+/* zone */
+/* permission */
+.div_zone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.div_zone .cusSelectbox{
+    width: 200px;
+}
+.div_zone .zone_check{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.div_zone .zone_check .zone{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}

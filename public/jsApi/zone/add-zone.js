@@ -19563,144 +19563,30 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!******************************************!*\
-  !*** ./resources/js/role-permissions.js ***!
-  \******************************************/
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/*!***************************************!*\
+  !*** ./resources/js/zone/add-zone.js ***!
+  \***************************************/
+__webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 var baseUrl = "http://localhost:8000/";
-var db_roles = null;
-function getData(endUrl) {
-  debugger;
-  // $.ajax({
-  //     type: "GET",
-  //     url: baseUrl + endUrl,
-  //     async: false,
-  //     dataType: "json",
-  //     success: (response) => {
-  //         console.log(response);
-  //         db_roles = response.roles;
-  //         fillSelectRole(response.roles);
-  //         displayAllPermissions(response.permissions)
-  //         if (response.roles.length > 0) {
-  //             checkPermissionsByRole(response.roles[0]);
-  //         }
-  //     }
-  // })
-  axios.get(baseUrl + endUrl).then(function (response) {
-    console.log(response);
-    response = response.data;
-    db_roles = response.roles;
-    fillSelectRole(response.roles);
-    displayAllPermissions(response.permissions);
-    if (response.roles.length > 0) {
-      checkPermissionsByRole(response.roles[0]);
-    }
-  });
-}
-function fillSelectRole(roles) {
-  debugger;
-  var select = document.getElementById('role');
-  roles.forEach(function (role) {
-    var role_option = document.createElement('option');
-    role_option.value = role.id;
-    role_option.textContent = role.role_nom;
-    select.appendChild(role_option);
-  });
-}
-function displayAllPermissions(permissions) {
-  var divPermissions = document.getElementById('permissions_check');
-  permissions.forEach(function (action) {
-    var action_input = document.createElement('input');
-    action_input.type = 'checkbox';
-    action_input.name = 'permissions[]';
-    action_input.classList.add("form-check-input");
-    action_input.value = action.id;
-    action_input.id = action.id;
-    var action_label = document.createElement('label');
-    action_label.htmlFor = action.id;
-    action_label.textContent = action.action_nom;
-    var divContainer = document.createElement('div');
-    divContainer.className = 'perm';
-    divContainer.appendChild(action_input);
-    divContainer.appendChild(action_label);
-    divPermissions.appendChild(divContainer);
-  });
-}
-function checkPermissionsByRole(role) {
-  role.permissions.forEach(function (action) {
-    var action_input = document.getElementById(action.id);
-    action_input.checked = true;
-  });
-}
 $(document).ready(function () {
   axios.get('/sanctum/csrf-cookie').then(function (response) {
     console.log(response);
   });
-  // $.ajaxSetup({
-  //     headers:{
-  //         'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-  //     }
-  // })
-  getData("roles-permissions");
-  var select = document.getElementById('role');
-  select.addEventListener('change', function (e) {
+  var btnAddZone = document.getElementById('btnAddZone');
+  btnAddZone.addEventListener('click', function (e) {
     debugger;
-    var selectedRoleId = e.target.value;
-    var role_as_array = jQuery.grep(db_roles, function (role) {
-      return role.id == selectedRoleId;
+    var endUrl = "zones";
+    axios.post(baseUrl + endUrl, {
+      zone_nom: document.getElementById('zone-nom').value
+    }).then(function (response) {
+      console.log(response);
+      response = response.data;
+      if (response.result) {
+        alert(response.msg);
+      } else {
+        alert(response.msg);
+      }
     });
-    if (role_as_array.length > 0) {
-      var role = role_as_array[0];
-      document.getElementsByName('permissions[]').forEach(function (action_input) {
-        action_input.checked = false;
-      });
-      checkPermissionsByRole(role);
-    } else {
-      return;
-    }
-  });
-  var btnMatchPermissionsRole = document.getElementById('btnMatchPermissionsRole');
-  btnMatchPermissionsRole.addEventListener('click', function (e) {
-    debugger;
-    var selectedPermissions = jQuery.grep($('input[name="permissions[]"]'), function (permission) {
-      return permission.checked;
-    });
-    var selectedRoleId = select.value;
-    if (selectedPermissions.length > 0 && selectedRoleId) {
-      var permissionsIds = jQuery.map(selectedPermissions, function (permission) {
-        return permission.id;
-      });
-      var endUrl = 'match-role-permission';
-      // $.ajax({
-      //     type: "POST",
-      //     url: baseUrl + endUrl,
-      //     async: false,
-      //     dataType: "json",
-      //     data:{
-      //         permissions : permissionsIds,
-      //         role: selectedRoleId,
-      //     },
-      //     success: (role) => {
-      //         console.log(role);
-      //         alert("Les changements sont bien effectués.");
-      //         document.location.reload();
-      //     },
-      //     error: function (xhr, ajaxOptions, thrownError) {
-      //         alert(xhr.status);
-      //         alert(xhr.responseText);
-      //     }
-      // });
-      axios.post(baseUrl + endUrl, {
-        permissions: permissionsIds,
-        role: selectedRoleId
-      }).then(function (response) {
-        console.log(response);
-        response = response.data;
-        alert("Les changements sont bien effectués.");
-      });
-    } else {
-      return;
-    }
   });
 });
 })();

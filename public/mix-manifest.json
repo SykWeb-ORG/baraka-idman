@@ -3,5 +3,6 @@
     "/jsApi/intervenant/couverture-beneficiaire.js": "/jsApi/intervenant/couverture-beneficiaire.js",
     "/jsApi/intervenant/drogueType-beneficiaire.js": "/jsApi/intervenant/drogueType-beneficiaire.js",
     "/jsApi/intervenant/service-beneficiaire.js": "/jsApi/intervenant/service-beneficiaire.js",
-    "/jsApi/intervenant/violenceType-beneficiaire.js": "/jsApi/intervenant/violenceType-beneficiaire.js"
+    "/jsApi/intervenant/violenceType-beneficiaire.js": "/jsApi/intervenant/violenceType-beneficiaire.js",
+    "/jsApi/zone/add-zone.js": "/jsApi/zone/add-zone.js"
 }
