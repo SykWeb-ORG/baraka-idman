@@ -7,11 +7,13 @@ use App\Http\Controllers\ManagementBeneficiaireServiceController;
 use App\Http\Controllers\ManagementBeneficiaireSuicideController;
 use App\Http\Controllers\ManagementBeneficiaireViolenceTypeController;
 use App\Http\Controllers\ManagementDonneeUserController;
+use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
 use App\Models\Beneficiaire;
+use App\Models\Intervenant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -140,13 +142,10 @@ Route::middleware('auth:sanctum')->group(function(){
     })->name('reinit');
     Route::resource('zones', ZoneController::class);
     Route::resource('programmes', ProgrammeController::class);
-    Route::get('/zones', function (Beneficiaire $beneficiaire) {
-        return view('interTerrain.zoneintervenance', compact('beneficiaire'));
-    });
-    Route::get('/zone', function (Beneficiaire $beneficiaire) {
-        return view('superUser.addzoneIntervenant', compact('beneficiaire'));
-    });
-    Route::get('/affectation_zone', function (Beneficiaire $beneficiaire) {
-        return view('superUser.affectationzone', compact('beneficiaire'));
-    });
+    Route::get('all-zones/{intervenant}', function(Request $request, Intervenant $intervenant){
+        return view('superUser.affectationzone', compact(
+            'intervenant',
+        ));
+    })->name('all-zones');
+    Route::post('match-intervenant-zones/{intervenant}', [ManagementIntervenantZoneController::class, 'matchIntervenantZones']);
 });

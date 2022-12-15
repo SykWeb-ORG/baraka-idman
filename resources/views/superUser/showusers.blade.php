@@ -23,7 +23,7 @@ Liste des utilisateurs
                             <th>Date de naissance</th>
                             <th>Email</th>
                             <th>Rôle</th>
-                            <th colspan="3">Action</th>
+                            <th colspan="5">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +64,11 @@ Liste des utilisateurs
                                         @method('PUT')
                                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-sync"></i></button>
                                     </form>
+                                </td>
+                                <td>
+                                    @if ($user->intervenant)
+                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-map-marker"></i></a>
+                                    @endif
                                 </td>
                                 <td class="actionMenu">
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>

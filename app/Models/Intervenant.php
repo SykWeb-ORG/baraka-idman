@@ -10,6 +10,15 @@ class Intervenant extends Model
     use HasFactory;
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'zones',
+    ];
+
+    /**
      * Get the user.
      */
     public function user()
@@ -23,5 +32,15 @@ class Intervenant extends Model
     public function beneficiaires()
     {
         return $this->hasMany(Beneficiaire::class);
+    }
+
+    /**
+     * The zones that belong to the intervenant.
+     */
+    public function zones()
+    {
+        return $this->belongsToMany(Zone::class)
+                    ->as('intervenant_zone')
+                    ->withTimestamps();
     }
 }
