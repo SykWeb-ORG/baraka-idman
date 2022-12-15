@@ -17,4 +17,14 @@ class Zone extends Model
     protected $fillable = [
         'zone_nom',
     ];
+
+    /**
+     * The intervenants that belong to the zone.
+     */
+    public function intervenants()
+    {
+        return $this->belongsToMany(Intervenant::class)
+                    ->as('intervenant_zone')
+                    ->withTimestamps();
+    }
 }
