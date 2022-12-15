@@ -16,7 +16,7 @@
                         <tr class="text-dark">
                             <th scope="col">ID</th>
                             <th scope="col">Nom</th>
-                            <th scope="col" colspan="7">Action</th>
+                            <th scope="col" colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,10 +26,6 @@
                                 <td class="actionU"><a href='' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
                                 <td class="actionD">
                                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
-                                </td>
-                                <td class="actionS"><a href='' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user"></i></a></td>                                
-                                <td class="actionV">
-                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
                                 </td>
                                 <td class="actionMenu">
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>

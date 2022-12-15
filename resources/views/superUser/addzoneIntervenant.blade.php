@@ -12,10 +12,6 @@ Ajout d'une zone d'intervenance
                 <h6 id="title-form" class="mb-4">Ajouter Zone d'intervenance</h6>
                 <form class="form-user" method="POST">
                     <div class="mb-3">
-                        <label for="id" class="form-label">ID</label>
-                        <input type="text" name="id" class="form-control" id="id">
-                    </div>
-                    <div class="mb-3">
                         <label for="name-zone" class="form-label">Nom</label>
                         <input type="text" name="name-zone" class="form-control" id="name-zone">
                     </div>

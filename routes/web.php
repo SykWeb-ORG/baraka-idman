@@ -140,4 +140,10 @@ Route::middleware('auth:sanctum')->group(function(){
     })->name('reinit');
     Route::resource('zones', ZoneController::class);
     Route::resource('programmes', ProgrammeController::class);
+    Route::get('/zones', function (Beneficiaire $beneficiaire) {
+        return view('interTerrain.zoneintervenance', compact('beneficiaire'));
+    });
+    Route::get('/zone', function (Beneficiaire $beneficiaire) {
+        return view('superUser.addzoneIntervenant', compact('beneficiaire'));
+    });
 });
