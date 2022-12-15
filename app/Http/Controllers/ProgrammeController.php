@@ -42,6 +42,7 @@ class ProgrammeController extends Controller
     {
         $programme = new Programme;
         $programme->programme_type = $request->programme_type;
+        $programme->programme_nom = $request->programme_nom;
         if ($programme->save()) {
             if ($request->has('places')) {
                 $places = collect([]);
@@ -105,6 +106,7 @@ class ProgrammeController extends Controller
     public function update(ProgrammeRequest $request, Programme $programme)
     {
         $programme->programme_type = $request->programme_type;
+        $programme->programme_nom = $request->programme_nom;
         if ($programme->update()) {
             if ($request->has('places')) {
                 $programme->places()->delete();

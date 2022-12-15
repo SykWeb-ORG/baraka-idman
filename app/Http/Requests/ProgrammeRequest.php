@@ -28,6 +28,10 @@ class ProgrammeRequest extends FormRequest
                 'present',
                 'required',
             ],
+            'programme_nom' =>[
+                'present',
+                'required',
+            ],
         ];
     }
 }
