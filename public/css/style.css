@@ -320,6 +320,9 @@
 }
 .div_perm .permissions_check .perm{
     margin-bottom: 10px;
+    border: 2px solid rgb(219, 139, 139);
+    margin-right: 5px;
+    padding: 5px;
 }
 /* couverture medical */
 .couv-medic {
@@ -351,10 +354,19 @@
     margin-right: 5px;
 }
 table tbody tr .actionMenu{
+    /* display: none; */
+    position: sticky;
+    inset-inline-end:-3px;
+    background-color: var(--light);;
+}
+table tbody tr .actionM{
     display: none;
     position: sticky;
     inset-inline-end:-3px;
     background-color: var(--light);;
+}
+table tbody tr .actionModal{
+    display: none;
 }
 @media (max-width: 575.98px) {
     .content .navbar .navbar-nav .nav-link {
@@ -368,6 +380,27 @@ table tbody tr .actionMenu{
         display: block;
         padding: 45px 20px;
     }
+    table tbody tr .actionM{
+        display: block;
+    }
+    .sticky-top{
+        z-index: 1000;
+    }
+    .modal-dialog {
+        max-width: 150px;   
+        margin: 4.75rem auto;
+    }
+    table tbody tr .actionModal{
+        display: block;
+    }
+    /* .modal-title {
+        font-size: 15px;
+    }
+    .modal-body{
+        display: grid;
+        grid-template-columns: repeat(2,1fr) !important;
+        padding: 5px;
+    } */
 }
 /* Style table */
 .table th{
@@ -387,19 +420,14 @@ table tbody tr .actionV{
     inset-inline-end: 0;
     background-color: var(--light);
 }
-table tbody tr .actionS{
+table tbody tr .actionD{
     position: sticky;
     inset-inline-end: 60px;
     background-color: var(--light);
 }
-table tbody tr .actionD{
-    position: sticky;
-    inset-inline-end: 120px;
-    background-color: var(--light);
-}
 table tbody tr .actionU{
     position: sticky;
-    inset-inline-end: 180px;
+    inset-inline-end: 120px;
     background-color: var(--light);
 }
 table tr th:last-child {
@@ -423,7 +451,6 @@ table tbody tr .userEdit{
     background-color: var(--light);
 }
 /* zone */
-/* permission */
 .div_zone{
     display: flex;
     align-items: center;
@@ -439,7 +466,23 @@ table tbody tr .userEdit{
 }
 .div_zone .zone_check .zone{
     margin-bottom: 10px;
-    margin-right: 10px;
+    border: 2px solid rgb(219, 139, 139);
+    margin-right: 5px;
+    padding: 5px;
+}
+.modal-backdrop{
+    display: none;
+}
+.modal-body{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 5px;
+}
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 300px;   
+        margin: 4.75rem auto;
+    }
 }
 .div_programme{
     display: flex;

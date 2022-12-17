@@ -97,19 +97,42 @@ Liste des Bénéficiaires
                                 </form>
                             </td>
                             @endcan
-                            @can('view', $beneficiaire)
-                            <td class="actionS"><a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user"></i></a></td>
-                            @endcan
                             @if (!Auth::user()->intervenant)
-                            <td class="actionV">
-                                <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
-                                </form>
-                            </td>
                             <td class="actionMenu">
-                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>
+                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add"><i class="fas fa-ellipsis-h"></i></button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal_Add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Actions</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @can('update', $beneficiaire)
+                                                <a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="actionModal btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a>
+                                                @endcan
+                                                @can('delete', $beneficiaire)
+                                                <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2 actionModal"><i class="fas fa-user-minus"></i></button>
+                                                </form>
+                                                @endcan
+                                                @can('view', $beneficiaire)
+                                                <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user"></i></a>
+                                                @endcan
+                                                <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                             @endif
                             {{-- <td><a href='{{ route('couverture-medical', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2">Couverture et types de drogues</a></td>

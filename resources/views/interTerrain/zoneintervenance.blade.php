@@ -16,7 +16,7 @@
                         <tr class="text-dark">
                             <th scope="col">ID</th>
                             <th scope="col">Nom</th>
-                            <th scope="col" colspan="3">Action</th>
+                            <th scope="col" colspan="2 ">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,7 +27,7 @@
                                 <td class="actionD">
                                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
                                 </td>
-                                <td class="actionMenu">
+                                <td class="actionM">
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>
                                 </td>
                             </tr>
