@@ -16,6 +16,7 @@ class Intervenant extends Model
      */
     protected $with = [
         'zones',
+        'programmes',
     ];
 
     /**
@@ -41,6 +42,16 @@ class Intervenant extends Model
     {
         return $this->belongsToMany(Zone::class)
                     ->as('intervenant_zone')
+                    ->withTimestamps();
+    }
+
+    /**
+     * The programmes that belong to the intervenant.
+     */
+    public function programmes()
+    {
+        return $this->belongsToMany(Programme::class)
+                    ->as('intervenant_programme')
                     ->withTimestamps();
     }
 }

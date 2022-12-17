@@ -7,6 +7,7 @@ use App\Http\Controllers\ManagementBeneficiaireServiceController;
 use App\Http\Controllers\ManagementBeneficiaireSuicideController;
 use App\Http\Controllers\ManagementBeneficiaireViolenceTypeController;
 use App\Http\Controllers\ManagementDonneeUserController;
+use App\Http\Controllers\ManagementIntervenantProgrammeController;
 use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\ProgrammeController;
@@ -150,4 +151,10 @@ Route::middleware('auth:sanctum')->group(function(){
         ));
     })->name('all-zones');
     Route::post('match-intervenant-zones/{intervenant}', [ManagementIntervenantZoneController::class, 'matchIntervenantZones']);
+    Route::get('all-programmes/{intervenant}', function(Request $request, Intervenant $intervenant){
+        return view('superUser.affectationprogramme', compact(
+            'intervenant',
+        ));
+    })->name('all-programmes');
+    Route::post('match-intervenant-programmes/{intervenant}', [ManagementIntervenantProgrammeController::class, 'matchIntervenantProgrammes']);
 });

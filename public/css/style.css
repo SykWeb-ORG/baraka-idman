@@ -441,3 +441,17 @@ table tbody tr .userEdit{
     margin-bottom: 10px;
     margin-right: 10px;
 }
+.div_programme{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.div_programme .programme_check{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.div_programme .programme_check .programme{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
