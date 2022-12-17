@@ -34,4 +34,14 @@ class Programme extends Model
     {
         return $this->hasMany(Place::class);
     }
+
+    /**
+     * The intervenants that belong to the programme.
+     */
+    public function intervenants()
+    {
+        return $this->belongsToMany(Intervenant::class)
+                    ->as('intervenant_programme')
+                    ->withTimestamps();
+    }
 }

@@ -25,7 +25,7 @@ function displayAllZones(zones) {
         zone_label.htmlFor = zone.id;
         zone_label.textContent = zone.zone_nom;
         let divContainer = document.createElement('div');
-        divContainer.className = 'perm';
+        divContainer.className = 'zone';
         divContainer.appendChild(zone_input);
         divContainer.appendChild(zone_label);
         divZones.appendChild(divContainer);

@@ -19563,9 +19563,9 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!*****************************************************!*\
-  !*** ./resources/js/superadmin/intervenant-zone.js ***!
-  \*****************************************************/
+/*!**********************************************************!*\
+  !*** ./resources/js/superadmin/intervenant-programme.js ***!
+  \**********************************************************/
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 console.log(intervenant);
 var baseUrl = "http://localhost:8000/";
@@ -19573,56 +19573,56 @@ function getData(endUrl) {
   debugger;
   axios.get(baseUrl + endUrl).then(function (response) {
     console.log(response);
-    zones = response.data;
-    displayAllZones(zones);
-    if (zones.length > 0) {
-      checkIntervenantZones(intervenant.zones);
+    programmes = response.data;
+    displayAllProgrammes(programmes);
+    if (programmes.length > 0) {
+      checkIntervenantProgrammes(intervenant.programmes);
     }
   });
 }
-function displayAllZones(zones) {
-  var divZones = document.getElementById('zone_check');
-  zones.forEach(function (zone) {
-    var zone_input = document.createElement('input');
-    zone_input.type = 'checkbox';
-    zone_input.name = 'zones[]';
-    zone_input.classList.add("form-check-input");
-    zone_input.value = zone.id;
-    zone_input.id = zone.id;
-    var zone_label = document.createElement('label');
-    zone_label.htmlFor = zone.id;
-    zone_label.textContent = zone.zone_nom;
+function displayAllProgrammes(programmes) {
+  var divProgrammes = document.getElementById('programme_check');
+  programmes.forEach(function (programme) {
+    var programme_input = document.createElement('input');
+    programme_input.type = 'checkbox';
+    programme_input.name = 'programmes[]';
+    programme_input.classList.add("form-check-input");
+    programme_input.value = programme.id;
+    programme_input.id = programme.id;
+    var programme_label = document.createElement('label');
+    programme_label.htmlFor = programme.id;
+    programme_label.textContent = programme.programme_nom;
     var divContainer = document.createElement('div');
-    divContainer.className = 'zone';
-    divContainer.appendChild(zone_input);
-    divContainer.appendChild(zone_label);
-    divZones.appendChild(divContainer);
+    divContainer.className = 'programme';
+    divContainer.appendChild(programme_input);
+    divContainer.appendChild(programme_label);
+    divProgrammes.appendChild(divContainer);
   });
 }
-function checkIntervenantZones(zones) {
-  zones.forEach(function (zone) {
-    var zone_input = document.getElementById(zone.id);
-    zone_input.checked = true;
+function checkIntervenantProgrammes(programmes) {
+  programmes.forEach(function (programme) {
+    var programme_input = document.getElementById(programme.id);
+    programme_input.checked = true;
   });
 }
 $(document).ready(function () {
   axios.get('/sanctum/csrf-cookie').then(function (response) {
     console.log(response);
   });
-  getData("zones");
-  var btnMatchIntervenantZones = document.getElementById('btnMatchIntervenantZones');
-  btnMatchIntervenantZones.addEventListener('click', function (e) {
+  getData("programmes");
+  var btnMatchIntervenantProgrammes = document.getElementById('btnMatchIntervenantProgrammes');
+  btnMatchIntervenantProgrammes.addEventListener('click', function (e) {
     debugger;
-    var selectedZones = jQuery.grep($('input[name="zones[]"]'), function (zone) {
-      return zone.checked;
+    var selectedProgrammes = jQuery.grep($('input[name="programmes[]"]'), function (programme) {
+      return programme.checked;
     });
     if (intervenant) {
-      var zonesIds = jQuery.map(selectedZones, function (zone) {
-        return zone.id;
+      var programmesIds = jQuery.map(selectedProgrammes, function (programme) {
+        return programme.id;
       });
-      var endUrl = 'match-intervenant-zones/' + intervenant.id;
+      var endUrl = 'match-intervenant-programmes/' + intervenant.id;
       axios.post(baseUrl + endUrl, {
-        zones: zonesIds
+        programmes: programmesIds
       }).then(function (response) {
         debugger;
         console.log(response);

@@ -5,5 +5,6 @@
     "/jsApi/intervenant/service-beneficiaire.js": "/jsApi/intervenant/service-beneficiaire.js",
     "/jsApi/intervenant/violenceType-beneficiaire.js": "/jsApi/intervenant/violenceType-beneficiaire.js",
     "/jsApi/zone/add-zone.js": "/jsApi/zone/add-zone.js",
-    "/jsApi/superadmin/intervenant-zone.js": "/jsApi/superadmin/intervenant-zone.js"
+    "/jsApi/superadmin/intervenant-zone.js": "/jsApi/superadmin/intervenant-zone.js",
+    "/jsApi/superadmin/intervenant-programme.js": "/jsApi/superadmin/intervenant-programme.js"
 }

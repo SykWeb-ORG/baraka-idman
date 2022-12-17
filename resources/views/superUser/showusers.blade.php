@@ -70,6 +70,11 @@ Liste des utilisateurs
                                         <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-map-marker"></i></a>
                                     @endif
                                 </td>
+                                <td>
+                                    @if ($user->intervenant)
+                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fab fa-product-hunt"></i></a>
+                                    @endif
+                                </td>
                                 <td class="actionMenu">
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>
                                 </td>    
