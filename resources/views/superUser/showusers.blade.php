@@ -76,8 +76,34 @@ Liste des utilisateurs
                                     @endif
                                 </td>
                                 <td class="actionMenu">
-                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-ellipsis-h"></i></button>
-                                </td>    
+                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add"><i class="fas fa-ellipsis-h"></i></button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal_Add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Actions</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2 actionModal"><i class="fas fa-user-edit"></i></a>
+                                                    <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" class="actionModal" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
+                                                    </form>
+                                                    <form action="{{ route('reinit', ['user'=>$user->id]) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-sync"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>   
                             </tr>
                         @endforeach
                     </tbody>
