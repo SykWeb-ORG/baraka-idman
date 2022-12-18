@@ -530,6 +530,10 @@ Inscription du Bénéficiaire
                             </div>
                         </div>
                         <div class="mb-3">
+                            <label for="social-appointment" class="form-label">Date de la visite sociale</label>
+                            <input type="date" name="social_visite_date" class="form-control" id="social-appointment">
+                        </div>
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </div>
                         <div id="message-alert" class="mb-3"></div>

@@ -16,12 +16,13 @@ class CreateSocialeVisitesTable extends Migration
         Schema::create('sociale_visites', function (Blueprint $table) {
             $table->id();
             $table->date('visite_date');
-            $table->string('visite_remarque');
+            $table->string('visite_remarque')->nullable();
             $table->foreignId('beneficiaire_id')
                     ->constrained()
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
             $table->foreignId('social_assistant_id')
+                    ->nullable()
                     ->constrained()
                     ->onDelete('cascade')
                     ->onUpdate('cascade');

@@ -476,6 +476,10 @@ Modification du Bénéficiaire
                                 </table>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="social-appointment" class="form-label">Date de la visite sociale</label>
+                            <input type="date" {{(count($beneficiaire->sociale_visites) > 1)? 'disabled': ''}} name="social_visite_date" class="form-control" id="social-appointment" value="{{$beneficiaire->sociale_visites[0]->visite_date}}">
+                        </div>
                         @can('update', $beneficiaire)
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Modifier</button>
