@@ -7,6 +7,7 @@ use App\Models\Beneficiaire;
 use App\Models\Couverture;
 use App\Models\DrogueType;
 use App\Models\Service;
+use App\Models\SocialeVisite;
 use App\Models\SuicideCause;
 use App\Models\ViolenceType;
 use Illuminate\Support\Str;
@@ -122,6 +123,10 @@ class BeneficiaireController extends Controller
             }
             // services attachement
             $beneficiaire->services()->attach($request->services);
+            // give an appointment
+            $social_visite = new SocialeVisite;
+            $social_visite->visite_date = $request->social_visite_date;
+            $beneficiaire->sociale_visites()->save($social_visite);
             // $result = $beneficiaire;
             // $status = 200;
             $result = 'Utilisateur ajouté avec success';
@@ -195,6 +200,8 @@ class BeneficiaireController extends Controller
         $beneficiaire->zone_habitation = $request->zone_habitation;
         $beneficiaire->localisation = $request->localisation;
         $beneficiaire->famille_informee = $request->famille_informee;
+        $beneficiaire->famille_integre = $request->famille_integre;
+        $beneficiaire->addiction_cause = $request->addiction_cause;
         $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
         $beneficiaire->duree_addiction = $request->duree_addiction;
         $beneficiaire->ts = $request->ts;
@@ -235,6 +242,12 @@ class BeneficiaireController extends Controller
             // services attachement
             $beneficiaire->services()->detach();
             $beneficiaire->services()->attach($request->services);
+            // update the appointment
+            $social_visite = SocialeVisite::find(1);
+            if ($social_visite) {
+                $social_visite->visite_date = $request->social_visite_date;
+                $social_visite->save();
+            }
             // $result = $beneficiaire;
             // $status = 200;
             $result = 'Utilisateur modifié avec succés';

@@ -98,4 +98,12 @@ class Beneficiaire extends Model
     {
         return $this->belongsTo(Intervenant::class);
     }
+
+    /**
+     * Get the sociale visites for the beneficiaire.
+     */
+    public function sociale_visites()
+    {
+        return $this->hasMany(SocialeVisite::class);
+    }
 }
