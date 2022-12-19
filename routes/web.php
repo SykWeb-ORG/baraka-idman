@@ -18,6 +18,7 @@ use App\Models\Intervenant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -157,4 +158,61 @@ Route::middleware('auth:sanctum')->group(function(){
         ));
     })->name('all-programmes');
     Route::post('match-intervenant-programmes/{intervenant}', [ManagementIntervenantProgrammeController::class, 'matchIntervenantProgrammes']);
+    Route::put('archive-beneficiaire/{beneficiaire}', function(Request $request, Beneficiaire $beneficiaire){
+        if (!Gate::allows('archive-beneficiaire-ability')) {
+            abort(403);
+        }
+        $beneficiaire->archive = 1;
+        if($beneficiaire->update())
+        {
+            $result = $beneficiaire;
+            $status = 200;
+            $msg = 'Archivé avec succéss.';
+            $icon = 'fa-check';
+        }
+        else
+        {
+            $result = null;
+            $status = 500;
+            $msg = 'Probléme au serveur.';
+            $icon = 'fa-times';
+        }
+        $request->session()->flash('msg', $msg);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
+    })->name('archive-beneficiaire');
+    Route::put('desuarchive-beneficiaire/{beneficiaire}', function(Request $request, Beneficiaire $beneficiaire){
+        if (!Gate::allows('desuarchive-beneficiaire-ability')) {
+            abort(403);
+        }
+        $beneficiaire->archive = 0;
+        if($beneficiaire->update())
+        {
+            $result = $beneficiaire;
+            $status = 200;
+            $msg = 'Réstauration avec succéss.';
+            $icon = 'fa-check';
+        }
+        else
+        {
+            $result = null;
+            $status = 500;
+            $msg = 'Probléme au serveur.';
+            $icon = 'fa-times';
+        }
+        $request->session()->flash('msg', $msg);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
+    })->name('desuarchive-beneficiaire');
+    Route::get('beneficiaires-history', function(Request $request){
+        if (!Gate::allows('show-history-beneficiaire-ability')) {
+            abort(403);
+        }
+        $beneficiaires = Beneficiaire::where('archive', 1)->get();
+        return view('interTerrain.listing-beneficiaires-archived', compact(
+            'beneficiaires',
+        ));
+    })->name('beneficiaires-history');
 });
