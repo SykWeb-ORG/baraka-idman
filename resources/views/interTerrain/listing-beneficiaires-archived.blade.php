@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Liste des Bénéficiaires
+L'historique des bénéficiaires
 @endsection
 @section('content_page')
     <!-- Recent Sales Start -->
@@ -50,7 +50,7 @@ Liste des Bénéficiaires
                     </thead>
                     <tbody>
                         @foreach ($beneficiaires as $beneficiaire)
-                        @if (((!$beneficiaire->validation_social_assistant || !$beneficiaire->validation_directive) && Auth::user()->medical_assistant) || $beneficiaire->archive)
+                        @if ((!$beneficiaire->validation_social_assistant || !$beneficiaire->validation_directive) && Auth::user()->medical_assistant)
                             @continue
                         @endif
                         <tr>
@@ -129,11 +129,11 @@ Liste des Bénéficiaires
                                                     @method('PUT')
                                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-check"></i></button>
                                                 </form>
-                                                @can('archive-beneficiaire-ability')
-                                                <form action="{{ route('archive-beneficiaire', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
+                                                @can('desuarchive-beneficiaire-ability')
+                                                <form action="{{ route('desuarchive-beneficiaire', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
                                                     @method('PUT')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-archive"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-trash-restore"></i></button>
                                                 </form>
                                                 @endcan
                                             </div>

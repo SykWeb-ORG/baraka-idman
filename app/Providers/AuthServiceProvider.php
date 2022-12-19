@@ -30,6 +30,15 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('roles-permissions-ability', function (User $user) {
             return $this->checkAbilityByAction($user, 'gérer les roles et les permission');
         });
+        Gate::define('archive-beneficiaire-ability', function (User $user) {
+            return $this->checkAbilityByAction($user, 'archiver un beneficiaire');
+        });
+        Gate::define('desuarchive-beneficiaire-ability', function (User $user) {
+            return $this->checkAbilityByAction($user, 'disarchiver un beneficiaire');
+        });
+        Gate::define('show-history-beneficiaire-ability', function (User $user) {
+            return $this->checkAbilityByAction($user, 'Afficher l\'historique des beneficiaires');
+        });
     }
 
     /**
