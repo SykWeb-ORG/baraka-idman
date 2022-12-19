@@ -11,6 +11,7 @@ use App\Http\Controllers\ManagementIntervenantProgrammeController;
 use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\ProgrammeController;
+use App\Http\Controllers\SocialeVisiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
 use App\Models\Beneficiaire;
@@ -215,4 +216,5 @@ Route::middleware('auth:sanctum')->group(function(){
             'beneficiaires',
         ));
     })->name('beneficiaires-history');
+    Route::resource('socialeVisites', SocialeVisiteController::class);
 });
