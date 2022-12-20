@@ -61,6 +61,10 @@ Modification du Bénéficiaire
                             <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="text" name="type_travail" class="form-control" id="type-travail-benef" value="{{$beneficiaire->type_travail}}">
                         </div>
                         <div class="mb-3">
+                            <label for="social-appointment" class="form-label">Date de la visite sociale</label>
+                            <input type="date" {{(count($beneficiaire->sociale_visites) > 1)? 'disabled': ''}} name="social_visite_date" class="form-control" id="social-appointment" value="{{(count($beneficiaire->sociale_visites) > 1)? $beneficiaire->sociale_visites[0]->visite_date : ''}}" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="intervenant-benef" class="form-label">Niveau Scolaire</label>
                             <fieldset>
                                 <div class="Nv-scolaire">
@@ -476,15 +480,11 @@ Modification du Bénéficiaire
                                 </table>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="social-appointment" class="form-label">Date de la visite sociale</label>
-                            <input type="date" {{(count($beneficiaire->sociale_visites) > 1)? 'disabled': ''}} name="social_visite_date" class="form-control" id="social-appointment" value="{{$beneficiaire->sociale_visites[0]->visite_date}}">
-                        </div>
-                        @can('update', $beneficiaire)
+                        @if(!request()->has('page'))
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Modifier</button>
                         </div>
-                        @endcan
+                        @endif
                         <div id="message-alert" class="mb-3"></div>
                     </form>
                 </div>

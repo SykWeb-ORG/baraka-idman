@@ -210,25 +210,27 @@ class BeneficiaireController extends Controller
             $beneficiaire->couvertures()->detach();
             $beneficiaire->couvertures()->attach($request->couvertures);
             // drogue types attachement
-            $beneficiaire->drogue_types()->detach();
-            $indexes = [];
-            $drogue_types = [];
-            foreach ($request->drogue_types as $drogue_type) {
-                $index_and_drogue_type = Str::of($drogue_type)->explode(',');
-                $index_to_add = $index_and_drogue_type->get(1);
-                $indexes[$index_to_add] = $index_to_add;
-                $drogue_types[] = $index_and_drogue_type->get(0);
-            }
-            $frequences = [];
-            for ($i=0; $i < count($request->frequences); $i++) {
-                if (!Arr::exists($indexes, strval($i))) {
-                    continue;
+            if ($request->has('drogue_types')) {
+                $beneficiaire->drogue_types()->detach();
+                $indexes = [];
+                $drogue_types = [];
+                foreach ($request->drogue_types as $drogue_type) {
+                    $index_and_drogue_type = Str::of($drogue_type)->explode(',');
+                    $index_to_add = $index_and_drogue_type->get(1);
+                    $indexes[$index_to_add] = $index_to_add;
+                    $drogue_types[] = $index_and_drogue_type->get(0);
                 }
-                $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
-            }
-            for ($i=0; $i < count($drogue_types); $i++) {
-                $frequence = ['frequence' => $frequences[$i]];
-                $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
+                $frequences = [];
+                for ($i=0; $i < count($request->frequences); $i++) {
+                    if (!Arr::exists($indexes, strval($i))) {
+                        continue;
+                    }
+                    $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
+                }
+                for ($i=0; $i < count($drogue_types); $i++) {
+                    $frequence = ['frequence' => $frequences[$i]];
+                    $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
+                }
             }
             // violence types attachement
             $beneficiaire->violence_types()->attach($request->violence_types);
@@ -243,10 +245,12 @@ class BeneficiaireController extends Controller
             $beneficiaire->services()->detach();
             $beneficiaire->services()->attach($request->services);
             // update the appointment
-            $social_visite = SocialeVisite::find(1);
-            if ($social_visite) {
-                $social_visite->visite_date = $request->social_visite_date;
-                $social_visite->save();
+            if ($request->has('social_visite_date')) {
+                $social_visite = SocialeVisite::find(1);
+                if ($social_visite) {
+                    $social_visite->visite_date = $request->social_visite_date;
+                    $social_visite->save();
+                }
             }
             // $result = $beneficiaire;
             // $status = 200;
