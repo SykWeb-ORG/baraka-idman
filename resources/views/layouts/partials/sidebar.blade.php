@@ -40,7 +40,7 @@
                             <a href="{{ route('beneficiaires.index') }}" class="dropdown-item">Afficher</a>
                         @endcan
                         @can('show-history-beneficiaire-ability')
-                        <a href="{{ route('beneficiaires-history') }}" class="dropdown-item">L'historique</a>
+                        <a href="{{ route('beneficiaires-history') }}" class="dropdown-item">L'archivage</a>
                         @endcan
                     </div>
                 </div>
