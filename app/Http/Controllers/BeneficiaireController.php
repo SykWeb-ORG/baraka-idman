@@ -94,24 +94,26 @@ class BeneficiaireController extends Controller
             // couvertures attachement
             $beneficiaire->couvertures()->attach($request->couvertures);
             // drogue types attachement
-            $indexes = [];
-            $drogue_types = [];
-            foreach ($request->drogue_types as $drogue_type) {
-                $index_and_drogue_type = Str::of($drogue_type)->explode(',');
-                $index_to_add = $index_and_drogue_type->get(1);
-                $indexes[$index_to_add] = $index_to_add;
-                $drogue_types[] = $index_and_drogue_type->get(0);
-            }
-            $frequences = [];
-            for ($i=0; $i < count($request->frequences); $i++) {
-                if (!Arr::exists($indexes, strval($i))) {
-                    continue;
+            if ($request->has('drogue_types')) {
+                $indexes = [];
+                $drogue_types = [];
+                foreach ($request->drogue_types as $drogue_type) {
+                    $index_and_drogue_type = Str::of($drogue_type)->explode(',');
+                    $index_to_add = $index_and_drogue_type->get(1);
+                    $indexes[$index_to_add] = $index_to_add;
+                    $drogue_types[] = $index_and_drogue_type->get(0);
                 }
-                $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
-            }
-            for ($i=0; $i < count($drogue_types); $i++) {
-                $frequence = ['frequence' => $frequences[$i]];
-                $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
+                $frequences = [];
+                for ($i=0; $i < count($request->frequences); $i++) {
+                    if (!Arr::exists($indexes, strval($i))) {
+                        continue;
+                    }
+                    $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
+                }
+                for ($i=0; $i < count($drogue_types); $i++) {
+                    $frequence = ['frequence' => $frequences[$i]];
+                    $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
+                }
             }
             // violence types attachement
             $beneficiaire->violence_types()->attach($request->violence_types);
@@ -124,9 +126,11 @@ class BeneficiaireController extends Controller
             // services attachement
             $beneficiaire->services()->attach($request->services);
             // give an appointment
-            $social_visite = new SocialeVisite;
-            $social_visite->visite_date = $request->social_visite_date;
-            $beneficiaire->sociale_visites()->save($social_visite);
+            if ($request->has('social_visite_date')) {
+                $social_visite = new SocialeVisite;
+                $social_visite->visite_date = $request->social_visite_date;
+                $beneficiaire->sociale_visites()->save($social_visite);
+            }
             // $result = $beneficiaire;
             // $status = 200;
             $result = 'Utilisateur ajouté avec success';
@@ -193,22 +197,24 @@ class BeneficiaireController extends Controller
         $beneficiaire->cin = $request->cin;
         $beneficiaire->telephone = $request->telephone;
         $beneficiaire->type_travail = $request->type_travail;
-        $beneficiaire->niveau_scolaire = $request->niveau_scolaire;
-        $beneficiaire->situation_familial = $request->situation_familial;
-        $beneficiaire->orphelin = $request->orphelin;
-        $beneficiaire->profession = $request->profession;
-        $beneficiaire->zone_habitation = $request->zone_habitation;
-        $beneficiaire->localisation = $request->localisation;
-        $beneficiaire->famille_informee = $request->famille_informee;
-        $beneficiaire->famille_integre = $request->famille_integre;
-        $beneficiaire->addiction_cause = $request->addiction_cause;
-        $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
-        $beneficiaire->duree_addiction = $request->duree_addiction;
-        $beneficiaire->ts = $request->ts;
+        $beneficiaire->niveau_scolaire = ($request->has('niveau_scolaire'))? $request->niveau_scolaire : $beneficiaire->niveau_scolaire;
+        $beneficiaire->situation_familial = ($request->has('situation_familial'))? $request->situation_familial : $beneficiaire->situation_familial;
+        $beneficiaire->orphelin = ($request->has('orphelin'))? $request->orphelin : $beneficiaire->orphelin;
+        $beneficiaire->profession = ($request->has('profession'))? $request->profession : $beneficiaire->profession;
+        $beneficiaire->zone_habitation = ($request->has('zone_habitation'))? $request->zone_habitation: $beneficiaire->zone_habitation;
+        $beneficiaire->localisation = ($request->has('localisation'))? $request->localisation : $beneficiaire->localisation;
+        $beneficiaire->famille_informee = ($request->has('famille_informee'))? $request->famille_informee : $beneficiaire->famille_informee;
+        $beneficiaire->famille_integre = ($request->has('famille_integre'))? $request->famille_integre : $beneficiaire->famille_integre;
+        $beneficiaire->addiction_cause = ($request->has('addiction_cause'))? $request->addiction_cause : $beneficiaire->addiction_cause;
+        $beneficiaire->age_debut_addiction = ($request->has('age_debut_addiction'))? $request->age_debut_addiction : $beneficiaire->age_debut_addiction;
+        $beneficiaire->duree_addiction = ($request->has('duree_addiction'))? $request->duree_addiction : $beneficiaire->duree_addiction;
+        $beneficiaire->ts = ($request->has('ts'))? $request->ts : $beneficiaire->ts;
         if ($beneficiaire->update()) {
             // couvertures attachement
-            $beneficiaire->couvertures()->detach();
-            $beneficiaire->couvertures()->attach($request->couvertures);
+            if ($request->has('couvertures')) {
+                $beneficiaire->couvertures()->detach();
+                $beneficiaire->couvertures()->attach($request->couvertures);
+            }
             // drogue types attachement
             if ($request->has('drogue_types')) {
                 $beneficiaire->drogue_types()->detach();
@@ -233,17 +239,24 @@ class BeneficiaireController extends Controller
                 }
             }
             // violence types attachement
-            $beneficiaire->violence_types()->attach($request->violence_types);
+            if ($request->has('violence_types')) {
+                $beneficiaire->violence_types()->detach();
+                $beneficiaire->violence_types()->attach($request->violence_types);
+            }
             // suicide causes attachement
-            $beneficiaire->suicide_causes()->delete();
-            if ($request->suicide_causes != '') {
-                $suicide_cause = new SuicideCause;
-                $suicide_cause->cause = $request->suicide_causes;
-                $beneficiaire->suicide_causes()->save($suicide_cause);
+            if ($request->has('suicide_causes')) {
+                $beneficiaire->suicide_causes()->delete();
+                if ($request->suicide_causes != '') {
+                    $suicide_cause = new SuicideCause;
+                    $suicide_cause->cause = $request->suicide_causes;
+                    $beneficiaire->suicide_causes()->save($suicide_cause);
+                }
             }
             // services attachement
-            $beneficiaire->services()->detach();
-            $beneficiaire->services()->attach($request->services);
+            if ($request->has('services')) {
+                $beneficiaire->services()->detach();
+                $beneficiaire->services()->attach($request->services);
+            }
             // update the appointment
             if ($request->has('social_visite_date')) {
                 $social_visite = SocialeVisite::find(1);
