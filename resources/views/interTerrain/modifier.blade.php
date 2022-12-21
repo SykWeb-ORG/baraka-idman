@@ -14,7 +14,7 @@ Modification du Bénéficiaire
                         @csrf
                         @method('PUT')
                         <x-beneficiaire.edit.intervenant-part :beneficiaire="$beneficiaire" />
-                        @if (Auth::user()->social_assistant)
+                        @if (!Auth::user()->intervenant)
                         <x-beneficiaire.edit.social-assistant-part :couvertures="$couvertures" :drogue-types="$drogue_types" :services="$services" :violence-types="$violence_types" :beneficiaire="$beneficiaire" />
                         @endif
                         @if(!request()->has('page'))
