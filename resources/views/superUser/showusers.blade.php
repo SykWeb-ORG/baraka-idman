@@ -58,27 +58,10 @@ Liste des utilisateurs
                                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
                                     </form>
                                 </td>
-                                <td class="userRein">
-                                    <form action="{{ route('reinit', ['user'=>$user->id]) }}" method="post">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-sync"></i></button>
-                                    </form>
-                                </td>
-                                <td>
-                                    @if ($user->intervenant)
-                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-map-marker"></i></a>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($user->intervenant)
-                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fab fa-product-hunt"></i></a>
-                                    @endif
-                                </td>
                                 <td class="actionMenu">
-                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add"><i class="fas fa-ellipsis-h"></i></button>
+                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add{{$loop->iteration}}"><i class="fas fa-ellipsis-h"></i></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="modal_Add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+                                    <div class="modal fade" id="modal_Add{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -99,6 +82,12 @@ Liste des utilisateurs
                                                         @method('PUT')
                                                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-sync"></i></button>
                                                     </form>
+                                                    @if ($user->intervenant)
+                                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-map-marker"></i></a>
+                                                    @endif
+                                                    @if ($user->intervenant)
+                                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fab fa-product-hunt"></i></a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
