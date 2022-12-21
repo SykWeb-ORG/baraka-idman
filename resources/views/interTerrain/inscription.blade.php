@@ -13,7 +13,7 @@ Inscription du Bénéficiaire
                     <form class="form-benefaicaire" action="{{ route('beneficiaires.store') }}" method="POST">
                         @csrf
                         <x-beneficiaire.intervenant-part/>
-                        @if (Auth::user()->social_assistant)
+                        @if (!Auth::user()->intervenant)
                         <x-beneficiaire.social-assistant-part :couvertures="$couvertures" :drogue-types="$drogue_types" :services="$services" :violence-types="$violence_types" />
                         @endif
                         <div class="mb-3">
