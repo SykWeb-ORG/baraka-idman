@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\MedicaleVisite;
 use App\Http\Requests\MedicaleVisiteRequest;
+use App\Models\Beneficiaire;
+use Illuminate\Support\Facades\Auth;
 
 class MedicaleVisiteController extends Controller
 {
@@ -39,7 +41,31 @@ class MedicaleVisiteController extends Controller
      */
     public function store(MedicaleVisiteRequest $request)
     {
-        
+        $medicaleVisite = new MedicaleVisite;
+        $medicaleVisite->visite_date = $request->visite_date;
+        if ($request->has('visite_remarque')) {
+            $medicaleVisite->visite_remarque = $request->visite_remarque;
+        }
+        if ($request->has('visite_presence')) {
+            $medicaleVisite->visite_presence = $request->visite_presence;
+        }
+        $beneficiaire = Beneficiaire::find($request->beneficiaire);
+        if ($beneficiaire->medicale_visites()->save($medicaleVisite) && Auth::user()->medical_assistant->medicale_visites()->save($medicaleVisite)) {
+            $result = $medicaleVisite;
+            $status = 200;
+            $msg = "Visite médicale ajoutée avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**

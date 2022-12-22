@@ -10,6 +10,7 @@ use App\Http\Controllers\ManagementDonneeUserController;
 use App\Http\Controllers\ManagementIntervenantProgrammeController;
 use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
+use App\Http\Controllers\MedicaleVisiteController;
 use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\SocialeVisiteController;
 use App\Http\Controllers\UserController;
@@ -237,4 +238,5 @@ Route::middleware('auth:sanctum')->group(function(){
             $status
         );
     })->name('integration-status');
+    Route::resource('medicaleVisites', MedicaleVisiteController::class);
 });
