@@ -106,4 +106,12 @@ class Beneficiaire extends Model
     {
         return $this->hasMany(SocialeVisite::class);
     }
+
+    /**
+     * Get the sociale visites for the beneficiaire.
+     */
+    public function medicale_visites()
+    {
+        return $this->hasMany(MedicaleVisite::class);
+    }
 }
