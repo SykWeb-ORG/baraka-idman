@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Models\MedicaleVisite;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -19,7 +18,7 @@ class MedicaleVisitePolicy
      */
     public function viewAny(User $user)
     {
-        return $this->checkAbilityByAction($user, 'afficher les visites médicales');
+        return $user->admin;
     }
 
     /**
@@ -31,7 +30,7 @@ class MedicaleVisitePolicy
      */
     public function view(User $user, MedicaleVisite $medicaleVisite)
     {
-        return $this->viewAny($user);
+        return ($user->medical_assistant && $user->medical_assistant->medicale_visites->contains($medicaleVisite)) || $user->admin;
     }
 
     /**
@@ -42,7 +41,7 @@ class MedicaleVisitePolicy
      */
     public function create(User $user)
     {
-        return $this->checkAbilityByAction($user, 'ajouter une visite médicale');
+        return $user->medical_assistant;
     }
 
     /**
@@ -54,7 +53,7 @@ class MedicaleVisitePolicy
      */
     public function update(User $user, MedicaleVisite $medicaleVisite)
     {
-        return $this->checkAbilityByAction($user, 'modifier une visite médicale');
+        return ($user->medical_assistant && $user->medical_assistant->medicale_visites->contains($medicaleVisite)) || $user->admin;
     }
 
     /**
@@ -66,7 +65,7 @@ class MedicaleVisitePolicy
      */
     public function delete(User $user, MedicaleVisite $medicaleVisite)
     {
-        return $this->checkAbilityByAction($user, 'supprimer une visite médicale');
+        return ($user->medical_assistant && $user->medical_assistant->medicale_visites->contains($medicaleVisite)) || $user->admin;
     }
 
     /**
@@ -91,32 +90,5 @@ class MedicaleVisitePolicy
     public function forceDelete(User $user, MedicaleVisite $medicaleVisite)
     {
         //
-    }
-
-    /**
-     * 
-     * @param App\Models\User $user the current user
-     * @param string $action the name of the action to check
-     * @return bool whether if the current user can do the specified action
-     */
-    function checkAbilityByAction(User $user, $action)
-    {
-        if ($user->admin) {
-            $role = 'admin';
-        } elseif ($user->medical_assistant) {
-            $role = 'medical assistant';
-        } elseif ($user->social_assistant) {
-            $role = 'social assistant';
-        } elseif ($user->intervenant) {
-            $role = 'intervenant';
-        }
-        $his_permissions = Role::where('role_nom', $role)
-                            ->first()
-                            ->permissions
-                            ->map(function ($action, $key) {
-                                return $action['action_nom'];
-                            });
-        $he_can = $his_permissions->contains($action);
-        return $he_can;
     }
 }
