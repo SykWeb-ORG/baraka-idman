@@ -14,6 +14,7 @@ use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\SocialeVisiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
+use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Beneficiaire;
 use App\Models\Intervenant;
 use App\Models\User;
@@ -217,4 +218,23 @@ Route::middleware('auth:sanctum')->group(function(){
         ));
     })->name('beneficiaires-history');
     Route::resource('socialeVisites', SocialeVisiteController::class);
+    Route::put('integration-status/{beneficiaire}', function(IntegrationStatusBeneficiaireRequest $request, Beneficiaire $beneficiaire){
+        $beneficiaire->integration_status = $request->integration_status;
+        if ($beneficiaire->update()) {
+            $result = $beneficiaire;
+            $status = 200;
+            $msg = 'Intégration changée avec succéss.';
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = 'Probléme au serveur.';
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
+    })->name('integration-status');
 });
