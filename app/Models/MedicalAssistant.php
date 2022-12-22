@@ -16,4 +16,12 @@ class MedicalAssistant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the sociale visites for the beneficiaire.
+     */
+    public function medicale_visites()
+    {
+        return $this->hasMany(MedicaleVisite::class);
+    }
 }
