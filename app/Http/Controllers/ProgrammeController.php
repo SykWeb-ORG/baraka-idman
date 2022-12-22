@@ -6,6 +6,7 @@ use App\Http\Requests\ProgrammeRequest;
 use App\Models\Place;
 use App\Models\Programme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ProgrammeController extends Controller
 {
@@ -113,10 +114,14 @@ class ProgrammeController extends Controller
                 $places = collect([]);
                 foreach($request->places as $place)
                 {
-                    $new_place = new Place([
+                    $values = [
                         'lieu' => $place['lieu'],
                         'programme_date' => $place['programme_date'],
-                    ]);
+                    ];
+                    if (Arr::exists($place, 'programme_resultat')) {
+                        $values['programme_resultat'] = $place['programme_resultat'];
+                    }
+                    $new_place = new Place($values);
                     $places->push($new_place);
                 }
                 $programme->places()->saveMany($places->all());
