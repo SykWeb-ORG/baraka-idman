@@ -132,6 +132,21 @@ class MedicaleVisiteController extends Controller
      */
     public function destroy(MedicaleVisite $medicaleVisite)
     {
-        
+        if ($medicaleVisite->delete()) {
+            $result = $medicaleVisite;
+            $status = 200;
+            $msg = "Visite médicale supprimée avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 }
