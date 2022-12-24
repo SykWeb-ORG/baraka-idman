@@ -54,9 +54,12 @@
     <script src="{{asset("js/jquery-3.4.1.min.js")}}"></script>
     <script src="{{asset("js/bootstrap.bundle.min.js")}}"></script>
     <script src="{{asset("js/waypoints/waypoints.min.js")}}"></script>
+    <script src="{{asset("js/waypoints/waypoints.min.js")}}"></script>
 
     <!-- Template Javascript -->
     <script src="{{asset("js/main.js")}}"></script>
+    <script src="{{asset("jsApi/axios-app.js")}}"></script>
+    <script src="{{asset("jsApi/app.js")}}"></script>
 
     @yield('custom_scripts')
 </body>
