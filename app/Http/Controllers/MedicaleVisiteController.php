@@ -99,7 +99,29 @@ class MedicaleVisiteController extends Controller
      */
     public function update(MedicaleVisiteRequest $request, MedicaleVisite $medicaleVisite)
     {
-        
+        $medicaleVisite->visite_date = $request->visite_date;
+        if ($request->has('visite_remarque')) {
+            $medicaleVisite->visite_remarque = $request->visite_remarque;
+        }
+        if ($request->has('visite_presence')) {
+            $medicaleVisite->visite_presence = $request->visite_presence;
+        }
+        if ($medicaleVisite->update()) {
+            $result = $medicaleVisite;
+            $status = 200;
+            $msg = "Visite médicale modifiée avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
