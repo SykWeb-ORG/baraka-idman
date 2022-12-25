@@ -9,6 +9,10 @@ class Groupe extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'groupe_nom',
+    ];
+
     /**
      * Get the atelier that owns the groupe.
      */

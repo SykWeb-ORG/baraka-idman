@@ -30,6 +30,7 @@ class Beneficiaire extends Model
         'violence_types',
         'services',
         'suicide_causes',
+        'groupes',
     ];
 
     /**
