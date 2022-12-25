@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AtelierController;
 use App\Http\Controllers\BeneficiaireController;
+use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\ManagementBeneficiaireAteliersController;
 use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
 use App\Http\Controllers\ManagementBeneficiaireDrogueTypeController;
 use App\Http\Controllers\ManagementBeneficiaireServiceController;
@@ -239,4 +242,44 @@ Route::middleware('auth:sanctum')->group(function(){
         );
     })->name('integration-status');
     Route::resource('medicaleVisites', MedicaleVisiteController::class);
+    Route::resource('groupes', GroupeController::class)
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de groupe',
+                ],
+                404
+            );
+        });
+    Route::resource('ateliers', AtelierController::class)
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas d\'atelier',
+                ],
+                404
+            );
+        });
+    Route::get('all-ateliers/{beneficiaire}', [ManagementBeneficiaireAteliersController::class, 'index'])
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de beneficiaire',
+                ],
+                404
+            );
+        });
+    Route::post('match-beneficiaire-ateliers/{beneficiaire}', [ManagementBeneficiaireAteliersController::class, 'matchBeneficiaireAteliers'])
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de beneficiaire',
+                ],
+                404
+            );
+        });
 });

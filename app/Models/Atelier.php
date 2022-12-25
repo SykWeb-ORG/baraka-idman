@@ -9,6 +9,10 @@ class Atelier extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'atelier_nom',
+    ];
+
     /**
      * Get the groupes for the atelier.
      */

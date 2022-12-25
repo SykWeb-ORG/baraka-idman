@@ -39,6 +39,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('show-history-beneficiaire-ability', function (User $user) {
             return $this->checkAbilityByAction($user, 'Afficher l\'historique des beneficiaires');
         });
+        Gate::define('beneficiaire-ateliers-ability', function (User $user) {
+            return $this->checkAbilityByAction($user, 'Attacher beneficiaire avec les ateliers');
+        });
     }
 
     /**
