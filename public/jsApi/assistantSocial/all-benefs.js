@@ -1,7 +1,13 @@
-//Declaration DOM & Variables
-const url = "http://127.0.0.1:8000/beneficiaires"
-
 //Functions
+// Variables 
+const endUrl = "beneficiaires";
+
+// Eventes
+$(document).ready(function(){
+    getAllData(endUrl,getAllBenefaicaires)
+})
+
+// Functions
 function getAllBenefaicaires(benefs) {
     var tbodyData = "";
     $.each(benefs, function (key, benef) {
@@ -31,10 +37,3 @@ function getAllBenefaicaires(benefs) {
     });    
     $('#tablebenificiere tbody').html(tbodyData);
 }
-
-
-//GET - Read All Users
-fetch(url)
-    .then(response => response.json())
-    .then(data => getAllBenefaicaires(data))
-    
