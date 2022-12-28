@@ -37,8 +37,8 @@ class CreateBeneficiairesTable extends Migration
             $table->boolean('age_debut_addiction')->nullable();
             $table->string('duree_addiction')->nullable();
             $table->boolean('ts')->nullable();
-            $table->boolean('validation_social_assistant')->nullable()->after('ts');
-            $table->boolean('validation_directive')->nullable()->after('validation_social_assistant');
+            $table->boolean('validation_social_assistant')->nullable();
+            $table->boolean('validation_directive')->nullable();
             $table->timestamps();
         });
     }
