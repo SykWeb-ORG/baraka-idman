@@ -44,5 +44,5 @@
     <!-- Recent Sales End -->
 @endsection
 @section('custom_scripts')
-<script src="{{asset("jsApi/assistantSocial/main.js")}}"></script>
+<script src="{{asset("jsApi/assistantSocial/all-benefs.js")}}"></script>
 @endsection
