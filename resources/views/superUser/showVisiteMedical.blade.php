@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Liste des utilisateurs
+Liste des Visites Medicales
 @endsection
 @section('content_page')
     <!-- Show All Users Start -->
