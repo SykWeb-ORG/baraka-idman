@@ -46,8 +46,8 @@ Route::get('/', function () {
     }
     return view('auth.login');
 });
-Route::post('/login',[UserController::class, 'login'])->name('login');
-Route::middleware('auth:sanctum')->group(function(){
+Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/list-beneficiaires', function () {
         return view('interTerrain.listing');
     })->name('list-beneficiaires');
@@ -72,27 +72,25 @@ Route::middleware('auth:sanctum')->group(function(){
         ->missing(function (Request $request) {
             return response()->json('pas de beneficiaire', 404);
         });
-    Route::get('management-permissions-roles', function(Request $request){
+    Route::get('management-permissions-roles', function (Request $request) {
         return view('superUser.permission');
     })->name('roles-permissions');
-    Route::get('logout', function (Request $request)
-    {
+    Route::get('logout', function (Request $request) {
         Auth::guard('web')->logout();
-     
+
         $request->session()->invalidate();
-     
+
         $request->session()->regenerateToken();
-     
+
         return redirect('/');
-    
     })->name('logout');
     Route::view('new-beneficiaire-form', 'interTerrain.inscription')->name('new-beneficiaire-form');
-    Route::put('validation-state/{beneficiaire}/{user}', function(Beneficiaire $beneficiaire, User $user){
+    Route::put('validation-state/{beneficiaire}/{user}', function (Beneficiaire $beneficiaire, User $user) {
         if ($user->social_assistant) {
             $beneficiaire->validation_social_assistant = 1;
-        }elseif ($user->admin) {
+        } elseif ($user->admin) {
             $beneficiaire->validation_directive = 1;
-        }elseif ($user->medical_assistant) {
+        } elseif ($user->medical_assistant) {
             $beneficiaire->validation_medical_assistant = 1;
         }
         if ($beneficiaire->update()) {
@@ -131,7 +129,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('all-services', [ManagementBeneficiaireServiceController::class, 'index']);
     Route::post('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
     Route::post('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
-    Route::put('reinit/{user}', function(Request $request, User $user){
+    Route::put('reinit/{user}', function (Request $request, User $user) {
         $user->password = Hash::make('demo0000');
         if ($user->update()) {
             // $result = $user;
@@ -153,32 +151,29 @@ Route::middleware('auth:sanctum')->group(function(){
     })->name('reinit');
     Route::resource('zones', ZoneController::class);
     Route::resource('programmes', ProgrammeController::class);
-    Route::get('all-zones/{intervenant}', function(Request $request, Intervenant $intervenant){
+    Route::get('all-zones/{intervenant}', function (Request $request, Intervenant $intervenant) {
         return view('superUser.affectationzone', compact(
             'intervenant',
         ));
     })->name('all-zones');
     Route::post('match-intervenant-zones/{intervenant}', [ManagementIntervenantZoneController::class, 'matchIntervenantZones']);
-    Route::get('all-programmes/{intervenant}', function(Request $request, Intervenant $intervenant){
+    Route::get('all-programmes/{intervenant}', function (Request $request, Intervenant $intervenant) {
         return view('superUser.affectationprogramme', compact(
             'intervenant',
         ));
     })->name('all-programmes');
     Route::post('match-intervenant-programmes/{intervenant}', [ManagementIntervenantProgrammeController::class, 'matchIntervenantProgrammes']);
-    Route::put('archive-beneficiaire/{beneficiaire}', function(Request $request, Beneficiaire $beneficiaire){
+    Route::put('archive-beneficiaire/{beneficiaire}', function (Request $request, Beneficiaire $beneficiaire) {
         if (!Gate::allows('archive-beneficiaire-ability')) {
             abort(403);
         }
         $beneficiaire->archive = 1;
-        if($beneficiaire->update())
-        {
+        if ($beneficiaire->update()) {
             $result = $beneficiaire;
             $status = 200;
             $msg = 'Archivé avec succéss.';
             $icon = 'fa-check';
-        }
-        else
-        {
+        } else {
             $result = null;
             $status = 500;
             $msg = 'Probléme au serveur.';
@@ -189,20 +184,17 @@ Route::middleware('auth:sanctum')->group(function(){
         $request->session()->flash('icon', $icon);
         return back();
     })->name('archive-beneficiaire');
-    Route::put('desuarchive-beneficiaire/{beneficiaire}', function(Request $request, Beneficiaire $beneficiaire){
+    Route::put('desuarchive-beneficiaire/{beneficiaire}', function (Request $request, Beneficiaire $beneficiaire) {
         if (!Gate::allows('desuarchive-beneficiaire-ability')) {
             abort(403);
         }
         $beneficiaire->archive = 0;
-        if($beneficiaire->update())
-        {
+        if ($beneficiaire->update()) {
             $result = $beneficiaire;
             $status = 200;
             $msg = 'Réstauration avec succéss.';
             $icon = 'fa-check';
-        }
-        else
-        {
+        } else {
             $result = null;
             $status = 500;
             $msg = 'Probléme au serveur.';
@@ -213,7 +205,7 @@ Route::middleware('auth:sanctum')->group(function(){
         $request->session()->flash('icon', $icon);
         return back();
     })->name('desuarchive-beneficiaire');
-    Route::get('beneficiaires-history', function(Request $request){
+    Route::get('beneficiaires-history', function (Request $request) {
         if (!Gate::allows('show-history-beneficiaire-ability')) {
             abort(403);
         }
@@ -223,13 +215,13 @@ Route::middleware('auth:sanctum')->group(function(){
         ));
     })->name('beneficiaires-history');
     Route::resource('socialeVisites', SocialeVisiteController::class);
-    Route::put('integration-status/{beneficiaire}', function(IntegrationStatusBeneficiaireRequest $request, Beneficiaire $beneficiaire){
+    Route::put('integration-status/{beneficiaire}', function (IntegrationStatusBeneficiaireRequest $request, Beneficiaire $beneficiaire) {
         $beneficiaire->integration_status = $request->integration_status;
         if ($beneficiaire->update()) {
             $result = $beneficiaire;
             $status = 200;
             $msg = 'Intégration changée avec succéss.';
-        }else {
+        } else {
             $result = null;
             $status = 500;
             $msg = 'Probléme au serveur.';
@@ -293,4 +285,10 @@ Route::middleware('auth:sanctum')->group(function(){
                 404
             );
         });
+    Route::get('/visiteMedical', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddMedicalVisite', compact('beneficiaire'));
+    })->name('visitemedical');
+    Route::get('/showVisiteMedical', function (Beneficiaire $beneficiaire) {
+        return view('superUser.showVisiteMedical', compact('beneficiaire'));
+    })->name('showVisiteMedical');
 });
