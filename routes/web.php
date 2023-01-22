@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AtelierController;
 use App\Http\Controllers\BeneficiaireController;
+use App\Http\Controllers\CasController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\ManagementBeneficiaireAteliersController;
 use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
@@ -278,6 +279,16 @@ Route::middleware('auth:sanctum')->group(function(){
                 [
                     'result' => null,
                     'msg' => 'Pas de beneficiaire',
+                ],
+                404
+            );
+        });
+    Route::resource('cas', CasController::class)
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de cas juridique',
                 ],
                 404
             );
