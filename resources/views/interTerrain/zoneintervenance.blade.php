@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Liste des Bénéficiaires
+    Liste des Zones
 @endsection
 @section('content_page')
     <!-- Recent Sales Start -->
