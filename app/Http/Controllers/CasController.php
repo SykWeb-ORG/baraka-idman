@@ -14,7 +14,13 @@ class CasController extends Controller
      */
     public function index()
     {
-        //
+        $cases = Cas::all();
+        return response()->json(
+            [
+                'cases'=>$cases,
+            ],
+            200
+        );
     }
 
     /**
