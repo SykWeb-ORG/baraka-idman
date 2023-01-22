@@ -300,4 +300,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showGroups', function (Beneficiaire $beneficiaire) {
         return view('superUser.showGroups', compact('beneficiaire'));
     })->name('showGroups');
+    Route::get('/AddAtelier', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddAtelier', compact('beneficiaire'));
+    })->name('AddAtelier');
+    Route::get('/showAtelier', function (Beneficiaire $beneficiaire) {
+        return view('superUser.showAtelier', compact('beneficiaire'));
+    })->name('showAtelier');
 });

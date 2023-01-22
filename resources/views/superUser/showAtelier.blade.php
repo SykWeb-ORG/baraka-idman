@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('title')
-Liste des Groupes
+Liste des Ateliers
 @endsection
 @section('content_page')
     <!-- Show All Users Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Tous Les Groupes </h6>
+                <h6 class="mb-0">Tous Les Ateliers </h6>
                 {{-- <a href="">Show All</a> --}}
             </div>
             <div class="table-responsive table-height">
@@ -16,8 +16,7 @@ Liste des Groupes
                     <thead>
                         <tr class="text-dark">
                             <th scope="col">N°</th>
-                            <th>Nom Du Groupe</th>
-                            <th>Atelier</th>
+                            <th>Nom D'Atelier</th>
                         </tr>
                     </thead>
                     <tbody>
