@@ -19,5 +19,7 @@ class VerifyCsrfToken extends Middleware
         '/match-donnee-user/*',
         '/beneficiaires',
         '/beneficiaires/*',
+        '/beneficiaires',
+        '/beneficiaires/*',
     ];
 }

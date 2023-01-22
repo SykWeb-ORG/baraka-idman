@@ -17,7 +17,7 @@ class CasController extends Controller
         $cases = Cas::all();
         return response()->json(
             [
-                'cases'=>$cases,
+                'cases' => $cases,
             ],
             200
         );
@@ -41,7 +41,24 @@ class CasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cas = new Cas;
+        $cas->cas_nom = $request->cas_nom;
+        if ($cas->save()) {
+            $result = $cas;
+            $status = 200;
+            $msg = "cas ajouté avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
