@@ -5,6 +5,7 @@ use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\CasController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\ManagementBeneficiaireAteliersController;
+use App\Http\Controllers\ManagementBeneficiaireCasController;
 use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
 use App\Http\Controllers\ManagementBeneficiaireDrogueTypeController;
 use App\Http\Controllers\ManagementBeneficiaireServiceController;
@@ -324,4 +325,24 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/AffectCasJuridiqueBeneficiaire', function (Beneficiaire $beneficiaire) {
         return view('superUser.AffectCasJuridiqueBenef', compact('beneficiaire'));
     })->name('AffectCasJuridiqueBeneficiaire');
+    Route::get('all-cas/{beneficiaire}', [ManagementBeneficiaireCasController::class, 'index'])
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de beneficiaire',
+                ],
+                404
+            );
+        });
+    Route::post('match-beneficiaire-cas/{beneficiaire}', [ManagementBeneficiaireCasController::class, 'matchBeneficiaireCas'])
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de beneficiaire',
+                ],
+                404
+            );
+        });
 });

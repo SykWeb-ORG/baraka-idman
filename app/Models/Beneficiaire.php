@@ -31,6 +31,7 @@ class Beneficiaire extends Model
         'services',
         'suicide_causes',
         'groupes',
+        'cas',
     ];
 
     /**
@@ -114,5 +115,15 @@ class Beneficiaire extends Model
     public function medicale_visites()
     {
         return $this->hasMany(MedicaleVisite::class);
+    }
+
+    /**
+     * The cas juridiques that belong to the beneficiaire.
+     */
+    public function cas()
+    {
+        return $this->belongsToMany(Cas::class, "beneficiaire_cas", "beneficiaire_id", "cas_id")
+                    ->as('beneficiaire_cas')
+                    ->withTimestamps();
     }
 }
