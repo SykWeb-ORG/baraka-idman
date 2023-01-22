@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
         '/beneficiaires/*',
         '/beneficiaires',
         '/beneficiaires/*',
+        '/api/*'
     ];
 }

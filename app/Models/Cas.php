@@ -15,4 +15,14 @@ class Cas extends Model
      * @var string
      */
     protected $table = 'cas';
+
+    /**
+     * The beneficiaires that belong to the cas juridique.
+     */
+    public function beneficiaires()
+    {
+        return $this->belongsToMany(Beneficiaire::class, "beneficiaire_cas", "cas_id", "beneficiaire_id")
+                    ->as('beneficiaire_cas')
+                    ->withTimestamps();
+    }
 }
