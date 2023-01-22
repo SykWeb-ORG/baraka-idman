@@ -119,6 +119,21 @@ class CasController extends Controller
      */
     public function destroy(Cas $cas)
     {
-        //
+        if ($cas->delete()) {
+            $result = $cas;
+            $status = 200;
+            $msg = "cas supprimé avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 }
