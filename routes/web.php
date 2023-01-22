@@ -284,7 +284,10 @@ Route::middleware('auth:sanctum')->group(function () {
                 ],
                 404
             );
-        });
+        })
+        ->parameters([
+            "cas" => "cas"
+        ]);
     Route::get('/visiteMedical', function (Beneficiaire $beneficiaire) {
         return view('superUser.AddMedicalVisite', compact('beneficiaire'));
     })->name('visitemedical');
