@@ -291,4 +291,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showVisiteMedical', function (Beneficiaire $beneficiaire) {
         return view('superUser.showVisiteMedical', compact('beneficiaire'));
     })->name('showVisiteMedical');
+    Route::get('/AddGroups', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddGroups', compact('beneficiaire'));
+    })->name('AddGroups');
+    Route::get('/showGroups', function (Beneficiaire $beneficiaire) {
+        return view('superUser.showGroups', compact('beneficiaire'));
+    })->name('showGroups');
 });
