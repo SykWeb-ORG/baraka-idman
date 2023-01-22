@@ -309,4 +309,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/ShowProgram&Zones', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowProgram&Zones', compact('beneficiaire'));
     })->name('ShowProgram&Zones');
+    Route::get('/AffectServiceRole', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AffectServiceRole', compact('beneficiaire'));
+    })->name('AffectServiceRole');
 });
