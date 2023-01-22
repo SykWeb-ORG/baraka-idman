@@ -306,4 +306,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showAtelier', function (Beneficiaire $beneficiaire) {
         return view('superUser.showAtelier', compact('beneficiaire'));
     })->name('showAtelier');
+    Route::get('/ShowProgram&Zones', function (Beneficiaire $beneficiaire) {
+        return view('superUser.ShowProgram&Zones', compact('beneficiaire'));
+    })->name('ShowProgram&Zones');
 });
