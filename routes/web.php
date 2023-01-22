@@ -312,4 +312,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/AffectServiceRole', function (Beneficiaire $beneficiaire) {
         return view('superUser.AffectServiceRole', compact('beneficiaire'));
     })->name('AffectServiceRole');
+    Route::get('/AddCasJuridique', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddCasJuridique', compact('beneficiaire'));
+    })->name('AddCasJuridique');
+    Route::get('/showCasJuridique', function (Beneficiaire $beneficiaire) {
+        return view('superUser.showCasJuridique', compact('beneficiaire'));
+    })->name('showCasJuridique');
 });
