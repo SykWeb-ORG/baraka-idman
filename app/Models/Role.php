@@ -27,4 +27,12 @@ class Role extends Model
                     ->as('role_permission')
                     ->withTimestamps();
     }
+
+    /**
+     * Get the services for the role.
+     */
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

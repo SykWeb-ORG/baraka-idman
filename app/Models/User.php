@@ -97,4 +97,14 @@ class User extends Authenticatable
                     ->as('donnee_user')
                     ->withTimestamps();
     }
+
+    /**
+     * The beneficiaires that belong to the user.
+     */
+    public function beneficiaires()
+    {
+        return $this->belongsToMany(Beneficiaire::class, 'beneficiaire_service_user')
+                    ->as('beneficiaire_service_user')
+                    ->withTimestamps();
+    }
 }

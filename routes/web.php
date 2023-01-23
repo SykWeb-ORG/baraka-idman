@@ -23,6 +23,10 @@ use App\Http\Controllers\ZoneController;
 use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Beneficiaire;
 use App\Models\Intervenant;
+use App\Models\MedicalAssistant;
+use App\Models\Role;
+use App\Models\Service;
+use App\Models\SocialAssistant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -289,6 +293,41 @@ Route::middleware('auth:sanctum')->group(function () {
         ->parameters([
             "cas" => "cas"
         ]);
+    Route::get('get-users-for-service/{service}', function(Service $service) {
+        $role = $service->role->role_nom;
+        if ($role) {
+            if ($role == 'social assistant') {
+                $users = SocialAssistant::with('user')->get();
+            }elseif ($role == 'medical assistant') {
+                $users = SocialAssistant::with('user')->get();
+            }elseif ($role == 'intervenant') {
+                $users = SocialAssistant::with('user')->get();
+            }
+            $result = $users;
+            $status = 200;
+            $msg = 'success';
+        } else {
+            $result = null;
+            $status = 404;
+            $msg = 'Probléme de role qui n\'existe pas.';
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
+    })->name('get-users-for-service')
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de service',
+                ],
+                404
+            );
+        });
     Route::get('/visiteMedical', function (Beneficiaire $beneficiaire) {
         return view('superUser.AddMedicalVisite', compact('beneficiaire'));
     })->name('visitemedical');
@@ -345,4 +384,49 @@ Route::middleware('auth:sanctum')->group(function () {
                 404
             );
         });
+    Route::put('match-role-services/{role}', function (Request $request, Role $role)
+    {
+        $old_services = $role->services->modelKeys();
+        $services_to_attach = collect($request->services)->diff($old_services);
+        $services_to_detach = collect($old_services)->diff(collect($request->services));
+        foreach ($services_to_attach as $service_id) {
+            $service = Service::find($service_id);
+            if ($service) {
+                $service->role()->associate($role);
+                $service->save();
+                // unset user_id from beneficiaire_service_user because the service will change its associated role:
+                $service->beneficiaires()->updateExistingPivot($service_id, [
+                    'user_id' => null,
+                ]);
+            }
+        }
+        if ($services_to_detach->isNotEmpty()) {
+            foreach ($services_to_detach as $service_id) {
+                $service = Service::find($service_id);
+                if ($service) {
+                    $service->role()->dissociate();
+                    $service->save();
+                    // unset user_id from beneficiaire_service_user because the service will be free:
+                    $service->beneficiaires()->updateExistingPivot($service_id, [
+                        'user_id' => null,
+                    ]);
+                }
+            }
+        }
+        return response()->json(
+            [
+                'result' => $role,
+                'msg' => 'success',
+            ],
+            200
+        );
+    })->missing(function (Request $request) {
+        return response()->json(
+            [
+                'result' => null,
+                'msg' => 'Pas de role',
+            ],
+            404
+        );
+    });
 });

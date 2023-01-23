@@ -67,8 +67,8 @@ class Beneficiaire extends Model
      */
     public function services()
     {
-        return $this->belongsToMany(Service::class)
-                    ->as('beneficiaire_service')
+        return $this->belongsToMany(Service::class, 'beneficiaire_service_user')
+                    ->as('beneficiaire_service_user')
                     ->withTimestamps();
     }
 
@@ -124,6 +124,16 @@ class Beneficiaire extends Model
     {
         return $this->belongsToMany(Cas::class, "beneficiaire_cas", "beneficiaire_id", "cas_id")
                     ->as('beneficiaire_cas')
+                    ->withTimestamps();
+    }
+
+    /**
+     * The beneficiaires that belong to the service.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'beneficiaire_service_user')
+                    ->as('beneficiaire_service_user')
                     ->withTimestamps();
     }
 }

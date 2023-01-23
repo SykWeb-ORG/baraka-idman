@@ -282,6 +282,8 @@ class UserController extends Controller
                 $status = 'danger';
                 $icon = 'fa-times';
             }
+            // unset user_id from beneficiaire_service_user because the role is changed:
+            $user->beneficiaires()->update(['user_id' => null]);
         }else {
             // just update the data of the user without changing his role ..
             if ($user->update()) {

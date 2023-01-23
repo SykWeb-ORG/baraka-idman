@@ -14,8 +14,16 @@ class Service extends Model
      */
     public function beneficiaires()
     {
-        return $this->belongsToMany(Beneficiaire::class)
-                    ->as('beneficiaire_service')
+        return $this->belongsToMany(Beneficiaire::class, 'beneficiaire_service_user')
+                    ->as('beneficiaire_service_user')
                     ->withTimestamps();
+    }
+
+    /**
+     * Get the role that owns the service.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }
