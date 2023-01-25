@@ -11,7 +11,7 @@ Gestion des roles avec les services
         <div class="div_perm">
             <select name="role" id="role" class="cusSelectbox">
             </select>
-            <fieldset class="">
+            <fieldset class="mb-4">
                 <legend>Service</legend>
                 <div class="permissions_check" id="service_check">
                 </div>

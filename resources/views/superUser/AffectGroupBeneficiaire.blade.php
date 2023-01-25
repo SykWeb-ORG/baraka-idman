@@ -16,7 +16,7 @@ Gestion des roles avec les services
                 <option value="Bangladesh">Bangladesh</option>
                 <option value="Sri Lanka">Sri Lanka</option>
             </select>
-            <fieldset class="">
+            <fieldset class="mb-4">
                 <legend>Group</legend>
                 <div class="permissions_check" id="group_check">
                 </div>

@@ -320,6 +320,8 @@
 .div_perm .permissions_check{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    overflow: auto;
+    max-height: 300px
 }
 .div_perm .permissions_check .perm{
     margin-bottom: 10px;
@@ -469,6 +471,8 @@ table tbody tr .userEdit{
 .div_zone .zone_check{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    overflow: auto;
+    max-height: 300px
 }
 .div_zone .zone_check .zone{
     margin-bottom: 10px;
@@ -502,6 +506,8 @@ table tbody tr .userEdit{
 .div_programme .programme_check{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    overflow: auto;
+    max-height: 300px
 }
 .div_programme .programme_check .programme{
     margin-bottom: 10px;

@@ -16,7 +16,7 @@ Attacher des zones à l'intervenant
             <option value="Bangladesh">Bangladesh</option>
             <option value="Sri Lanka">Sri Lanka</option>
         </select> --}}
-        <fieldset class="">
+        <fieldset class="mb-4">
             <legend>Les zones</legend>
             <div class="zone_check" id="zone_check">
                 {{-- <div class="zone">

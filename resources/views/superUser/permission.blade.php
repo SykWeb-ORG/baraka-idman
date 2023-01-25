@@ -16,7 +16,7 @@ Gestion des roles avec les permissions
                 <option value="Bangladesh">Bangladesh</option>
                 <option value="Sri Lanka">Sri Lanka</option> --}}
             </select>
-            <fieldset class="">
+            <fieldset class="mb-4">
                 <legend>Permissions</legend>
                 <div class="permissions_check" id="permissions_check">
                 </div>
