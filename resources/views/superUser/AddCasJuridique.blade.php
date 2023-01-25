@@ -12,11 +12,11 @@ Ajout d'un cas juridique
                     <h6 id="title-form" class="mb-4">Ajouter Cas Juridique</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="nom-groupe" class="form-label">Nom Du Cas Juridique</label>
-                            <input type="text" name="nom-groupe" class="form-control" id="nom-groupe">
+                            <label for="nom-cas" class="form-label">Nom du Cas Juridique</label>
+                            <input type="text" name="nom-cas" class="form-control" id="nom-cas">
                         </div>
                         <div class="mb-3">
-                            <button id="btn-visite-medical" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-cas" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>
@@ -24,4 +24,7 @@ Ajout d'un cas juridique
         </div>
     </div>
     <!-- Form End -->
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/cas/add-cas.js') }}"></script>
 @endsection
