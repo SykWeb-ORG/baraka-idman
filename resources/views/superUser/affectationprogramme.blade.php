@@ -9,7 +9,7 @@ Attacher des programmes à l'intervenant
         <h6 class="mb-0">Attacher les programmes à l'intervenant</h6>
     </div>
     <div class="div_programme">
-        <fieldset class="">
+        <fieldset class="mb-4">
             <legend>Les programmes</legend>
             <div class="programme_check" id="programme_check">
                 

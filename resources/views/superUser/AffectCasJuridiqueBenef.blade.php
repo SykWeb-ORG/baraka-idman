@@ -9,7 +9,7 @@ Gestion des Cas Juridiques
             <h6 class="mb-0">Add Cas Juridiques to Beneficaire</h6>
         </div>
         <div class="div_perm">
-            <fieldset class="">
+            <fieldset class="mb-4">
                 <legend>Cas Juridique</legend>
                 <div class="permissions_check" id="cas_juridique_check">
                 </div>
