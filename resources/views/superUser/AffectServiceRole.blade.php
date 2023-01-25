@@ -4,7 +4,7 @@
 Gestion des roles avec les services
 @endsection
 @section('content_page')
-    <div class="container-fluid pt-4 px-4">
+    <div class="container-fluid pt-4 px-4" style="min-height: 65%;">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Add Service to role</h6>
         </div>
@@ -21,6 +21,7 @@ Gestion des roles avec les services
             </div>
         </div>
     </div>
+    <div class="push"></div>
 @endsection
 @section('custom_scripts')
     <script src="{{ asset('jsApi/servicesRoles/affectServicesToRole.js') }}"></script>
