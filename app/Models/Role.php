@@ -16,6 +16,7 @@ class Role extends Model
      */
     protected $with = [
         'permissions',
+        'services',
     ];
     
     /**
