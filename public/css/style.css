@@ -311,6 +311,9 @@
     justify-content: center;
     flex-direction: column;
 }
+.div_perm legend{
+    text-align: center;
+}
 .div_perm .cusSelectbox{
     width: 200px;
 }
@@ -457,6 +460,9 @@ table tbody tr .userEdit{
     justify-content: center;
     flex-direction: column;
 }
+.div_zone legend{
+    text-align: center;
+}
 .div_zone .cusSelectbox{
     width: 200px;
 }
@@ -489,6 +495,9 @@ table tbody tr .userEdit{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.div_programme legend{
+    text-align: center;
 }
 .div_programme .programme_check{
     display: grid;
