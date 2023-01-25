@@ -19695,8 +19695,14 @@ $(document).ready(function () {
         role: selectedRoleId
       }).then(function (response) {
         console.log(response);
-        response = response.data;
+        let role = response.data;
+        // to refresh the roles array:
+        let indexOldRole = db_roles.findIndex((old_role, index) => {
+          return old_role.id == role.id;
+        });
+        db_roles[indexOldRole] = role;
         alert("Les changements sont bien effectués.");
+        window.location.reload(); // to refresh the sidebar
       });
     } else {
       return;

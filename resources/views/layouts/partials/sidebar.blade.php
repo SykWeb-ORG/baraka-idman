@@ -45,9 +45,19 @@
                     </div>
                 </div>
             @endcanany
-            @can('roles-permissions-ability')
-                <a href="{{ route('roles-permissions') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Gérer les roles</a>
-            @endcan
+            @canany(['roles-permissions-ability', 'roles-services-ability'])
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Gestion des roles</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('roles-permissions-ability')
+                            <a href="{{ route('roles-permissions') }}" class="dropdown-item">Avec les permissions</a>
+                        @endcan
+                        @can('roles-services-ability')
+                            <a href="{{ route('AffectServiceRole') }}" class="dropdown-item">Avec les services</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             <a href="{{ route('logout') }}" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Quitter</a>
         </div>
     </nav>

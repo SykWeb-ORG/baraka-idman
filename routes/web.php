@@ -350,6 +350,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('superUser.ShowProgram&Zones', compact('beneficiaire'));
     })->name('ShowProgram&Zones');
     Route::get('/AffectServiceRole', function (Beneficiaire $beneficiaire) {
+        if (!Gate::allows('roles-services-ability')) {
+            abort(403);
+        }
         return view('superUser.AffectServiceRole', compact('beneficiaire'));
     })->name('AffectServiceRole');
     Route::get('/AddCasJuridique', function (Beneficiaire $beneficiaire) {
@@ -386,6 +389,9 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     Route::put('match-role-services/{role}', function (Request $request, Role $role)
     {
+        if (!Gate::allows('roles-services-ability')) {
+            abort(403);
+        }
         $old_services = $role->services->modelKeys();
         $services_to_attach = collect($request->services)->diff($old_services);
         $services_to_detach = collect($old_services)->diff(collect($request->services));
