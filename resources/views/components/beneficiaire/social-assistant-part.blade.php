@@ -399,6 +399,7 @@
                     {{-- <th scope="col"><input class="form-check-input" type="checkbox"></th> --}}
                     <th scope="col"></th>
                     <th scope="col">Services</th>
+                    <th>Pole</th>
                 </tr>
             </thead>
             <tbody id="tbodyServices">
@@ -406,6 +407,14 @@
                     <tr>
                         <td><input type="checkbox" class="form-check-input" name="services[]" value="{{$service->id}}" id=""></td>
                         <td>{{$service->service_nom}}</td>
+                        <td><select name="users" class="form-select mb-3" aria-label="Default select example" id="users">
+                            <option selected="">Choisir Utilisateur</option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""> </option>
+                            <option value=""></option>
+                        </select>
+                        </td>
 
                     </tr>
                 @endforeach
