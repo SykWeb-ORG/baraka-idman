@@ -10,11 +10,6 @@ Gestion des roles avec les services
         </div>
         <div class="div_perm">
             <select name="role" id="role" class="cusSelectbox">
-                <option value="Select">Role</option>
-                <option value="India">India</option>
-                <option value="Nepal">Nepal</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Sri Lanka">Sri Lanka</option>
             </select>
             <fieldset class="">
                 <legend>Service</legend>
@@ -26,4 +21,7 @@ Gestion des roles avec les services
             </div>
         </div>
     </div>
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/servicesRoles/affectServicesToRole.js') }}"></script>
 @endsection

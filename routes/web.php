@@ -413,6 +413,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 }
             }
         }
+        $role->refresh();
         return response()->json(
             [
                 'result' => $role,
@@ -427,6 +428,17 @@ Route::middleware('auth:sanctum')->group(function () {
                 'msg' => 'Pas de role',
             ],
             404
+        );
+    });
+    Route::get('all-roles', function (Request $request)
+    {
+        $roles = Role::all();
+        return response()->json(
+            [
+                'result' => $roles,
+                'msg' => 'success',
+            ],
+            200
         );
     });
 });
