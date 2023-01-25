@@ -22,6 +22,7 @@ class ManagementRolePermissionController extends Controller
         if ($role = Role::find($request->role)) {
             $role->permissions()->detach();
             $role->permissions()->attach($request->permissions);
+            $role->refresh();
             $result = $role;
             $status = 200;
         }else {

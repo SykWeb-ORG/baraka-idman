@@ -45,6 +45,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('beneficiaire-cas-ability', function (User $user) {
             return $this->checkAbilityByAction($user, 'Attacher beneficiaire avec les cas juridiques');
         });
+        Gate::define('roles-services-ability', function (User $user) {
+            return $this->checkAbilityByAction($user, 'gérer les roles et les services');
+        });
     }
 
     /**
