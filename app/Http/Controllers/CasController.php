@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class CasController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Cas::class, 'cas');
+    }
     /**
      * Display a listing of the resource.
      *

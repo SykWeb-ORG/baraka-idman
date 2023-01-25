@@ -22,6 +22,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
 use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Beneficiaire;
+use App\Models\Cas;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\Role;
@@ -355,8 +356,11 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AffectServiceRole', compact('beneficiaire'));
     })->name('AffectServiceRole');
-    Route::get('/AddCasJuridique', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddCasJuridique', compact('beneficiaire'));
+    Route::get('/AddCasJuridique', function (Request $request) {
+        if (!Gate::allows('create', Cas::class)) {
+            abort(403);
+        }
+        return view('superUser.AddCasJuridique');
     })->name('AddCasJuridique');
     Route::get('/showCasJuridique', function (Beneficiaire $beneficiaire) {
         return view('superUser.showCasJuridique', compact('beneficiaire'));

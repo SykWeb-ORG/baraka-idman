@@ -45,6 +45,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\Cas::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Gestion des cas juridique</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\Cas::class)
+                            <a href="{{ route('AddCasJuridique') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\Cas::class)
+                            <a href="{{ route('showCasJuridique') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['roles-permissions-ability', 'roles-services-ability'])
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Gestion des roles</a>
