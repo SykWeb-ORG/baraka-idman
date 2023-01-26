@@ -362,8 +362,11 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddCasJuridique');
     })->name('AddCasJuridique');
-    Route::get('/showCasJuridique', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showCasJuridique', compact('beneficiaire'));
+    Route::get('/showCasJuridique', function (Request $request) {
+        if (!Gate::allows('viewAny', Cas::class)) {
+            abort(403);
+        }
+        return view('superUser.showCasJuridique');
     })->name('showCasJuridique');
     Route::get('/AffectGroupBeneficiaire', function (Beneficiaire $beneficiaire) {
         return view('superUser.AffectGroupBeneficiaire', compact('beneficiaire'));
