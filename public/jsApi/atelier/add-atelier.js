@@ -11,7 +11,7 @@ $(document).ready(function () {
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Add new atelier juridique
+ * Add new atelier
  * @param {Event} e Information about the event
  */
 const addAtelier = (e) => {
