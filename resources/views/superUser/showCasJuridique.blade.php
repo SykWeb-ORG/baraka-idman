@@ -17,10 +17,13 @@ Liste des Cas Juridique
                             <th>Nom Du Cas Juridique</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbl_cas_juridique">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/cas/all-cas.js') }}"></script>
 @endsection

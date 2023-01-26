@@ -19,7 +19,7 @@ class CasPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $this->checkAbilityByAction($user, 'afficher cas juridique');
     }
 
     /**
@@ -31,7 +31,7 @@ class CasPolicy
      */
     public function view(User $user, Cas $cas)
     {
-        //
+        return $this->checkAbilityByAction($user, 'afficher cas juridique');
     }
 
     /**
