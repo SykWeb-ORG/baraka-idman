@@ -343,8 +343,11 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddGroups');
     })->name('AddGroups');
-    Route::get('/showGroups', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showGroups', compact('beneficiaire'));
+    Route::get('/showGroups', function (Request $request) {
+        if (!Gate::allows('viewAny', Groupe::class)) {
+            abort(403);
+        }
+        return view('superUser.showGroups');
     })->name('showGroups');
     Route::get('/AddAtelier', function (Request $request) {
         if (!Gate::allows('create', Atelier::class)) {

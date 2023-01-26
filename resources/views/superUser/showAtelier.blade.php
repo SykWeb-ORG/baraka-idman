@@ -19,7 +19,7 @@ Liste des Ateliers
                             <th>Nom d'atelier</th>
                         </tr>
                     </thead>
-                    <tbody id="tbl_atelier_juridique">
+                    <tbody id="tbl_atelier">
                     </tbody>
                 </table>
             </div>

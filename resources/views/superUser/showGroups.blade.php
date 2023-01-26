@@ -16,15 +16,18 @@ Liste des Groupes
                     <thead>
                         <tr class="text-dark">
                             <th scope="col">N°</th>
-                            <th>Nom Du Groupe</th>
+                            <th>Nom du groupe</th>
                             <th>Atelier</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbl_group">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     <!-- Show All Users End -->
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/group/all-groups.js') }}"></script>
 @endsection

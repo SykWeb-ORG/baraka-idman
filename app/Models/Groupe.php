@@ -14,6 +14,15 @@ class Groupe extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'atelier',
+    ];
+
+    /**
      * Get the atelier that owns the groupe.
      */
     public function atelier()
