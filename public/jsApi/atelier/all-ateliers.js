@@ -34,7 +34,7 @@ const deleteCas = (e) => {
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains new atelier juridique
+ * @param {object} data response from the server that contains new atelier 
  */
 const showDialogResponse = (data) => {
     let atelier = data.result;
@@ -55,6 +55,6 @@ const getAllAteliers = (data)=>{
         let tdNameAtelier = $("<td>");
         tdNameAtelier.text(atelier.atelier_nom);
         tr.append(tdNb, tdNameAtelier);
-        $("tbody#tbl_atelier_juridique").append(tr);
+        $("tbody#tbl_atelier").append(tr);
     });
 }
