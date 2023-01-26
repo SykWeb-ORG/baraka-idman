@@ -16,14 +16,17 @@ Liste des Ateliers
                     <thead>
                         <tr class="text-dark">
                             <th scope="col">N°</th>
-                            <th>Nom D'Atelier</th>
+                            <th>Nom d'atelier</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbl_atelier_juridique">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     <!-- Show All Users End -->
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/atelier/all-ateliers.js') }}"></script>
 @endsection
