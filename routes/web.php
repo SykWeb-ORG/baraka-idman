@@ -348,8 +348,11 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddAtelier');
     })->name('AddAtelier');
-    Route::get('/showAtelier', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showAtelier', compact('beneficiaire'));
+    Route::get('/showAtelier', function (Request $request) {
+        if (!Gate::allows('viewAny', Atelier::class)) {
+            abort(403);
+        }
+        return view('superUser.showAtelier');
     })->name('showAtelier');
     Route::get('/ShowProgram&Zones', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowProgram&Zones', compact('beneficiaire'));

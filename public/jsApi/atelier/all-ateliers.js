@@ -5,56 +5,56 @@
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    getAllData("cas", getAllCas);
-    $("button#btn-edit-cas").click(editCas);
-    $("button#btn-delete-cas").click(deleteCas);
+    getAllData("ateliers", getAllAteliers);
+    $("button#btn-edit-atelier").click(editAtelier);
+    $("button#btn-delete-atelier").click(deleteCas);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Edit Cas juridique
+ * Edit atelier
  * @param {Event} e Information about the event
  */
-const editCas = (e) => {
+const editAtelier = (e) => {
     e.preventDefault();
-    let nomCas = $("input#nom-cas").val();
+    let nomAtelier = $("input#nom-atelier").val();
     let dataToSend = {
-        "cas_nom": nomCas,
+        "atelier_nom": nomAtelier,
     }
-    updateData(`cas/${e.target.dataset.casId}`, dataToSend, showDialogResponse);
+    updateData(`ateliers/${e.target.dataset.atelierId}`, dataToSend, showDialogResponse);
 }
 /**
- * Delete Cas juridique
+ * Delete atelier
  * @param {Event} e Information about the event
  */
 const deleteCas = (e) => {
     e.preventDefault();
-    deleteData(`cas/${e.target.dataset.casId}`, showDialogResponse);
+    deleteData(`ateliers/${e.target.dataset.atelierId}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains new cas juridique
+ * @param {object} data response from the server that contains new atelier juridique
  */
 const showDialogResponse = (data) => {
-    let cas = data.result;
+    let atelier = data.result;
     let msg = data.msg;
     alert(msg);
-    getAllData("cas", getAllCas);
+    getAllData("ateliers", getAllAteliers);
 }
 /**
- * Retrieve all cas juridiques from the server
- * @param {object} data response from the server that contains all cas juridiques
+ * Retrieve all ateliers from the server
+ * @param {object} data response from the server that contains all ateliers
  */
-const getAllCas = (data)=>{
-    let cas = data.cases;
-    $.each(cas, function (indexInArray, oneCas) {
+const getAllAteliers = (data)=>{
+    let ateliers = data.ateliers;
+    $.each(ateliers, function (indexInArray, atelier) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
-        let tdNameCas = $("<td>");
-        tdNameCas.text(oneCas.cas_nom);
-        tr.append(tdNb, tdNameCas);
-        $("tbody#tbl_cas_juridique").append(tr);
+        let tdNameAtelier = $("<td>");
+        tdNameAtelier.text(atelier.atelier_nom);
+        tr.append(tdNb, tdNameAtelier);
+        $("tbody#tbl_atelier_juridique").append(tr);
     });
 }

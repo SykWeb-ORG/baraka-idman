@@ -19,7 +19,7 @@ class AtelierPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $this->checkAbilityByAction($user, 'afficher atelier');
     }
 
     /**
@@ -31,7 +31,7 @@ class AtelierPolicy
      */
     public function view(User $user, Atelier $atelier)
     {
-        //
+        return $this->checkAbilityByAction($user, 'afficher atelier');
     }
 
     /**
