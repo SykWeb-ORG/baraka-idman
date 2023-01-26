@@ -47,7 +47,7 @@ class GroupeController extends Controller
      */
     public function store(GroupeRequest $request)
     {
-        $groupe = new Atelier;
+        $groupe = new Groupe;
         $groupe->groupe_nom = $request->groupe_nom;
         $atelier = Atelier::find($request->atelier);
         if ($atelier->groupes()->save($groupe)) {

@@ -24,6 +24,7 @@ use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Atelier;
 use App\Models\Beneficiaire;
 use App\Models\Cas;
+use App\Models\Groupe;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\Role;
@@ -336,8 +337,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showVisiteMedical', function (Beneficiaire $beneficiaire) {
         return view('superUser.showVisiteMedical', compact('beneficiaire'));
     })->name('showVisiteMedical');
-    Route::get('/AddGroups', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddGroups', compact('beneficiaire'));
+    Route::get('/AddGroups', function (Request $request) {
+        if (!Gate::allows('create', Groupe::class)) {
+            abort(403);
+        }
+        return view('superUser.AddGroups');
     })->name('AddGroups');
     Route::get('/showGroups', function (Beneficiaire $beneficiaire) {
         return view('superUser.showGroups', compact('beneficiaire'));

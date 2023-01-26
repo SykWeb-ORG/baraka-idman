@@ -71,6 +71,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\Groupe::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Groupes</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\Groupe::class)
+                            <a href="{{ route('AddGroups') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\Groupe::class)
+                            <a href="{{ route('showGroups') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['roles-permissions-ability', 'roles-services-ability'])
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Gestion des roles</a>

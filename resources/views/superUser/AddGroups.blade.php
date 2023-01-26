@@ -12,21 +12,17 @@ Ajout d'un groupe
                     <h6 id="title-form" class="mb-4">Ajouter Groupe</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="nom-groupe" class="form-label">Nom Du Groupe</label>
-                            <input type="text" name="nom-groupe" class="form-control" id="nom-groupe">
+                            <label for="nom-group" class="form-label">Nom Du Groupe</label>
+                            <input type="text" name="nom-group" class="form-control" id="nom-group">
                         </div>
                         <div class="mb-3">
                             <label for="atelier" class="form-label">Atelier</label>
                             <select name="atelier" class="form-select mb-3" aria-label="Default select example" id="atelier">
                                 <option selected="">Choisir atelier</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                                <option value=""> </option>
-                                <option value=""></option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <button id="btn-visite-medical" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-group" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>
@@ -34,4 +30,7 @@ Ajout d'un groupe
         </div>
     </div>
     <!-- Form End -->
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/group/add-group.js') }}"></script>
 @endsection
