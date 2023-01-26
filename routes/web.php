@@ -21,6 +21,7 @@ use App\Http\Controllers\SocialeVisiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
 use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
+use App\Models\Atelier;
 use App\Models\Beneficiaire;
 use App\Models\Cas;
 use App\Models\Intervenant;
@@ -341,8 +342,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showGroups', function (Beneficiaire $beneficiaire) {
         return view('superUser.showGroups', compact('beneficiaire'));
     })->name('showGroups');
-    Route::get('/AddAtelier', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddAtelier', compact('beneficiaire'));
+    Route::get('/AddAtelier', function (Request $request) {
+        if (!Gate::allows('create', Atelier::class)) {
+            abort(403);
+        }
+        return view('superUser.AddAtelier');
     })->name('AddAtelier');
     Route::get('/showAtelier', function (Beneficiaire $beneficiaire) {
         return view('superUser.showAtelier', compact('beneficiaire'));
