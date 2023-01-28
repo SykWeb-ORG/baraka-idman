@@ -272,8 +272,9 @@ Route::middleware('auth:sanctum')->group(function () {
                 ],
                 404
             );
-        });
-    Route::post('match-beneficiaire-ateliers/{beneficiaire}', [ManagementBeneficiaireAteliersController::class, 'matchBeneficiaireAteliers'])
+        })
+        ->name('all-ateliers');
+    Route::put('match-beneficiaire-ateliers/{beneficiaire}', [ManagementBeneficiaireAteliersController::class, 'matchBeneficiaireAteliers'])
         ->missing(function (Request $request) {
             return response()->json(
                 [
@@ -382,9 +383,6 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.showCasJuridique');
     })->name('showCasJuridique');
-    Route::get('/AffectGroupBeneficiaire', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AffectGroupBeneficiaire', compact('beneficiaire'));
-    })->name('AffectGroupBeneficiaire');
     Route::get('/AffectCasJuridiqueBeneficiaire', function (Beneficiaire $beneficiaire) {
         return view('superUser.AffectCasJuridiqueBenef', compact('beneficiaire'));
     })->name('AffectCasJuridiqueBeneficiaire');

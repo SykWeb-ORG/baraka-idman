@@ -136,6 +136,9 @@ Liste des Bénéficiaires
                                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-archive"></i></button>
                                                 </form>
                                                 @endcan
+                                                @can('beneficiaire-ateliers-ability')
+                                                <a href='{{ route('all-ateliers', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-briefcase"></i></a>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>

@@ -9,12 +9,8 @@ Gestion des roles avec les services
             <h6 class="mb-0">Add Group to Beneficaire</h6>
         </div>
         <div class="div_perm">
-            <select name="role" id="role" class="cusSelectbox">
-                <option value="Select">Atelier</option>
-                <option value="India">India</option>
-                <option value="Nepal">Nepal</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Sri Lanka">Sri Lanka</option>
+            <select name="atelier" id="atelier" class="cusSelectbox">
+                <option value="">Choisir une atelier</option>
             </select>
             <fieldset class="mb-4">
                 <legend>Group</legend>
@@ -27,4 +23,10 @@ Gestion des roles avec les services
         </div>
     </div>
     <div class="push"></div>
+@endsection
+@section('custom_scripts')
+    <script>
+        var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }}
+    </script>
+    <script src="{{ asset('jsApi/beneficiairesAteliers/affectBeneficiaireToAteliers.js') }}"></script>
 @endsection
