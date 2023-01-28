@@ -516,3 +516,9 @@ table tbody tr .userEdit{
 .push {
   height: 50px;
 }
+.modal-bodyEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
