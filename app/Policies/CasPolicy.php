@@ -66,7 +66,7 @@ class CasPolicy
      */
     public function delete(User $user, Cas $cas)
     {
-        //
+        return $this->checkAbilityByAction($user, 'supprimer cas juridique');
     }
 
     /**
