@@ -22,7 +22,7 @@ Liste des Groupes
                         </tr>
                     </thead>
                     <tbody id="tbl_group">
-                        <!--Edit Cas-->
+                        <!--Edit Group-->
                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
                             data-bs-target="#modal_EditGrp"><i class="fas fa-edit"></i></button>
                         <!-- Modal -->
@@ -56,8 +56,8 @@ Liste des Groupes
                             </div>
                         </div>
                         <!--End Modal-->
-                        <!--End Edit Cas-->
-                        <!--Delete Cas-->
+                        <!--End Edit Group-->
+                        <!--Delete Group-->
                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
                             data-bs-target="#modal_DeleteGrp"><i class="fas fa-trash"></i></button>
                         <!-- Modal -->
@@ -80,7 +80,7 @@ Liste des Groupes
                             </div>
                         </div>
                         <!--End Modal-->
-                        <!--End Delete Cas-->
+                        <!--End Delete Group-->
                     </tbody>
                 </table>
             </div>
