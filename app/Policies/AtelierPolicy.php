@@ -66,7 +66,7 @@ class AtelierPolicy
      */
     public function delete(User $user, Atelier $atelier)
     {
-        //
+        return $this->checkAbilityByAction($user, 'supprimer atelier');
     }
 
     /**

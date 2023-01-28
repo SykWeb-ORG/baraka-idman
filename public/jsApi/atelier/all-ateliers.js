@@ -9,7 +9,7 @@ var atelierToOperate = null;
 $(document).ready(function () {
     getAllData("ateliers", getAllAteliers);
     $("button#btn-edit-atelier").click(editAtelier);
-    $("button#btn-delete-atelier").click(deleteCas);
+    $("button#btn-delete-atelier").click(deleteAtelier);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
@@ -30,7 +30,7 @@ const editAtelier = (e) => {
  * Delete atelier
  * @param {Event} e Information about the event
  */
-const deleteCas = (e) => {
+const deleteAtelier = (e) => {
     e.preventDefault();
     deleteData(`ateliers/${atelierToOperate.id}`, showDialogResponse);
 }
