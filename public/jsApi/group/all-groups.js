@@ -1,10 +1,13 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
+var groupes = null;
+var groupToOperate = null;
 /// *****************************
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
+    getAllData("ateliers", getAllAteliers);
     getAllData("groupes", getAllGroups);
     $("button#btn-edit-group").click(editGroup);
     $("button#btn-delete-group").click(deleteGroup);
@@ -24,7 +27,7 @@ const editGroup = (e) => {
         "groupe_nom": nomGroup,
         "atelier": atelierId,
     }
-    updateData(`groupes/${e.target.dataset.groupId}`, dataToSend, showDialogResponse);
+    updateData(`groupes/${groupToOperate.id}`, dataToSend, showDialogResponse);
 }
 /**
  * Delete groupe
@@ -32,7 +35,7 @@ const editGroup = (e) => {
  */
 const deleteGroup = (e) => {
     e.preventDefault();
-    deleteData(`groupes/${e.target.dataset.groupId}`, showDialogResponse);
+    deleteData(`groupes/${groupToOperate.id}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
@@ -42,14 +45,17 @@ const showDialogResponse = (data) => {
     let group = data.result;
     let msg = data.msg;
     alert(msg);
-    getAllData("groupes", getAllGroups);
+    if (data.status == 200) {
+        $("tbody#tbl_group").empty();
+        getAllData("groupes", getAllGroups);
+    }
 }
 /**
  * Retrieve all groupes from the server
  * @param {object} data response from the server that contains all groupes
  */
 const getAllGroups = (data)=>{
-    let groupes = data.groupes;
+    groupes = data.groupes;
     $.each(groupes, function (indexInArray, group) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
@@ -58,7 +64,41 @@ const getAllGroups = (data)=>{
         tdNameGroup.text(group.groupe_nom);
         let tdAtelier = $("<td>");
         tdAtelier.text(group.atelier.atelier_nom);
-        tr.append(tdNb, tdNameGroup, tdAtelier);
+        let tdEditGroup = $(`<td class="text-center">`);
+        let btnEditGroup = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-group-id=${group.id} data-bs-toggle='modal' data-bs-target='#modal_EditGrp'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Groupe'>`);
+        btnEditGroup.append("<i class='fas fa-edit'></i>");
+        btnEditGroup.click(function (e) { 
+            e.preventDefault();
+            fillModalEditGroup($(this).data("group-id"));
+        });
+        tdEditGroup.append(btnEditGroup);
+        let tdDeleteGroup = $(`<td class="text-center">`);
+        let btnDeleteGroup = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-group-id=${group.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteGrp"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Groupe'>`);
+        btnDeleteGroup.append(`<i class="fas fa-trash"></i>`);
+        btnDeleteGroup.click(function (e) {
+            e.preventDefault();
+            groupToOperate = groupes.find(oneGroup => oneGroup.id == $(this).data("group-id"));
+        });
+        tdDeleteGroup.append(btnDeleteGroup);
+        tr.append(tdNb, tdNameGroup, tdAtelier, tdEditGroup, tdDeleteGroup);
         $("tbody#tbl_group").append(tr);
+    });
+}
+const fillModalEditGroup = (groupId) => {
+    groupToOperate = groupes.find(oneGroup => oneGroup.id == groupId);
+    $("input#nom-group").val(groupToOperate.groupe_nom);
+    $("select#atelier").val(groupToOperate.atelier_id);
+}
+/**
+ * Retrieve all ateliers from the server
+ * @param {object} data response from the server that contains all ateliers
+ */
+const getAllAteliers = (data) => {
+    let ateliers = data.ateliers;
+    $.each(ateliers, function (indexInArray, atelier) {
+        let option = $("<option>");
+        option.text(atelier.atelier_nom);
+        option.val(atelier.id);
+        $("select#atelier").append(option);
     });
 }
