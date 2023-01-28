@@ -1,6 +1,8 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
+var ateliers = null;
+var atelierToOperate = null;
 /// *****************************
 /// CALL YOUR FUNCTIONS
 /// *****************************
@@ -22,7 +24,7 @@ const editAtelier = (e) => {
     let dataToSend = {
         "atelier_nom": nomAtelier,
     }
-    updateData(`ateliers/${e.target.dataset.atelierId}`, dataToSend, showDialogResponse);
+    updateData(`ateliers/${atelierToOperate.id}`, dataToSend, showDialogResponse);
 }
 /**
  * Delete atelier
@@ -30,7 +32,7 @@ const editAtelier = (e) => {
  */
 const deleteCas = (e) => {
     e.preventDefault();
-    deleteData(`ateliers/${e.target.dataset.atelierId}`, showDialogResponse);
+    deleteData(`ateliers/${atelierToOperate.id}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
@@ -40,21 +42,44 @@ const showDialogResponse = (data) => {
     let atelier = data.result;
     let msg = data.msg;
     alert(msg);
-    getAllData("ateliers", getAllAteliers);
+    if (data.status == 200) {
+        $("tbody#tbl_atelier").empty();
+        getAllData("ateliers", getAllAteliers);
+    }
 }
 /**
  * Retrieve all ateliers from the server
  * @param {object} data response from the server that contains all ateliers
  */
 const getAllAteliers = (data)=>{
-    let ateliers = data.ateliers;
+    ateliers = data.ateliers;
     $.each(ateliers, function (indexInArray, atelier) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
         let tdNameAtelier = $("<td>");
         tdNameAtelier.text(atelier.atelier_nom);
-        tr.append(tdNb, tdNameAtelier);
+        let tdEditAtelier = $(`<td class="text-center">`);
+        let btnEditAtelier = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-atelier-id=${atelier.id} data-bs-toggle='modal' data-bs-target='#modal_EditAtelier'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Atelier'>`);
+        btnEditAtelier.append("<i class='fas fa-edit'></i>");
+        btnEditAtelier.click(function (e) { 
+            e.preventDefault();
+            fillModalEditAtelier($(this).data("atelier-id"));
+        });
+        tdEditAtelier.append(btnEditAtelier);
+        let tdDeleteAtelier = $(`<td class="text-center">`);
+        let btnDeleteAtelier = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-atelier-id=${atelier.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteAtelier"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Atelier'>`);
+        btnDeleteAtelier.append(`<i class="fas fa-trash"></i>`);
+        btnDeleteAtelier.click(function (e) {
+            e.preventDefault();
+            atelierToOperate = ateliers.find(oneAtelier => oneAtelier.id == $(this).data("atelier-id"));
+        });
+        tdDeleteAtelier.append(btnDeleteAtelier);
+        tr.append(tdNb, tdNameAtelier, tdEditAtelier, tdDeleteAtelier);
         $("tbody#tbl_atelier").append(tr);
     });
+}
+const fillModalEditAtelier = (atelierId) => {
+    atelierToOperate = ateliers.find(atelier => atelier.id == atelierId);
+    $("input#nom-atelier").val(atelierToOperate.atelier_nom);
 }

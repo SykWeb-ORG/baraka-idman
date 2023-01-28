@@ -54,7 +54,7 @@ class AtelierPolicy
      */
     public function update(User $user, Atelier $atelier)
     {
-        //
+        return $this->checkAbilityByAction($user, 'modifier atelier');
     }
 
     /**
