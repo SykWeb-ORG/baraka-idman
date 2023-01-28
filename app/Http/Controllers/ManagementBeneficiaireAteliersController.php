@@ -13,15 +13,17 @@ class ManagementBeneficiaireAteliersController extends Controller
         if (!Gate::allows('beneficiaire-ateliers-ability')) {
             abort(403);
         }
-        return view('', $beneficiaire);
+        return view('superUser.AffectGroupBeneficiaire', compact('beneficiaire'));
     }
     public function matchBeneficiaireAteliers(Request $request, Beneficiaire $beneficiaire)
     {
         if (!Gate::allows('beneficiaire-ateliers-ability')) {
             abort(403);
         }
-        $beneficiaire->groupes()->detach();
-        $beneficiaire->groupes()->attach($request->groupes);
+        if ($request->groupesToDetach) {
+            $beneficiaire->groupes()->detach($request->groupesToDetach);
+            $beneficiaire->groupes()->attach($request->groupesToAttach);
+        }
         $beneficiaire->refresh();
         $result = $beneficiaire;
         $status = 200;
