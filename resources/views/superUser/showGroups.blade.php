@@ -70,8 +70,8 @@ Liste des Groupes
                             </div>
                             <div class="modal-bodyEdit">
                                     <div class="mb-3 mt-3">
-                                        <button id="btn-delete-cas" class="btn btn-secondary">Oui</button>
-                                        <button id="btn-delete-cas" class="btn btn-primary">Non</button>
+                                        <button id="btn-delete-group" class="btn btn-secondary">Oui</button>
+                                        <button class="btn btn-primary">Non</button>
                                     </div>
                             </div>
                         </div>
