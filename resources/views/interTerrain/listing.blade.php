@@ -139,6 +139,9 @@ Liste des Bénéficiaires
                                                 @can('beneficiaire-ateliers-ability')
                                                 <a href='{{ route('all-ateliers', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-briefcase"></i></a>
                                                 @endcan
+                                                @can('beneficiaire-cas-ability')
+                                                <a href='{{ route('all-cas', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-balance-scale"></i></a>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>

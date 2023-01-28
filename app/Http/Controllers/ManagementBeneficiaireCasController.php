@@ -13,7 +13,7 @@ class ManagementBeneficiaireCasController extends Controller
         if (!Gate::allows('beneficiaire-cas-ability')) {
             abort(403);
         }
-        return view('', $beneficiaire);
+        return view('superUser.AffectCasJuridiqueBenef', compact('beneficiaire'));
     }
     public function matchBeneficiaireCas(Request $request, Beneficiaire $beneficiaire)
     {

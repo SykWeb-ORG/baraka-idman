@@ -21,3 +21,9 @@ Gestion des Cas Juridiques
     </div>
     <div class="push"></div>
 @endsection
+@section('custom_scripts')
+    <script>
+        var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }}
+    </script>
+    <script src="{{ asset('jsApi/beneficiairesCasJuridiques/affectBeneficiaireToCasJuridiques.js') }}"></script>
+@endsection
