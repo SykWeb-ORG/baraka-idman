@@ -25,6 +25,13 @@
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
 </head>
 <body>
+    <div class="alert show showAlert">
+        <span class="fas fa-check"></span>
+        <span class="msg">Bien Modifié</span>
+        <span class="close-btn" id="close-btn">
+            <span class="fas fa-times"></span>
+        </span>
+    </div>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
