@@ -21,7 +21,7 @@ Liste des Ateliers
                         </tr>
                     </thead>
                     <tbody id="tbl_atelier">
-                        <!--Edit Cas-->
+                        <!--Edit Atelier-->
                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
                             data-bs-target="#modal_EditAtelier"><i class="fas fa-edit"></i></button>
                         <!-- Modal -->
@@ -41,7 +41,7 @@ Liste des Ateliers
                                                 <input type="text" name="nom-atelier" class="form-control" id="nom-atelier">
                                             </div>
                                             <div class="mb-3">
-                                                <button id="btn-add-atelier" class="btn btn-primary">Ajouter</button>
+                                                <button id="btn-add-atelier" class="btn btn-primary">Modifier</button>
                                             </div>
                                         </form>
                                     </div>
@@ -49,8 +49,8 @@ Liste des Ateliers
                             </div>
                         </div>
                         <!--End Modal-->
-                        <!--End Edit Cas-->
-                        <!--Delete Cas-->
+                        <!--End Edit Atelier-->
+                        <!--Delete Atelier-->
                         <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
                             data-bs-target="#modal_DeleteAtelier"><i class="fas fa-trash"></i></button>
                         <!-- Modal -->
@@ -73,7 +73,7 @@ Liste des Ateliers
                             </div>
                         </div>
                         <!--End Modal-->
-                        <!--End Delete Cas-->
+                        <!--End Delete Atelier-->
                     </tbody>
                 </table>
             </div>
