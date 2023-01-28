@@ -54,7 +54,7 @@ class CasPolicy
      */
     public function update(User $user, Cas $cas)
     {
-        //
+        return $this->checkAbilityByAction($user, 'modifier cas juridique');
     }
 
     /**

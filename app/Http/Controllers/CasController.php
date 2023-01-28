@@ -116,6 +116,7 @@ class CasController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
