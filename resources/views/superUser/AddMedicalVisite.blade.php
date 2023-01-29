@@ -41,7 +41,9 @@ Ajout d'une visite medicale
                         </div>
                         <div class="mb-3">
                             <label for="beneficiaire" class="form-label">Bénéficiaire</label>
-                            <input type="text" name="beneficiaire" class="form-control" id="beneficiaire">
+                            <select name="beneficiaire" class="form-select" aria-label="Default select example" id="beneficiaire">
+                                <option value=""></option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <button id="btn-visite-medical" class="btn btn-primary">Ajouter</button>
@@ -52,4 +54,9 @@ Ajout d'une visite medicale
         </div>
     </div>
     <!-- Form End -->
+@endsection
+@section('custom_scripts')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('jsApi/medicaleVisite/add-medicale-visite.js') }}"></script>
 @endsection

@@ -27,6 +27,7 @@ use App\Models\Cas;
 use App\Models\Groupe;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
+use App\Models\MedicaleVisite;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\SocialAssistant;
@@ -332,8 +333,11 @@ Route::middleware('auth:sanctum')->group(function () {
                 404
             );
         });
-    Route::get('/visiteMedical', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddMedicalVisite', compact('beneficiaire'));
+    Route::get('/visiteMedical', function (Request $request) {
+        if (!Gate::allows('create', MedicaleVisite::class)) {
+            abort(403);
+        }
+        return view('superUser.AddMedicalVisite');
     })->name('visitemedical');
     Route::get('/showVisiteMedical', function (Beneficiaire $beneficiaire) {
         return view('superUser.showVisiteMedical', compact('beneficiaire'));
@@ -459,6 +463,17 @@ Route::middleware('auth:sanctum')->group(function () {
         return response()->json(
             [
                 'result' => $roles,
+                'msg' => 'success',
+            ],
+            200
+        );
+    });
+    Route::get('all-beneficiaires', function (Request $request)
+    {
+        $beneficiaires = Beneficiaire::all();
+        return response()->json(
+            [
+                'result' => $beneficiaires,
                 'msg' => 'success',
             ],
             200

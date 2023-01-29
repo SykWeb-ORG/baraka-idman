@@ -18,7 +18,7 @@ class MedicaleVisitePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->admin;
+        return $user->medical_assistant || $user->admin;
     }
 
     /**
