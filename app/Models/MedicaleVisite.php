@@ -16,6 +16,20 @@ class MedicaleVisite extends Model
     ];
 
     /**
+     * The storage format of the model's date columns.
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d';
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'medicale_visite';
+    
+    /**
      * Get the beneficiare that owns the medicale visite.
      */
     public function beneficiare()
