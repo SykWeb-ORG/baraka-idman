@@ -479,4 +479,7 @@ Route::middleware('auth:sanctum')->group(function () {
             200
         );
     });
+    Route::get('/showService', function (Beneficiaire $beneficiaire) {
+        return view('superUser.showService', compact('beneficiaire'));
+    })->name('showService');
 });
