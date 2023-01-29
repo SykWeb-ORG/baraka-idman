@@ -11,7 +11,6 @@ Ajout d'une visite sociale
                 <div class="bg-light rounded h-100 p-4">
                     <h6 id="title-form" class="mb-4">Ajouter Visite Sociale</h6>
                     <form class="form-user" action="" method="POST">
-                        @csrf
                         <div class="mb-3">
                             <label for="date_visiteS" class="form-label">Date De Visite</label>
                             <input type="date" name="date_visite" class="form-control" id="date_visite">
