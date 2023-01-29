@@ -482,4 +482,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showService', function (Beneficiaire $beneficiaire) {
         return view('superUser.showService', compact('beneficiaire'));
     })->name('showService');
+    Route::get('/AddFormation', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddFormation', compact('beneficiaire'));
+    })->name('AddFormation');
+    Route::get('/showFormation', function (Beneficiaire $beneficiaire) {
+        return view('superUser.ShowFormation', compact('beneficiaire'));
+    })->name('showFormation');
 });
