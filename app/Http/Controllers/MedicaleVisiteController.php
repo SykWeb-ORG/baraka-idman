@@ -20,7 +20,18 @@ class MedicaleVisiteController extends Controller
      */
     public function index()
     {
-        
+        if (Auth::user()->admin) {
+            $medicale_visites = MedicaleVisite::all();
+            $medicale_visites->loadMissing('medical_assistant.user');
+        } else {
+            $medicale_visites = Auth::user()->medical_assistant->medicale_visites;
+        }
+        return response()->json(
+            [
+                'medicale_visites' => $medicale_visites,
+            ],
+            200
+        );
     }
 
     /**
@@ -106,7 +117,9 @@ class MedicaleVisiteController extends Controller
         if ($request->has('visite_presence')) {
             $medicaleVisite->visite_presence = $request->visite_presence;
         }
-        if ($medicaleVisite->update()) {
+        $beneficiaire = Beneficiaire::find($request->beneficiaire);
+        // if ($medicaleVisite->update()) {
+        if ($beneficiaire->medicale_visites()->save($medicaleVisite)) {
             $result = $medicaleVisite;
             $status = 200;
             $msg = "Visite médicale modifiée avec success.";
@@ -119,6 +132,7 @@ class MedicaleVisiteController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
@@ -145,6 +159,7 @@ class MedicaleVisiteController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );

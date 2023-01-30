@@ -110,7 +110,7 @@ class Beneficiaire extends Model
     }
 
     /**
-     * Get the sociale visites for the beneficiaire.
+     * Get the medicale visites for the beneficiaire.
      */
     public function medicale_visites()
     {

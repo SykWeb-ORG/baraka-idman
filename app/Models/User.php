@@ -51,7 +51,7 @@ class User extends Authenticatable
         'donnees',
         'admin',
         'intervenant',
-        'medical_assistant',
+        'medical_assistant.medicale_visites',
         'social_assistant',
     ];
 

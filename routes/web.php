@@ -339,8 +339,11 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddMedicalVisite');
     })->name('visitemedical');
-    Route::get('/showVisiteMedical', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showVisiteMedical', compact('beneficiaire'));
+    Route::get('/showVisiteMedical', function (Request $request) {
+        if (!Gate::allows('viewAny', MedicaleVisite::class)) {
+            abort(403);
+        }
+        return view('superUser.showVisiteMedical');
     })->name('showVisiteMedical');
     Route::get('/AddGroups', function (Request $request) {
         if (!Gate::allows('create', Groupe::class)) {
