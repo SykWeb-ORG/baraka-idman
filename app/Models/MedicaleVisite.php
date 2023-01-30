@@ -30,9 +30,18 @@ class MedicaleVisite extends Model
     protected $table = 'medicale_visite';
     
     /**
-     * Get the beneficiare that owns the medicale visite.
+     * The relationships that should always be loaded.
+     *
+     * @var array
      */
-    public function beneficiare()
+    protected $with = [
+        'beneficiaire',
+    ];
+
+    /**
+     * Get the beneficiaire that owns the medicale visite.
+     */
+    public function beneficiaire()
     {
         return $this->belongsTo(Beneficiaire::class);
     }

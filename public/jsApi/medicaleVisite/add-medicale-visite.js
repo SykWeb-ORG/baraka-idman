@@ -5,7 +5,7 @@
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    getAllData("all-beneficiaires", fillSelectBeneficiaires)
+    getAllData("all-beneficiaires", fillSelectBeneficiaires);
     $("button#btn-visite-medical").click(addMedicaleVisite);
 });
 /// *****************************
