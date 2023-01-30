@@ -373,6 +373,16 @@ table tbody tr .actionM{
 table tbody tr .actionModal{
     display: none;
 }
+table tbody tr td.actionEdit {
+    position: sticky;
+    inset-inline-end: 60px;
+    background-color: var(--light);
+}
+table tbody tr td.actionDelete {
+    position: sticky;
+    inset-inline-end: -2px;
+    background-color: var(--light);
+}
 @media (max-width: 575.98px) {
     .content .navbar .navbar-nav .nav-link {
         margin-left: 15px;
@@ -392,11 +402,21 @@ table tbody tr .actionModal{
         z-index: 1000;
     }
     .modal-dialog {
-        max-width: 150px;   
+        max-width: 450px;  
         margin: 4.75rem auto;
     }
     table tbody tr .actionModal{
         display: block;
+    }
+    table tbody tr td.actionEdit {
+        position: sticky;
+        inset-inline-end: 60px;
+        background-color: var(--light);
+    }
+    table tbody tr td.actionDelete {
+        position: sticky;
+        inset-inline-end: -2px;
+        background-color: var(--light);
     }
     /* .modal-title {
         font-size: 15px;
@@ -414,6 +434,10 @@ table tbody tr .actionModal{
 }
 .table-height{
     height: 600px;
+    overflow-y: scroll;
+}
+.table-heightPart{
+    height: 300px;
     overflow-y: scroll;
 }
 table thead th {
@@ -490,7 +514,7 @@ table tbody tr .userEdit{
 }
 @media (min-width: 576px){
     .modal-dialog {
-        max-width: 300px;   
+        /* max-width: fit-content;    */
         margin: 4.75rem auto;
     }
 }
@@ -647,4 +671,13 @@ table tbody tr .userEdit{
     color: #fff;
     font-size: 22px;
     line-height: 40px;
+}
+.participant{
+    margin: 0 60px;
+    text-align: center;
+}
+.participant .form-part{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    text-align: start;
 }
