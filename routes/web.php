@@ -17,6 +17,7 @@ use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\MedicaleVisiteController;
 use App\Http\Controllers\ProgrammeController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SocialeVisiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
@@ -504,4 +505,8 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.showSocialVisite');
     })->name('showSocialVisite');
+    Route::resource('services', ServiceController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas de service", 404);
+        });
 });
