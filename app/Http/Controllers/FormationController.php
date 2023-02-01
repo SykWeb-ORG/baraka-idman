@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class FormationController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Formation::class, 'formation');
+    }
+
     /**
      * Display a listing of the resource.
      *
