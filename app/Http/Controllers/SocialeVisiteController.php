@@ -6,9 +6,14 @@ use App\Http\Requests\SocialeVisiteRequest;
 use App\Models\Beneficiaire;
 use App\Models\SocialeVisite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SocialeVisiteController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(SocialeVisite::class, 'socialeVisite');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +49,7 @@ class SocialeVisiteController extends Controller
             $socialeVisite->visite_remarque = $request->visite_remarque;
         }
         $beneficiaire = Beneficiaire::find($request->beneficiaire);
-        if ($beneficiaire->sociale_visites()->save($socialeVisite)) {
+        if ($beneficiaire->sociale_visites()->save($socialeVisite) && Auth::user()->social_assistant->sociale_visites()->save($socialeVisite)) {
             $result = $socialeVisite;
             $status = 200;
             $msg = "Visite sociale ajoutée avec success.";
