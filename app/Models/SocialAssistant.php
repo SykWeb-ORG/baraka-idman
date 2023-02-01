@@ -16,4 +16,12 @@ class SocialAssistant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the sociale visites for the beneficiaire.
+     */
+    public function sociale_visites()
+    {
+        return $this->hasMany(SocialeVisite::class);
+    }
 }

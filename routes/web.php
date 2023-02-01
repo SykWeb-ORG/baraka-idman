@@ -31,6 +31,7 @@ use App\Models\MedicaleVisite;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\SocialAssistant;
+use App\Models\SocialeVisite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -491,8 +492,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showFormation', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowFormation', compact('beneficiaire'));
     })->name('showFormation');
-    Route::get('/AddSocialVisite', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddSocialVisite', compact('beneficiaire'));
+    Route::get('/AddSocialVisite', function (Request $request) {
+        if (!Gate::allows('create', SocialeVisite::class)) {
+            abort(403);
+        }
+        return view('superUser.AddSocialVisite');
     })->name('AddSocialVisite');
     Route::get('/showSocialVisite', function (Beneficiaire $beneficiaire) {
         return view('superUser.showSocialVisite', compact('beneficiaire'));

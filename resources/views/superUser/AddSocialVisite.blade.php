@@ -22,13 +22,7 @@ Ajout d'une visite sociale
                         <div class="mb-3">
                             <label for="beneficiaire" class="form-label">Bénéficiaire</label>
                             <select name="beneficiaire" class="form-select" aria-label="Default select example" id="beneficiaire">
-                                <option value="">Choisir un beneficiaire</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Assistant_Sociale" class="form-label">Assistant Sociale</label>
-                            <select name="Assistant_Sociale" class="form-select" aria-label="Default select example" id="beneficiaire">
-                                <option value="">Choisir un Assistant Social</option>
+                                <option value=""></option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -42,4 +36,7 @@ Ajout d'une visite sociale
     <!-- Form End -->
 @endsection
 @section('custom_scripts')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('jsApi/socialeVisite/add-sociale-visite.js') }}"></script>
 @endsection
