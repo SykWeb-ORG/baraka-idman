@@ -97,6 +97,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\Formation::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Formations</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\Formation::class)
+                            <a href="{{ route('AddFormation') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\Formation::class)
+                            <a href="{{ route('showFormation') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['create', 'viewAny'], App\Models\MedicaleVisite::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Visites médicales</a>
