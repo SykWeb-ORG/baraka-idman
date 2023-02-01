@@ -3,6 +3,7 @@
 use App\Http\Controllers\AtelierController;
 use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\CasController;
+use App\Http\Controllers\FormationController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\ManagementBeneficiaireAteliersController;
 use App\Http\Controllers\ManagementBeneficiaireCasController;
@@ -508,5 +509,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('services', ServiceController::class)
         ->missing(function (Request $request) {
             return response()->json("pas de service", 404);
+        });
+    Route::resource('formations', FormationController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas de formation", 404);
         });
 });
