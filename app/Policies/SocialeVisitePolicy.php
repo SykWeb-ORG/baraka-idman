@@ -65,7 +65,7 @@ class SocialeVisitePolicy
      */
     public function delete(User $user, SocialeVisite $socialeVisite)
     {
-        //
+        return $this->view($user, $socialeVisite);
     }
 
     /**

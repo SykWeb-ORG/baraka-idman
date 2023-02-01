@@ -498,7 +498,10 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddSocialVisite');
     })->name('AddSocialVisite');
-    Route::get('/showSocialVisite', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showSocialVisite', compact('beneficiaire'));
+    Route::get('/showSocialVisite', function (Request $request) {
+        if (!Gate::allows('viewAny', SocialeVisite::class)) {
+            abort(403);
+        }
+        return view('superUser.showSocialVisite');
     })->name('showSocialVisite');
 });

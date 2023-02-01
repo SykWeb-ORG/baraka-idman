@@ -52,7 +52,7 @@ class User extends Authenticatable
         'admin',
         'intervenant',
         'medical_assistant.medicale_visites',
-        'social_assistant',
+        'social_assistant.sociale_visites',
     ];
 
 

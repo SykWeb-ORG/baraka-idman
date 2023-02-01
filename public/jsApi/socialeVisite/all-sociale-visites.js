@@ -1,57 +1,55 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
-var medicaleVisites = null;
-var medicaleVisiteToOperate = null;
+var socialeVisites = null;
+var socialeVisiteToOperate = null;
 /// *****************************
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
     getAllData("all-beneficiaires", fillSelectBeneficiaires);
-    getAllData("medicaleVisites", getAllMedicaleVisites);
-    $("button#btn-edit-visite-medical").click(editMedicaleVisite);
-    $("button#btn-delete-visite-medical").click(deleteMedicaleVisite);
+    getAllData("socialeVisites", getAllSocialeVisites);
+    $("button#btn-edit-visite-sociale").click(editSocialeVisite);
+    $("button#btn-delete-visite-sociale").click(deleteSocialeVisite);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Edit medicale visite
+ * Edit sociale visite
  * @param {Event} e Information about the event
  */
-const editMedicaleVisite = (e) => {
+const editSocialeVisite = (e) => {
     e.preventDefault();
-    let dateMedicaleVisite = $("input#date_visite").val();
-    let presence = $(`input#gridRadios1`).prop("checked") ? 1 : 0;
+    let dateSocialeVisite = $("input#date_visite").val();
     let remarque = $(`input#remarque-visite`).val();
     let beneficiaire = $(`select#beneficiaire`).val();
     let dataToSend = {
-        "visite_date": dateMedicaleVisite,
-        "visite_presence": presence,
+        "visite_date": dateSocialeVisite,
         "visite_remarque": remarque,
         "beneficiaire": beneficiaire,
     }
-    updateData(`medicaleVisites/${medicaleVisiteToOperate.id}`, dataToSend, showDialogResponse);
+    updateData(`socialeVisites/${socialeVisiteToOperate.id}`, dataToSend, showDialogResponse);
 }
 /**
- * Delete medicale visite
+ * Delete sociale visite
  * @param {Event} e Information about the event
  */
-const deleteMedicaleVisite = (e) => {
+const deleteSocialeVisite = (e) => {
     e.preventDefault();
-    deleteData(`medicaleVisites/${medicaleVisiteToOperate.id}`, showDialogResponse);
+    deleteData(`socialeVisites/${socialeVisiteToOperate.id}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains new medicale visite
+ * @param {object} data response from the server that contains new sociale visite
  */
 const showDialogResponse = (data) => {
     let atelier = data.result;
     let msg = data.msg;
     alert(msg);
     if (data.status == 200) {
-        $("tbody#tbl_medicale_visites").empty();
-        getAllData("medicaleVisites", getAllMedicaleVisites);
+        $("tbody#tbl_sociale_visites").empty();
+        getAllData("socialeVisites", getAllSocialeVisites);
     }
 }
 /**
@@ -71,57 +69,50 @@ const fillSelectBeneficiaires = (data) => {
     });
 }
 /**
- * Retrieve all medicale visites from the server
- * @param {object} data response from the server that contains all medicale visites
+ * Retrieve all sociale visites from the server
+ * @param {object} data response from the server that contains all sociale visites
  */
-const getAllMedicaleVisites = (data) => {
-    medicaleVisites = data.medicale_visites;
-    $.each(medicaleVisites, function (indexInArray, medicaleVisite) {
+const getAllSocialeVisites = (data) => {
+    socialeVisites = data.sociale_visites;
+    $.each(socialeVisites, function (indexInArray, socialeVisite) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
-        let tdDateMedicaleVisite = $("<td>");
-        tdDateMedicaleVisite.text(medicaleVisite.visite_date);
-        let tdPresenceMedicaleVisite = $("<td>");
-        tdPresenceMedicaleVisite.text((medicaleVisite.visite_presence == 1 ? "Oui" : "Non"));
-        let tdRemarqueMedicaleVisite = $("<td>");
-        tdRemarqueMedicaleVisite.text(medicaleVisite.visite_remarque);
+        let tdDateSocialeVisite = $("<td>");
+        tdDateSocialeVisite.text(socialeVisite.visite_date);
+        let tdRemarqueSocialeVisite = $("<td>");
+        tdRemarqueSocialeVisite.text(socialeVisite.visite_remarque);
         let tdBeneficiaire = $("<td>");
-        tdBeneficiaire.text(`${medicaleVisite.beneficiaire.nom} ${medicaleVisite.beneficiaire.prenom}`);
-        let tdEditMedicaleVisite = $(`<td class="text-center">`);
-        let btnEditMedicaleVisite = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-medicale-visite-id=${medicaleVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditMedicaleVisite'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite medicale'>`);
-        btnEditMedicaleVisite.append("<i class='fas fa-edit'></i>");
-        btnEditMedicaleVisite.click(function (e) {
+        tdBeneficiaire.text(`${socialeVisite.beneficiaire.nom} ${socialeVisite.beneficiaire.prenom}`);
+        let tdEditSocialeVisite = $(`<td class="text-center">`);
+        let btnEditSocialeVisite = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-sociale-visite-id=${socialeVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditVisite_Sociale'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite sociale'>`);
+        btnEditSocialeVisite.append("<i class='fas fa-edit'></i>");
+        btnEditSocialeVisite.click(function (e) {
             e.preventDefault();
-            fillModalEditMedicaleVisite($(this).data("medicale-visite-id"));
+            fillModalEditSocialeVisite($(this).data("sociale-visite-id"));
         });
-        tdEditMedicaleVisite.append(btnEditMedicaleVisite);
-        let tdDeleteMedicaleVisite = $(`<td class="text-center">`);
-        let btnDeleteMedicaleVisite = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-medicale-visite-id=${medicaleVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteMedicaleVisite"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite medicale'>`);
-        btnDeleteMedicaleVisite.append(`<i class="fas fa-trash"></i>`);
-        btnDeleteMedicaleVisite.click(function (e) {
+        tdEditSocialeVisite.append(btnEditSocialeVisite);
+        let tdDeleteSocialeVisite = $(`<td class="text-center">`);
+        let btnDeleteSocialeVisite = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-sociale-visite-id=${socialeVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteVisite_sociale"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite sociale'>`);
+        btnDeleteSocialeVisite.append(`<i class="fas fa-trash"></i>`);
+        btnDeleteSocialeVisite.click(function (e) {
             e.preventDefault();
-            medicaleVisiteToOperate = medicaleVisites.find(oneMedicaleVisite => oneMedicaleVisite.id == $(this).data("medicale-visite-id"));
+            socialeVisiteToOperate = socialeVisites.find(oneSocialeVisite => oneSocialeVisite.id == $(this).data("sociale-visite-id"));
         });
-        tdDeleteMedicaleVisite.append(btnDeleteMedicaleVisite);
-        tr.append(tdNb, tdDateMedicaleVisite, tdPresenceMedicaleVisite, tdRemarqueMedicaleVisite, tdBeneficiaire, tdEditMedicaleVisite, tdDeleteMedicaleVisite);
-        if ($("thead th").length == 7) {
-            let tdMedicaleAssistant = $("<td>");
-            tdMedicaleAssistant.text(`${medicaleVisite.medical_assistant.user.last_name} ${medicaleVisite.medical_assistant.user.first_name}`);
-            tdMedicaleAssistant.insertBefore(tdEditMedicaleVisite);
+        tdDeleteSocialeVisite.append(btnDeleteSocialeVisite);
+        tr.append(tdNb, tdDateSocialeVisite, tdRemarqueSocialeVisite, tdBeneficiaire, tdEditSocialeVisite, tdDeleteSocialeVisite);
+        if ($("thead th").length == 6) {
+            let tdSocialeAssistant = $("<td>");
+            tdSocialeAssistant.text(`${socialeVisite.social_assistant.user.last_name} ${socialeVisite.social_assistant.user.first_name}`);
+            tdSocialeAssistant.insertBefore(tdEditSocialeVisite);
         }
-        $("tbody#tbl_medicale_visites").append(tr);
+        $("tbody#tbl_sociale_visites").append(tr);
     });
 }
-const fillModalEditMedicaleVisite = (medicaleVisiteId) => {
-    medicaleVisiteToOperate = medicaleVisites.find(medicaleVisite => medicaleVisite.id == medicaleVisiteId);
-    $("input#date_visite").val(medicaleVisiteToOperate.visite_date);
-    $(`input#remarque-visite`).val(medicaleVisiteToOperate.visite_remarque);
-    $(`select#beneficiaire`).val(medicaleVisiteToOperate.beneficiaire.id);
+const fillModalEditSocialeVisite = (socialeVisiteId) => {
+    socialeVisiteToOperate = socialeVisites.find(socialeVisite => socialeVisite.id == socialeVisiteId);
+    $("input#date_visite").val(socialeVisiteToOperate.visite_date);
+    $(`input#remarque-visite`).val(socialeVisiteToOperate.visite_remarque);
+    $(`select#beneficiaire`).val(socialeVisiteToOperate.beneficiaire.id);
     $(`select#beneficiaire`).trigger('change');
-    if (medicaleVisiteToOperate.visite_presence) {
-        $(`input#gridRadios1`).prop("checked", true);
-    } else {
-        $(`input#gridRadios2`).prop("checked", true);
-    }
 }
