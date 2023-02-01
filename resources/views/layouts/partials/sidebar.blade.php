@@ -84,6 +84,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\Service::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Services</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\Service::class)
+                            <a href="{{ route('services.create') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\Service::class)
+                            <a href="{{ route('showService') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['create', 'viewAny'], App\Models\MedicaleVisite::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Visites médicales</a>
