@@ -21,8 +21,18 @@ class SocialeVisiteController extends Controller
      */
     public function index()
     {
-        $sociale_visites = SocialeVisite::all();
-        return response()->json($sociale_visites);
+        if (Auth::user()->admin) {
+            $sociale_visites = SocialeVisite::all();
+            $sociale_visites->loadMissing('social_assistant.user');
+        } else {
+            $sociale_visites = Auth::user()->social_assistant->sociale_visites;
+        }
+        return response()->json(
+            [
+                'sociale_visites' => $sociale_visites,
+            ],
+            200
+        );
     }
 
     /**
@@ -100,7 +110,8 @@ class SocialeVisiteController extends Controller
     {
         $socialeVisite->visite_date = $request->visite_date;
         $socialeVisite->visite_remarque = $request->visite_remarque;
-        if ($socialeVisite->update()) {
+        $beneficiaire = Beneficiaire::find($request->beneficiaire);
+        if ($beneficiaire->sociale_visites()->save($socialeVisite)) {
             $result = $socialeVisite;
             $status = 200;
             $msg = "Visite sociale modifiée avec success.";
@@ -113,6 +124,7 @@ class SocialeVisiteController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
@@ -139,6 +151,7 @@ class SocialeVisiteController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );

@@ -17,10 +17,27 @@ class SocialeVisite extends Model
     protected $dateFormat = 'Y-m-d';
 
     /**
-     * Get the beneficiare that owns the sociale visite.
+     * The relationships that should always be loaded.
+     *
+     * @var array
      */
-    public function beneficiare()
+    protected $with = [
+        'beneficiaire',
+    ];
+
+    /**
+     * Get the beneficiaire that owns the sociale visite.
+     */
+    public function beneficiaire()
     {
         return $this->belongsTo(Beneficiaire::class);
+    }
+
+    /**
+     * Get the social assistant that owns the sociale visite.
+     */
+    public function social_assistant()
+    {
+        return $this->belongsTo(SocialAssistant::class);
     }
 }
