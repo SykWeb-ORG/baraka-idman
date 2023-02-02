@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ParticipantController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Participant::class, 'participant');
+    }
+
     /**
      * Display a listing of the resource.
      *
