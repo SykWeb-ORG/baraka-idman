@@ -45,7 +45,8 @@ Liste des Bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <th scope="col">Validation médicale</th>
                             @endif
-                            <th scope="col" colspan="7">Action</th>
+                            <th scope="col" colspan="2">Integrated / Pre-Integrated</th>
+                            <th scope="col" colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,6 +86,21 @@ Liste des Bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
                             @endif
+                            <td><div class="form-check d-inline-block">
+                                <input class="form-check-input" type="radio" name="integrated" id="integrated"
+                                    value="Integrated">
+                                <label class="form-check-label" for="integrated">
+                                    Integrated
+                                </label>
+                            </div>
+                            </td>
+                            <td><div class="form-check d-inline-block">
+                                <input class="form-check-input" type="radio" name="Pre-integrated" id="Pre-integrated"
+                                    value="Pre-integrated">
+                                <label class="form-check-label" for="Pre-integrated">
+                                    Pre-Integrated
+                                </label>
+                            </div></td>
                             @can('update', $beneficiaire)
                             <td class="actionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
                             @endcan
