@@ -514,4 +514,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de formation", 404);
         });
+    Route::get('/AddService', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddService', compact('beneficiaire'));
+    })->name('AddService');
 });
