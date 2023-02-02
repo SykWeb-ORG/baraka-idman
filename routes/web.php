@@ -17,6 +17,7 @@ use App\Http\Controllers\ManagementIntervenantProgrammeController;
 use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\MedicaleVisiteController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SocialeVisiteController;
@@ -517,4 +518,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/AddService', function (Beneficiaire $beneficiaire) {
         return view('superUser.AddService', compact('beneficiaire'));
     })->name('AddService');
+    Route::resource('participants', ParticipantController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas de participant", 404);
+        });
 });
