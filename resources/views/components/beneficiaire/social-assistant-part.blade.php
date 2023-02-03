@@ -199,7 +199,7 @@
             <tbody id="tbodyDrogueTypes">
                 @foreach ($drogue_types as $drogue_type)
                     <tr>
-                        <td><input type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}},{{$loop->index}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
+                        <td><input type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
                         <td><input type="number" name="frequences[]" id=""></td>
                     </tr>
                 @endforeach
@@ -308,8 +308,8 @@
     </div>
 </div>
 <div class="mb-3">
-    <label for="phone-number-benef" class="form-label">Duree Addiction</label>
-    <input type="number" name="duree_addiction" class="form-control" id="phone-number-benef">
+    <label for="duree-addiction-benef" class="form-label">Duree Addiction</label>
+    <input type="number" name="duree_addiction" class="form-control" id="duree-addiction-benef">
 </div>
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-2 pt-0">TS</legend>
@@ -382,7 +382,7 @@
                 <tr>
                     <td><input type="radio" class="form-check-input" name="suicide" id="oui"><label for="oui">Oui</label></td>
                     <td><input type="radio" class="form-check-input" name="suicide" id="non"><label for="non">Non</label></td>
-                    <td><textarea name="suicide_causes" id="" cols="30" rows="10"></textarea></td>
+                    <td><textarea name="suicide_causes" id="suicide_causes" cols="30" rows="10"></textarea></td>
                 </tr>
             </tbody>
         </table>
@@ -407,13 +407,26 @@
                     <tr>
                         <td><input type="checkbox" class="form-check-input" name="services[]" value="{{$service->id}}" id=""></td>
                         <td>{{$service->service_nom}}</td>
-                        <td><select name="users" class="form-select mb-3" aria-label="Default select example" id="users">
-                            <option selected="">Choisir Utilisateur</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""> </option>
-                            <option value=""></option>
-                        </select>
+                        <td>
+                            <select name="poles[]" class="form-select mb-3" aria-label="Default select example" id="poles">
+                                <option value="">Choisir Utilisateur</option>
+                                @if ($service->role != null)
+                                    @php
+                                        if ($service->role->role_nom == 'admin') {
+                                            $poles = App\Models\Admin::all();
+                                        } elseif ($service->role->role_nom == 'medical assistant') {
+                                            $poles = App\Models\MedicalAssistant::all();
+                                        } elseif ($service->role->role_nom == 'social assistant') {
+                                            $poles = App\Models\SocialAssistant::all();
+                                        } elseif ($service->role->role_nom == 'intervenant') {
+                                            $poles = App\Models\Intervenant::all();
+                                        }
+                                    @endphp
+                                    @foreach ($poles as $pole)
+                                        <option value="{{$pole->user->id}}">{{$pole->user->first_name . ' ' . $pole->user->last_name}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </td>
 
                     </tr>

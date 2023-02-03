@@ -94,11 +94,11 @@ class Beneficiaire extends Model
     }
 
     /**
-     * Get the intervenant that register thie beneficiaire.
+     * Get the user that register thie beneficiaire.
      */
-    public function intervenant()
+    public function user()
     {
-        return $this->belongsTo(Intervenant::class);
+        return $this->belongsTo(User::class);
     }
 
     /**

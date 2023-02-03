@@ -107,4 +107,12 @@ class User extends Authenticatable
                     ->as('beneficiaire_service_user')
                     ->withTimestamps();
     }
+
+    /**
+     * Get the beneficiaires for the user.
+     */
+    public function registred_beneficiaires()
+    {
+        return $this->hasMany(Beneficiaire::class);
+    }
 }

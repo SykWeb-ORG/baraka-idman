@@ -28,14 +28,6 @@ class Intervenant extends Model
     }
 
     /**
-     * Get the beneficiaires for the intervenant.
-     */
-    public function beneficiaires()
-    {
-        return $this->hasMany(Beneficiaire::class);
-    }
-
-    /**
      * The zones that belong to the intervenant.
      */
     public function zones()

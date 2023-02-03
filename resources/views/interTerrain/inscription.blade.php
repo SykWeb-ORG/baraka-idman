@@ -17,7 +17,7 @@ Inscription du Bénéficiaire
                         <x-beneficiaire.social-assistant-part :couvertures="$couvertures" :drogue-types="$drogue_types" :services="$services" :violence-types="$violence_types" />
                         @endif
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="submit" class="btn btn-primary" id="btn-add-beneficiaire">Ajouter</button>
                         </div>
                         <div id="message-alert" class="mb-3"></div>
                     </form>
@@ -35,14 +35,8 @@ Inscription du Bénéficiaire
             </ul>
         </div>
     @endif
-    @if ($msg = session()->get('msg'))
-        <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
-            <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>;
-    @endif
 @endsection
 
-{{-- @section('custom_scripts')
-<script src="jsApi/intervenant/manipDataInter.js"></script>
-@endsection --}}
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/beneficiaire/add-beneficiaire.js') }}"></script>
+@endsection

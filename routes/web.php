@@ -131,17 +131,17 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('interTerrain.suicide', compact('beneficiaire'));
     })->name('suicide');
     Route::get('all-couvertures', [ManagementBeneficiaireCouvertureController::class, 'index']);
-    Route::post('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
+    Route::put('match-beneficiaire-couvertures/{beneficiaire}', [ManagementBeneficiaireCouvertureController::class, 'matchRolePermission']);
     Route::get('/service/{beneficiaire}', function (Beneficiaire $beneficiaire) {
         return view('interTerrain.service', compact('beneficiaire'));
     })->name('service');
     Route::get('all-drogue_types', [ManagementBeneficiaireDrogueTypeController::class, 'index']);
-    Route::post('match-beneficiaire-drogue_types/{beneficiaire}', [ManagementBeneficiaireDrogueTypeController::class, 'matchBeneficiaireDrogueTypes']);
+    Route::put('match-beneficiaire-drogue_types/{beneficiaire}', [ManagementBeneficiaireDrogueTypeController::class, 'matchBeneficiaireDrogueTypes']);
     Route::get('all-violence_types', [ManagementBeneficiaireViolenceTypeController::class, 'index']);
-    Route::post('match-beneficiaire-violence_types/{beneficiaire}', [ManagementBeneficiaireViolenceTypeController::class, 'matchBeneficiaireViolenceTypes']);
+    Route::put('match-beneficiaire-violence_types/{beneficiaire}', [ManagementBeneficiaireViolenceTypeController::class, 'matchBeneficiaireViolenceTypes']);
     Route::get('all-services', [ManagementBeneficiaireServiceController::class, 'index']);
-    Route::post('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
-    Route::post('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
+    Route::put('match-beneficiaire-services/{beneficiaire}', [ManagementBeneficiaireServiceController::class, 'matchBeneficiaireServices']);
+    Route::put('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
     Route::put('reinit/{user}', function (Request $request, User $user) {
         $user->password = Hash::make('demo0000');
         if ($user->update()) {

@@ -16,28 +16,26 @@ class ManagementBeneficiaireSuicideController extends Controller
             $suicide_cause->cause = $request->suicide_causes;
             if ($beneficiaire->suicide_causes()->save($suicide_cause)) {
                 $beneficiaire->refresh();
-                // $result = $beneficiaire;
-                // $status = 200;
-                $result = 'Les changements sont bien effectués.';
-                $status = 'success';
-                $icon = 'fa-check';
+                $result = $beneficiaire;
+                $msg = 'Les changements sont bien effectués.';
+                $status = 200;
             } else {
-                $result = 'probleme au serveur.';
-                // $status = 500;
-                $status = 'danger';
-                $icon = 'fa-times';
+                $result = $beneficiaire;
+                $msg = 'probleme au serveur.';
+                $status = 500;
             }
         }
         else{
-            $result = 'Les changements sont bien effectués.';
-            $status = 'success';
-            $icon = 'fa-check';
+            $result = $beneficiaire;
+            $msg = 'Les changements sont bien effectués.';
+            $status = 200;
         }
-        // return response()->json($result, $status);
-
-        $request->session()->flash('msg', $result);
-        $request->session()->flash('status', $status);
-        $request->session()->flash('icon', $icon);
-        return back();
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 }
