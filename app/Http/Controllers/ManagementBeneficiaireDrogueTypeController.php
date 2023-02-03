@@ -20,10 +20,7 @@ class ManagementBeneficiaireDrogueTypeController extends Controller
     {
         
         $beneficiaire->drogue_types()->detach();
-        for ($i=0; $i < count($request->drogue_types); $i++) { 
-            $frequence = ['frequence' => $request->frequences[$i]];
-            $beneficiaire->drogue_types()->attach($request->drogue_types[$i], $frequence);
-        }
+        $beneficiaire->drogue_types()->attach($request->drogue_types);
         $beneficiaire->refresh();
         $result = $beneficiaire;
         $status = 200;

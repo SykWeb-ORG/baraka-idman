@@ -44,6 +44,7 @@ class BeneficiaireController extends Controller
         $couvertures = Couverture::all();
         $drogue_types = DrogueType::all();
         $services = Service::all();
+        $services->loadMissing('role');
         $violence_types = ViolenceType::all();
         return view('interTerrain.inscription', compact(
             'couvertures',
@@ -82,71 +83,22 @@ class BeneficiaireController extends Controller
         $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
         $beneficiaire->duree_addiction = $request->duree_addiction;
         $beneficiaire->ts = $request->ts;
-        // if (Auth::user()->intervenant->beneficiaires()->save($beneficiaire)) {
-        //     $result = $beneficiaire;
-        //     $status = 200;
-        // } else {
-        //     $result = 'probleme au serveur.';
-        //     $status = 500;
-        // }
-        // return response()->json($result, $status);
-        if (Auth::user()->intervenant->beneficiaires()->save($beneficiaire)) {
-            // couvertures attachement
-            $beneficiaire->couvertures()->attach($request->couvertures);
-            // drogue types attachement
-            if ($request->has('drogue_types')) {
-                $indexes = [];
-                $drogue_types = [];
-                foreach ($request->drogue_types as $drogue_type) {
-                    $index_and_drogue_type = Str::of($drogue_type)->explode(',');
-                    $index_to_add = $index_and_drogue_type->get(1);
-                    $indexes[$index_to_add] = $index_to_add;
-                    $drogue_types[] = $index_and_drogue_type->get(0);
-                }
-                $frequences = [];
-                for ($i=0; $i < count($request->frequences); $i++) {
-                    if (!Arr::exists($indexes, strval($i))) {
-                        continue;
-                    }
-                    $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
-                }
-                for ($i=0; $i < count($drogue_types); $i++) {
-                    $frequence = ['frequence' => $frequences[$i]];
-                    $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
-                }
-            }
-            // violence types attachement
-            $beneficiaire->violence_types()->attach($request->violence_types);
-            // suicide causes attachement
-            if ($request->suicide_causes != '') {
-                $suicide_cause = new SuicideCause;
-                $suicide_cause->cause = $request->suicide_causes;
-                $beneficiaire->suicide_causes()->save($suicide_cause);
-            }
-            // services attachement
-            $beneficiaire->services()->attach($request->services);
-            // give an appointment
-            if ($request->has('social_visite_date')) {
-                $social_visite = new SocialeVisite;
-                $social_visite->visite_date = $request->social_visite_date;
-                $beneficiaire->sociale_visites()->save($social_visite);
-            }
-            // $result = $beneficiaire;
-            // $status = 200;
-            $result = 'Utilisateur ajouté avec success';
-            $status = 'success';
-            $icon = 'fa-check';
+        if (Auth::user()->registred_beneficiaires()->save($beneficiaire)) {
+            $result = $beneficiaire;
+            $msg = 'Bénéficiaire ajouté avec success.';
+            $status = 200;
         } else {
-            $result = 'probleme au serveur.';
-            // $status = 500;
-            $status = 'danger';
-            $icon = 'fa-times';
+            $result = null;
+            $status = 500;
+            $msg = 'probleme au serveur.';
         }
-        // return response()->json($result, $status);
-        $request->session()->flash('msg', $result);
-        $request->session()->flash('status', $status);
-        $request->session()->flash('icon', $icon);
-        return back();
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**

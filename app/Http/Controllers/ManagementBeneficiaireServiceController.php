@@ -17,20 +17,8 @@ class ManagementBeneficiaireServiceController extends Controller
     }
     public function matchBeneficiaireServices(Request $request, Beneficiaire $beneficiaire)
     {
-        if ($request->has('services') && $request->has('users')) {
-            $services = $request->services;
-            $users = $request->users;
-            if (count($services) == count($users)) { // check if the count of services == count of users
-                $services_users = [];
-                for ($i=0; $i < count($services); $i++) { 
-                    $services_users[$services[$i]] = [
-                        'user_id' => $users[$i],
-                    ];
-                }
-            }
-        }
         $beneficiaire->services()->detach();
-        $beneficiaire->services()->attach($services_users);
+        $beneficiaire->services()->attach($request->services);
         $beneficiaire->refresh();
         $result = $beneficiaire;
         $status = 200;
