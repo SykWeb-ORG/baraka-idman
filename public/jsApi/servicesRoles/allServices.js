@@ -82,7 +82,7 @@ const getAllServices = (data) => {
         btnDeleteService.append(`<i class="fas fa-trash"></i>`);
         btnDeleteService.click(function (e) {
             e.preventDefault();
-            serviceToOperate = service.find(oneService => oneService.id == $(this).data("service-id"));
+            serviceToOperate = services.find(oneService => oneService.id == $(this).data("service-id"));
         });
         tdDeleteService.append(btnDeleteService);
 
