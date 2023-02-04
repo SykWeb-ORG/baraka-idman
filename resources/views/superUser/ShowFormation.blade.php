@@ -22,7 +22,7 @@ Liste des Formations
                             <th>Organisme chargé de la Formation</th>
                             <th>Formateur</th>
                             <th>Objet</th>
-                            <th colspan="2">Action</th>
+                            <th colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_formation">
@@ -30,11 +30,6 @@ Liste des Formations
                 </table>
                 <!--Edit Formation-->
                 <!-- Modal -->
-                <button
-                      class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#modal_ListePart">
-                      <i class="fas fa-list"></i>
-                  </button>
                 <div class="modal" id="modal_ListePart" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -296,20 +291,10 @@ Liste des Formations
                         </div>
                     </div>
                 </div>
-                <button
-                      class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#mod">
-                      <i class="fas fa-edit"></i>
-                  </button>
                 <!--End Modal-->
                 <!--End Edit Formation-->
                 <!--Delete Formation-->
                 <!-- Modal -->
-                <button
-                      class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                      <i class="fas fa-trash"></i>
-                  </button>
                 <div class="modal fade" id="modal_DeleteFormation" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -336,4 +321,5 @@ Liste des Formations
     <!-- Show All Users End -->
 @endsection
 @section('custom_scripts')
+    <script src="{{ asset('jsApi/formations/allFormations.js') }}"></script>
 @endsection
