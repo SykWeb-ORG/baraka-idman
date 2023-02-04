@@ -1,3 +1,4 @@
+console.log(beneficiaire);
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
@@ -5,16 +6,16 @@
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    $("button#btn-add-beneficiaire").click(addBeneficiaire);
+    $("button#btn-edit-beneficiaire").click(editBeneficiaire);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Add new beneficiaire
+ * Edit beneficiaire
  * @param {Event} e Information about the event
  */
-const addBeneficiaire = (e) => {
+const editBeneficiaire = (e) => {
     e.preventDefault();
     let dataToSend = {
         "prenom": $("input#first-name-benef").val(),
@@ -38,11 +39,11 @@ const addBeneficiaire = (e) => {
         "duree_addiction": $("input#duree-addiction-benef").val(),
         "ts": $(`input[name="ts"][type="radio"]:checked`).val(),
     }
-    addData("beneficiaires", dataToSend, showDialogResponse);
+    updateData(`beneficiaires/${beneficiaire.id}`, dataToSend, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains new beneficiaire
+ * @param {object} data response from the server that contains modified beneficiaire
  */
 const showDialogResponse = (data) => {
     let beneficiaire = data.result;
@@ -55,8 +56,8 @@ const showDialogResponse = (data) => {
     alert(msg);
 }
 /**
- * Attach the checked couvertures with the new beneficiaire
- * @param {object} beneficiaire new beneficiaire
+ * Attach the checked couvertures with the modified beneficiaire
+ * @param {object} beneficiaire modified beneficiaire
  */
 const attachCouverturesMedicales = (beneficiaire) => {
     let couvertures = [];
@@ -69,8 +70,8 @@ const attachCouverturesMedicales = (beneficiaire) => {
     updateData(`match-beneficiaire-couvertures/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); });
 }
 /**
- * Attach the checked drogue types with the new beneficiaire
- * @param {object} beneficiaire new beneficiaire
+ * Attach the checked drogue types with the modified beneficiaire
+ * @param {object} beneficiaire modified beneficiaire
  */
 const attachDrogueTypes = (beneficiaire) => {
     let drogueTypes = {};
@@ -85,8 +86,8 @@ const attachDrogueTypes = (beneficiaire) => {
     updateData(`match-beneficiaire-drogue_types/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); });
 }
 /**
- * Attach the checked drogue types with the new beneficiaire
- * @param {object} beneficiaire new beneficiaire
+ * Attach the checked drogue types with the modified beneficiaire
+ * @param {object} beneficiaire modified beneficiaire
  */
 const attachServices = (beneficiaire) => {
     let services = {};
@@ -101,8 +102,8 @@ const attachServices = (beneficiaire) => {
     updateData(`match-beneficiaire-services/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); });
 }
 /**
- * Attach the checked suicide causes with the new beneficiaire
- * @param {object} beneficiaire new beneficiaire
+ * Attach the checked suicide causes with the modified beneficiaire
+ * @param {object} beneficiaire modified beneficiaire
  */
 const attachSuicideCauses = (beneficiaire) => {
     let dataToSend = {
@@ -111,8 +112,8 @@ const attachSuicideCauses = (beneficiaire) => {
     updateData(`match-beneficiaire-suicide_causes/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); });
 }
 /**
- * Attach the checked violence types with the new beneficiaire
- * @param {object} beneficiaire new beneficiaire
+ * Attach the checked violence types with the modified beneficiaire
+ * @param {object} beneficiaire modified beneficiaire
  */
 const attachViolenceTypes = (beneficiaire) => {
     let violenceTypes = [];

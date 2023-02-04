@@ -84,6 +84,12 @@ class BeneficiaireController extends Controller
         $beneficiaire->duree_addiction = $request->duree_addiction;
         $beneficiaire->ts = $request->ts;
         if (Auth::user()->registred_beneficiaires()->save($beneficiaire)) {
+            // give an appointment
+            if ($request->has('social_visite_date')) {
+                $social_visite = new SocialeVisite;
+                $social_visite->visite_date = $request->social_visite_date;
+                $beneficiaire->sociale_visites()->save($social_visite);
+            }
             $result = $beneficiaire;
             $msg = 'Bénéficiaire ajouté avec success.';
             $status = 200;
@@ -161,78 +167,34 @@ class BeneficiaireController extends Controller
         $beneficiaire->age_debut_addiction = ($request->has('age_debut_addiction'))? $request->age_debut_addiction : $beneficiaire->age_debut_addiction;
         $beneficiaire->duree_addiction = ($request->has('duree_addiction'))? $request->duree_addiction : $beneficiaire->duree_addiction;
         $beneficiaire->ts = ($request->has('ts'))? $request->ts : $beneficiaire->ts;
-        if ($beneficiaire->update()) {
-            // couvertures attachement
-            if ($request->has('couvertures')) {
-                $beneficiaire->couvertures()->detach();
-                $beneficiaire->couvertures()->attach($request->couvertures);
+        // update the appointment
+        if ($request->has('social_visite_date')) {
+            $social_visite = $beneficiaire->sociale_visites->first();
+            if ($social_visite) {
+                $social_visite->visite_date = $request->social_visite_date;
+                $social_visite->save();
+            } else {
+                $social_visite = new SocialeVisite;
+                $social_visite->visite_date = $request->social_visite_date;
+                $beneficiaire->sociale_visites()->save($social_visite);
             }
-            // drogue types attachement
-            if ($request->has('drogue_types')) {
-                $beneficiaire->drogue_types()->detach();
-                $indexes = [];
-                $drogue_types = [];
-                foreach ($request->drogue_types as $drogue_type) {
-                    $index_and_drogue_type = Str::of($drogue_type)->explode(',');
-                    $index_to_add = $index_and_drogue_type->get(1);
-                    $indexes[$index_to_add] = $index_to_add;
-                    $drogue_types[] = $index_and_drogue_type->get(0);
-                }
-                $frequences = [];
-                for ($i=0; $i < count($request->frequences); $i++) {
-                    if (!Arr::exists($indexes, strval($i))) {
-                        continue;
-                    }
-                    $frequences[] = ($request->frequences[$i])? $request->frequences[$i] : 0;
-                }
-                for ($i=0; $i < count($drogue_types); $i++) {
-                    $frequence = ['frequence' => $frequences[$i]];
-                    $beneficiaire->drogue_types()->attach($drogue_types[$i], $frequence);
-                }
-            }
-            // violence types attachement
-            if ($request->has('violence_types')) {
-                $beneficiaire->violence_types()->detach();
-                $beneficiaire->violence_types()->attach($request->violence_types);
-            }
-            // suicide causes attachement
-            if ($request->has('suicide_causes')) {
-                $beneficiaire->suicide_causes()->delete();
-                if ($request->suicide_causes != '') {
-                    $suicide_cause = new SuicideCause;
-                    $suicide_cause->cause = $request->suicide_causes;
-                    $beneficiaire->suicide_causes()->save($suicide_cause);
-                }
-            }
-            // services attachement
-            if ($request->has('services')) {
-                $beneficiaire->services()->detach();
-                $beneficiaire->services()->attach($request->services);
-            }
-            // update the appointment
-            if ($request->has('social_visite_date')) {
-                $social_visite = SocialeVisite::find(1);
-                if ($social_visite) {
-                    $social_visite->visite_date = $request->social_visite_date;
-                    $social_visite->save();
-                }
-            }
-            // $result = $beneficiaire;
-            // $status = 200;
-            $result = 'Utilisateur modifié avec succés';
-            $status = 'success';
-            $icon = 'fa-check';
-        } else {
-            $result = 'probleme au serveur.';
-            // $status = 500;
-            $status = 'danger';
-            $icon = 'fa-times';
         }
-        // return response()->json($result, $status);
-        $request->session()->flash('msg', $result);
-        $request->session()->flash('status', $status);
-        $request->session()->flash('icon', $icon);
-        return back();
+        if ($beneficiaire->update()) {
+            $result = $beneficiaire;
+            $msg = 'Bénéficiaire modifié avec success.';
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = 'probleme au serveur.';
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
     }
 
     /**
