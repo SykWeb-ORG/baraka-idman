@@ -18,7 +18,7 @@
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbl_services">
                     </tbody>
                 </table>
                 <!--Edit Cas-->
@@ -75,4 +75,5 @@
     </div>
 @endsection
 @section('custom_scripts')
+    <script src="{{ asset('jsApi/servicesRoles/allServices.js') }}"></script>
 @endsection
