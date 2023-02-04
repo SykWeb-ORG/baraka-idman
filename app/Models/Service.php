@@ -10,12 +10,33 @@ class Service extends Model
     use HasFactory;
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'users',
+    ];
+
+    /**
      * The beneficiaires that belong to the service.
      */
     public function beneficiaires()
     {
         return $this->belongsToMany(Beneficiaire::class, 'beneficiaire_service_user')
                     ->as('beneficiaire_service_user')
+                    ->withPivot(['user_id'])
+                    ->withTimestamps();
+    }
+
+    /**
+     * The users that belong to the service.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'beneficiaire_service_user')
+                    ->as('beneficiaire_service_user')
+                    ->withPivot(['beneficiaire_id'])
                     ->withTimestamps();
     }
 

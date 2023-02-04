@@ -197,8 +197,8 @@
             <tbody id="tbodyDrogueTypes">
                 @foreach ($drogue_types as $drogue_type)
                     <tr>
-                        <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->drogue_types->contains($drogue_type))? 'checked' : ''}} type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}},{{$loop->index}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
-                        <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="number" name="frequences[]" value="{{($beneficiaire->drogue_types->contains($drogue_type))? $beneficiaire->drogue_types->find($drogue_type)->frequence : ''}}"></td>
+                        <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->drogue_types->contains($drogue_type))? 'checked' : ''}} type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
+                        <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="number" name="frequences[]" value="{{($beneficiaire->drogue_types->contains($drogue_type) && $beneficiaire->drogue_types->find($drogue_type->id)->beneficiaire_drogue_type)? $beneficiaire->drogue_types->find($drogue_type->id)->beneficiaire_drogue_type->frequence : ''}}"></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -381,7 +381,7 @@
                 <tr>
                     <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="radio" class="form-check-input" name="suicide" id="oui" {{(count($beneficiaire->suicide_causes))? 'checked': ''}}><label for="oui">Oui</label></td>
                     <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="radio" class="form-check-input" name="suicide" id="non" {{(count($beneficiaire->suicide_causes) == 0)? 'checked': ''}}><label for="non">Non</label></td>
-                    <td><textarea {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} name="suicide_causes" id="" cols="30" rows="10">{{(count($beneficiaire->suicide_causes))? $beneficiaire->suicide_causes[0]->cause : ''}}</textarea></td>
+                    <td><textarea {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} name="suicide_causes" id="suicide_causes" cols="30" rows="10">{{(count($beneficiaire->suicide_causes))? $beneficiaire->suicide_causes[0]->cause : ''}}</textarea></td>
                 </tr>
             </tbody>
         </table>
@@ -404,7 +404,27 @@
                     <tr>
                         <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->services->contains($service))? 'checked' : ''}} type="checkbox" class="form-check-input" name="services[]" value="{{$service->id}}" id=""></td>
                         <td>{{$service->service_nom}}</td>
-
+                        <td>
+                            <select name="poles[]" class="form-select mb-3" aria-label="Default select example" id="poles">
+                                <option value="">Choisir Utilisateur</option>
+                                @if ($service->role != null)
+                                    @php
+                                        if ($service->role->role_nom == 'admin') {
+                                            $poles = App\Models\Admin::all();
+                                        } elseif ($service->role->role_nom == 'medical assistant') {
+                                            $poles = App\Models\MedicalAssistant::all();
+                                        } elseif ($service->role->role_nom == 'social assistant') {
+                                            $poles = App\Models\SocialAssistant::all();
+                                        } elseif ($service->role->role_nom == 'intervenant') {
+                                            $poles = App\Models\Intervenant::all();
+                                        }
+                                    @endphp
+                                    @foreach ($poles as $pole)
+                                        <option value="{{$pole->user->id}}" {{($beneficiaire->services->contains($service) && $beneficiaire->services->find($service->id)->beneficiaire_service_user->user_id == $pole->user->id) ? 'selected' : ''}}>{{$pole->user->first_name . ' ' . $pole->user->last_name}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

@@ -43,5 +43,5 @@
 </div>
 <div class="mb-3">
     <label for="social-appointment" class="form-label">Date de la visite sociale</label>
-    <input type="date" {{(count($beneficiaire->sociale_visites) > 1)? 'disabled': ''}} name="social_visite_date" class="form-control" id="social-appointment" value="{{(count($beneficiaire->sociale_visites) > 0)? $beneficiaire->sociale_visites[0]->visite_date : ''}}" required>
+    <input type="date" {{(count($beneficiaire->sociale_visites) > 1)? 'disabled': ''}} name="social_visite_date" class="form-control" id="social-appointment" value="{{(count($beneficiaire->sociale_visites) > 0)? $beneficiaire->sociale_visites[0]->visite_date : (new \Carbon\Carbon)->today()->format('Y-m-d')}}" required>
 </div>

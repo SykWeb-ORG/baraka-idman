@@ -19,7 +19,7 @@ Modification du Bénéficiaire
                         @endif
                         @if(!request()->has('page'))
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Modifier</button>
+                            <button type="submit" class="btn btn-primary" id="btn-edit-beneficiaire">Modifier</button>
                         </div>
                         @endif
                         <div id="message-alert" class="mb-3"></div>
@@ -38,14 +38,11 @@ Modification du Bénéficiaire
             </ul>
         </div>
     @endif
-    @if ($msg = session()->get('msg'))
-        <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
-            <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>;
-    @endif
 @endsection
 
-{{-- @section('custom_scripts')
-<script src="{{asset("jsApi/intervenant/manipDataInter.js")}}"></script>
-@endsection --}}
+@section('custom_scripts')
+    <script>
+        var beneficiaire = {{ Illuminate\Support\Js::from($beneficiaire) }};
+    </script>
+    <script src="{{asset('jsApi/beneficiaire/edit-beneficiaire.js')}}"></script>
+@endsection

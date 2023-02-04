@@ -69,6 +69,7 @@ class Beneficiaire extends Model
     {
         return $this->belongsToMany(Service::class, 'beneficiaire_service_user')
                     ->as('beneficiaire_service_user')
+                    ->withPivot(['user_id'])
                     ->withTimestamps();
     }
 
