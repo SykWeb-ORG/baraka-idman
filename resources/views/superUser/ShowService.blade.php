@@ -18,7 +18,7 @@
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbl_services">
                     </tbody>
                 </table>
                 <!--Edit Cas-->
@@ -28,18 +28,18 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modifier Cas Juridique</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modifier Service</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
                             <div class="modal-bodyEdit">
                                 <form class="form-user" action="" method="POST">
                                     <div class="mb-3">
-                                        <label for="nom-cas" class="form-label">Nom du Cas Juridique</label>
-                                        <input type="text" name="nom-cas" class="form-control" id="nom-cas">
+                                        <label for="service_nom" class="form-label">Nom du Service</label>
+                                        <input type="text" name="service_nom" class="form-control" id="service_nom">
                                     </div>
                                     <div class="mb-3">
-                                        <button id="btn-edit-cas" class="btn btn-primary">Modifier</button>
+                                        <button id="btn-edit-service" class="btn btn-primary">Modifier</button>
                                     </div>
                                 </form>
                             </div>
@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <!--End Modal-->
-                <!--End Edit Cas-->
-                <!--Delete Cas-->
+                <!--End Edit Service-->
+                <!--Delete Service-->
                 <!-- Modal -->
                 <div class="modal fade" id="modal_DeleteService" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
@@ -61,18 +61,19 @@
                             </div>
                             <div class="modal-bodyEdit">
                                     <div class="mb-3 mt-3">
-                                        <button id="btn-delete-cas" class="btn btn-secondary">Oui</button>
-                                        <button id="btn-delete-cas" class="btn btn-primary">Non</button>
+                                        <button id="btn-delete-service" class="btn btn-secondary">Oui</button>
+                                        <button id="btn-delete-service" class="btn btn-primary">Non</button>
                                     </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--End Modal-->
-                <!--End Delete Cas-->
+                <!--End Delete Service-->
             </div>
         </div>
     </div>
 @endsection
 @section('custom_scripts')
+    <script src="{{ asset('jsApi/servicesRoles/allServices.js') }}"></script>
 @endsection
