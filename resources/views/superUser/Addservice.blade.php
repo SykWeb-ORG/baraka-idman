@@ -12,11 +12,11 @@ Ajout d'un service
                     <h6 id="title-form" class="mb-4">Ajouter Service</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="nom-group" class="form-label">Nom Du Service</label>
-                            <input type="text" name="nom-group" class="form-control" id="nom-group">
+                            <label for="nom-service" class="form-label">Nom Du Service</label>
+                            <input type="text" name="nom-service" class="form-control" id="nom-service">
                         </div>
                         <div class="mb-3">
-                            <button id="btn-add-group" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-service" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>
@@ -26,4 +26,5 @@ Ajout d'un service
     <!-- Form End -->
 @endsection
 @section('custom_scripts')
+    <script src="{{ asset('jsApi/servicesRoles/addService.js') }}"></script>
 @endsection
