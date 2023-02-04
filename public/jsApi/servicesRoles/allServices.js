@@ -1,7 +1,7 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
-var service = null;
+var services = null;
 var serviceToOperate = null;
 
 /// *****************************
@@ -9,6 +9,9 @@ var serviceToOperate = null;
 /// *****************************
 $(document).ready(function () {
     getAllData("all-services", getAllServices);
+    $("button#btn-edit-service").click(editService);
+    $("button#btn-delete-service").click(deleteService);
+
 });
 
 /// *****************************
@@ -16,12 +19,49 @@ $(document).ready(function () {
 /// *****************************
 
 /**
+ * Edit Services
+ * @param {Event} e Information about the event
+ */
+const editService = (e) => {
+    e.preventDefault();
+    let nomService = $("input#service_nom").val();
+    let dataToSend = {
+        "service_nom": nomService,
+    }
+    updateData(`services/${serviceToOperate.id}`, dataToSend, showDialogResponse);
+}
+
+/**
+ * Delete Service
+ * @param {Event} e Information about the event
+ */
+const deleteService = (e) => {
+    e.preventDefault();
+    deleteData(`services/${serviceToOperate.id}`, showDialogResponse);
+}
+
+/**
+ * Show dialog modal to display server response
+ * @param {object} data response from the server that contains new service
+ */
+const showDialogResponse = (data) => {
+    let service = data.result;
+    let msg = data.msg;
+    alert(msg);
+    if (data.status == 200) {
+        $("tbody#tbl_services").empty();
+        getAllData("all-services", getAllServices);
+    }
+}
+
+
+/**
  * Retrieve all services from the server
  * @param {object} data response from the server that contains all services
  */
 const getAllServices = (data) => {
-    service = data.services;
-    $.each(service, function(indexInArray, oneService) {
+    services = data.services;
+    $.each(services, function(indexInArray, oneService) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
@@ -52,7 +92,7 @@ const getAllServices = (data) => {
 }
 
 const fillModalEditService = (serviceId) => {
-    serviceToOperate = service.find(oneService => oneService.id == serviceId);
+    serviceToOperate = services.find(oneService => oneService.id == serviceId);
     $("input#service_nom").val(serviceToOperate.service_nom);
 }
 
