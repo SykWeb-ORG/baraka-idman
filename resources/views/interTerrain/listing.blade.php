@@ -98,21 +98,26 @@ Liste des Bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
                             @endif
-                            <td><div class="form-check d-inline-block">
-                                <input class="form-check-input" type="radio" name="integrated" id="integrated"
-                                    value="Integrated">
-                                <label class="form-check-label" for="integrated">
-                                    Integrated
-                                </label>
-                            </div>
+                            @if(Auth::user()->admin || Auth::user()->social_assistant)
+                            <td>
+                                <div class="form-check d-inline-block">
+                                    <input class="form-check-input" type="radio" {{($beneficiaire->integration_status == 'intégration')? 'checked' : ''}} name="integrated{{$beneficiaire->id}}" id="integrated{{$beneficiaire->id}}"
+                                        value="intégration" data-beneficiaire-id="{{$beneficiaire->id}}">
+                                    <label class="form-check-label" for="integrated{{$beneficiaire->id}}">
+                                        Integrated
+                                    </label>
+                                </div>
                             </td>
-                            <td><div class="form-check d-inline-block">
-                                <input class="form-check-input" type="radio" name="integrated" id="Pre-integrated"
-                                    value="Pre-integrated">
-                                <label class="form-check-label" for="Pre-integrated">
-                                    Pre-Integrated
-                                </label>
-                            </div></td>
+                            <td>
+                                <div class="form-check d-inline-block">
+                                    <input class="form-check-input" type="radio" {{($beneficiaire->integration_status == 'pré intégration')? 'checked' : ''}} name="integrated{{$beneficiaire->id}}" id="Pre-integrated{{$beneficiaire->id}}"
+                                        value="pré intégration" data-beneficiaire-id="{{$beneficiaire->id}}">
+                                    <label class="form-check-label" for="Pre-integrated{{$beneficiaire->id}}">
+                                        Pre-Integrated
+                                    </label>
+                                </div>
+                            </td>
+                            @endif
                             @can('update', $beneficiaire)
                             <td class="actionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
                             @endcan
@@ -204,6 +209,6 @@ Liste des Bénéficiaires
         </div>;
     @endif
 @endsection
-{{-- @section('custom_scripts')
-<script src="{{asset("jsApi/intervenant/main.js")}}"></script>
-@endsection --}}
+@section('custom_scripts')
+    <script src="{{asset('jsApi/beneficiaire/all-beneficiaires.js')}}"></script>
+@endsection
