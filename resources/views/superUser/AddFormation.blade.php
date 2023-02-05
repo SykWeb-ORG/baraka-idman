@@ -21,7 +21,7 @@ Ajout d'une Formation
                         </div>
                         <div class="mb-3">
                             <label for="durée_formation" class="form-label">Durée De la Formation par jours :</label>
-                            <input type="number" name="durée_formation" class="form-control" id="durée_formation">
+                            <input type="number" name="durée_formation" class="form-control" id="duree_formation">
                         </div>
                         <div class="mb-3">
                             <label for="organisme-formation" class="form-label">Organisme chargé de la Formation :</label>
@@ -74,7 +74,7 @@ Ajout d'une Formation
                             </tbody>
                         </table>
                         <div class="mb-3">
-                            <button id="btn-add-group" class="btn btn-primary">Ajouter Formation</button>
+                            <button id="btn-add-formation" class="btn btn-primary">Ajouter Formation</button>
                         </div>
                     </form>
                 </div>
@@ -84,4 +84,5 @@ Ajout d'une Formation
     <!-- Form End -->
 @endsection
 @section('custom_scripts')
+    <script src="{{ asset('jsApi/formations/addFormation.js') }}"></script>
 @endsection
