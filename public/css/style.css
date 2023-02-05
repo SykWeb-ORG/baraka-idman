@@ -459,7 +459,7 @@ table tbody tr .actionU{
     inset-inline-end: 120px;
     background-color: var(--light);
 }
-table tr th:last-child {
+table tr .actions {
     position: sticky;
     inset-inline-end: -3px;
     z-index: 100;
@@ -558,6 +558,11 @@ table tbody tr .userEdit{
     border-left: 15px solid var(--bs-green);
     opacity: 0;
     pointer-events: none;
+}
+@media only screen and (max-width: 575.98px){
+.alert {
+    min-width: 300px;
+}
 }
 .alert.showAlert{
     opacity: 1;

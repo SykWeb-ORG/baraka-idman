@@ -45,7 +45,7 @@ L'historique des bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <th scope="col">Validation médicale</th>
                             @endif
-                            <th scope="col" colspan="7">Action</th>
+                            <th scope="col" colspan="7" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -46,7 +46,7 @@ Liste des Bénéficiaires
                                 <th scope="col">Validation médicale</th>
                             @endif
                             <th scope="col" colspan="2">Integrated / Pre-Integrated</th>
-                            <th scope="col" colspan="3">Action</th>
+                            <th scope="col" colspan="3" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody>

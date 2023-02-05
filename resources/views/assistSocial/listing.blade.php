@@ -31,7 +31,7 @@
                             <th scope="col">Age Debut Addiction </th>
                             <th scope="col">Duree Addiction </th>
                             <th scope="col">TS</th>
-                            <th scope="col" colspan="2">Action</th>
+                            <th scope="col" colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody>
