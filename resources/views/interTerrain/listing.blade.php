@@ -95,7 +95,7 @@ Liste des Bénéficiaires
                             </div>
                             </td>
                             <td><div class="form-check d-inline-block">
-                                <input class="form-check-input" type="radio" name="Pre-integrated" id="Pre-integrated"
+                                <input class="form-check-input" type="radio" name="integrated" id="Pre-integrated"
                                     value="Pre-integrated">
                                 <label class="form-check-label" for="Pre-integrated">
                                     Pre-Integrated
