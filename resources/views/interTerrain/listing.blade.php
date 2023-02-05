@@ -10,6 +10,18 @@ Liste des Bénéficiaires
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Béneficiaires</h6>
             </div>
+            <div class="filter_service">
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+                <a href="#" class="service_item">Service</a>
+            </div>
             <div class="table-responsive table-height">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
                     <thead>
