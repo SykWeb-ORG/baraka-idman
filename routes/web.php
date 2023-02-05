@@ -522,4 +522,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de participant", 404);
         });
+        Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
+            return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
+        })->name('AddVisiteJuridique');
 });
