@@ -3,37 +3,37 @@
     <fieldset>
         <div class="Nv-scolaire">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'NON Scolarisé')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios1"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'NON Scolarisé')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="non_scolarisé"
                     value="NON Scolarisé">
-                <label class="form-check-label" for="gridRadios1">
+                <label class="form-check-label" for="non_scolarisé">
                     NON Scolarisé
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Primaire')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Primaire')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="primaire"
                     value="Primaire">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="primaire">
                     Primaire
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Collège')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios3"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Collège')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="college"
                     value="Collège">
-                <label class="form-check-label" for="gridRadios3">
+                <label class="form-check-label" for="college">
                     Collège
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Lycée')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios4"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Lycée')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="lycee"
                     value="Lycée">
-                <label class="form-check-label" for="gridRadios4">
+                <label class="form-check-label" for="lycee">
                     Lycée
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'bac+')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="gridRadios5"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'bac+')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="bac+"
                     value="bac+">
-                <label class="form-check-label" for="gridRadios5">
+                <label class="form-check-label" for="bac+">
                     bac+
                 </label>
             </div>
@@ -45,30 +45,30 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'Célibataire')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="gridRadios1"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'Célibataire')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="celib"
                     value="Célibataire">
-                <label class="form-check-label" for="gridRadios1">
+                <label class="form-check-label" for="celib">
                     Célibataire
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'marié')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'marié')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="marié"
                     value="marié">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="marié">
                     marié
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'divorcé')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="gridRadios3"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'divorcé')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="divorcé"
                     value="divorcé">
-                <label class="form-check-label" for="gridRadios3">
+                <label class="form-check-label" for="divorcé">
                     divorcé
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'veuf')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="gridRadios4"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'veuf')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="veuf"
                     value="veuf">
-                <label class="form-check-label" for="gridRadios4">
+                <label class="form-check-label" for="veuf">
                     veuf
                 </label>
             </div>
@@ -79,16 +79,16 @@
     <legend class="col-form-label col-sm-2 pt-0">Orphelin</legend>
     <div id="sexe-benef" class="col-sm-10">
         <div class="form-check d-inline-block mr-5">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="orphelin" id="gridRadios1"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="orphelin" id="Orphelin_oui"
                 value="1" {{($beneficiaire->orphelin == "1")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios1">
+            <label class="form-check-label" for="Orphelin_oui">
                 Oui
             </label>
         </div>
         <div class="form-check d-inline-block">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="orphelin" id="gridRadios2"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="orphelin" id="Orphelin_non"
                 value="0" {{($beneficiaire->orphelin == "0")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios2">
+            <label class="form-check-label" for="Orphelin_non">
                 Non
             </label>
         </div>
@@ -99,30 +99,30 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'SANS')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="gridRadios1"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'SANS')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="sans_profession"
                     value="SANS">
-                <label class="form-check-label" for="gridRadios1">
+                <label class="form-check-label" for="sans_profession">
                     SANS
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'Salarié')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'Salarié')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="salarié"
                     value="Salarié">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="salarié">
                     Salarié
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'Ouvrier')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'Ouvrier')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="ouvrier"
                     value="Ouvrier">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="ouvrier">
                     Ouvrier
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'Autres')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->profession == 'Autres')? 'checked': ''}} class="form-check-input" type="radio" name="profession" id="autres"
                     value="Autres">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="autres">
                     Autres
                 </label>
             </div>
@@ -134,16 +134,16 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->zone_habitation == 'Urbain')? 'checked': ''}} class="form-check-input" type="radio" name="zone_habitation" id="gridRadios1"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->zone_habitation == 'Urbain')? 'checked': ''}} class="form-check-input" type="radio" name="zone_habitation" id="zone_urbain"
                     value="Urbain">
-                <label class="form-check-label" for="gridRadios1">
+                <label class="form-check-label" for="zone_urbain">
                     Urbain
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->zone_habitation == 'Village')? 'checked': ''}} class="form-check-input" type="radio" name="zone_habitation" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->zone_habitation == 'Village')? 'checked': ''}} class="form-check-input" type="radio" name="zone_habitation" id="zone_village"
                     value="Village">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="zone_village">
                     Village
                 </label>
             </div>
@@ -155,16 +155,16 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}}  {{($beneficiaire->localisation == 'A l\'intérieur de la clôture')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="gridRadios1"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}}  {{($beneficiaire->localisation == 'A l\'intérieur de la clôture')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="local_inter"
                     value="A l'intérieur de la clôture">
-                <label class="form-check-label" for="gridRadios1">
+                <label class="form-check-label" for="local_inter">
                     A l'intérieur de la clôture
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->localisation == 'A l\'extérieur de la clôture')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->localisation == 'A l\'extérieur de la clôture')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="local_exter"
                     value="A l'extérieur de la clôture">
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="local_exter">
                     A l'extérieur de la clôture
                 </label>
             </div>
@@ -209,16 +209,16 @@
     <legend class="col-form-label col-sm-2 pt-0">Famille Informé</legend>
     <div id="sexe-benef" class="col-sm-10">
         <div class="form-check d-inline-block mr-5">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_informee" id="gridRadios1"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_informee" id="informé_oui"
                 value="1" {{($beneficiaire->famille_informee == "1")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios1">
+            <label class="form-check-label" for="informé_oui">
                 Oui
             </label>
         </div>
         <div class="form-check d-inline-block">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_informee" id="gridRadios2"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_informee" id="informé_non"
                 value="0" {{($beneficiaire->famille_informee == "0")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios2">
+            <label class="form-check-label" for="informé_non">
                 Non
             </label>
         </div>
@@ -228,16 +228,16 @@
     <legend class="col-form-label col-sm-2 pt-0">Intégrer la famille dans le traitement</legend>
     <div id="sexe-benef" class="col-sm-10">
         <div class="form-check d-inline-block mr-5">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_integre" id="gridRadios1"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_integre" id="integre_famille_oui"
                 value="1" {{($beneficiaire->famille_integre == "1")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios1">
+            <label class="form-check-label" for="integre_famille_oui">
                 Oui
             </label>
         </div>
         <div class="form-check d-inline-block">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_integre" id="gridRadios2"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="famille_integre" id="integre_famille_non"
                 value="0" {{($beneficiaire->famille_integre == "0")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios2">
+            <label class="form-check-label" for="integre_famille_non">
                 Non
             </label>
         </div>
@@ -248,30 +248,30 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios1"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="cause_famille"
                     value="Famille" {{($beneficiaire->addiction_cause == 'Famille')? 'checked': ''}} >
-                <label class="form-check-label" for="gridRadios1">
+                <label class="form-check-label" for="cause_famille">
                     Famille
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="cause_amis"
                     value="Amis" {{($beneficiaire->addiction_cause == 'Amis')? 'checked': ''}} >
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="cause_amis">
                     Amis
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="cause_entourage"
                     value="Entourage" {{($beneficiaire->addiction_cause == 'Entourage')? 'checked': ''}} >
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="cause_entourage">
                     Entourage
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="gridRadios2"
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="addiction_cause" id="cause_autres"
                     value="Autres" {{($beneficiaire->addiction_cause == 'Autres')? 'checked': ''}} >
-                <label class="form-check-label" for="gridRadios2">
+                <label class="form-check-label" for="cause_autres">
                     Autres
                 </label>
             </div>
@@ -313,16 +313,16 @@
     <legend class="col-form-label col-sm-2 pt-0">TS</legend>
     <div id="sexe-benef" class="col-sm-10">
         <div class="form-check d-inline-block mr-5">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="ts" id="gridRadios1"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="ts" id="ts_oui"
                 value="1" {{($beneficiaire->ts == "1")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios1">
+            <label class="form-check-label" for="ts_oui">
                 Oui
             </label>
         </div>
         <div class="form-check d-inline-block">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="ts" id="gridRadios2"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="ts" id="ts_non"
                 value="0" {{($beneficiaire->ts == "0")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios2">
+            <label class="form-check-label" for="ts_non">
                 Non
             </label>
         </div>

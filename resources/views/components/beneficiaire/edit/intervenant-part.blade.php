@@ -14,16 +14,16 @@
     <legend class="col-form-label col-sm-2 pt-0">Sexe</legend>
     <div id="sexe-benef" class="col-sm-10">
         <div class="form-check d-inline-block mr-5">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="sexe" id="gridRadios1"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="sexe" id="sexe_homme"
                 value="Homme" {{($beneficiaire->sexe == "Homme")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios1">
+            <label class="form-check-label" for="sexe_homme">
                 Homme
             </label>
         </div>
         <div class="form-check d-inline-block">
-            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="sexe" id="gridRadios2"
+            <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} class="form-check-input" type="radio" name="sexe" id="sexe_femme"
                 value="Femme" {{($beneficiaire->sexe == "Femme")? "checked" : ""}}>
-            <label class="form-check-label" for="gridRadios2">
+            <label class="form-check-label" for="sexe_femme">
                 Femme
             </label>
         </div>
