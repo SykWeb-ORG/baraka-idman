@@ -67,7 +67,7 @@ Ajout d'une Formation
                                     <th>Prénom Participant</th>
                                     <th>CIN Du Participant / jours</th>
                                     <th>Numéro De téléphone</th>    
-                                    <th colspan="2">Action</th>
+                                    <th colspan="2" class="actions">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="tbl_participant">
