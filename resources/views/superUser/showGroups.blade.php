@@ -18,7 +18,7 @@ Liste des Groupes
                             <th scope="col">N°</th>
                             <th>Nom du groupe</th>
                             <th>Atelier</th>
-                            <th colspan="2">Action</th>
+                            <th colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_group">

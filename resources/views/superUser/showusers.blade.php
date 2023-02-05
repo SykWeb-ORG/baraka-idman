@@ -23,7 +23,7 @@ Liste des utilisateurs
                             <th>Date de naissance</th>
                             <th>Email</th>
                             <th>Rôle</th>
-                            <th colspan="5">Action</th>
+                            <th colspan="5" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody>

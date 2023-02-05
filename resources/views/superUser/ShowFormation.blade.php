@@ -22,7 +22,7 @@ Liste des Formations
                             <th>Organisme chargé de la Formation</th>
                             <th>Formateur</th>
                             <th>Objet</th>
-                            <th colspan="2">Action</th>
+                            <th colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_formation">

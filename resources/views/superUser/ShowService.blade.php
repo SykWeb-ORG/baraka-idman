@@ -15,7 +15,7 @@
                         <tr class="text-dark">
                             <th scope="col">N°</th>
                             <th>Nom Du Service</th>
-                            <th colspan="2">Action</th>
+                            <th colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_services">

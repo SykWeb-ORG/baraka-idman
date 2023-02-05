@@ -22,7 +22,7 @@ Liste des Visites Sociales
                             @if (Auth::user()->admin)
                                 <th>Assistant Social</th>
                             @endif
-                            <th colspan="2">Action</th>
+                            <th colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_sociale_visites">
