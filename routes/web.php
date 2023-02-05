@@ -525,4 +525,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
             return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
         })->name('AddVisiteJuridique');
+        Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
+            return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
+        })->name('ShowVisiteJuridique');
 });
