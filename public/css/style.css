@@ -715,3 +715,19 @@ table tbody tr .userEdit{
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
 }
+.lbl_img_upload {
+    background-color: gray;
+    color: white;
+    font-family: sans-serif;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius:5rem;
+    -webkit-border-radius:5rem;
+    -moz-border-radius:5rem;
+    -ms-border-radius:5rem;
+    -o-border-radius:5rem;
+}
+#file-chosen {
+    margin-left: 0.3rem;
+    font-family: sans-serif;
+}

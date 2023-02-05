@@ -62,3 +62,8 @@ $('#close-btn').click(function(){
     $('.alert').addClass("hide");
     $('.alert').addClass("hideAlert");
   },3000);
+
+function changeTextContent(sender, input_id) {
+    const fileChosen = document.getElementById('file-chosen' + input_id);
+    fileChosen.textContent = sender.files[0].name
+}
