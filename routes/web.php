@@ -36,6 +36,7 @@ use App\Models\Service;
 use App\Models\SocialAssistant;
 use App\Models\SocialeVisite;
 use App\Models\User;
+use App\Models\Zone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -522,10 +523,22 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de participant", 404);
         });
-        Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
-            return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
-        })->name('AddVisiteJuridique');
-        Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
-            return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
-        })->name('ShowVisiteJuridique');
+    Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
+    })->name('AddVisiteJuridique');
+    Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
+        return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
+    })->name('ShowVisiteJuridique');
+    Route::get('/addzoneIntervenant', function (Request $request) {
+        if (!Gate::allows('create', Zone::class)) {
+            abort(403);
+        }
+        return view('superUser.addzoneIntervenant');
+    })->name('addzoneIntervenant');
+    Route::get('/zoneintervenance', function (Request $request) {
+        if (!Gate::allows('viewAny', Zone::class)) {
+            abort(403);
+        }
+        return view('interTerrain.zoneintervenance');
+    })->name('zoneintervenance');
 });
