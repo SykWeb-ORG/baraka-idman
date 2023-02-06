@@ -30,8 +30,13 @@ class BeneficiaireController extends Controller
      */
     public function index()
     {
-        $beneficiaires = Beneficiaire::all();
-        return view('interTerrain.listing', compact('beneficiaires'));
+        $services = Service::all();
+        if (Auth::user()->admin) {
+            $beneficiaires = Beneficiaire::all();
+        }else{
+            $beneficiaires = Auth::user()->registred_beneficiaires;
+        }
+        return view('interTerrain.listing', compact('beneficiaires', 'services'));
     }
 
     /**

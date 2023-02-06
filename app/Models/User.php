@@ -115,4 +115,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Beneficiaire::class);
     }
+
+    /**
+     * The services that belong to the user.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'beneficiaire_service_user')
+                    ->as('beneficiaire_service_user')
+                    ->withTimestamps();
+    }
 }
