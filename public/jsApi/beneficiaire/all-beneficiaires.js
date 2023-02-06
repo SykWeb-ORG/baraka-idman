@@ -6,6 +6,10 @@
 /// *****************************
 $(document).ready(function () {
     $("input[type='radio']").click(changeIntegrationStatus);
+    $(".service_item").click(function (e) {
+        let filterValue = $(this).data(`filter-val`);
+        displayBeneficiairesByService(filterValue);
+    });
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
@@ -28,4 +32,9 @@ const changeIntegrationStatus = (e) => {
         "integration_status": e.target.value,
     }
     updateData(`integration-status/${e.target.dataset.beneficiaireId}`, dataToSend, showDialogResponse);
+}
+const displayBeneficiairesByService = (filterValue)=>{
+    $(`div.table-responsive`).not(`[class*='d-none']`).addClass('d-none');
+    let targetTable = $(`div#${filterValue}`)
+    targetTable.removeClass('d-none');
 }

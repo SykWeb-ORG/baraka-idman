@@ -28,7 +28,6 @@ class Beneficiaire extends Model
         'couvertures',
         'drogue_types',
         'violence_types',
-        'services',
         'suicide_causes',
         'groupes',
         'cas',
@@ -95,7 +94,7 @@ class Beneficiaire extends Model
     }
 
     /**
-     * Get the user that register thie beneficiaire.
+     * Get the user that register the beneficiaire.
      */
     public function user()
     {
@@ -135,6 +134,7 @@ class Beneficiaire extends Model
     {
         return $this->belongsToMany(User::class, 'beneficiaire_service_user')
                     ->as('beneficiaire_service_user')
+                    ->withPivot(['service_id'])
                     ->withTimestamps();
     }
 }

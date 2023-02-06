@@ -433,7 +433,8 @@ table tbody tr td.actionDelete {
     color: white;
 }
 .table-height{
-    height: 600px;
+    height: auto;
+    max-height: 600px;
     overflow-y: scroll;
 }
 .table-heightPart{
