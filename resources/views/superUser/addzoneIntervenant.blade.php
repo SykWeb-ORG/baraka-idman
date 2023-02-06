@@ -12,11 +12,11 @@ Ajout d'une zone d'intervenance
                 <h6 id="title-form" class="mb-4">Ajouter Zone d'intervenance</h6>
                 <form class="form-user" method="POST">
                     <div class="mb-3">
-                        <label for="name-zone" class="form-label">Nom</label>
-                        <input type="text" name="name-zone" class="form-control" id="name-zone">
+                        <label for="nom-zone" class="form-label">Nom</label>
+                        <input type="text" name="nom-zone" class="form-control" id="nom-zone">
                     </div>
                     <div class="mb-3">
-                        <button id="btn-manip-user" class="btn btn-primary">Ajouter</button>
+                        <button id="btn-add-zone" class="btn btn-primary">Ajouter</button>
                     </div>
                 </form>
                 <div id="message-alert" class="mb-3"></div>
@@ -26,4 +26,7 @@ Ajout d'une zone d'intervenance
 </div>
 <div class="push"></div>
 <!-- Form End -->
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/zone/add-zone.js') }}"></script>
 @endsection
