@@ -732,3 +732,13 @@ table tbody tr .userEdit{
     margin-left: 0.3rem;
     font-family: sans-serif;
 }
+.place{
+    margin: 0 60px;
+    text-align: center;
+}
+.place .form-part{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
