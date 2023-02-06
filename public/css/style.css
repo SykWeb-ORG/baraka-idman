@@ -437,7 +437,7 @@ table tbody tr td.actionDelete {
     max-height: 600px;
     overflow-y: scroll;
 }
-.table-heightPart{
+.table-heightPart,.table-heightPlace{
     height: 300px;
     overflow-y: scroll;
 }
