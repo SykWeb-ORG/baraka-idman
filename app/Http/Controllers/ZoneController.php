@@ -20,7 +20,11 @@ class ZoneController extends Controller
     public function index()
     {
         $zones = Zone::all();
-        return response()->json($zones);
+        return response()->json(
+            [
+                'zones' => $zones,
+            ]
+        );
     }
 
     /**
@@ -106,6 +110,7 @@ class ZoneController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
@@ -132,6 +137,7 @@ class ZoneController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
