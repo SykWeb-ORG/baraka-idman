@@ -48,6 +48,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('roles-services-ability', function (User $user) {
             return $this->checkAbilityByAction($user, 'gérer les roles et les services');
         });
+        Gate::define('intervenant-zones-ability', function (User $user) {
+            return $this->checkAbilityByAction($user, 'Attacher intervenant avec les zones');
+        });
     }
 
     /**

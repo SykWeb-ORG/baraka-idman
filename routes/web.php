@@ -166,11 +166,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('zones', ZoneController::class);
     Route::resource('programmes', ProgrammeController::class);
     Route::get('all-zones/{intervenant}', function (Request $request, Intervenant $intervenant) {
+        if (!Gate::allows('intervenant-zones-ability')) {
+            abort(403);
+        }
         return view('superUser.affectationzone', compact(
             'intervenant',
         ));
     })->name('all-zones');
-    Route::post('match-intervenant-zones/{intervenant}', [ManagementIntervenantZoneController::class, 'matchIntervenantZones']);
+    Route::put('match-intervenant-zones/{intervenant}', [ManagementIntervenantZoneController::class, 'matchIntervenantZones']);
     Route::get('all-programmes/{intervenant}', function (Request $request, Intervenant $intervenant) {
         return view('superUser.affectationprogramme', compact(
             'intervenant',

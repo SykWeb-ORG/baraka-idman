@@ -50,12 +50,12 @@ Liste des utilisateurs
                                         }
                                     @endphp
                                 </td>
-                                <td class="userEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
+                                <td class="userEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a></td>
                                 <td class="userDest">
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus"></i></button>
                                     </form>
                                 </td>
                                 <td class="actionMenu">
@@ -71,22 +71,24 @@ Liste des utilisateurs
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2 actionModal"><i class="fas fa-user-edit"></i></a>
+                                                    <a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2 actionModal" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a>
                                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" class="actionModal" method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus"></i></button>
                                                     </form>
                                                     <form action="{{ route('reinit', ['user'=>$user->id]) }}" method="post">
                                                         @csrf
                                                         @method('PUT')
-                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-sync"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Reinitialiser compte'><i class="fas fa-sync"></i></button>
                                                     </form>
                                                     @if ($user->intervenant)
-                                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-map-marker"></i></a>
+                                                        @can('intervenant-zones-ability')
+                                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier intervenant avec les zones'><i class="fas fa-map-marker"></i></a>
+                                                        @endcan
                                                     @endif
                                                     @if ($user->intervenant)
-                                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fab fa-product-hunt"></i></a>
+                                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier intervenant avec les programmes'><i class="fab fa-product-hunt"></i></a>
                                                     @endif
                                                 </div>
                                             </div>
