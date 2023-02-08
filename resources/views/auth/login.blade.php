@@ -44,7 +44,7 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <form action="{{ route('login') }}" method="post">
                         @csrf
-                        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3 pos_login">
+                        <div class="bg-light rounded p-4 p-sm-5 mx-3 pos_login">
                             <img src="{{asset("images/LOGO-DROGUES.png")}}" alt="" class="logo-login">
                             <div class="d-flex flex-column align-items-center justify-content-between mb-1 mt-5">
                                 <h3>Sign In</h3>

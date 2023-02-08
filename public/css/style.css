@@ -31,11 +31,13 @@
 }
 .pos_login{
     position: relative;
+    margin-top:8.5rem;
+    margin-bottom: 1.5rem   ;
 }
 .logo-login{
     position: absolute;
     left: 50%;
-    top: -90px;
+    top: -130px;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -106,7 +108,7 @@
     overflow-y: auto;
     background: var(--light);
     transition: 0.5s;
-    z-index: 999;
+    z-index: 1004;
 }
 .sidebar .logo_sidebar{
     width: 150px;
@@ -205,7 +207,16 @@
     padding-left: 25px;
     border-radius: 0 30px 30px 0;
 }
-
+.sidebar .sidebar-toggler {
+    display: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 40px;
+    margin:  5px 10px 0px 10px;
+}
 .content .navbar .navbar-nav .nav-link {
     margin-left: 25px;
     padding: 12px 0;
@@ -417,6 +428,9 @@ table tbody tr td.actionDelete {
         position: sticky;
         inset-inline-end: -2px;
         background-color: var(--light);
+    }
+    .sidebar .sidebar-toggler{
+        display: inline-flex;
     }
     /* .modal-title {
         font-size: 15px;

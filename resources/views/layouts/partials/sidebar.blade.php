@@ -1,9 +1,13 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
+    <a href="#" class="sidebar-toggler flex-shrink-0">
+        <i class="fa fa-bars"></i>
+    </a>
     <nav class="navbar bg-light navbar-light">
         <a href="#" class="navbar-brand mx-4 mb-3">
             <h4 class="text-primary"><img src={{asset("images/LOGO-DROGUES.png")}} alt="" class="logo_sidebar"></h4>
         </a>
+        
         {{-- <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
                 <img class="rounded-circle" src="{{asset('img/user.jpg')}}" alt="" style="width: 40px; height: 40px;">
