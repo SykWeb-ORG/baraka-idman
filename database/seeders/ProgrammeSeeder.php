@@ -18,15 +18,19 @@ class ProgrammeSeeder extends Seeder
             [
                 [
                     'programme_type' => 'programme A',
+                    'programme_nom' => 'programme n n A',
                 ],
                 [
                     'programme_type' => 'programme B',
+                    'programme_nom' => 'programme n B',
                 ],
                 [
                     'programme_type' => 'programme C',
+                    'programme_nom' => 'programme n C',
                 ],
                 [
                     'programme_type' => 'programme D',
+                    'programme_nom' => 'programme n D',
                 ],
             ]
         );
