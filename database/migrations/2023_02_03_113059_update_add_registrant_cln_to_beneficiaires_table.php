@@ -14,6 +14,7 @@ class UpdateAddRegistrantClnToBeneficiairesTable extends Migration
     public function up()
     {
         Schema::table('beneficiaires', function (Blueprint $table) {
+            $table->dropForeign(['intervenant_id']);
             $table->dropIndex('beneficiaires_intervenant_id_foreign');
             $table->dropColumn('intervenant_id');
             $table->foreignId('user_id')
