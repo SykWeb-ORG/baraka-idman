@@ -1,5 +1,5 @@
 // Variables Declarations
-var baseUrl = "http://localhost:8000/";
+var baseUrl = `http://${location.host}/`;
 
 // GET a SUNCTUM CSRF
 $(document).ready(function(){
