@@ -490,8 +490,8 @@ Route::middleware('auth:sanctum')->group(function () {
             200
         );
     });
-    Route::get('/showService', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showService', compact('beneficiaire'));
+    Route::get('/showService', function (Request $request) {
+        return view('superUser.ShowService');
     })->name('showService');
     Route::get('/AddFormation', function (Beneficiaire $beneficiaire) {
         return view('superUser.AddFormation', compact('beneficiaire'));
@@ -519,8 +519,8 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de formation", 404);
         });
-    Route::get('/AddService', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddService', compact('beneficiaire'));
+    Route::get('/AddService', function (Request $request) {
+        return view('superUser.Addservice');
     })->name('AddService');
     Route::resource('participants', ParticipantController::class)
         ->missing(function (Request $request) {
