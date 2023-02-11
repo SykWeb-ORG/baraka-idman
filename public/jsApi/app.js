@@ -1,8 +1,9 @@
 // Variables Declarations
-const baseUrl = "http://localhost:8000/";
+var baseUrl = "http://localhost:8000/";
 
 // GET a SUNCTUM CSRF
 $(document).ready(function(){
+  axios.get('/domain').then(res => baseUrl = res.data);
   axios.get('/sanctum/csrf-cookie');
 });
 
