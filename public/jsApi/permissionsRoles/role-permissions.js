@@ -19567,7 +19567,6 @@ var __webpack_exports__ = {};
   !*** ./resources/js/role-permissions.js ***!
   \******************************************/
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-var baseUrl = "http://localhost:8000/";
 var db_roles = null;
 function getData(endUrl) {
   debugger;

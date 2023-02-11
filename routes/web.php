@@ -556,8 +556,4 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/showProgram', function (Beneficiaire $beneficiaire) {
             return view('superUser.showProgram', compact('beneficiaire'));
         })->name('showProgram');
-    Route::get('/domain ', function(){
-        $domain = env('APP_URL', 'http://localhost') . '/';
-        return $domain;
-    });
 });
