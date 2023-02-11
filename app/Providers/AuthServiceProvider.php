@@ -61,6 +61,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function checkAbilityByAction(User $user, $action)
     {
+        $action = mb_convert_encoding($action, 'ASCII');
         if ($user->admin) {
             $role = 'admin';
         } elseif ($user->medical_assistant) {
@@ -74,7 +75,7 @@ class AuthServiceProvider extends ServiceProvider
                             ->first()
                             ->permissions
                             ->map(function ($action, $key) {
-                                return $action['action_nom'];
+                                return mb_convert_encoding($action['action_nom'], 'ASCII');
                             });
         $he_can = $his_permissions->contains($action);
         return $he_can;
