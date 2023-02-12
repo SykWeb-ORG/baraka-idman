@@ -21,14 +21,22 @@ Ajout d'un Programme
                         </div>
                         <div class="place">
                             <legend>Ajouter Place</legend>
-                            <div class="form-part">
+                            <div class="form-part flex-column">
                                 <div class="mb-3">
                                     <label for="nom-place" class="form-label">Nom:</label>
                                     <input type="text" name="nom-place" class="form-control" id="nom-place">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="date-programme" class="form-label">Date programme:</label>
+                                    <input type="date" name="date-programme" class="form-control" id="date-programme">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="resultat-programme" class="form-label">Résultat:</label>
+                                    <input type="text" name="resultat-programme" class="form-control" id="resultat-programme">
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <button id="btn-add-place" class="btn btn-primary">Ajouter Place</button>
+                                <button id="btn-add-place" class="btn btn-primary" data-action="add">Ajouter Place</button>
                             </div>
                         </div>
                         <table class="table text-start align-middle table-bordered table-hover mb-5" id="tableUser">
@@ -36,6 +44,8 @@ Ajout d'un Programme
                                 <tr class="text-dark">
                                     <th scope="col">N°</th>
                                     <th>Nom Place</th>
+                                    <th>Date programme</th>
+                                    <th>Résultat</th>
                                     <th colspan="2" class="actions">Action</th>
                                 </tr>
                             </thead>
@@ -51,4 +61,7 @@ Ajout d'un Programme
         </div>
     </div>
     <!-- Form End -->
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/programme/add-programme.js') }}"></script>
 @endsection

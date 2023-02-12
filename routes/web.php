@@ -31,6 +31,7 @@ use App\Models\Groupe;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\MedicaleVisite;
+use App\Models\Programme;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\SocialAssistant;
@@ -550,10 +551,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
     })->name('ShowVisiteJuridique');
-    Route::get('/AddProgram', function (Beneficiaire $beneficiaire) {
+    Route::get('/AddProgram', function (Request $request) {
+        if (!Gate::allows('create', Programme::class)) {
+            abort(403);
+        }
         return view('superUser.AddProgramm', compact('beneficiaire'));
     })->name('AddProgram');
     Route::get('/showProgram', function (Beneficiaire $beneficiaire) {
-        return view('superUser.showProgram', compact('beneficiaire'));
+        return view('superUser.ShowProgram', compact('beneficiaire'));
     })->name('showProgram');
 });

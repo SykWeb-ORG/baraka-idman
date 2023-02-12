@@ -3,7 +3,6 @@ var baseUrl = `http://${location.host}/`;
 
 // GET a SUNCTUM CSRF
 $(document).ready(function(){
-  axios.get('/domain').then(res => baseUrl = res.data);
   axios.get('/sanctum/csrf-cookie');
 });
 
