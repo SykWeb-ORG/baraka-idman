@@ -509,7 +509,7 @@ Route::middleware('auth:sanctum')->group(function () {
         if (!Gate::allows('viewAny', SocialeVisite::class)) {
             abort(403);
         }
-        return view('superUser.showSocialVisite');
+        return view('superUser.ShowSocialVisite');
     })->name('showSocialVisite');
     Route::resource('services', ServiceController::class)
         ->missing(function (Request $request) {
