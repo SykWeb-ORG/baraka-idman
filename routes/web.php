@@ -555,7 +555,7 @@ Route::middleware('auth:sanctum')->group(function () {
         if (!Gate::allows('create', Programme::class)) {
             abort(403);
         }
-        return view('superUser.AddProgramm', compact('beneficiaire'));
+        return view('superUser.AddProgramm');
     })->name('AddProgram');
     Route::get('/showProgram', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowProgram', compact('beneficiaire'));
