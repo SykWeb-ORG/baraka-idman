@@ -31,7 +31,7 @@ Modification d'un utilisateur
                         </div>
                         <div class="mb-3">
                             <label for="phone-number-user" class="form-label">N° de telephone</label>
-                            <input type="number" name="phone_number" class="form-control" id="phone-number-user" value="{{$user->phone_number}}">
+                            <input type="text" name="phone_number" class="form-control" id="phone-number-user" value="{{$user->phone_number}}">
                         </div>
                         <div class="mb-3">
                             <label for="email-user" class="form-label">Adresse Email</label>
