@@ -544,16 +544,16 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('interTerrain.zoneintervenance');
     })->name('zoneintervenance');
-        Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
-            return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
-        })->name('AddVisiteJuridique');
-        Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
-            return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
-        })->name('ShowVisiteJuridique');
-        Route::get('/AddProgram', function (Beneficiaire $beneficiaire) {
-            return view('superUser.AddProgramm', compact('beneficiaire'));
-        })->name('AddProgram');
-        Route::get('/showProgram', function (Beneficiaire $beneficiaire) {
-            return view('superUser.showProgram', compact('beneficiaire'));
-        })->name('showProgram');
+    Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
+    })->name('AddVisiteJuridique');
+    Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
+        return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
+    })->name('ShowVisiteJuridique');
+    Route::get('/AddProgram', function (Beneficiaire $beneficiaire) {
+        return view('superUser.AddProgramm', compact('beneficiaire'));
+    })->name('AddProgram');
+    Route::get('/showProgram', function (Beneficiaire $beneficiaire) {
+        return view('superUser.showProgram', compact('beneficiaire'));
+    })->name('showProgram');
 });
