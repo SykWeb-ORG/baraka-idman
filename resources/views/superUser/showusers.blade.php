@@ -55,7 +55,29 @@ Liste des utilisateurs
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus"></i></button>
+                                        <button class="btn btn-sm btn-sm-square btn-primary m-2" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteUser{{$loop->iteration}}" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus"></i></button>
+                                        <!--Delete user-->
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal_DeleteUser{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmer Suppression</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    </button>
+                                                </div>
+                                                    <div class="modal-bodyEdit">
+                                                        <div class="mb-3 mt-3">
+                                                            <button id="btn-delete-user" class="btn btn-secondary">Oui</button>
+                                                            <button class="btn btn-primary">Non</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End Modal-->
                                     </form>
                                 </td>
                                 <td class="actionMenu">
