@@ -10,6 +10,10 @@ use Illuminate\Support\Arr;
 
 class ProgrammeController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Programme::class, 'programme');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,6 +56,7 @@ class ProgrammeController extends Controller
                     $new_place = new Place([
                         'lieu' => $place['lieu'],
                         'programme_date' => $place['programme_date'],
+                        'programme_resultat' => $place['programme_resultat'],
                     ]);
                     $places->push($new_place);
                 }
