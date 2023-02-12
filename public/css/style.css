@@ -486,7 +486,7 @@ table tbody tr .userRein{
 }
 table tbody tr .userDest{
     position: sticky;
-    inset-inline-end:63px;
+    inset-inline-end:61px;
     background-color: var(--light);
 }
 table tbody tr .userEdit{
