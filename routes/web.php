@@ -31,6 +31,7 @@ use App\Models\Groupe;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\MedicaleVisite;
+use App\Models\Place;
 use App\Models\Programme;
 use App\Models\Role;
 use App\Models\Service;
@@ -557,7 +558,36 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddProgramm');
     })->name('AddProgram');
-    Route::get('/showProgram', function (Beneficiaire $beneficiaire) {
-        return view('superUser.ShowProgram', compact('beneficiaire'));
+    Route::get('/showProgram', function (Request $request) {
+        if (!Gate::allows('viewAny', Programme::class)) {
+            abort(403);
+        }
+        return view('superUser.ShowProgram');
     })->name('showProgram');
+    Route::put('/link-places-with-programme/{programme}', function (Request $request, Programme $programme){
+        $programme->places()->delete();
+        $places = collect([]);
+        foreach($request->places as $place)
+        {
+            $values = [
+                'lieu' => $place['lieu'],
+                'programme_date' => $place['programme_date'],
+                'programme_resultat' => $place['programme_resultat'],
+            ];
+            $new_place = new Place($values);
+            $places->push($new_place);
+        }
+        $programme->places()->saveMany($places->all());
+        $programme->refresh();
+        $result = $programme;
+        $status = 200;
+        $msg = "Programme modifié avec success.";
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
+    });
 });
