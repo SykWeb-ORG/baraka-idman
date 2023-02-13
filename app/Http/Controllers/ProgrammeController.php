@@ -23,7 +23,9 @@ class ProgrammeController extends Controller
     {
         $programmes = Programme::all();
         return response()->json(
-            $programmes
+            [
+                'programmes' => $programmes,
+            ]
         );
     }
 
@@ -114,24 +116,6 @@ class ProgrammeController extends Controller
         $programme->programme_type = $request->programme_type;
         $programme->programme_nom = $request->programme_nom;
         if ($programme->update()) {
-            if ($request->has('places')) {
-                $programme->places()->delete();
-                $places = collect([]);
-                foreach($request->places as $place)
-                {
-                    $values = [
-                        'lieu' => $place['lieu'],
-                        'programme_date' => $place['programme_date'],
-                    ];
-                    if (Arr::exists($place, 'programme_resultat')) {
-                        $values['programme_resultat'] = $place['programme_resultat'];
-                    }
-                    $new_place = new Place($values);
-                    $places->push($new_place);
-                }
-                $programme->places()->saveMany($places->all());
-                $programme->refresh();
-            }
             $result = $programme;
             $status = 200;
             $msg = "Programme modifié avec success.";
@@ -144,6 +128,7 @@ class ProgrammeController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
@@ -170,6 +155,7 @@ class ProgrammeController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
