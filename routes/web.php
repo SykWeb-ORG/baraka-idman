@@ -590,4 +590,7 @@ Route::middleware('auth:sanctum')->group(function () {
             $status
         );
     });
+    Route::get('/dashboard', function (Beneficiaire $beneficiaire) {
+        return view('superUser.dashboard', compact('beneficiaire'));
+    })->name('dashboard');
 });
