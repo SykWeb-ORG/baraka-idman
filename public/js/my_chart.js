@@ -129,5 +129,37 @@ var myChartpresence = new Chart(ctspres, {
         responsive:true,
     }
 });
+var ctTdrg = document.getElementById('myChartTypedrg').getContext('2d');
+var myChartTypedrg = new Chart(ctTdrg, {
+    type: 'bar',
+    data: {
+        labels: ['Cigarette', 'Cannabis','Alcool','Comprimes hallucinogènes','Maajoune','Silicyou','Kala','Tanfiha','Kif','Chicha','Internet'],
+        datasets: [{
+            label: 'Type de drogue',
+            data: [342, 100,350,234,543,125,234,199,456,237,196],
+            backgroundColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(153, 192, 255, 1)',
+                'rgba(153, 162, 234, 1)',
+                'rgba(153, 142, 145, 1)',
+                'rgba(153, 102, 85, 1)',
+                'rgba(153, 92, 255, 1)',
+            ],
+        }]
+    },
+    options: {
+        responsive:true,
+        scales: {
+            y: {
+              beginAtZero: true
+            }
+        }
+    }
+});
 
 
