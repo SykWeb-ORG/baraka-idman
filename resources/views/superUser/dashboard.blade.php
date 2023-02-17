@@ -280,6 +280,18 @@
                 </div>
             </div>
         </div>
+        {{-- Statistiques selon Type de Drogue --}}
+        <!-- BEGIN: Stastics based on gender -->
+        <div class="mb-4">
+            <h6 class="mb-3">Statistiques selon Type de Drogue</h6>
+            <div class="graphBox">
+                <div class="box">
+                    <canvas id="myChartTypedrg"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- END: Stastics based on gender -->
+        
         {{-- Statistiques selon le service --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon le service</h6>
@@ -307,8 +319,8 @@
             </div>
         </div>
     </div>
-@endsection
-@section('custom_scripts')
+    @endsection
+    @section('custom_scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
     <script src="{{ asset('js/my_chart.js') }}"></script>
 @endsection
