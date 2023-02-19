@@ -39,12 +39,15 @@ const deleteAtelier = (e) => {
  * @param {object} data response from the server that contains new atelier 
  */
 const showDialogResponse = (data) => {
-    let atelier = data.result;
-    let msg = data.msg;
-    alert(msg);
     if (data.status == 200) {
+        let atelier = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
         $("tbody#tbl_atelier").empty();
         getAllData("ateliers", getAllAteliers);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
     }
 }
 /**
