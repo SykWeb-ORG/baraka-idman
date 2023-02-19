@@ -57,13 +57,16 @@ $('#close-btn').click(function(){
     $('.alert').removeClass("show");
     $('.alert').addClass("hide");
   })
-  setTimeout(function(){
-    $('.alert').removeClass("show");
-    $('.alert').addClass("hide");
-    $('.alert').addClass("hideAlert");
-  },3000);
 
 function changeTextContent(sender, input_id) {
     const fileChosen = document.getElementById('file-chosen' + input_id);
     fileChosen.textContent = sender.files[0].name
+}
+const alertMsg = (msg) => {
+    let divAlert = $("div.showAlert");
+    divAlert.find(`span.msg`).text(msg);
+    divAlert.toggleClass(["hide", "d-none", "show"]);
+    setTimeout(function () {
+        divAlert.toggleClass(["hide", "d-none", "show"]);
+    }, 3000);
 }

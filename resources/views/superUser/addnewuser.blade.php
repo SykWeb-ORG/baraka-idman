@@ -30,7 +30,7 @@ Ajout d'un utilisateur
                         </div>
                         <div class="mb-3">
                             <label for="phone-number-user" class="form-label">N° de telephone</label>
-                            <input type="number" name="phone_number" class="form-control" id="phone-number-user">
+                            <input type="text" name="phone_number" class="form-control" id="phone-number-user">
                         </div>
                         <div class="mb-3">
                             <label for="email-user" class="form-label">Adresse Email</label>
@@ -56,21 +56,6 @@ Ajout d'un utilisateur
         </div>
     </div>
     <!-- Form End -->
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    @if ($msg = session()->get('msg'))
-        <div class="alert alert-{{session()->get('status')}} alert-dismissible fade show" role="alert">
-            <i class="fas {{session()->get('icon')}}"></i> {{$msg}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>;
-    @endif
 @endsection
 
 {{-- @section('custom_scripts')

@@ -626,10 +626,6 @@ table tbody tr .userEdit{
     -webkit-animation: hide_slide 1s ease forwards;
 }
 
-.alert.hideAlert {
-    display: none;
-}
-
 @keyframes hide_slide {
     0% {
         transform: translateX(-0%);

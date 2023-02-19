@@ -14,10 +14,7 @@ function getAllData(endUrl,fctOutput) {
       })
       .then(res => fctOutput(res.data))
       .catch(err => {
-        if (err.response) {
-            // Server responded with a status other than 200 range
-            fctOutput(err.response.status)
-          }
+        fctOutput(err.response.data);
     });
 }
 
@@ -27,10 +24,7 @@ function addData(endUrl,dataObject,fctOutput) {
       .post(baseUrl+endUrl, dataObject)
       .then(res => fctOutput(res.data))
       .catch(err => {
-        if (err.response) {
-            // Server responded with a status other than 200 range
-            fctOutput(err.response.status)
-          }
+        fctOutput(err.response.data);
     });
 }
 
@@ -40,10 +34,7 @@ function updateData(endUrl,dataObject,fctOutput) {
       .put(baseUrl+endUrl, dataObject)
       .then(res => fctOutput(res.data))
       .catch(err => {
-        if (err.response) {
-            // Server responded with a status other than 200 range
-            fctOutput(err.response.status)
-          }
+        fctOutput(err.response.data);
     });
 }
 
@@ -53,9 +44,6 @@ function deleteData(endUrl,fctOutput) {
       .delete(baseUrl+endUrl)
       .then(res => fctOutput(res.data))
       .catch(err => {
-        if (err.response) {
-            // Server responded with a status other than 200 range
-            fctOutput(err.response.status)
-          }
+        fctOutput(err.response.data);
     });
 }
