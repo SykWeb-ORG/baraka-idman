@@ -39,13 +39,15 @@ const deleteCas = (e) => {
  * @param {object} data response from the server that contains new cas juridique
  */
 const showDialogResponse = (data) => {
-    debugger
-    let cas = data.result;
-    let msg = data.msg;
-    alert(msg);
     if (data.status == 200) {
+        let cas = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
         $("tbody#tbl_cas_juridique").empty();
         getAllData("cas", getAllCas);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
     }
 }
 /**
