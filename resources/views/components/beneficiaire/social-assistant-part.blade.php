@@ -380,8 +380,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="radio" class="form-check-input" name="suicide" id="oui"><label for="oui">Oui</label></td>
-                    <td><input type="radio" class="form-check-input" name="suicide" id="non"><label for="non">Non</label></td>
+                    <td><input type="radio" class="form-check-input" name="suicide" id="oui-suicide"><label for="oui-suicide">Oui</label></td>
+                    <td><input type="radio" class="form-check-input" name="suicide" id="non-suicide"><label for="non-suicide">Non</label></td>
                     <td><textarea name="suicide_causes" id="suicide_causes" cols="30" rows="10"></textarea></td>
                 </tr>
             </tbody>

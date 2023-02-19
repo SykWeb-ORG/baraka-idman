@@ -249,6 +249,7 @@ Route::middleware('auth:sanctum')->group(function () {
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
