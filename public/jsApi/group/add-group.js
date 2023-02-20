@@ -30,9 +30,14 @@ const addGroup = (e) => {
  * @param {object} data response from the server that contains new group
  */
 const showDialogResponse = (data) => {
-    let group = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let group = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
 /**
  * Retrieve all ateliers from the server
