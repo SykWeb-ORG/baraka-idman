@@ -27,7 +27,12 @@ const addZone = (e) => {
  * @param {object} data response from the server that contains new zone 
  */
 const showDialogResponse = (data) => {
-    let zone = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let zone = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
