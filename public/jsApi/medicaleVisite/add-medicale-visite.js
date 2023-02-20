@@ -35,9 +35,14 @@ const addMedicaleVisite = (e) => {
  * @param {object} data response from the server that contains new medicale visite
  */
 const showDialogResponse = (data) => {
-    let atelier = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let atelier = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
 /**
  * Fill the select field with all beneficiaires
