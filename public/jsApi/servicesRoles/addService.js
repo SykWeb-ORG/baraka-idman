@@ -27,11 +27,13 @@ const addService = (e) => {
  * @param {object} data response from the server that contains new Service
  */
 const showDialogResponse = (data) => {
-    let service = data.result;
-    let msg = data.msg;
-    let status = data.status;
-    if(status == 200) {
-        alert(msg);
+    if(data.status == 200) {
+        let service = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
         $("input#nom-service").val("");
+    } else {
+        let errors = data.errors;
+        console.log(errors);
     }
 }
