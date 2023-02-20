@@ -64,12 +64,15 @@ const deleteProgramme = (e) => {
  * @param {object} data response from the server that contains modified programme 
  */
 const showDialogResponse = (data) => {
-    let programme = data.result;
-    let msg = data.msg;
-    alert(msg);
     if (data.status == 200) {
+        let programme = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
         $("tbody#tbl_programme").empty();
         getAllData("programmes", getAllProgrammes);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
     }
 }
 /**
