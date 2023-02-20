@@ -45,14 +45,19 @@ const addBeneficiaire = (e) => {
  * @param {object} data response from the server that contains new beneficiaire
  */
 const showDialogResponse = (data) => {
-    let beneficiaire = data.result;
-    let msg = data.msg;
-    attachCouverturesMedicales(beneficiaire);
-    attachDrogueTypes(beneficiaire);
-    attachServices(beneficiaire);
-    attachSuicideCauses(beneficiaire);
-    attachViolenceTypes(beneficiaire);
-    alert(msg);
+    if (data.status == 200) {
+        let beneficiaire = data.result;
+        let msg = data.msg;
+        attachCouverturesMedicales(beneficiaire);
+        attachDrogueTypes(beneficiaire);
+        attachServices(beneficiaire);
+        attachSuicideCauses(beneficiaire);
+        attachViolenceTypes(beneficiaire);
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
 /**
  * Attach the checked couvertures with the new beneficiaire

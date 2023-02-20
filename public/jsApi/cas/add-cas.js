@@ -27,7 +27,12 @@ const addCas = (e) => {
  * @param {object} data response from the server that contains new cas juridique
  */
 const showDialogResponse = (data) => {
-    let cas = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let cas = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }

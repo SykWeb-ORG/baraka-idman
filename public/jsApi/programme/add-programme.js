@@ -46,9 +46,14 @@ const addProgramme = (e) => {
  * @param {object} data response from the server that contains new programme 
  */
 const showDialogResponse = (data) => {
-    let programme = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let programme = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
 /**
  * Add new place to the programme

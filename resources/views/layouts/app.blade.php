@@ -25,9 +25,9 @@
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
 </head>
 <body>
-    <div class="alert show showAlert">
+    <div class="alert showAlert hide d-none">
         <span class="fas fa-check"></span>
-        <span class="msg">Bien Modifié</span>
+        <span class="msg"></span>
         <span class="close-btn" id="close-btn">
             <span class="fas fa-times"></span>
         </span>
@@ -47,6 +47,15 @@
         <div class="content">
             @include('layouts.partials.topbar')
             @yield('content_page')
+            @if ($errors->any())
+                <div class="alert-danger mt-3 mx-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @include('layouts.partials.footer')
         </div>
         <!-- Content End -->
@@ -69,5 +78,13 @@
     <script src="{{asset("jsApi/app.js")}}"></script>
 
     @yield('custom_scripts')
+    @if (session('msg'))
+        <script id="script-alert">
+            alertMsg("{{session('msg')}}");
+            setTimeout(() => {
+                $("script#script-alert").remove();
+            }, 100);
+        </script>
+    @endif
 </body>
 </html>

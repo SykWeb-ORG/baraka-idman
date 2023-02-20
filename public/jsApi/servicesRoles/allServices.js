@@ -45,12 +45,15 @@ const deleteService = (e) => {
  * @param {object} data response from the server that contains new service
  */
 const showDialogResponse = (data) => {
-    let service = data.result;
-    let msg = data.msg;
-    alert(msg);
     if (data.status == 200) {
+        let service = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
         $("tbody#tbl_services").empty();
         getAllData("all-services", getAllServices);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
     }
 }
 

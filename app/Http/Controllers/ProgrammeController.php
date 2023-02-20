@@ -77,6 +77,7 @@ class ProgrammeController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );

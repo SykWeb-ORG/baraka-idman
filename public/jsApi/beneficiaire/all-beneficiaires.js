@@ -19,9 +19,14 @@ $(document).ready(function () {
  * @param {object} data response from the server that contains modified beneficiaire
  */
 const showDialogResponse = (data) => {
-    let beneficiaire = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let beneficiaire = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
 /**
  * Change the integration status of the selected beneficiaire

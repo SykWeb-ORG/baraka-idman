@@ -33,9 +33,14 @@ const addSocialeVisite = (e) => {
  * @param {object} data response from the server that contains new sociale visite
  */
 const showDialogResponse = (data) => {
-    let atelier = data.result;
-    let msg = data.msg;
-    alert(msg);
+    if (data.status == 200) {
+        let socialeVisite = data.result;
+        let msg = data.msg;
+        alertMsg(msg);
+    } else {
+        let errors = data.errors;
+        console.log(errors);
+    }
 }
 /**
  * Fill the select field with all beneficiaires
