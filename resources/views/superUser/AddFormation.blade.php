@@ -20,8 +20,12 @@ Ajout d'une Formation
                             <input type="date" name="date_formation" class="form-control" id="date_formation">
                         </div>
                         <div class="mb-3">
-                            <label for="durée_formation" class="form-label">Durée De la Formation par jours :</label>
-                            <input type="number" name="durée_formation" class="form-control" id="duree_formation">
+                            <label for="heure_formation" class="form-label">Date De la Formation :</label>
+                            <input type="time" name="heure_formation" class="form-control" id="heure_formation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="duree_formation" class="form-label">Durée De la Formation par jours :</label>
+                            <input type="number" name="duree_formation" class="form-control" id="duree_formation">
                         </div>
                         <div class="mb-3">
                             <label for="organisme-formation" class="form-label">Organisme chargé de la Formation :</label>
@@ -52,11 +56,11 @@ Ajout d'une Formation
                                 </div>
                                 <div class="mb-3">
                                     <label for="numero-participant" class="form-label">Numéro de téléphone :</label>
-                                    <input type="number" name="numero-participant" class="form-control" id="numero-participant">
+                                    <input type="text" name="numero-participant" class="form-control" id="numero-participant">
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <button id="btn-add-group" class="btn btn-primary">Ajouter Participant</button>
+                                <button id="btn-add-participant" class="btn btn-primary" data-action="add">Ajouter Participant</button>
                             </div>
                         </div>
                         <table class="table text-start align-middle table-bordered table-hover mb-5" id="tableUser">

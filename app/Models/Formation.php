@@ -15,4 +15,21 @@ class Formation extends Model
      * @var string
      */
     protected $dateFormat = 'Y-m-d';
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'participants',
+    ];
+
+    /**
+     * Get the participants for the formation.
+     */
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
 }
