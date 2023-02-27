@@ -27,10 +27,12 @@ use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Atelier;
 use App\Models\Beneficiaire;
 use App\Models\Cas;
+use App\Models\Formation;
 use App\Models\Groupe;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\MedicaleVisite;
+use App\Models\Participant;
 use App\Models\Place;
 use App\Models\Programme;
 use App\Models\Role;
@@ -496,8 +498,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/showService', function (Request $request) {
         return view('superUser.ShowService');
     })->name('showService');
-    Route::get('/AddFormation', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddFormation', compact('beneficiaire'));
+    Route::get('/AddFormation', function (Request $request) {
+        if (!Gate::allows('create', Formation::class)) {
+            abort(403);
+        }
+        return view('superUser.AddFormation');
     })->name('AddFormation');
     Route::get('/showFormation', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowFormation', compact('beneficiaire'));
@@ -583,6 +588,33 @@ Route::middleware('auth:sanctum')->group(function () {
         $result = $programme;
         $status = 200;
         $msg = "Programme modifié avec success.";
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+            ],
+            $status
+        );
+    });
+    Route::put('/link-participants-with-formation/{formation}', function (Request $request, Formation $formation){
+        $formation->participants()->delete();
+        $participants = collect([]);
+        foreach($request->participants as $participant)
+        {
+            $values = [
+                'participant_nom' => $participant['participant_nom'],
+                'participant_prenom' => $participant['participant_prenom'],
+                'participant_cin' => $participant['participant_cin'],
+                'participant_tele' => $participant['participant_tele'],
+            ];
+            $new_participant = new Participant($values);
+            $participants->push($new_participant);
+        }
+        $formation->participants()->saveMany($participants->all());
+        $formation->refresh();
+        $result = $formation;
+        $status = 200;
+        $msg = "formation modifié avec success.";
         return response()->json(
             [
                 'result' => $result,

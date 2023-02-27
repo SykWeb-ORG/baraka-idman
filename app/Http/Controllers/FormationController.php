@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FormationRequest;
 use App\Models\Formation;
+use App\Models\Participant;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
@@ -52,6 +53,21 @@ class FormationController extends Controller
         $formation->formateur = $request->formateur;
         $formation->objet = $request->objet;
         if ($formation->save()) {
+            if ($request->has('participants')) {
+                $participants = collect([]);
+                foreach($request->participants as $participant)
+                {
+                    $new_participant = new Participant([
+                        'participant_nom' => $participant['participant_nom'],
+                        'participant_prenom' => $participant['participant_prenom'],
+                        'participant_cin' => $participant['participant_cin'],
+                        'participant_tele' => $participant['participant_tele'],
+                    ]);
+                    $participants->push($new_participant);
+                }
+                $formation->participants()->saveMany($participants->all());
+                $formation->refresh();
+            }
             $result = $formation;
             $status = 200;
             $msg = "Formation ajoutée avec success.";
