@@ -6,6 +6,90 @@
 @section('content_page')
     <div class="container-fluid pt-4 px-4">
         <h4 class="mb-3">Dashboard</h4>
+        <div class="filtre">
+            <h5 for="" class="form-label">Filtre:</h5>
+            <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
+                data-bs-target="#modal_filtre"><i class="fas fa-ellipsis-v"></i></button>
+            <!-- Modal -->
+            <div class="modal fade" id="modal_filtre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Filtres</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-bodyF">
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Programme</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">Prg1</option>
+                                    <option value="">Prg2</option>
+                                    <option value="">Prg3</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Age</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Intervenant</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Genre</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Localisation</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Programme</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Programme</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="" class="form-label">Filtre Par Programme</label>
+                                <select name="" id="" class="filter_select">
+                                    <option value="">-15</option>
+                                    <option value="">15-18</option>
+                                    <option value="">+18</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="periode">
             <label for="social-appointment" class="form-label">Date Du Début</label>
             <input type="date" name="social_visite_date" class="date-periode" id="" value="" required>
@@ -291,7 +375,7 @@
             </div>
         </div>
         <!-- END: Stastics based on gender -->
-        
+
         {{-- Statistiques selon le service --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon le service</h6>
@@ -319,8 +403,8 @@
             </div>
         </div>
     </div>
-    @endsection
-    @section('custom_scripts')
+@endsection
+@section('custom_scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
     <script src="{{ asset('js/my_chart.js') }}"></script>
 @endsection
