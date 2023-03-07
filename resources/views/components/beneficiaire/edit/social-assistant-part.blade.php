@@ -397,6 +397,7 @@
                 <tr class="text-dark">
                     <th scope="col"></th>
                     <th scope="col">Services</th>
+                    <th>Pole</th>
                 </tr>
             </thead>
             <tbody id="tbodyServices">

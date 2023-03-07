@@ -31,7 +31,7 @@ class BeneficiaireController extends Controller
     public function index()
     {
         $services = Service::all();
-        if (Auth::user()->admin) {
+        if (Auth::user()->admin || Auth::user()->social_assistant) {
             $beneficiaires = Beneficiaire::all();
         }else{
             $beneficiaires = Auth::user()->registred_beneficiaires;
@@ -198,6 +198,7 @@ class BeneficiaireController extends Controller
             [
                 'result' => $result,
                 'msg' => $msg,
+                'status' => $status,
             ],
             $status
         );
