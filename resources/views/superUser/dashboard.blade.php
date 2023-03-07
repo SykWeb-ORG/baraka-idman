@@ -92,9 +92,11 @@
         </div>
         <div class="periode">
             <label for="social-appointment" class="form-label">Date Du Début</label>
-            <input type="date" name="social_visite_date" class="date-periode" id="" value="" required>
+            <input type="date" name="social_visite_date" class="date-periode" id="" value=""
+                required>
             <label for="social-appointment" class="form-label">Date de la Fin</label>
-            <input type="date" name="social_visite_date" class="date-periode" id="" value="" required>
+            <input type="date" name="social_visite_date" class="date-periode" id="" value=""
+                required>
         </div>
         <div class="statistics-both">
             {{-- Statistiques selon les programmes --}}
@@ -176,6 +178,13 @@
             {{-- Statistiques selon l'âge --}}
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon l'âge</h6>
+                <select name="" id="" onchange="chartType(this.value)" class="filter_select">
+                    <option value="polarArea">PolarArea</option>
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut" >Doughnut</option>
+                    <option value="pie">Pie</option>
+                </select>
                 <!-- BEGIN: Stastics based on age-->
                 <div class="graphBox">
                     <div class="box">
@@ -188,6 +197,13 @@
             <!-- BEGIN: Stastics based on gender -->
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon le genre</h6>
+                <select name="" id="" onchange="chartGType(this.value)" class="filter_select">
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut" >Doughnut</option>
+                    <option value="polarArea">PolarArea</option>
+                    <option value="pie">Pie</option>
+                </select>
                 <div class="graphBox">
                     <div class="box">
                         <canvas id="myChartGender"></canvas>
@@ -306,6 +322,13 @@
             <!-- BEGIN: Stastics based on gender -->
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon CIN</h6>
+                <select name="" id="" onchange="chartCINType(this.value)" class="filter_select">
+                    <option value="polarArea">PolarArea</option>
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut" >Doughnut</option>
+                    <option value="pie">Pie</option>
+                </select>
                 <div class="graphBox">
                     <div class="box">
                         <canvas id="myChartCIN"></canvas>
@@ -315,6 +338,13 @@
             {{-- Statistiques selon la scolarité --}}
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon la Scolarité</h6>
+                <select name="" id="" onchange="chartScolType(this.value)" class="filter_select">
+                    <option value="pie">Pie</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut" >Doughnut</option>
+                    <option value="polarArea">PolarArea</option>
+                    <option value="bar">Bar</option>
+                </select>
                 <div class="graphBox">
                     <div class="box">
                         <canvas id="myChartScol"></canvas>
@@ -368,6 +398,13 @@
         <!-- BEGIN: Stastics based on gender -->
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon Type de Drogue</h6>
+            <select name="" id="" onchange="chartDRGType(this.value)" class="filter_select">
+                <option value="bar">Bar</option>
+                <option value="line">Line</option>
+                <option value="doughnut" >Doughnut</option>
+                <option value="polarArea">PolarArea</option>
+                <option value="pie">Pie</option>
+            </select>
             <div class="graphBox">
                 <div class="box">
                     <canvas id="myChartTypedrg"></canvas>
@@ -396,6 +433,13 @@
         {{-- Statistiques selon Présence --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon la présence au rendez-vous</h6>
+            <select name="" id="" onchange="chartpresenceType(this.value)" class="filter_select">
+                <option value="pie">Pie</option>
+                <option value="line">Line</option>
+                <option value="doughnut" >Doughnut</option>
+                <option value="polarArea">PolarArea</option>
+                <option value="bar">Bar</option>
+            </select>
             <div class="graphBox">
                 <div class="box w-50">
                     <canvas id="myChartpresence"></canvas>
