@@ -4,7 +4,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['-15ans', '15 – 18 ans', '+18 ans'],
         datasets: [{
-            label: '# of Votes',
+            label: 'Ages',
             data: [12, 19, 31,],
             backgroundColor: [
                 'rgba(255, 99, 132, 1)',
@@ -20,6 +20,10 @@ var myChart = new Chart(ctx, {
         responsive:true,
     }
 });
+function chartType(type){
+    myChart.config.type = type
+    myChart.update();
+}
 var ctG = document.getElementById('myChartGender').getContext('2d');
 var myChartG = new Chart(ctG, {
     type: 'bar',
@@ -47,6 +51,10 @@ var myChartG = new Chart(ctG, {
         }
     }
 });
+function chartGType(type){
+    myChartG.config.type = type
+    myChartG.update();
+}
 
 var ctCIN = document.getElementById('myChartCIN').getContext('2d');
 var myChartCIN = new Chart(ctCIN, {
@@ -75,6 +83,10 @@ var myChartCIN = new Chart(ctCIN, {
         }
     }
 });
+function chartCINType(type){
+    myChartCIN.config.type = type
+    myChartCIN.update();
+}
 var ctscol = document.getElementById('myChartScol').getContext('2d');
 var myChartScol = new Chart(ctscol, {
     type: 'pie',
@@ -102,6 +114,10 @@ var myChartScol = new Chart(ctscol, {
         }
     }
 });
+function chartScolType(type){
+    myChartScol.config.type = type
+    myChartScol.update();
+}
 var ctspres = document.getElementById('myChartpresence').getContext('2d');
 var myChartpresence = new Chart(ctspres, {
     type: 'pie',
@@ -129,6 +145,10 @@ var myChartpresence = new Chart(ctspres, {
         responsive:true,
     }
 });
+function chartpresenceType(type){
+    myChartpresence.config.type = type
+    myChartpresence.update();
+}
 var ctTdrg = document.getElementById('myChartTypedrg').getContext('2d');
 var myChartTypedrg = new Chart(ctTdrg, {
     type: 'bar',
@@ -161,5 +181,9 @@ var myChartTypedrg = new Chart(ctTdrg, {
         }
     }
 });
+function chartDRGType(type){
+    myChartTypedrg.config.type = type
+    myChartTypedrg.update();
+}
 
 
