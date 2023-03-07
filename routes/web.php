@@ -112,7 +112,7 @@ Route::middleware('auth:sanctum')->group(function () {
             $beneficiaire->validation_medical_assistant = 1;
         }
         if ($beneficiaire->update()) {
-            $result = 'Utilisateur validé avec succés';
+            $result = 'Bénéficiaire validé avec succés';
             $status = 'success';
             $icon = 'fa-check';
         } else {
