@@ -25,6 +25,12 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,11 +47,16 @@
         <!-- Sign In Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4" style="height: inherit;">
+                    <div class="rounded p-4 p-sm-5 mx-3 pos_login">
+                        <img src="{{asset("images/sante-ministere.jpeg")}}" alt="" class="logo-login">
+                    </div>
+                </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <form action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="bg-light rounded p-4 p-sm-5 mx-3 pos_login">
-                            <img src="{{asset("images/LOGO-DROGUES.png")}}" alt="" class="logo-login">
+                            <img src="{{asset("images/baraka-idman.jpeg")}}" alt="" class="logo-login">
                             <div class="d-flex flex-column align-items-center justify-content-between mb-1 mt-5">
                                 <h3>Sign In</h3>
                             </div>
@@ -82,6 +93,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>;
                     @endif
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4" style="height: inherit;">
+                    <div class="rounded p-4 p-sm-5 mx-3 pos_login">
+                        <img src="{{asset("images/3amala.jpeg")}}" alt="" class="logo-login">
+                    </div>
                 </div>
             </div>
         </div>
