@@ -629,4 +629,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/rapport', function (Request $request) {
         return view('superUser.rapport');
     })->name('rapport');
+    Route::get('/add-projet', function (Request $request) {
+        return view('superUser.AddProject');
+    })->name('add-projet');
 });
