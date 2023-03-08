@@ -41,7 +41,7 @@ Modification d'un utilisateur
                             <label for="password-user" class="form-label">Nouveau mot de passe</label>
                             <input type="text" name="password" class="form-control" id="password-user">
                         </div>
-                        @if (Auth::user()->admin)
+                        @if(!request()->has('page'))
                         <div class="mb-3">
                             <label for="roles-user" class="form-label">Rôles</label>
                             <select name="role" class="form-select mb-3" aria-label="Default select example" id="roles-user">
