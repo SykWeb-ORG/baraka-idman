@@ -73,6 +73,10 @@ Ajout d'un projet
                                 </div>
                             </div>
                         </fieldset>
+                        <label for="evolution" class="form-label">Progression</label>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
                         <div class="mb-3">
                             <button id="btn-visite-medical" class="btn btn-primary" onclick="alert('Bien ajouté')">Ajouter</button>
                         </div>
