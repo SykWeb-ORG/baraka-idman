@@ -150,6 +150,9 @@
                         @can('viewAny', App\Models\MedicaleVisite::class)
                             <a href="{{ route('showVisiteMedical') }}" class="dropdown-item">Afficher</a>
                         @endcan
+                        @can('create', App\Models\MedicaleVisite::class)
+                            <a href="{{ route('rapport') }}" class="dropdown-item">Rapport</a>
+                        @endcan
                     </div>
                 </div>
             @endcanany
