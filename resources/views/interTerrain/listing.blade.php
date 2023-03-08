@@ -10,6 +10,7 @@ Liste des Bénéficiaires
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Béneficiaires</h6>
             </div>
+            @if (!Auth::user()->admin && !Auth::user()->intervenant)
             <div class="filter_service">
                 <a class="service_item" data-filter-val="all">Tous</a>  
                 @foreach ($services as $service)
@@ -18,6 +19,7 @@ Liste des Bénéficiaires
                     @endif
                 @endforeach
             </div>
+            @endif
             <div class="table-responsive table-height" id="all">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tablebenificiere">
                     <thead>
@@ -88,13 +90,13 @@ Liste des Bénéficiaires
                             <td>{{$beneficiaire->duree_addiction}}</td>
                             <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
                             @if (Auth::user()->intervenant == null)
-                                <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
+                                <td>{!! ($beneficiaire->validation_social_assistant)? '<img class="rounded-circle me-lg-2" src="' . asset($beneficiaire->validation_social->photo_profile) .'" alt="" style="width: 40px; height: 40px;">' . $beneficiaire->validation_social->last_name : "non" !!}</td>
                             @endif
                             @if (Auth::user()->admin || Auth::user()->medical_assistant)
-                                <td>{{($beneficiaire->validation_directive)? "oui" : "non"}}</td>
+                                <td>{!! ($beneficiaire->validation_directive)? '<img class="rounded-circle me-lg-2" src="' . asset($beneficiaire->validation_admin->photo_profile) .'" alt="" style="width: 40px; height: 40px;">' .  $beneficiaire->validation_admin->last_name : "non" !!}</td>
                             @endif
                             @if (Auth::user()->medical_assistant)
-                                <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
+                                <td>{!! ($beneficiaire->validation_medical_assistant)? '<img class="rounded-circle me-lg-2" src="' . asset($beneficiaire->validation_medical->photo_profile) .'" alt="" style="width: 40px; height: 40px;">' .  $beneficiaire->validation_medical->last_name : "non" !!}</td>
                             @endif
                             @if(Auth::user()->admin || Auth::user()->social_assistant)
                             <td>
