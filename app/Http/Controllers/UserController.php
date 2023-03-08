@@ -12,6 +12,8 @@ use App\Models\SocialAssistant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -192,33 +194,94 @@ class UserController extends Controller
         $user->phone_number = $request->phone_number;
         $user->birthday_date = $request->birthday_date;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        // get the role of the user .. 
-        if ($user->admin != null) {
-            $role = 'admin';
-        }elseif ($user->intervenant != null) {
-            $role = 'intervenant';
-        }elseif ($user->social_assistant != null) {
-            $role = 'social assistant';
-        }elseif ($user->medical_assistant != null) {
-            $role = 'medical assistant';
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
         }
-        // check if the role was modified ..
-        if ($request->role != $role) {
-            // delete the old role first ..
-            if ($role == 'admin') {
-                $user->admin()->delete();
-            } elseif ($role == 'intervenant') {
-                $user->intervenant()->delete();
-            } elseif ($role == 'social assistant') {
-                $user->social_assistant()->delete();
-            } elseif ($role == 'medical assistant') {
-                $user->medical_assistant()->delete();
+        if ($request->photo_profile) {
+            Storage::delete(Str::of($user->photo_profile)->remove('storage/'));
+            $path = $request->file('photo_profile')->store('avatars');
+            $user->photo_profile = 'storage/' . $path;
+        }
+        if ($request->role) {
+            // get the role of the user .. 
+            if ($user->admin != null) {
+                $role = 'admin';
+            }elseif ($user->intervenant != null) {
+                $role = 'intervenant';
+            }elseif ($user->social_assistant != null) {
+                $role = 'social assistant';
+            }elseif ($user->medical_assistant != null) {
+                $role = 'medical assistant';
             }
-            // give him new role ..
-            if ($request->role == 'admin') {
-                $admin = new Admin;
-                if (($result = $admin->user()->associate($user)) && $admin->save()) {
+            // check if the role was modified ..
+            if ($request->role != $role) {
+                // delete the old role first ..
+                if ($role == 'admin') {
+                    $user->admin()->delete();
+                } elseif ($role == 'intervenant') {
+                    $user->intervenant()->delete();
+                } elseif ($role == 'social assistant') {
+                    $user->social_assistant()->delete();
+                } elseif ($role == 'medical assistant') {
+                    $user->medical_assistant()->delete();
+                }
+                // give him new role ..
+                if ($request->role == 'admin') {
+                    $admin = new Admin;
+                    if (($result = $admin->user()->associate($user)) && $admin->save()) {
+                        // $status = 200;
+                        $result = 'Utilisateur modifié avec succés';
+                        $status = 'success';
+                        $icon = 'fa-check';
+                    } else {
+                        $result = 'probleme au serveur.';
+                        // $status = 500;
+                        $status = 'danger';
+                        $icon = 'fa-times';
+                    }
+                }elseif ($request->role == 'social assistant') {
+                    $socialAssistant = new SocialAssistant;
+                    if (($result = $socialAssistant->user()->associate($user)) && $socialAssistant->save()) {
+                        // $status = 200;
+                        $result = 'Utilisateur modifié avec succés';
+                        $status = 'success';
+                        $icon = 'fa-check';
+                    } else {
+                        $result = 'probleme au serveur.';
+                        // $status = 500;
+                        $status = 'danger';
+                        $icon = 'fa-times';
+                    }
+                }elseif ($request->role == 'medical assistant') {
+                    $medicalAssistant = new MedicalAssistant;
+                    if (($result = $medicalAssistant->user()->associate($user)) && $medicalAssistant->save()) {
+                        // $status = 200;
+                        $result = 'Utilisateur modifié avec succés';
+                        $status = 'success';
+                        $icon = 'fa-check';
+                    } else {
+                        $result = 'probleme au serveur.';
+                        // $status = 500;
+                        $status = 'danger';
+                        $icon = 'fa-times';
+                    }
+                }elseif ($request->role == 'intervenant') {
+                    $intervenant = new Intervenant;
+                    if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
+                        // $status = 200;
+                        $result = 'Utilisateur modifié avec succés';
+                        $status = 'success';
+                        $icon = 'fa-check';
+                    } else {
+                        $result = 'probleme au serveur.';
+                        // $status = 500;
+                        $status = 'danger';
+                        $icon = 'fa-times';
+                    }
+                }
+                // update the user with new data ..
+                if ($user->update()) {
+                    // $result = $user;
                     // $status = 200;
                     $result = 'Utilisateur modifié avec succés';
                     $status = 'success';
@@ -229,62 +292,10 @@ class UserController extends Controller
                     $status = 'danger';
                     $icon = 'fa-times';
                 }
-            }elseif ($request->role == 'social assistant') {
-                $socialAssistant = new SocialAssistant;
-                if (($result = $socialAssistant->user()->associate($user)) && $socialAssistant->save()) {
-                    // $status = 200;
-                    $result = 'Utilisateur modifié avec succés';
-                    $status = 'success';
-                    $icon = 'fa-check';
-                } else {
-                    $result = 'probleme au serveur.';
-                    // $status = 500;
-                    $status = 'danger';
-                    $icon = 'fa-times';
-                }
-            }elseif ($request->role == 'medical assistant') {
-                $medicalAssistant = new MedicalAssistant;
-                if (($result = $medicalAssistant->user()->associate($user)) && $medicalAssistant->save()) {
-                    // $status = 200;
-                    $result = 'Utilisateur modifié avec succés';
-                    $status = 'success';
-                    $icon = 'fa-check';
-                } else {
-                    $result = 'probleme au serveur.';
-                    // $status = 500;
-                    $status = 'danger';
-                    $icon = 'fa-times';
-                }
-            }elseif ($request->role == 'intervenant') {
-                $intervenant = new Intervenant;
-                if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
-                    // $status = 200;
-                    $result = 'Utilisateur modifié avec succés';
-                    $status = 'success';
-                    $icon = 'fa-check';
-                } else {
-                    $result = 'probleme au serveur.';
-                    // $status = 500;
-                    $status = 'danger';
-                    $icon = 'fa-times';
-                }
+                // unset user_id from beneficiaire_service_user because the role is changed:
+                $user->beneficiaires()->update(['user_id' => null]);
             }
-            // update the user with new data ..
-            if ($user->update()) {
-                // $result = $user;
-                // $status = 200;
-                $result = 'Utilisateur modifié avec succés';
-                $status = 'success';
-                $icon = 'fa-check';
-            } else {
-                $result = 'probleme au serveur.';
-                // $status = 500;
-                $status = 'danger';
-                $icon = 'fa-times';
-            }
-            // unset user_id from beneficiaire_service_user because the role is changed:
-            $user->beneficiaires()->update(['user_id' => null]);
-        }else {
+        } else {
             // just update the data of the user without changing his role ..
             if ($user->update()) {
                 // $result = $user;

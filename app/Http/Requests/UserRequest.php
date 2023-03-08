@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
         $roles = Role::all(['role_nom'])->map(function($role, $key){
             return $role['role_nom'];
         });
-        $rules = [
+        $rules = collect([
             'first_name' => [
                 'required',
             ],
@@ -55,10 +55,10 @@ class UserRequest extends FormRequest
                 'required',
                 Rule::in($roles)
             ],
-        ];
-        // if ($this->method() == Request::METHOD_PUT) {
-        //     $rules = Arr::add($rules, 'password', ['required', 'size:8']);
-        // }
-        return $rules;
+        ]);
+        if ($this->method() == Request::METHOD_PUT) {
+            $rules->pull('role');
+        }
+        return $rules->toArray();
     }
 }

@@ -137,4 +137,19 @@ class Beneficiaire extends Model
                     ->withPivot(['service_id'])
                     ->withTimestamps();
     }
+    
+    public function validation_social()
+    {
+        return $this->belongsTo(User::class, 'validation_social_assistant', 'id');
+    }
+    
+    public function validation_admin()
+    {
+        return $this->belongsTo(User::class, 'validation_directive', 'id');
+    }
+    
+    public function validation_medical()
+    {
+        return $this->belongsTo(User::class, 'validation_medical_assistant', 'id');
+    }
 }

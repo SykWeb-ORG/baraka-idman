@@ -10,7 +10,7 @@ Modification d'un utilisateur
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">{{(!request()->has('page'))? 'Modifier Utilisateur' : 'Mon profile'}}</h6>
-                    <form class="form-user" action="{{ route('users.update', ['user' => $user->id]) }}" method="POST">
+                    <form class="form-user" action="{{ route('users.update', ['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -41,6 +41,7 @@ Modification d'un utilisateur
                             <label for="password-user" class="form-label">Nouveau mot de passe</label>
                             <input type="text" name="password" class="form-control" id="password-user">
                         </div>
+                        @if (Auth::user()->admin)
                         <div class="mb-3">
                             <label for="roles-user" class="form-label">Rôles</label>
                             <select name="role" class="form-select mb-3" aria-label="Default select example" id="roles-user">
@@ -50,6 +51,11 @@ Modification d'un utilisateur
                                 <option {{($user->social_assistant != null)? 'selected' : ''}} value="social assistant">Social Assistant</option>
                                 <option {{($user->medical_assistant != null)? 'selected' : ''}} value="medical assistant">Medical Assistant</option>
                             </select>
+                        </div>
+                        @endif
+                        <div class="mb-3">
+                            <label for="photo-user" class="form-label">Photo de profile</label>
+                            <input type="file" name="photo_profile" class="form-control" id="photo-user">
                         </div>
                         <div class="mb-3">
                             <button id="btn-manip-user" class="btn btn-primary">Modifier</button>

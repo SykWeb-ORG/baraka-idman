@@ -105,11 +105,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::view('new-beneficiaire-form', 'interTerrain.inscription')->name('new-beneficiaire-form');
     Route::put('validation-state/{beneficiaire}/{user}', function (Beneficiaire $beneficiaire, User $user) {
         if ($user->social_assistant) {
-            $beneficiaire->validation_social_assistant = 1;
+            $beneficiaire->validation_social_assistant = Auth::id();
         } elseif ($user->admin) {
-            $beneficiaire->validation_directive = 1;
+            $beneficiaire->validation_directive = Auth::id();
         } elseif ($user->medical_assistant) {
-            $beneficiaire->validation_medical_assistant = 1;
+            $beneficiaire->validation_medical_assistant = Auth::id();
         }
         if ($beneficiaire->update()) {
             $result = 'Bénéficiaire validé avec succés';
