@@ -626,4 +626,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/dashboard', function (Beneficiaire $beneficiaire) {
         return view('superUser.dashboard', compact('beneficiaire'));
     })->name('dashboard');
+    Route::get('/rapport', function (Request $request) {
+        return view('superUser.rapport');
+    })->name('rapport');
 });
