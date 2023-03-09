@@ -28,9 +28,9 @@
                     <tbody id="tbl_cas_juridique">
                         <tr class="text-dark">
                             <td>1</td>
-                            <td>Recherche 1</td>
+                            <td>Le suivi, l’accompagnement et la prise en charge des addictes</td>
                             <td>
-                                <img src="{{ asset('images/recheche.jpg') }}" alt="">
+                                <img src="{{ asset('images/rech1.jpeg') }}" alt="">
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -49,9 +49,9 @@
                         </tr>
                         <tr class="text-dark">
                             <td>2</td>
-                            <td>Recherche 2</td>
+                            <td>Toxicomanie & violence (Addiction et comportement agressif)</td>
                             <td>
-                                <img src="{{ asset('images/recheche.jpg') }}" alt="">
+                                <img src="{{ asset('images/rech2.jpeg') }}" alt="">
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -70,9 +70,9 @@
                         </tr>
                         <tr class="text-dark">
                             <td>3</td>
-                            <td>Recherche 3</td>
+                            <td>L’addiction aux drogues et le travail associatif</td>
                             <td>
-                                <img src="{{ asset('images/recheche.jpg') }}" alt="">
+                                <img src="{{ asset('images/rech3.jpeg') }}" alt="">
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -91,9 +91,9 @@
                         </tr>
                         <tr class="text-dark">
                             <td>4</td>
-                            <td>Recherche 4</td>
+                            <td>Association Baraka Idman une entreprise sociale</td>
                             <td>
-                                <img src="{{ asset('images/recheche.jpg') }}" alt="">
+                                <img src="{{ asset('images/rech4.jpeg') }}" alt="">
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -170,5 +170,5 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/cas/all-cas.js') }}"></script>
+
 @endsection
