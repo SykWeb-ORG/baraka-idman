@@ -632,4 +632,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/add-projet', function (Request $request) {
         return view('superUser.AddProject');
     })->name('add-projet');
+    Route::get('/add-recherche', function (Request $request) {
+        return view('superUser.AddRecherche');
+    })->name('add-recherche');
+    Route::get('/list-recherches', function (Request $request) {
+        return view('superUser.showRecherche');
+    })->name('list-recherches');
 });

@@ -101,6 +101,7 @@
                     </div>
                 </div>
             @endcanany
+            @if (Auth::user()->admin)
             {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Projets</a>
@@ -114,6 +115,20 @@
                     </div>
                 </div>
             {{-- @endcanany --}}
+            {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Recherche scientifiques</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        {{-- @can('create', App\Models\Service::class) --}}
+                            <a href="{{ route('add-recherche') }}" class="dropdown-item">Ajouter</a>
+                        {{-- @endcan --}}
+                        {{-- @can('viewAny', App\Models\Service::class) --}}
+                            <a href="{{ route('list-recherches') }}" class="dropdown-item">Afficher</a>
+                        {{-- @endcan --}}
+                    </div>
+                </div>
+            {{-- @endcanany --}}
+            @endif
             @canany(['create', 'viewAny'], App\Models\Zone::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Zones</a>
