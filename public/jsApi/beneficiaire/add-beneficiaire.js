@@ -58,6 +58,7 @@ const showDialogResponse = (data) => {
         let errors = data.errors;
         console.log(errors);
     }
+    window.scrollTo(0, 0);
 }
 /**
  * Attach the checked couvertures with the new beneficiaire
@@ -127,5 +128,5 @@ const attachViolenceTypes = (beneficiaire) => {
     let dataToSend = {
         "violence_types": violenceTypes,
     }
-    updateData(`match-beneficiaire-violence_types/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); });
+    updateData(`match-beneficiaire-violence_types/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); $(".form-benefaicaire").trigger("reset");});
 }
