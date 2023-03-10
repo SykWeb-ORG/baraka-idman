@@ -104,7 +104,7 @@
             @if (Auth::user()->admin)
             {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Projets</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-code-branch me-2"></i>Projets</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         {{-- @can('create', App\Models\Service::class) --}}
                             <a href="{{ route('add-projet') }}" class="dropdown-item">Ajouter</a>
@@ -117,7 +117,7 @@
             {{-- @endcanany --}}
             {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Recherche scientifiques</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-flask me-2"></i>Recherche scientifiques</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         {{-- @can('create', App\Models\Service::class) --}}
                             <a href="{{ route('add-recherche') }}" class="dropdown-item">Ajouter</a>
