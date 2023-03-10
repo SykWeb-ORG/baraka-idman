@@ -232,72 +232,43 @@
         {{-- Statistiques selon la couverture médicale --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon la couverture médicale</h6>
-            <div class="rowCouv" style="justify-content: center;">
-                <div class="col-xl-3 col-sm-6 mt-3 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <div class="text-end pt-1">
-                                <p class="text-lg-start mb-0 mt-5 text-capitalize">RAMED</p>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <h4 class="mb-0">12</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mt-3 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <div class="text-end pt-1">
-                                <p class="text-lg-start mb-0 mt-5 text-capitalize">CNSS</p>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <h4 class="mb-0">12</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mt-3 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <div class="text-end pt-1">
-                                <p class="text-lg-start mb-0 mt-5 text-capitalize">CNOPS</p>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <h4 class="mb-0">12</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mt-3 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <div class="text-end pt-1">
-                                <p class="text-lg-start mb-0 mt-5 text-capitalize">AMO</p>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <h4 class="mb-0">12</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mt-3 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <div class="text-end pt-1">
-                                <p class="text-lg-start mb-0 mt-5 text-capitalize">Sans</p>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <h4 class="mb-0">12</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="table-responsive table-height">
+                <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
+                    <thead>
+                        <tr class="text-dark">
+                            <th scope="col">Couverture Médicale</th>
+                            <th>Béneficiaire</th>
+                            <th>Pourcentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RAMED</td>
+                            <td>12</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>CNSS</td>
+                            <td>12</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>CNOPS</td>
+                            <td>12</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>AMO</td>
+                            <td>12</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>Sans</td>
+                            <td>12</td>
+                            <td>20%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         {{-- Statistiques selon la situation familiale --}}
