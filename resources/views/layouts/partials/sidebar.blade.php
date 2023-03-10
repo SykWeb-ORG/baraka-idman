@@ -22,7 +22,7 @@
             {{-- <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> --}}
             @canany(['create', 'viewAny'], App\Models\User::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fas fa-users me-2"></i>Utilisateurs</a>
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fas fa-user me-2"></i>Utilisateurs</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\User::class)
                             <a href="{{ route('new-user-form') }}" class="dropdown-item">Ajouter</a>
@@ -51,7 +51,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Cas::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Gestion des cas juridique</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap" data-bs-toggle="dropdown"><i class="fas fa-balance-scale"></i>Gestion des cas juridique</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Cas::class)
                             <a href="{{ route('AddCasJuridique') }}" class="dropdown-item">Ajouter</a>
@@ -64,7 +64,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Atelier::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Ateliers</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-briefcase"></i>Ateliers</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Atelier::class)
                             <a href="{{ route('AddAtelier') }}" class="dropdown-item">Ajouter</a>
@@ -77,7 +77,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Groupe::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Groupes</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-users me-2"></i>Groupes</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Groupe::class)
                             <a href="{{ route('AddGroups') }}" class="dropdown-item">Ajouter</a>
@@ -90,7 +90,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Service::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Services</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-tasks me-2"></i>Services</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Service::class)
                             <a href="{{ route('AddService') }}" class="dropdown-item">Ajouter</a>
@@ -131,7 +131,7 @@
             @endif
             @canany(['create', 'viewAny'], App\Models\Zone::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Zones</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-location me-2"></i>Zones</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Zone::class)
                             <a href="{{ route('addzoneIntervenant') }}" class="dropdown-item">Ajouter</a>
@@ -144,7 +144,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Programme::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Programmes</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fab fa-product-hunt"></i>Programmes</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Programme::class)
                             <a href="{{ route('AddProgram') }}" class="dropdown-item">Ajouter</a>
@@ -157,7 +157,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Formation::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Formations</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-school me-2"></i>Formations</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Formation::class)
                             <a href="{{ route('AddFormation') }}" class="dropdown-item">Ajouter</a>
@@ -170,7 +170,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\MedicaleVisite::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Visites médicales</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-notes-medical me-2"></i>Visites médicales</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\MedicaleVisite::class)
                             <a href="{{ route('visitemedical') }}" class="dropdown-item">Ajouter</a>
@@ -186,7 +186,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\SocialeVisite::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Visites sociales</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-comment-alt me-2"></i>Visites sociales</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\SocialeVisite::class)
                             <a href="{{ route('AddSocialVisite') }}" class="dropdown-item">Ajouter</a>
@@ -199,7 +199,7 @@
             @endcanany
             @canany(['roles-permissions-ability', 'roles-services-ability'])
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Gestion des roles</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pencil-ruler me-2"></i>Gestion des roles</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('roles-permissions-ability')
                             <a href="{{ route('roles-permissions') }}" class="dropdown-item">Avec les permissions</a>
