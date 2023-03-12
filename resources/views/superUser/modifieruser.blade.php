@@ -53,10 +53,12 @@ Modification d'un utilisateur
                             </select>
                         </div>
                         @endif
-                        <div class="mb-3">
-                            <label for="photo-user" class="form-label">Photo de profile</label>
-                            <input type="file" name="photo_profile" class="form-control" id="photo-user">
-                        </div>
+                        @if (request()->has('page'))
+                            <div class="mb-3">
+                                <label for="photo-user" class="form-label">Photo de profile</label>
+                                <input type="file" name="photo_profile" class="form-control" id="photo-user">
+                            </div>
+                        @endif
                         <div class="mb-3">
                             <button id="btn-manip-user" class="btn btn-primary">Modifier</button>
                         </div>
