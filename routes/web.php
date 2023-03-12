@@ -643,4 +643,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de type de drogue", 404);
         });
+    Route::get('/add-type-drogue', function (Request $request) {
+        return view('superUser.AddTypeDrogue');
+    })->name('add-type-drogue');
 });
