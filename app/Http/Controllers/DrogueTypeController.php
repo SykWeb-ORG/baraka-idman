@@ -15,7 +15,13 @@ class DrogueTypeController extends Controller
      */
     public function index()
     {
-        //
+        $drogue_types = DrogueType::all();
+        return response()->json(
+            [
+                'drogue_types' => $drogue_types,
+            ],
+            200
+        );
     }
 
     /**
