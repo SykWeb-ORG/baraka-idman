@@ -25,8 +25,8 @@ Ajout d'un projet
                             <input type="text" name="partenaire" class="form-control" id="partenaire">
                         </div>
                         <div class="mb-3">
-                            <label for="partenaire" class="form-label">Descriptif</label>
-                            <input type="text" name="partenaire" class="form-control" id="partenaire">
+                            <label for="partenaire" class="form-label">Description</label>
+                            <textarea name="partenaire" class="form-control" id="partenaire"></textarea>
                         </div>
                         <fieldset class="row mb-3">
                             <legend class="col-form-label col-sm-2 pt-0">Objectif du projet (sexe)</legend>
