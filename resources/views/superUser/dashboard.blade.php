@@ -182,7 +182,7 @@
                     <option value="polarArea">PolarArea</option>
                     <option value="bar">Bar</option>
                     <option value="line">Line</option>
-                    <option value="doughnut" >Doughnut</option>
+                    <option value="doughnut">Doughnut</option>
                     <option value="pie">Pie</option>
                 </select>
                 <!-- BEGIN: Stastics based on age-->
@@ -200,7 +200,7 @@
                 <select name="" id="" onchange="chartGType(this.value)" class="filter_select">
                     <option value="bar">Bar</option>
                     <option value="line">Line</option>
-                    <option value="doughnut" >Doughnut</option>
+                    <option value="doughnut">Doughnut</option>
                     <option value="polarArea">PolarArea</option>
                     <option value="pie">Pie</option>
                 </select>
@@ -211,6 +211,21 @@
                 </div>
             </div>
             <!-- END: Stastics based on gender -->
+            <div class="mb-4">
+                <h6 class="mb-3">Statistiques selon CIN</h6>
+                <select name="" id="" onchange="chartCINType(this.value)" class="filter_select">
+                    <option value="polarArea">PolarArea</option>
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut">Doughnut</option>
+                    <option value="pie">Pie</option>
+                </select>
+                <div class="graphBox">
+                    <div class="box">
+                        <canvas id="myChartCIN"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
         {{-- Statistiques selon la localisation --}}
         <div class="mb-4">
@@ -291,28 +306,32 @@
         <div class="statistics-both">
             {{-- Statistiques selon CIN --}}
             <!-- BEGIN: Stastics based on gender -->
+            {{-- Statistiques selon Type de Drogue --}}
+            <!-- BEGIN: Stastics based on gender -->
             <div class="mb-4">
-                <h6 class="mb-3">Statistiques selon CIN</h6>
-                <select name="" id="" onchange="chartCINType(this.value)" class="filter_select">
-                    <option value="polarArea">PolarArea</option>
+                <h6 class="mb-3">Statistiques selon Type de Drogue</h6>
+                <select name="" id="" onchange="chartDRGType(this.value)" class="filter_select">
                     <option value="bar">Bar</option>
                     <option value="line">Line</option>
-                    <option value="doughnut" >Doughnut</option>
+                    <option value="doughnut">Doughnut</option>
+                    <option value="polarArea">PolarArea</option>
                     <option value="pie">Pie</option>
                 </select>
                 <div class="graphBox">
                     <div class="box">
-                        <canvas id="myChartCIN"></canvas>
+                        <canvas id="myChartTypedrg"></canvas>
                     </div>
                 </div>
             </div>
+            <!-- END: Stastics based on gender -->
+
             {{-- Statistiques selon la scolarité --}}
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon la Scolarité</h6>
                 <select name="" id="" onchange="chartScolType(this.value)" class="filter_select">
                     <option value="pie">Pie</option>
                     <option value="line">Line</option>
-                    <option value="doughnut" >Doughnut</option>
+                    <option value="doughnut">Doughnut</option>
                     <option value="polarArea">PolarArea</option>
                     <option value="bar">Bar</option>
                 </select>
@@ -323,6 +342,22 @@
                 </div>
             </div>
             <!-- END: Stastics based on gender -->
+            {{-- Statistiques selon Présence --}}
+            <div class="mb-4">
+                <h6 class="mb-3">Statistiques selon la présence au rendez-vous</h6>
+                <select name="" id="" onchange="chartpresenceType(this.value)" class="filter_select">
+                    <option value="pie">Pie</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut">Doughnut</option>
+                    <option value="polarArea">PolarArea</option>
+                    <option value="bar">Bar</option>
+                </select>
+                <div class="graphBox">
+                    <div class="box">
+                        <canvas id="myChartpresence"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon la cause d'addiction</h6>
@@ -365,24 +400,6 @@
                 </div>
             </div>
         </div>
-        {{-- Statistiques selon Type de Drogue --}}
-        <!-- BEGIN: Stastics based on gender -->
-        <div class="mb-4">
-            <h6 class="mb-3">Statistiques selon Type de Drogue</h6>
-            <select name="" id="" onchange="chartDRGType(this.value)" class="filter_select">
-                <option value="bar">Bar</option>
-                <option value="line">Line</option>
-                <option value="doughnut" >Doughnut</option>
-                <option value="polarArea">PolarArea</option>
-                <option value="pie">Pie</option>
-            </select>
-            <div class="graphBox">
-                <div class="box">
-                    <canvas id="myChartTypedrg"></canvas>
-                </div>
-            </div>
-        </div>
-        <!-- END: Stastics based on gender -->
 
         {{-- Statistiques selon le service --}}
         <div class="mb-4">
@@ -401,22 +418,7 @@
                 </table>
             </div>
         </div>
-        {{-- Statistiques selon Présence --}}
-        <div class="mb-4">
-            <h6 class="mb-3">Statistiques selon la présence au rendez-vous</h6>
-            <select name="" id="" onchange="chartpresenceType(this.value)" class="filter_select">
-                <option value="pie">Pie</option>
-                <option value="line">Line</option>
-                <option value="doughnut" >Doughnut</option>
-                <option value="polarArea">PolarArea</option>
-                <option value="bar">Bar</option>
-            </select>
-            <div class="graphBox">
-                <div class="box w-50">
-                    <canvas id="myChartpresence"></canvas>
-                </div>
-            </div>
-        </div>
+
     </div>
 @endsection
 @section('custom_scripts')
