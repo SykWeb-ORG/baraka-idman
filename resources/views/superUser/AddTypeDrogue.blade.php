@@ -11,11 +11,11 @@ Ajout d'un type de drogue
                     <h6 id="title-form" class="mb-4">Ajouter Type Drogue</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="nom-service" class="form-label">Nom Du Type De Drogue :</label>
-                            <input type="text" name="nom-service" class="form-control" id="nom-service">
+                            <label for="nom-type-drogue" class="form-label">Nom Du Type De Drogue :</label>
+                            <input type="text" name="nom-type-drogue" class="form-control" id="nom-type-drogue">
                         </div>
                         <div class="mb-3">
-                            <button id="btn-add-service" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-type-Drogue" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>
