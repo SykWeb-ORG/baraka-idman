@@ -17,6 +17,7 @@ Liste des Groupes
                         <tr class="text-dark">
                             <th scope="col">N°</th>
                             <th>Nom du groupe</th>
+                            <th>Capacity du groupe</th>
                             <th>Atelier</th>
                             <th colspan="2" class="actions">Action</th>
                         </tr>
@@ -40,6 +41,10 @@ Liste des Groupes
                                     <div class="mb-3">
                                         <label for="nom-group" class="form-label">Nom Du Groupe</label>
                                         <input type="text" name="nom-group" class="form-control" id="nom-group">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="capacity-group" class="form-label">Capacity Du Groupe</label>
+                                        <input type="number" name="capacity-group" class="form-control" id="capacity-group">
                                     </div>
                                     <div class="mb-3">
                                         <label for="atelier" class="form-label">Atelier</label>

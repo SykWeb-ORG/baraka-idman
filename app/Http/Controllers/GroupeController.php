@@ -49,6 +49,7 @@ class GroupeController extends Controller
     {
         $groupe = new Groupe;
         $groupe->groupe_nom = $request->groupe_nom;
+        $groupe->capacity = $request->capacity;
         $atelier = Atelier::find($request->atelier);
         if ($atelier->groupes()->save($groupe)) {
             $result = $groupe;
@@ -101,6 +102,7 @@ class GroupeController extends Controller
     public function update(Request $request, Groupe $groupe)
     {
         $groupe->groupe_nom = $request->groupe_nom;
+        $groupe->capacity = $request->capacity;
         $atelier = Atelier::find($request->atelier);
         if ($atelier->groupes()->save($groupe)) {
             $result = $groupe;

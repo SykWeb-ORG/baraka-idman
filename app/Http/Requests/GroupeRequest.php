@@ -34,6 +34,10 @@ class GroupeRequest extends FormRequest
                 'present',
                 'required',
             ],
+            'capacity' => [
+                'sometimes',
+                'numeric',
+            ],
             'atelier' => [
                 'present',
                 'required',

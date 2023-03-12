@@ -18,10 +18,14 @@ $(document).ready(function () {
 const addGroup = (e) => {
     e.preventDefault();
     let nomGroup = $("input#nom-group").val();
+    let capacityGroup = $("input#capacity-group").val();
     let atelierId = $("select#atelier").val();
     let dataToSend = {
         "groupe_nom": nomGroup,
         "atelier": atelierId,
+    }
+    if (capacityGroup) {
+        dataToSend["capacity"] = capacityGroup;
     }
     addData("groupes", dataToSend, showDialogResponse);
 }
