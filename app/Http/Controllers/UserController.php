@@ -31,7 +31,7 @@ class UserController extends Controller
             $user = Auth::user();
             if ($user->admin) {
                 // return redirect()->route('new-user-form');
-                return redirect()->route('users.index');
+                return redirect()->route('dashboard');
             }elseif ($user->medical_assistant) {
                 return redirect()->route('beneficiaires.index');
             }elseif ($user->social_assistant) {

@@ -19,7 +19,9 @@
             </div>
         </div> --}}
         <div class="navbar-nav w-100">
-            {{-- <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> --}}
+            @if (Auth::user()->admin)
+                <a href="{{ route('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            @endif
             @canany(['create', 'viewAny'], App\Models\User::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fas fa-user me-2"></i>Utilisateurs</a>
