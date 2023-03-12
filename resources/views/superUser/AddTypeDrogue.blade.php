@@ -11,15 +11,18 @@ Ajout d'un type de drogue
                     <h6 id="title-form" class="mb-4">Ajouter Type Drogue</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="nom-type-drogue" class="form-label">Nom Du Type De Drogue :</label>
-                            <input type="text" name="nom-type-drogue" class="form-control" id="nom-type-drogue">
+                            <label for="nom-drogue-type" class="form-label">Nom Du Type De Drogue</label>
+                            <input type="text" name="nom-drogue-type" class="form-control" id="nom-drogue-type">
                         </div>
                         <div class="mb-3">
-                            <button id="btn-add-type-Drogue" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-drogue-type" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/drogueType/add-drogue-type.js') }}"></script>
 @endsection
