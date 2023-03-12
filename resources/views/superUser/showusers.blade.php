@@ -16,6 +16,7 @@ Liste des utilisateurs
                     <thead>
                         <tr class="text-dark">
                             <th scope="col">N°</th>
+                            <th>PDP</th>
                             <th>Prénom</th>
                             <th>Nom</th>
                             <th>CIN</th>
@@ -31,6 +32,7 @@ Liste des utilisateurs
                             <tr>
                                 {{-- <td><input class="form-check-input" type="checkbox"></td> --}}
                                 <td>{{$loop->iteration}}</td>
+                                <td>{!! '<img class="rounded-circle me-lg-2" src="' . asset($user->photo_profile) .'" alt="" style="width: 40px; height: 40px;">' !!}</td>
                                 <td>{{$user->first_name}}</td>
                                 <td>{{$user->last_name}}</td>
                                 <td>{{$user->cin}}</td>
