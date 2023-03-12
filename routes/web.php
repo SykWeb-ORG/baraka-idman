@@ -3,6 +3,7 @@
 use App\Http\Controllers\AtelierController;
 use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\CasController;
+use App\Http\Controllers\DrogueTypeController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\ManagementBeneficiaireAteliersController;
@@ -638,4 +639,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/list-recherches', function (Request $request) {
         return view('superUser.showRecherche');
     })->name('list-recherches');
+    Route::resource('drogueTypes', DrogueTypeController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas de type de drogue", 404);
+        });
 });
