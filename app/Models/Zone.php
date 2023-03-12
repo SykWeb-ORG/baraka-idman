@@ -27,4 +27,12 @@ class Zone extends Model
                     ->as('intervenant_zone')
                     ->withTimestamps();
     }
+    
+    /**
+     * Get the users for the zone.
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

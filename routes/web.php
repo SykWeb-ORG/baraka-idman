@@ -71,6 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/list-beneficiaires', function () {
         return view('interTerrain.listing');
     })->name('list-beneficiaires');
+    Route::get('search-users', [UserController::class, 'search'])->name('search-users');
     Route::resource('users', UserController::class)
         ->missing(function (Request $request) {
             return response()->json("pas d'utilisateur", 404);

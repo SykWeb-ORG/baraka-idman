@@ -351,5 +351,45 @@ class UserController extends Controller
         session()->flash('icon', $icon);
         return back();
     }
-    
+    function search(Request $request)
+    {
+        $nomOrPrenomOrCIN = $request->query('criteria');
+        $role = $request->query('role');
+        $zone = $request->query('zone');
+        if (!$nomOrPrenomOrCIN && !$role && !$zone) {
+            return redirect()->route('users.index');
+        } else {
+            $users = User::where(function ($query) use ($nomOrPrenomOrCIN) {
+                    $query->where('first_name', 'like', '%' . $nomOrPrenomOrCIN . '%')
+                    ->orWhere('last_name', 'like', '%' . $nomOrPrenomOrCIN . '%')
+                    ->orWhere('cin', 'like', '%' . $nomOrPrenomOrCIN . '%');
+                })
+                ->when($zone, function ($query, $zone) {
+                    return $query->whereRelation('zone', 'id', $zone);
+                })
+                ->get();
+            if ($role) {
+                if ($role == 'admin') {
+                    $users = $users->filter(function ($user, $key) {
+                        return $user->admin;
+                    });
+                } elseif ($role == 'intervenant') {
+                    $users = $users->filter(function ($user, $key) {
+                        return $user->intervenant;
+                    });
+                } elseif ($role == 'social assistant') {
+                    $users = $users->filter(function ($user, $key) {
+                        return $user->social_assistant;
+                    });
+                } elseif ($role == 'medical assistant') {
+                    $users = $users->filter(function ($user, $key) {
+                        return $user->medical_assistant;
+                    });
+                }
+            }
+            // return response()->json($users);
+            return view('superUser.showusers', compact('users'));
+        }
+    }
+
 }
