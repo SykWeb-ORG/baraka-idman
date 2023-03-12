@@ -646,4 +646,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/add-type-drogue', function (Request $request) {
         return view('superUser.AddTypeDrogue');
     })->name('add-type-drogue');
+    Route::get('/all-type-drogue', function (Request $request) {
+        return view('superUser.ShowTypeDrogue');
+    })->name('all-type-drogue');
 });
