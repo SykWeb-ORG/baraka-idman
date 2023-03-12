@@ -122,6 +122,22 @@ class DrogueTypeController extends Controller
      */
     public function destroy(DrogueType $drogueType)
     {
-        //
+        if ($drogueType->delete()) {
+            $result = $drogueType;
+            $status = 200;
+            $msg = "Type de drogue supprimé avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
