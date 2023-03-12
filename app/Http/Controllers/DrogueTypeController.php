@@ -92,9 +92,26 @@ class DrogueTypeController extends Controller
      * @param  \App\Models\DrogueType  $drogueType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DrogueType $drogueType)
+    public function update(DrogueTypeRequest $request, DrogueType $drogueType)
     {
-        //
+        $drogueType->drogue_nom = $request->drogue_nom;
+        if ($drogueType->save()) {
+            $result = $drogueType;
+            $status = 200;
+            $msg = "Type de drogue modifié avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
