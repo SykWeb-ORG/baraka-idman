@@ -779,7 +779,11 @@ table tbody tr .userEdit{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 70px;
+    margin-left: 50px;
+}
+.statistics-three{
+    display: flex;
+    flex-wrap: wrap;
 }
 .modal-bodyF{
     max-height: 300px;
@@ -822,6 +826,7 @@ table tbody tr .userEdit{
     padding: 20px;
     grid-gap: 30px;
     min-height: 200px;
+    height: 380px;
 }
 .graphBox .box{
     position: relative;
@@ -930,6 +935,7 @@ table tbody tr .userEdit{
     }
     .graphBox{
         grid-template-columns: 1fr;
+        height: auto;
     }
     .rowCouv{
         display: grid;
