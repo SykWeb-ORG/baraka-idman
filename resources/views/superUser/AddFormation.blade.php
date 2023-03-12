@@ -37,7 +37,7 @@ Ajout d'une Formation
                         </div>
                         <div class="mb-3">
                             <label for="objet" class="form-label">Objet :</label>
-                            <input type="text" name="objet" class="form-control" id="objet">
+                            <textarea name="objet" class="form-control" id="objet"></textarea>
                         </div>
                         <div class="participant">
                             <legend>Ajouter Participant</legend>
