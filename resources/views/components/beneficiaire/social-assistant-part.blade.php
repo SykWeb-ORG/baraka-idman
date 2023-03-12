@@ -199,7 +199,7 @@
             <tbody id="tbodyDrogueTypes">
                 @foreach ($drogue_types as $drogue_type)
                     <tr>
-                        <td><input type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
+                        <td><input type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->drogue_nom}}</label></td>
                         <td><input type="number" name="frequences[]" id=""></td>
                     </tr>
                 @endforeach

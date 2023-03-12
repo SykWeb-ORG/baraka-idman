@@ -197,7 +197,7 @@
             <tbody id="tbodyDrogueTypes">
                 @foreach ($drogue_types as $drogue_type)
                     <tr>
-                        <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->drogue_types->contains($drogue_type))? 'checked' : ''}} type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->service_nom}}</label></td>
+                        <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->drogue_types->contains($drogue_type))? 'checked' : ''}} type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->drogue_nom}}</label></td>
                         <td><input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="number" name="frequences[]" value="{{($beneficiaire->drogue_types->contains($drogue_type) && $beneficiaire->drogue_types->find($drogue_type->id)->beneficiaire_drogue_type)? $beneficiaire->drogue_types->find($drogue_type->id)->beneficiaire_drogue_type->frequence : ''}}"></td>
                     </tr>
                 @endforeach

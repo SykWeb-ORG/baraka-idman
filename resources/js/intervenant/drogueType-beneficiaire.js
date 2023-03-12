@@ -37,7 +37,7 @@ function displayAllDrogueTypes(drogue_types) {
         tdDrogueTypeInp.appendChild(drogueType_input);
         let drogueType_label = document.createElement('label');
         drogueType_label.htmlFor = drogueType.id;
-        drogueType_label.textContent = drogueType.service_nom;
+        drogueType_label.textContent = drogueType.drogue_nom;
         tdDrogueTypeInp.appendChild(drogueType_label);
         let frequence_input = document.createElement('input');
         frequence_input.name = 'frequences[]';
