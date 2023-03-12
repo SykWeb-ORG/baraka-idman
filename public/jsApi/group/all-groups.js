@@ -22,10 +22,14 @@ $(document).ready(function () {
 const editGroup = (e) => {
     e.preventDefault();
     let nomGroup = $("input#nom-group").val();
+    let capacityGroup = $("input#capacity-group").val();
     let atelierId = $("select#atelier").val();
     let dataToSend = {
         "groupe_nom": nomGroup,
         "atelier": atelierId,
+    }
+    if (capacityGroup) {
+        dataToSend["capacity"] = capacityGroup;
     }
     updateData(`groupes/${groupToOperate.id}`, dataToSend, showDialogResponse);
 }
@@ -65,6 +69,8 @@ const getAllGroups = (data)=>{
         tdNb.text(indexInArray + 1);
         let tdNameGroup = $("<td>");
         tdNameGroup.text(group.groupe_nom);
+        let tdCapacityGroup = $("<td>");
+        tdCapacityGroup.text(group.capacity);
         let tdAtelier = $("<td>");
         tdAtelier.text(group.atelier.atelier_nom);
         let tdEditGroup = $(`<td class="text-center">`);
@@ -83,13 +89,14 @@ const getAllGroups = (data)=>{
             groupToOperate = groupes.find(oneGroup => oneGroup.id == $(this).data("group-id"));
         });
         tdDeleteGroup.append(btnDeleteGroup);
-        tr.append(tdNb, tdNameGroup, tdAtelier, tdEditGroup, tdDeleteGroup);
+        tr.append(tdNb, tdNameGroup, tdCapacityGroup, tdAtelier, tdEditGroup, tdDeleteGroup);
         $("tbody#tbl_group").append(tr);
     });
 }
 const fillModalEditGroup = (groupId) => {
     groupToOperate = groupes.find(oneGroup => oneGroup.id == groupId);
     $("input#nom-group").val(groupToOperate.groupe_nom);
+    $("input#capacity-group").val(groupToOperate.capacity);
     $("select#atelier").val(groupToOperate.atelier_id);
 }
 /**

@@ -16,6 +16,10 @@ Ajout d'un groupe
                             <input type="text" name="nom-group" class="form-control" id="nom-group">
                         </div>
                         <div class="mb-3">
+                            <label for="capacity-group" class="form-label">Capacity Du Groupe</label>
+                            <input type="number" name="capacity-group" class="form-control" id="capacity-group">
+                        </div>
+                        <div class="mb-3">
                             <label for="atelier" class="form-label">Atelier</label>
                             <select name="atelier" class="form-select mb-3" aria-label="Default select example" id="atelier">
                                 <option selected="">Choisir atelier</option>
