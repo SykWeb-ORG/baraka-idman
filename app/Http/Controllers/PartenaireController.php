@@ -133,6 +133,22 @@ class PartenaireController extends Controller
      */
     public function destroy(Partenaire $partenaire)
     {
-        //
+        if ($partenaire->delete()) {
+            $result = $partenaire;
+            $status = 200;
+            $msg = "Partenaire supprimé avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
