@@ -146,7 +146,7 @@
             @endif
             @canany(['create', 'viewAny'], App\Models\Zone::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-location me-2"></i>Zones</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-street-view"></i>Zones</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Zone::class)
                             <a href="{{ route('addzoneIntervenant') }}" class="dropdown-item">Ajouter</a>
