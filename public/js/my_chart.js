@@ -118,8 +118,8 @@ function chartScolType(type){
     myChartScol.config.type = type
     myChartScol.update();
 }
-var ctspres = document.getElementById('myChartpresence').getContext('2d');
-var myChartpresence = new Chart(ctspres, {
+var ctspresMed = document.getElementById('myChartpresenceMed').getContext('2d');
+var myChartpresenceMed = new Chart(ctspresMed, {
     type: 'pie',
     data: {
         labels: ['Oui','Non'],
@@ -145,9 +145,40 @@ var myChartpresence = new Chart(ctspres, {
         responsive:true,
     }
 });
-function chartpresenceType(type){
-    myChartpresence.config.type = type
-    myChartpresence.update();
+function chartpresenceMedType(type){
+    myChartpresenceMed.config.type = type
+    myChartpresenceMed.update();
+}
+var ctspresSocial = document.getElementById('myChartpresenceSocial').getContext('2d');
+var myChartpresenceSocial = new Chart(ctspresSocial, {
+    type: 'pie',
+    data: {
+        labels: ['Oui','Non'],
+        datasets: [{
+            label: 'Présence',
+            data: [43, 57],
+            backgroundColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+              beginAtZero: true
+            }
+        },
+        responsive:true,
+    }
+});
+function chartpresenceSocialType(type){
+    myChartpresenceSocial.config.type = type
+    myChartpresenceSocial.update();
 }
 var ctTdrg = document.getElementById('myChartTypedrg').getContext('2d');
 var myChartTypedrg = new Chart(ctTdrg, {

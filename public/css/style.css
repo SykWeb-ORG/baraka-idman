@@ -826,7 +826,6 @@ table tbody tr .userEdit{
     padding: 20px;
     grid-gap: 30px;
     min-height: 200px;
-    height: 380px;
 }
 .graphBox .box{
     position: relative;
@@ -935,7 +934,7 @@ table tbody tr .userEdit{
     }
     .graphBox{
         grid-template-columns: 1fr;
-        height: auto;
+        /* height: auto; */
     }
     .rowCouv{
         display: grid;

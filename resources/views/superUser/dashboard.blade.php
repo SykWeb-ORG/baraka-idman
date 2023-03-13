@@ -306,25 +306,6 @@
         <div class="statistics-both">
             {{-- Statistiques selon CIN --}}
             <!-- BEGIN: Stastics based on gender -->
-            {{-- Statistiques selon Type de Drogue --}}
-            <!-- BEGIN: Stastics based on gender -->
-            <div class="mb-4">
-                <h6 class="mb-3">Statistiques selon Type de Drogue</h6>
-                <select name="" id="" onchange="chartDRGType(this.value)" class="filter_select">
-                    <option value="bar">Bar</option>
-                    <option value="line">Line</option>
-                    <option value="doughnut">Doughnut</option>
-                    <option value="polarArea">PolarArea</option>
-                    <option value="pie">Pie</option>
-                </select>
-                <div class="graphBox">
-                    <div class="box">
-                        <canvas id="myChartTypedrg"></canvas>
-                    </div>
-                </div>
-            </div>
-            <!-- END: Stastics based on gender -->
-
             {{-- Statistiques selon la scolarité --}}
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon la Scolarité</h6>
@@ -344,8 +325,8 @@
             <!-- END: Stastics based on gender -->
             {{-- Statistiques selon Présence --}}
             <div class="mb-4">
-                <h6 class="mb-3">Statistiques selon la présence au rendez-vous</h6>
-                <select name="" id="" onchange="chartpresenceType(this.value)" class="filter_select">
+                <h6 class="mb-3 w-50">Statistiques selon la présence au rendez-vous Médical</h6>
+                <select name="" id="" onchange="chartpresenceMedType(this.value)" class="filter_select">
                     <option value="pie">Pie</option>
                     <option value="line">Line</option>
                     <option value="doughnut">Doughnut</option>
@@ -354,7 +335,23 @@
                 </select>
                 <div class="graphBox">
                     <div class="box">
-                        <canvas id="myChartpresence"></canvas>
+                        <canvas id="myChartpresenceMed"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h6 class="mb-3">Statistiques selon la présence au rendez-vous Social</h6>
+                <select name="" id="" onchange="chartpresenceSocialType(this.value)"
+                    class="filter_select">
+                    <option value="pie">Pie</option>
+                    <option value="line">Line</option>
+                    <option value="doughnut">Doughnut</option>
+                    <option value="polarArea">PolarArea</option>
+                    <option value="bar">Bar</option>
+                </select>
+                <div class="graphBox">
+                    <div class="box">
+                        <canvas id="myChartpresenceSocial"></canvas>
                     </div>
                 </div>
             </div>
@@ -400,7 +397,24 @@
                 </div>
             </div>
         </div>
-
+        {{-- Statistiques selon Type de Drogue --}}
+        <!-- BEGIN: Stastics based on gender -->
+        <div class="mb-4">
+            <h6 class="mb-3">Statistiques selon Type de Drogue</h6>
+            <select name="" id="" onchange="chartDRGType(this.value)" class="filter_select">
+                <option value="bar">Bar</option>
+                <option value="line">Line</option>
+                <option value="doughnut">Doughnut</option>
+                <option value="polarArea">PolarArea</option>
+                <option value="pie">Pie</option>
+            </select>
+            <div class="graphBox">
+                <div class="box">
+                    <canvas id="myChartTypedrg"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- END: Stastics based on gender -->
         {{-- Statistiques selon le service --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon le service</h6>
