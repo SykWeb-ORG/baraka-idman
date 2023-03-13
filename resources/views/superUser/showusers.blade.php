@@ -11,6 +11,48 @@ Liste des utilisateurs
                 <h6 class="mb-0">Tous Les Utilisateurs</h6>
                 {{-- <a href="">Show All</a> --}}
             </div>
+            <div class="filtre">
+                <h5 for="" class="form-label">Filtre:</h5>
+                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
+                    data-bs-target="#modal_filtre"><i class="fas fa-ellipsis-v"></i></button>
+                <!-- Modal -->
+                <div class="modal fade" id="modal_filtre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Filtres</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-bodyF">
+                                {{-- <form action="{{ route('search-user') }}" method="GET"> --}}
+                                    <div class="filtre_item">
+                                        <label for="" class="form-label">Filtre Par Role</label>
+                                        <select name="" id="" class="filter_select">
+                                            <option value="">admin</option>
+                                            <option value="">intervenant</option>
+                                            <option value="">assistant social</option>
+                                        </select>
+                                    </div>
+                                    <div class="filtre_item">
+                                        <label for="" class="form-label">Filtre Par Zone</label>
+                                        <select name="" id="" class="filter_select">
+                                            <option value="">zone1</option>
+                                            <option value="">zone2</option>
+                                            <option value="">zone3</option>
+                                        </select>
+                                    </div>
+                                    <div class="filtre_item">
+                                        <label for="criteria" class="form-label">Filtre Par Nom ou Prénom ou CIN</label>
+                                        <input type="text" name="criteria" class="form-control" id="criteria" placeholder="Recherche...">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="table-responsive table-height">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>
