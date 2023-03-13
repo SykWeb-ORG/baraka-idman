@@ -18,6 +18,7 @@ use App\Http\Controllers\ManagementIntervenantProgrammeController;
 use App\Http\Controllers\ManagementIntervenantZoneController;
 use App\Http\Controllers\ManagementRolePermissionController;
 use App\Http\Controllers\MedicaleVisiteController;
+use App\Http\Controllers\PartenaireController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\ServiceController;
@@ -649,4 +650,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/all-type-drogue', function (Request $request) {
         return view('superUser.ShowTypeDrogue');
     })->name('all-type-drogue');
+    Route::resource('partenaires', PartenaireController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas de partenaire", 404);
+        });
 });
