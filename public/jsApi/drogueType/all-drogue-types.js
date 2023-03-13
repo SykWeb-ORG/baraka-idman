@@ -1,121 +1,88 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
-var socialeVisites = null;
-var socialeVisiteToOperate = null;
+var drogueTypes = null;
+var drogueTypeToOperate = null;
 /// *****************************
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    getAllData("all-beneficiaires", fillSelectBeneficiaires);
-    getAllData("socialeVisites", getAllSocialeVisites);
-    $("button#btn-edit-visite-sociale").click(editSocialeVisite);
-    $("button#btn-delete-visite-sociale").click(deleteSocialeVisite);
+    getAllData("drogueTypes", getAllDrogueType);
+    $("button#btn-edit-drogue-type").click(editDrogueType);
+    $("button#btn-delete-drogue-type").click(deleteDrogueType);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Edit sociale visite
+ * Edit drogue 
  * @param {Event} e Information about the event
  */
-const editSocialeVisite = (e) => {
+const editDrogueType = (e) => {
     e.preventDefault();
-    let dateSocialeVisite = $("input#date_visite").val();
-    let remarque = $(`input#remarque-visite`).val();
-    let beneficiaire = $(`select#beneficiaire`).val();
+    let nomDrogueType = $("input#nom-drogue-type").val();
     let dataToSend = {
-        "visite_date": dateSocialeVisite,
-        "visite_remarque": remarque,
-        "beneficiaire": beneficiaire,
+        "drogue_nom": nomDrogueType,
     }
-    updateData(`socialeVisites/${socialeVisiteToOperate.id}`, dataToSend, showDialogResponse);
+    updateData(`drogueTypes/${drogueTypeToOperate.id}`, dataToSend, showDialogResponse);
 }
 /**
- * Delete sociale visite
+ * Delete drogue 
  * @param {Event} e Information about the event
  */
-const deleteSocialeVisite = (e) => {
+const deleteDrogueType = (e) => {
     e.preventDefault();
-    deleteData(`socialeVisites/${socialeVisiteToOperate.id}`, showDialogResponse);
+    deleteData(`drogueTypes/${drogueTypeToOperate.id}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains new sociale visite
+ * @param {object} data response from the server that contains new drogue 
  */
 const showDialogResponse = (data) => {
     if (data.status == 200) {
-        let socialeVisite = data.result;
+        let drogueType = data.result;
         let msg = data.msg;
         alertMsg(msg);
-        $("tbody#tbl_sociale_visites").empty();
-        getAllData("socialeVisites", getAllSocialeVisites);
+        $("tbody#tbl_drogue_types").empty();
+        getAllData("drogueTypes", getAllDrogueType);
     } else {
         let errors = data.errors;
         console.log(errors);
     }
 }
 /**
- * Fill the select field with all beneficiaires
- * @param {object} data response from the server that contains all beneficiaires
+ * Retrieve all drogues from the server
+ * @param {object} data response from the server that contains all drogues
  */
-const fillSelectBeneficiaires = (data) => {
-    let beneficiaires = data.result;
-    $.each(beneficiaires, function (indexInArray, beneficiaire) {
-        let option = $("<option>");
-        option.text(beneficiaire.nom + " " + beneficiaire.prenom);
-        option.val(beneficiaire.id);
-        $("select#beneficiaire").append(option);
-    });
-    $("select#beneficiaire").select2({
-        placeholder: 'Séléctionner un beneficiaire ...',
-    });
-}
-/**
- * Retrieve all sociale visites from the server
- * @param {object} data response from the server that contains all sociale visites
- */
-const getAllSocialeVisites = (data) => {
-    socialeVisites = data.sociale_visites;
-    $.each(socialeVisites, function (indexInArray, socialeVisite) {
+const getAllDrogueType = (data)=>{
+    drogueTypes = data.drogue_types;
+    $.each(drogueTypes, function (indexInArray, drogueType) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
-        let tdDateSocialeVisite = $("<td>");
-        tdDateSocialeVisite.text(socialeVisite.visite_date);
-        let tdRemarqueSocialeVisite = $("<td>");
-        tdRemarqueSocialeVisite.text(socialeVisite.visite_remarque);
-        let tdBeneficiaire = $("<td>");
-        tdBeneficiaire.text(`${socialeVisite.beneficiaire.nom} ${socialeVisite.beneficiaire.prenom}`);
-        let tdEditSocialeVisite = $(`<td class="text-center">`);
-        let btnEditSocialeVisite = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-sociale-visite-id=${socialeVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditVisite_Sociale'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite sociale'>`);
-        btnEditSocialeVisite.append("<i class='fas fa-edit'></i>");
-        btnEditSocialeVisite.click(function (e) {
+        let tdNameDrogueType = $("<td>");
+        tdNameDrogueType.text(drogueType.drogue_nom);
+        let tdEditDrogueType = $(`<td class="text-center">`);
+        let btnEditDrogueType = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-drogue-type-id=${drogueType.id} data-bs-toggle='modal' data-bs-target='#modal_EditTypeDrogue'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier drogue'>`);
+        btnEditDrogueType.append("<i class='fas fa-edit'></i>");
+        btnEditDrogueType.click(function (e) { 
             e.preventDefault();
-            fillModalEditSocialeVisite($(this).data("sociale-visite-id"));
+            fillModalEditDrogueType($(this).data("drogue-type-id"));
         });
-        tdEditSocialeVisite.append(btnEditSocialeVisite);
-        let tdDeleteSocialeVisite = $(`<td class="text-center">`);
-        let btnDeleteSocialeVisite = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-sociale-visite-id=${socialeVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteVisite_sociale"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite sociale'>`);
-        btnDeleteSocialeVisite.append(`<i class="fas fa-trash"></i>`);
-        btnDeleteSocialeVisite.click(function (e) {
+        tdEditDrogueType.append(btnEditDrogueType);
+        let tdDeleteDrogueType = $(`<td class="text-center">`);
+        let btnDeleteDrogueType = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-drogue-type-id=${drogueType.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteTypeDrogue"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer drogue'>`);
+        btnDeleteDrogueType.append(`<i class="fas fa-trash"></i>`);
+        btnDeleteDrogueType.click(function (e) {
             e.preventDefault();
-            socialeVisiteToOperate = socialeVisites.find(oneSocialeVisite => oneSocialeVisite.id == $(this).data("sociale-visite-id"));
+            drogueTypeToOperate = drogueTypes.find(oneDrogueType => oneDrogueType.id == $(this).data("drogue-type-id"));
         });
-        tdDeleteSocialeVisite.append(btnDeleteSocialeVisite);
-        tr.append(tdNb, tdDateSocialeVisite, tdRemarqueSocialeVisite, tdBeneficiaire, tdEditSocialeVisite, tdDeleteSocialeVisite);
-        if ($("thead th").length == 6) {
-            let tdSocialeAssistant = $("<td>");
-            tdSocialeAssistant.text(`${socialeVisite.social_assistant.user.last_name} ${socialeVisite.social_assistant.user.first_name}`);
-            tdSocialeAssistant.insertBefore(tdEditSocialeVisite);
-        }
-        $("tbody#tbl_sociale_visites").append(tr);
+        tdDeleteDrogueType.append(btnDeleteDrogueType);
+        tr.append(tdNb, tdNameDrogueType, tdEditDrogueType, tdDeleteDrogueType);
+        $("tbody#tbl_drogue_types").append(tr);
     });
 }
-const fillModalEditSocialeVisite = (socialeVisiteId) => {
-    socialeVisiteToOperate = socialeVisites.find(socialeVisite => socialeVisite.id == socialeVisiteId);
-    $("input#date_visite").val(socialeVisiteToOperate.visite_date);
-    $(`input#remarque-visite`).val(socialeVisiteToOperate.visite_remarque);
-    $(`select#beneficiaire`).val(socialeVisiteToOperate.beneficiaire.id);
-    $(`select#beneficiaire`).trigger('change');
+const fillModalEditDrogueType = (drogueTypeId) => {
+    drogueTypeToOperate = drogueTypes.find(drogueType => drogueType.id == drogueTypeId);
+    $("input#nom-drogue-type").val(drogueTypeToOperate.drogue_nom);
 }
