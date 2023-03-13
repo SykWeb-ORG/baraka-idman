@@ -21,7 +21,10 @@ class PartenaireController extends Controller
      */
     public function index()
     {
-        //
+        $partenaires = Partenaire::all();
+        return response()->json([
+            'partenaires' => $partenaires,
+        ]);
     }
 
     /**
