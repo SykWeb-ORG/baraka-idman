@@ -77,6 +77,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\DrogueType::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-briefcase"></i>Type de drogues</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\DrogueType::class)
+                            <a href="{{ route('add-type-drogue') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\DrogueType::class)
+                            <a href="{{ route('all-type-drogue') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['create', 'viewAny'], App\Models\Groupe::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-users me-2"></i>Groupes</a>
