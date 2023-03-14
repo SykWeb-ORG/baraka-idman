@@ -654,4 +654,10 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de partenaire", 404);
         });
+    Route::get('/AddCouvertureMedical', function (Request $request) {
+        return view('superUser.AddCouvertureMedical');
+    })->name('AddCouvertureMedical');
+    Route::get('/ShowCouvertureMedical', function (Request $request) {
+        return view('superUser.ShowCouvertureMedical');
+    })->name('ShowCouvertureMedical');
 });
