@@ -45,6 +45,11 @@ class BeneficiaireRequest extends FormRequest
             'type_travail' => [
                 'required',
             ],
+            'nb_dossier' => [
+                'sometimes',
+                'numeric',
+                'unique:App\Models\Beneficiaire,nb_dosier',
+            ],
         ];
     }
 }

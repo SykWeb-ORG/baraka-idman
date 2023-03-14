@@ -41,6 +41,9 @@ const addBeneficiaire = (e) => {
     if ($(`input[name="registred_date"]`).val()) {
         dataToSend["created_at"] = $(`input[name="registred_date"]`).val();
     }
+    if ($("input#matricule-benef").val()) {
+        dataToSend["nb_dossier"] = $("input#matricule-benef").val();
+    }
     addData("beneficiaires", dataToSend, showDialogResponse);
 }
 /**

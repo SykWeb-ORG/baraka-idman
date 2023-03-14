@@ -69,6 +69,7 @@ class BeneficiaireController extends Controller
     {
         $beneficiaire = new Beneficiaire;
         $beneficiaire->code = Hash::make('ccc');
+        $beneficiaire->nb_dosier = $request->nb_dossier;
         $beneficiaire->prenom = $request->prenom;
         $beneficiaire->nom = $request->nom;
         $beneficiaire->adresse = $request->adresse;
@@ -155,6 +156,7 @@ class BeneficiaireController extends Controller
      */
     public function update(BeneficiaireRequest $request, Beneficiaire $beneficiaire)
     {
+        $beneficiaire->nb_dosier = $request->nb_dossier;
         $beneficiaire->prenom = $request->prenom;
         $beneficiaire->nom = $request->nom;
         $beneficiaire->adresse = $request->adresse;
