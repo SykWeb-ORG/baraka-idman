@@ -38,6 +38,9 @@ const addBeneficiaire = (e) => {
         "duree_addiction": $("input#duree-addiction-benef").val(),
         "ts": $(`input[name="ts"][type="radio"]:checked`).val(),
     }
+    if ($(`input[name="registred_date"]`).val()) {
+        dataToSend["created_at"] = $(`input[name="registred_date"]`).val();
+    }
     addData("beneficiaires", dataToSend, showDialogResponse);
 }
 /**
@@ -54,6 +57,7 @@ const showDialogResponse = (data) => {
         attachSuicideCauses(beneficiaire);
         attachViolenceTypes(beneficiaire);
         alertMsg(msg);
+        $(".form-benefaicaire").trigger("reset");
     } else {
         let errors = data.errors;
         console.log(errors);
@@ -128,5 +132,5 @@ const attachViolenceTypes = (beneficiaire) => {
     let dataToSend = {
         "violence_types": violenceTypes,
     }
-    updateData(`match-beneficiaire-violence_types/${beneficiaire.id}`, dataToSend, (data) => { console.log(data); $(".form-benefaicaire").trigger("reset");});
+    updateData(`match-beneficiaire-violence_types/${beneficiaire.id}`, dataToSend, (data) => { console.log(data);});
 }

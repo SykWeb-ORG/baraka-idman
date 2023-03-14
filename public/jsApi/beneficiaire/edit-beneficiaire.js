@@ -39,6 +39,9 @@ const editBeneficiaire = (e) => {
         "duree_addiction": $("input#duree-addiction-benef").val(),
         "ts": $(`input[name="ts"][type="radio"]:checked`).val(),
     }
+    if ($(`input[name="registred_date"]`).val()) {
+        dataToSend["created_at"] = $(`input[name="registred_date"]`).val();
+    }
     updateData(`beneficiaires/${beneficiaire.id}`, dataToSend, showDialogResponse);
 }
 /**
@@ -59,6 +62,7 @@ const showDialogResponse = (data) => {
         let errors = data.errors;
         console.log(errors);
     }
+    window.scrollTo(0, 0);
 }
 /**
  * Attach the checked couvertures with the modified beneficiaire
