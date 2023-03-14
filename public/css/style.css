@@ -955,10 +955,16 @@ table tbody tr .userEdit{
         flex-direction:column-reverse ;
     }
     .top-pictures{
-        grid-template-columns: repeat(1,1fr);
+        margin-top: 6rem;
     }
-    .mt-6{
-        margin: 3rem;
+    .logo-login {
+        width: 100px;
+        height: 100px;
     }
+    .pos_login {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
 }
 
