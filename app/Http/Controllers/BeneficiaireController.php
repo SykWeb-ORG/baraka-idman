@@ -75,6 +75,7 @@ class BeneficiaireController extends Controller
         $beneficiaire->sexe = $request->sexe;
         $beneficiaire->cin = $request->cin;
         $beneficiaire->telephone = $request->telephone;
+        $beneficiaire->created_at = $request->created_at;
         $beneficiaire->type_travail = $request->type_travail;
         $beneficiaire->niveau_scolaire = $request->niveau_scolaire;
         $beneficiaire->situation_familial = $request->situation_familial;
@@ -161,6 +162,7 @@ class BeneficiaireController extends Controller
         $beneficiaire->cin = $request->cin;
         $beneficiaire->telephone = $request->telephone;
         $beneficiaire->type_travail = $request->type_travail;
+        $beneficiaire->created_at = $request->created_at;
         $beneficiaire->niveau_scolaire = ($request->has('niveau_scolaire'))? $request->niveau_scolaire : $beneficiaire->niveau_scolaire;
         $beneficiaire->situation_familial = ($request->has('situation_familial'))? $request->situation_familial : $beneficiaire->situation_familial;
         $beneficiaire->orphelin = ($request->has('orphelin'))? $request->orphelin : $beneficiaire->orphelin;
