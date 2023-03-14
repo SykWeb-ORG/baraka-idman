@@ -5,7 +5,7 @@
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    $("input[type='radio']").click(changeActiveStatus);
+    $("div.toggle").click(changeActiveStatus);
     getAllData(`all-roles`, fillSelectRoles);
     getAllData(`zones`, fillSelectZones);
 });
@@ -31,10 +31,11 @@ const showDialogResponse = (data) => {
  * @param {Event} e Information about the event
  */
 const changeActiveStatus = (e) => {
+    let toggleInp = $(e.target).parents("td").find("input[type=checkbox]");
     let dataToSend = {
-        "active": e.target.value,
+        "active": !toggleInp.prop("checked"),
     }
-    updateData(`activation-account-user/${e.target.dataset.userId}`, dataToSend, showDialogResponse);
+    updateData(`activation-account-user/${toggleInp.data(`user-id`)}`, dataToSend, showDialogResponse);
 }
 /**
  * Fill the select field with all roles
