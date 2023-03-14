@@ -1,4 +1,8 @@
 <div class="mb-3">
+    <label for="matricule-benef" class="form-label">Numéro De Benéficiaire</label>
+    <input type="text" name="matricule" class="form-control" id="matricule-benef">
+</div>
+<div class="mb-3">
     <label for="first-name-benef" class="form-label">Prénom</label>
     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="text" name="prenom" class="form-control" id="first-name-benef" value="{{$beneficiaire->prenom}}">
 </div>
