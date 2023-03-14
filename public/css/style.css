@@ -32,7 +32,8 @@
 .pos_login{
     position: relative;
     margin-top:8.5rem;
-    margin-bottom: 1.5rem   ;
+    margin-left: 9rem;
+    margin-right: 9rem;
 }
 .logo-login{
     position: absolute;
@@ -43,6 +44,12 @@
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
+}
+.top-pictures{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-content: center;
+    justify-content: center;
 }
 
 /*** Spinner ***/
@@ -946,6 +953,12 @@ table tbody tr .userEdit{
     }
     .cardCauseBox .cardCause{
         flex-direction:column-reverse ;
+    }
+    .top-pictures{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .mt-6{
+        margin: 3rem;
     }
 }
 
