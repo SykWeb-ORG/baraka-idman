@@ -3,6 +3,7 @@
 use App\Http\Controllers\AtelierController;
 use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\CasController;
+use App\Http\Controllers\CouvertureController;
 use App\Http\Controllers\DrogueTypeController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\GroupeController;
@@ -661,4 +662,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/ShowCouvertureMedical', function (Request $request) {
         return view('superUser.ShowCouvertureMedical');
     })->name('ShowCouvertureMedical');
+    Route::resource('couvertures', CouvertureController::class)
+        ->missing(function (Request $request) {
+            return response()->json("pas de couverture medicale", 404);
+        });
 });
