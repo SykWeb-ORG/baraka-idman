@@ -96,10 +96,10 @@ class CouvertureController extends Controller
     public function update(CouvertureRequest $request, Couverture $couverture)
     {
         $couverture->couverture_nom = $request->couverture_nom;
-        if ($couverture->save()) {
+        if ($couverture->update()) {
             $result = $couverture;
             $status = 200;
-            $msg = "Couverture médicale modifié avec success.";
+            $msg = "Couverture médicale modifiée avec success.";
         }else {
             $result = null;
             $status = 500;
@@ -123,6 +123,22 @@ class CouvertureController extends Controller
      */
     public function destroy(Couverture $couverture)
     {
-        //
+        if ($couverture->delete()) {
+            $result = $couverture;
+            $status = 200;
+            $msg = "Couverture médicale supprimée avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
