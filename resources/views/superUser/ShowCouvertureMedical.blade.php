@@ -36,7 +36,7 @@
                                 <form class="form-user" action="" method="POST">
                                     <div class="mb-3">
                                         <label for="nom-couv-medicale" class="form-label">Nom du Couverture Médicale</label>
-                                        <input type="text" name="om-couv-medicale" class="form-control" id="om-couv-medicale">
+                                        <input type="text" name="nom-couv-medicale" class="form-control" id="nom-couv-medicale">
                                     </div>
                                     <div class="mb-3">
                                         <button id="btn-edit-couv-medicale" class="btn btn-primary">Modifier</button>
@@ -62,7 +62,7 @@
                             <div class="modal-bodyEdit">
                                     <div class="mb-3 mt-3">
                                         <button id="btn-delete-CouvMedicale" class="btn btn-secondary">Oui</button>
-                                        <button id="btn-delete-CouvMedicale" class="btn btn-primary">Non</button>
+                                        <button class="btn btn-primary">Non</button>
                                     </div>
                             </div>
                         </div>
@@ -73,4 +73,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/couverture/all-couvertures.js') }}"></script>
 @endsection

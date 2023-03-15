@@ -664,6 +664,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('superUser.AddCouvertureMedical');
     })->name('AddCouvertureMedical');
     Route::get('/ShowCouvertureMedical', function (Request $request) {
+        if (!Gate::allows('viewAny', Couverture::class)) {
+            abort(403);
+        }
         return view('superUser.ShowCouvertureMedical');
     })->name('ShowCouvertureMedical');
     Route::resource('couvertures', CouvertureController::class)
