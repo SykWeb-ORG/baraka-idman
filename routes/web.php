@@ -30,6 +30,7 @@ use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Atelier;
 use App\Models\Beneficiaire;
 use App\Models\Cas;
+use App\Models\Couverture;
 use App\Models\Formation;
 use App\Models\Groupe;
 use App\Models\Intervenant;
@@ -657,6 +658,9 @@ Route::middleware('auth:sanctum')->group(function () {
             return response()->json("pas de partenaire", 404);
         });
     Route::get('/AddCouvertureMedical', function (Request $request) {
+        if (!Gate::allows('create', Couverture::class)) {
+            abort(403);
+        }
         return view('superUser.AddCouvertureMedical');
     })->name('AddCouvertureMedical');
     Route::get('/ShowCouvertureMedical', function (Request $request) {

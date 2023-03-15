@@ -23,3 +23,6 @@ Ajout d'une Couverture Médicale
         </div>
     </div>
 @endsection
+@section('custom_scripts')
+    <script src="{{ asset('jsApi/couverture/add-couverture.js') }}"></script>
+@endsection
