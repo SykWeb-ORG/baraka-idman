@@ -26,26 +26,25 @@ Liste des utilisateurs
                                 </button>
                             </div>
                             <div class="modal-bodyF">
-                                {{-- <form action="{{ route('search-user') }}" method="GET"> --}}
+                                <form action="{{ route('search-users') }}" method="GET">
                                     <div class="filtre_item">
-                                        <label for="" class="form-label">Filtre Par Role</label>
-                                        <select name="" id="" class="filter_select">
-                                            <option value="">admin</option>
-                                            <option value="">intervenant</option>
-                                            <option value="">assistant social</option>
+                                        <label for="role" class="form-label">Filtre Par Role</label>
+                                        <select name="role" id="role" class="filter_select">
+                                            <option value="">Séléctionner rôle</option>
                                         </select>
                                     </div>
                                     <div class="filtre_item">
-                                        <label for="" class="form-label">Filtre Par Zone</label>
-                                        <select name="" id="" class="filter_select">
-                                            <option value="">zone1</option>
-                                            <option value="">zone2</option>
-                                            <option value="">zone3</option>
+                                        <label for="zone" class="form-label">Filtre Par Zone</label>
+                                        <select name="zone" id="zone" class="filter_select">
+                                            <option value="">Séléctionner zone</option>
                                         </select>
                                     </div>
                                     <div class="filtre_item">
                                         <label for="criteria" class="form-label">Filtre Par Nom ou Prénom ou CIN</label>
                                         <input type="text" name="criteria" class="form-control" id="criteria" placeholder="Recherche...">
+                                    </div>
+                                    <div class="mb-3 d-flex justify-content-end">
+                                        <button class="btn btn-primary">Filtrer</button>
                                     </div>
                                 </form>
                             </div>
@@ -185,7 +184,8 @@ Liste des utilisateurs
         </div>;
     @endif
 @endsection
-
-{{-- @section('custom_scripts')
-<script src="{{asset("jsApi/superadmin/getDataUsers.js")}}"></script>
-@endsection --}}
+@section('custom_scripts')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{asset("jsApi/user/all-users.js")}}"></script>
+@endsection

@@ -125,4 +125,12 @@ class User extends Authenticatable
                     ->as('beneficiaire_service_user')
                     ->withTimestamps();
     }
+
+    /**
+     * Get the zone that owns the user.
+     */
+    public function zone()
+    {
+        return $this->belongsTo(Zone::class);
+    }
 }
