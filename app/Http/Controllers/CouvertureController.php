@@ -19,7 +19,10 @@ class CouvertureController extends Controller
      */
     public function index()
     {
-        //
+        $couvertures = Couverture::all();
+        return response()->json([
+            'couvertures' => $couvertures,
+        ]);
     }
 
     /**
