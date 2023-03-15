@@ -93,9 +93,26 @@ class CouvertureController extends Controller
      * @param  \App\Models\Couverture  $couverture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Couverture $couverture)
+    public function update(CouvertureRequest $request, Couverture $couverture)
     {
-        //
+        $couverture->couverture_nom = $request->couverture_nom;
+        if ($couverture->save()) {
+            $result = $couverture;
+            $status = 200;
+            $msg = "Couverture médicale modifié avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
