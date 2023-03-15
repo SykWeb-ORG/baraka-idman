@@ -89,6 +89,7 @@ class BeneficiaireController extends Controller
         $beneficiaire->addiction_cause = $request->addiction_cause;
         $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
         $beneficiaire->duree_addiction = $request->duree_addiction;
+        $beneficiaire->unite_addiction = $request->unite_addiction;
         $beneficiaire->ts = $request->ts;
         if (Auth::user()->registred_beneficiaires()->save($beneficiaire)) {
             // give an appointment
@@ -176,6 +177,7 @@ class BeneficiaireController extends Controller
         $beneficiaire->addiction_cause = ($request->has('addiction_cause'))? $request->addiction_cause : $beneficiaire->addiction_cause;
         $beneficiaire->age_debut_addiction = ($request->has('age_debut_addiction'))? $request->age_debut_addiction : $beneficiaire->age_debut_addiction;
         $beneficiaire->duree_addiction = ($request->has('duree_addiction'))? $request->duree_addiction : $beneficiaire->duree_addiction;
+        $beneficiaire->unite_addiction = $request->unite_addiction;
         $beneficiaire->ts = ($request->has('ts'))? $request->ts : $beneficiaire->ts;
         // update the appointment
         if ($request->has('social_visite_date')) {

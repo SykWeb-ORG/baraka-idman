@@ -311,11 +311,11 @@
     <label for="duree-addiction-benef" class="form-label">Duree Addiction</label>
     <div class="dure-both">
         <input type="number" name="duree_addiction" class="form-control" id="duree-addiction-benef">
-        <select name="unite" class="form-select unite" aria-label="Default select example" id="unite">
+        <select name="unite_addiction" class="form-select unite" aria-label="Default select example" id="unite-addiction-benef">
             <option value="">Selectionner unité</option>
             <option value="jour">Jour</option>
             <option value="mois">Mois</option>
-            <option value="année">Année</option>
+            <option value="annee">Année</option>
         </select>
     </div>
 </div>
