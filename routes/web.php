@@ -673,4 +673,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de couverture medicale", 404);
         });
+    Route::get('/add-partenaire', function (Request $request) {
+        return view('superUser.AddPartenaire');
+    })->name('add-partenaire');
 });
