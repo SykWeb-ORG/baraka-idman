@@ -676,4 +676,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/add-partenaire', function (Request $request) {
         return view('superUser.AddPartenaire');
     })->name('add-partenaire');
+    Route::get('/show-partenaire', function (Request $request) {
+        return view('superUser.ShowPartenaire');
+    })->name('show-partenaire');
 });

@@ -23,7 +23,7 @@ Ajout d'un Partenaire
                             <input type="file" name="logo-partenaire" class="form-control" id="logo-partenaire">
                         </div>
                         <div class="mb-3">
-                            <button id="btn-add-couv-medicale" class="btn btn-primary">Ajouter</button>
+                            <button id="btn-add-partenaire" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>
