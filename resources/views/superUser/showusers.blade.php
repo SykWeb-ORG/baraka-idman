@@ -65,6 +65,7 @@ Liste des utilisateurs
                             <th>Date de naissance</th>
                             <th>Email</th>
                             <th>Rôle</th>
+                            <th>Active</th>
                             <th colspan="5" class="actions">Action</th>
                         </tr>
                     </thead>
@@ -93,6 +94,7 @@ Liste des utilisateurs
                                         }
                                     @endphp
                                 </td>
+                                <td><input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></td>
                                 <td class="userEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a></td>
                                 <td class="userDest">
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
@@ -187,5 +189,7 @@ Liste des utilisateurs
 @section('custom_scripts')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="{{asset("jsApi/user/all-users.js")}}"></script>
 @endsection

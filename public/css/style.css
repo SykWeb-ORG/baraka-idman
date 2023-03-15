@@ -376,6 +376,9 @@
 .situ-familiale .sit_fam input{
     margin-right: 5px;
 }
+.table th {
+    z-index: 4;
+}
 table tbody tr .actionMenu{
     /* display: none; */
     position: sticky;
