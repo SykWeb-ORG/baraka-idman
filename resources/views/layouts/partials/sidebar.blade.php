@@ -5,7 +5,7 @@
     </a>
     <nav class="navbar bg-light navbar-light">
         <a href="#" class="navbar-brand mx-4 mb-3">
-            <h4 class="text-primary"><img src={{asset("images/LOGO-DROGUES.png")}} alt="" class="logo_sidebar"></h4>
+            <h4 class="text-primary"><img src={{asset("images/baraka-idman.png")}} alt="" class="logo_sidebar"></h4>
         </a>
         
         {{-- <div class="d-flex align-items-center ms-4 mb-4">
@@ -20,11 +20,11 @@
         </div> --}}
         <div class="navbar-nav w-100">
             @if (Auth::user()->admin)
-                <a href="{{ route('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             @endif
             @canany(['create', 'viewAny'], App\Models\User::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fas fa-user me-2"></i>Utilisateurs</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user me-2"></i>Utilisateurs</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\User::class)
                             <a href="{{ route('new-user-form') }}" class="dropdown-item">Ajouter</a>
