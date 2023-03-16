@@ -940,6 +940,34 @@ table tbody tr .userEdit{
 .unite {
     width: 200px;
 }
+.prgm-zone{
+    display: grid;
+    align-items: baseline;
+    justify-content: space-around;
+    grid-template-columns: repeat(2,1fr);
+}
+.liste_affec{
+    display: grid;
+	grid-template-columns: 1 1fr;
+	gap: 0.5rem 0;
+    font-weight: 700;
+}
+.liste_affec > * {
+	background: indianred;
+	padding: 1rem;
+}
+.liste_affec > :nth-of-type(2n) {
+	background: antiquewhite;
+}
+.btn-prgm{
+    font-weight: 700;
+}
+.liste_affec > * .btn-prgm:hover{
+    color: #fff;
+}
+.liste_affec > :nth-of-type(2n) .btn-prgm:hover{
+    color: var(--primary);
+}
 
 
 @media (max-width:576px) {
