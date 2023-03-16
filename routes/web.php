@@ -686,4 +686,7 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.ShowPartenaire');
     })->name('show-partenaire');
+    Route::get('/programme-zone-affected', function (Request $request) {
+        return view('superUser.ShowAffectedPrgm&Zone');
+    })->name('programme-zone-affected');
 });
