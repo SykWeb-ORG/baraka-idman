@@ -26,6 +26,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SocialeVisiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
+use App\Http\Requests\ActiveStatusUserRequest;
 use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
 use App\Models\Atelier;
 use App\Models\Beneficiaire;
@@ -689,4 +690,24 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/programme-zone-affected', function (Request $request) {
         return view('superUser.ShowAffectedPrgm&Zone');
     })->name('programme-zone-affected');
+    Route::put('/activation-account-user/{user}', function (ActiveStatusUserRequest $request, User $user) {
+        $user->active = $request->active;
+        if ($user->update()) {
+            $result = $user;
+            $status = 200;
+            $msg = 'Activation changée avec succéss.';
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = 'Probléme au serveur.';
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
+    })->name('activation-account-user');
 });

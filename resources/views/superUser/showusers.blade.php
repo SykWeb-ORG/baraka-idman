@@ -94,7 +94,7 @@ Liste des utilisateurs
                                         }
                                     @endphp
                                 </td>
-                                <td><input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></td>
+                                <td><input type="checkbox" {{ ($user->active)? "checked" : "" }} data-user-id="{{$user->id}}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></td>
                                 <td class="userEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a></td>
                                 <td class="userDest">
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
