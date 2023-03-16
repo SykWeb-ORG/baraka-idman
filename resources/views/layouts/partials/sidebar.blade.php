@@ -157,6 +157,19 @@
                 </div>
             {{-- @endcanany --}}
             @endif
+            @canany(['create', 'viewAny'], App\Models\Partenaire::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-street-view"></i>Partenaires</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\Partenaire::class)
+                            <a href="{{ route('add-partenaire') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\Partenaire::class)
+                            <a href="{{ route('show-partenaire') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['create', 'viewAny'], App\Models\Zone::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-street-view"></i>Zones</a>

@@ -36,6 +36,7 @@ use App\Models\Groupe;
 use App\Models\Intervenant;
 use App\Models\MedicalAssistant;
 use App\Models\MedicaleVisite;
+use App\Models\Partenaire;
 use App\Models\Participant;
 use App\Models\Place;
 use App\Models\Programme;
@@ -674,6 +675,9 @@ Route::middleware('auth:sanctum')->group(function () {
             return response()->json("pas de couverture medicale", 404);
         });
     Route::get('/add-partenaire', function (Request $request) {
+        if (!Gate::allows('create', Partenaire::class)) {
+            abort(403);
+        }
         return view('superUser.AddPartenaire');
     })->name('add-partenaire');
     Route::get('/show-partenaire', function (Request $request) {
