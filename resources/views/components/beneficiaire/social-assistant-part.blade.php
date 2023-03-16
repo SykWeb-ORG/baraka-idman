@@ -309,7 +309,15 @@
 </div>
 <div class="mb-3">
     <label for="duree-addiction-benef" class="form-label">Duree Addiction</label>
-    <input type="number" name="duree_addiction" class="form-control" id="duree-addiction-benef">
+    <div class="dure-both">
+        <input type="number" name="duree_addiction" class="form-control" id="duree-addiction-benef">
+        <select name="unite" class="form-select unite" aria-label="Default select example" id="unite">
+            <option value="">Selectionner unité</option>
+            <option value="jour">Jour</option>
+            <option value="mois">Mois</option>
+            <option value="année">Année</option>
+        </select>
+    </div>
 </div>
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-2 pt-0">TS</legend>
