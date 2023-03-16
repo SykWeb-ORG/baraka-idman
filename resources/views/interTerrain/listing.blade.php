@@ -29,10 +29,10 @@ Liste des Bénéficiaires
                             <th scope="col">Code</th>
                             <th scope="col">prénom</th>
                             <th scope="col">Nom</th>
-                            <th scope="col">Adresse</th>
-                            <th scope="col">Sexe</th>
+                            {{-- <th scope="col">Adresse</th>
+                            <th scope="col">Sexe</th> --}}
                             <th scope="col">CIN</th>
-                            <th scope="col">N° de telephone</th>
+                            {{-- <th scope="col">N° de telephone</th>
                             <th scope="col">Type de travail</th>
                             <th scope="col">Niveau Scolaire</th>
                             <th scope="col">Situation Familiale</th>
@@ -44,8 +44,8 @@ Liste des Bénéficiaires
                             <th scope="col">Famille intégrée</th>
                             <th scope="col">Cause d'addiction</th>
                             <th scope="col">Age Debut Addiction</th>
-                            <th scope="col">Duree Addiction</th>
-                            <th scope="col">TS</th>
+                            <th scope="col">Duree Addiction</th> --}}
+                            {{-- <th scope="col">TS</th> --}}
                             @if (Auth::user()->intervenant == null)
                                 <th scope="col">Validation sociale</th>
                             @endif
@@ -58,7 +58,7 @@ Liste des Bénéficiaires
                             @if(Auth::user()->admin || Auth::user()->social_assistant)
                             <th scope="col" colspan="2">Integrated / Pre-Integrated</th>
                             @endif
-                            <th scope="col" colspan="3" class="actions">Action</th>
+                            <th scope="col" colspan="3" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,10 +72,10 @@ Liste des Bénéficiaires
                             <td>{{$beneficiaire->id}}</td>
                             <td>{{$beneficiaire->prenom}}</td>
                             <td>{{$beneficiaire->nom}}</td>
-                            <td>{{$beneficiaire->adresse}}</td>
-                            <td>{{$beneficiaire->sexe}}</td>
+                            {{-- <td>{{$beneficiaire->adresse}}</td>
+                            <td>{{$beneficiaire->sexe}}</td> --}}
                             <td>{{$beneficiaire->cin}}</td>
-                            <td>{{$beneficiaire->telephone}}</td>
+                            {{-- <td>{{$beneficiaire->telephone}}</td>
                             <td>{{$beneficiaire->type_travail}}</td>
                             <td>{{$beneficiaire->niveau_scolaire}}</td>
                             <td>{{$beneficiaire->situation_familial}}</td>
@@ -87,8 +87,8 @@ Liste des Bénéficiaires
                             <td>{{($beneficiaire->famille_integre)? "oui" : "non"}}</td>
                             <td>{{$beneficiaire->addiction_cause}}</td>
                             <td>{{$beneficiaire->age_debut_addiction}}</td>
-                            <td>{{$beneficiaire->duree_addiction}}</td>
-                            <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
+                            <td>{{$beneficiaire->duree_addiction}}</td> --}}
+                            {{-- <td>{{($beneficiaire->ts)? "oui" : "non"}}</td> --}}
                             @if (Auth::user()->intervenant == null)
                                 <td>{!! ($beneficiaire->validation_social_assistant)? '<img class="rounded-circle me-lg-2" src="' . asset($beneficiaire->validation_social->photo_profile) .'" alt="" style="width: 40px; height: 40px;">' . $beneficiaire->validation_social->last_name : "non" !!}</td>
                             @endif
@@ -119,10 +119,10 @@ Liste des Bénéficiaires
                             </td>
                             @endif
                             @can('update', $beneficiaire)
-                            <td class="actionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a></td>
+                            <td class="QactionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a></td>
                             @endcan
                             @can('delete', $beneficiaire)
-                            <td class="actionD">
+                            <td class="QactionD">
                                 <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -153,7 +153,7 @@ Liste des Bénéficiaires
                             </td>
                             @endcan
                             @if (!Auth::user()->intervenant)
-                            <td class="actionMenu">
+                            <td class="QactionMenu">
                                 <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add{{$loop->iteration}}"><i class="fas fa-ellipsis-h"></i></button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="modal_Add{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
@@ -224,10 +224,10 @@ Liste des Bénéficiaires
                                         <th scope="col">Code</th>
                                         <th scope="col">prénom</th>
                                         <th scope="col">Nom</th>
-                                        <th scope="col">Adresse</th>
-                                        <th scope="col">Sexe</th>
+                                        {{-- <th scope="col">Adresse</th>
+                                        <th scope="col">Sexe</th> --}}
                                         <th scope="col">CIN</th>
-                                        <th scope="col">N° de telephone</th>
+                                        {{-- <th scope="col">N° de telephone</th>
                                         <th scope="col">Type de travail</th>
                                         <th scope="col">Niveau Scolaire</th>
                                         <th scope="col">Situation Familiale</th>
@@ -240,7 +240,7 @@ Liste des Bénéficiaires
                                         <th scope="col">Cause d'addiction</th>
                                         <th scope="col">Age Debut Addiction</th>
                                         <th scope="col">Duree Addiction</th>
-                                        <th scope="col">TS</th>
+                                        <th scope="col">TS</th> --}}
                                         @if (Auth::user()->intervenant == null)
                                             <th scope="col">Validation sociale</th>
                                         @endif
@@ -253,7 +253,7 @@ Liste des Bénéficiaires
                                         @if(Auth::user()->admin || Auth::user()->social_assistant)
                                         <th scope="col" colspan="2">Integrated / Pre-Integrated</th>
                                         @endif
-                                        <th scope="col" colspan="3" class="actions">Action</th>
+                                        <th scope="col" colspan="3" class="Qactions">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -270,10 +270,10 @@ Liste des Bénéficiaires
                                         <td>{{$beneficiaire->id}}</td>
                                         <td>{{$beneficiaire->prenom}}</td>
                                         <td>{{$beneficiaire->nom}}</td>
-                                        <td>{{$beneficiaire->adresse}}</td>
-                                        <td>{{$beneficiaire->sexe}}</td>
+                                        {{-- <td>{{$beneficiaire->adresse}}</td>
+                                        <td>{{$beneficiaire->sexe}}</td> --}}
                                         <td>{{$beneficiaire->cin}}</td>
-                                        <td>{{$beneficiaire->telephone}}</td>
+                                        {{-- <td>{{$beneficiaire->telephone}}</td>
                                         <td>{{$beneficiaire->type_travail}}</td>
                                         <td>{{$beneficiaire->niveau_scolaire}}</td>
                                         <td>{{$beneficiaire->situation_familial}}</td>
@@ -286,7 +286,7 @@ Liste des Bénéficiaires
                                         <td>{{$beneficiaire->addiction_cause}}</td>
                                         <td>{{$beneficiaire->age_debut_addiction}}</td>
                                         <td>{{$beneficiaire->duree_addiction}}</td>
-                                        <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
+                                        <td>{{($beneficiaire->ts)? "oui" : "non"}}</td> --}}
                                         @if (Auth::user()->intervenant == null)
                                             <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
                                         @endif
@@ -317,10 +317,10 @@ Liste des Bénéficiaires
                                         </td>
                                         @endif
                                         @can('update', $beneficiaire)
-                                        <td class="actionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a></td>
+                                        <td class="QactionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a></td>
                                         @endcan
                                         @can('delete', $beneficiaire)
-                                        <td class="actionD">
+                                        <td class="QactionD">
                                             <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
@@ -329,7 +329,7 @@ Liste des Bénéficiaires
                                         </td>
                                         @endcan
                                         @if (!Auth::user()->intervenant)
-                                        <td class="actionMenu">
+                                        <td class="QactionMenu">
                                             <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add{{$service->id}}{{$loop->iteration}}"><i class="fas fa-ellipsis-h"></i></button>
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal_Add{{$service->id}}{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
