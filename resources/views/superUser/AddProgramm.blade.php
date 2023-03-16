@@ -19,6 +19,12 @@ Ajout d'un Programme
                             <label for="type-programme" class="form-label">Type De Programme :</label>
                             <input type="text" name="type-programme" class="form-control" id="type-programme">
                         </div>
+                        <div class="mb-3">
+                            <label for="partenaire" class="form-label">Partenaire</label>
+                            <select name="partenaire" class="form-select" aria-label="Default select example" id="partenaire">
+                                <option value="">Selectionner un partenaire</option>
+                            </select>
+                        </div>
                         <div class="place">
                             <legend>Ajouter Place</legend>
                             <div class="form-part flex-column">
