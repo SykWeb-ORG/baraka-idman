@@ -47,3 +47,16 @@ function deleteData(endUrl,fctOutput) {
         fctOutput(err.response.data);
     });
 }
+
+// To upload files with Axois
+function uploading(endUrl, dataObject, fctOutput) {
+  axios({
+    method: 'post',
+    url: baseUrl + endUrl,
+    data: dataObject,
+  })
+    .then(res => fctOutput(res.data))
+    .catch(err => {
+      fctOutput(err.response.data);
+    });
+}

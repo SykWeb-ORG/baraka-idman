@@ -85,6 +85,6 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/partenaire/all-partenaire.js') }}"></script>
+    <script src="{{ asset('jsApi/partenaire/all-partenaires.js') }}"></script>
 @endsection
 
