@@ -44,7 +44,7 @@
         @include('layouts.partials.sidebar')
 
         <!-- Content Start -->
-        <div class="content">
+        <div class="content open">
             @include('layouts.partials.topbar')
             @yield('content_page')
             @if ($errors->any())
