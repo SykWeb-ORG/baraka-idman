@@ -932,6 +932,14 @@ table tbody tr .userEdit{
 .cardCauseBox .cardCause:hover .cardName{
     color: #fff;
 }
+.dure-both{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.unite {
+    width: 200px;
+}
 
 
 @media (max-width:576px) {
