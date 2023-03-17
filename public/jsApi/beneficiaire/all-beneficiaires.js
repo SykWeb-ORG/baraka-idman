@@ -6,6 +6,7 @@
 /// *****************************
 $(document).ready(function () {
     $("input[type='radio']").click(changeIntegrationStatus);
+    getAllData(`all-affected-services`, fillSelectServices);
     $(".service_item").click(function (e) {
         let filterValue = $(this).data(`filter-val`);
         displayBeneficiairesByService(filterValue);
@@ -42,4 +43,20 @@ const displayBeneficiairesByService = (filterValue)=>{
     $(`div.table-responsive`).not(`[class*='d-none']`).addClass('d-none');
     let targetTable = $(`div#${filterValue}`)
     targetTable.removeClass('d-none');
+}
+/**
+ * Fill the select field with all services
+ * @param {object} data response from the server that contains all services
+ */
+const fillSelectServices = (data) => {
+    let services = data.services;
+    $.each(services, function (indexInArray, service) {
+        let option = $("<option>");
+        option.text(service.service_nom);
+        option.val(service.id);
+        $("select#service").append(option);
+    });
+    $("select#service").select2({
+        placeholder: 'Séléctionner un service ...',
+    });
 }

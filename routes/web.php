@@ -93,6 +93,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas d'utilisateur", 404);
         });
+    Route::get('search-beneficiaires', [BeneficiaireController::class, 'search'])->name('search-beneficiaires');
     Route::resource('beneficiaires', BeneficiaireController::class)
         ->missing(function (Request $request) {
             return response()->json('pas de beneficiaire', 404);
@@ -710,4 +711,23 @@ Route::middleware('auth:sanctum')->group(function () {
             $status
         );
     })->name('activation-account-user');
+    Route::get('all-affected-services', function (Request $request)
+    {
+        if (!Auth::user()->intervenant) {
+            if (Auth::user()->admin || Auth::user()->social_assistant) {
+                $services = Service::all();
+            }
+            else {
+                $services = Auth::user()->services->unique();
+            }
+        }
+        else {
+            $services = null;
+        }
+        return response()->json(
+            [
+                'services' => $services,
+            ]
+        );
+    });
 });
