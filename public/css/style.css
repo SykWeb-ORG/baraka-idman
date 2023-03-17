@@ -571,8 +571,15 @@ table tbody tr .userEdit{
     align-items: center;
     justify-content: center;
 }
-.alert {
+.alert.success{
     background: var(--bs-success);
+    border-left: 15px solid var(--bs-green);
+}
+.alert.danger{
+    background: var(--bs-primary);
+    border-left: 15px solid firebrick ;
+}
+.alert {
     padding: 20px 40px;
     min-width: 420px;
     position: absolute;
@@ -580,7 +587,6 @@ table tbody tr .userEdit{
     z-index: 100000;
     color: #fff;
     top: 10px;
-    border-left: 15px solid var(--bs-green);
     opacity: 0;
     pointer-events: none;
 }
@@ -654,7 +660,7 @@ table tbody tr .userEdit{
     }
 }
 
-.alert .fa-check {
+.alert .fa-check,.alert .fa-exclamation-circle{
     position: absolute;
     left: 20px;
     top: 50%;
