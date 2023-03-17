@@ -144,7 +144,7 @@ Liste des Bénéficiaires
                         <tr>
                             {{-- <td><input class="form-check-input" type="checkbox"></td> --}}
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$beneficiaire->id}}</td>
+                            <td>{{$beneficiaire->code}}</td>
                             <td>{{$beneficiaire->prenom}}</td>
                             <td>{{$beneficiaire->nom}}</td>
                             {{-- <td>{{$beneficiaire->adresse}}</td>

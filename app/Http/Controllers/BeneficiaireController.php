@@ -68,7 +68,15 @@ class BeneficiaireController extends Controller
     public function store(BeneficiaireRequest $request)
     {
         $beneficiaire = new Beneficiaire;
-        $beneficiaire->code = Hash::make('ccc');
+        $code = "";
+        do {
+            global $code;
+            $code = "";
+            for ($i=0; $i < 6; $i++) { 
+                $code .= strval(rand(0, 9));
+            }
+        } while (Beneficiaire::where('code', $code)->first());
+        $beneficiaire->code = $code;
         $beneficiaire->nb_dosier = $request->nb_dossier;
         $beneficiaire->prenom = $request->prenom;
         $beneficiaire->nom = $request->nom;
