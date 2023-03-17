@@ -10,6 +10,81 @@ Liste des Bénéficiaires
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Béneficiaires</h6>
             </div>
+            <div class="filtre">
+                <h5 for="" class="form-label">Filtre:</h5>
+                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal"
+                    data-bs-target="#modal_filtre"><i class="fas fa-ellipsis-v"></i></button>
+                <!-- Modal -->
+                <div class="modal fade" id="modal_filtre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Filtres</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-bodyF">
+                                <form action="{{ route('search-users') }}" method="GET">
+                                    <div class="filtre_item">
+                                        <label for="criteria" class="form-label">Filtre Par Nom ou Prénom ou CIN ou Code</label>
+                                        <input type="text" name="criteria" class="form-control" id="criteria" placeholder="Recherche...">
+                                    </div>
+                                    <div class="filtre_item">
+                                        <label for="service" class="form-label">Filtre Par Service</label>
+                                        <select name="service" id="service" class="filter_select">
+                                            <option value="">Séléctionner Service</option>
+                                        </select>
+                                    </div>
+                                    <div class="filtre_item">
+                                        <label for="mois" class="form-label">Filtre Par mois</label>
+                                        <select name="mois" id="mois" class="filter_select">
+                                            <option value="">Séléctionner Mois</option>
+                                            <option value="Janvier">Janvier</option>
+                                            <option value="Février">Février</option>
+                                            <option value="Mars">Mars</option>
+                                            <option value="Avril">Avril</option>
+                                            <option value="Mai">Mai</option>
+                                            <option value="Juin">Juin</option>
+                                            <option value="Juillet">Juillet</option>
+                                            <option value="Août">Août</option>
+                                            <option value="Septembre">Septembre</option>
+                                            <option value="Novembre">Novembre</option>
+                                            <option value="Décembre">Décembre</option>
+                                        </select>  
+                                    </div>
+                                    <div class="filtre_item">
+                                        <label for="year" class="form-label">Filtre Par année</label>
+                                        <select name="year" id="year" class="filter_select">
+                                            <option value="">Séléctionner Année</option>
+                                        </select>                               
+                                    </div>
+                                    <div class="filtre_item">
+                                        <label for="year" class="form-label">Filtre Integration</label>
+                                        <div class="integrate-both">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="radio" value="intégration" name="integrated" id="integrated">
+                                                <label class="form-check-label" for="integrated" >
+                                                    Integrated
+                                                </label>
+                                            </div>
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="radio" value="pré intégration" name="integrated" id="Pre-integrated">
+                                                <label class="form-check-label" for="Pre-integrated" >
+                                                    Pre-Integrated
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-flex justify-content-center">
+                                        <button class="btn btn-primary">Filtrer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @if (!Auth::user()->admin && !Auth::user()->intervenant)
             <div class="filter_service">
                 <a class="service_item" data-filter-val="all">Tous</a>  
@@ -412,4 +487,17 @@ Liste des Bénéficiaires
 @endsection
 @section('custom_scripts')
     <script src="{{asset('jsApi/beneficiaire/all-beneficiaires.js')}}"></script>
+    <script>
+        let YearDropdown = document.getElementById('year'); 
+       
+       let currentYear = new Date().getFullYear();    
+       let earliestYear = 2000;     
+       while (currentYear >= earliestYear) {      
+         let YearOption = document.createElement('option');          
+         YearOption.text = currentYear;      
+         YearOption.value = currentYear;        
+         YearDropdown.add(YearOption);      
+         currentYear -= 1;    
+       }
+    </script>
 @endsection

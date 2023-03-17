@@ -43,7 +43,7 @@ Liste des utilisateurs
                                         <label for="criteria" class="form-label">Filtre Par Nom ou Prénom ou CIN</label>
                                         <input type="text" name="criteria" class="form-control" id="criteria" placeholder="Recherche...">
                                     </div>
-                                    <div class="mb-3 d-flex justify-content-end">
+                                    <div class="mb-3 d-flex justify-content-center">
                                         <button class="btn btn-primary">Filtrer</button>
                                     </div>
                                 </form>
