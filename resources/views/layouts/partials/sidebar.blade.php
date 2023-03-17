@@ -51,6 +51,9 @@
                     </div>
                 </div>
             @endcanany
+            @if (Auth::user()->intervenant)
+                <a href="{{ route('programme-zone-affected') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Afféctations</a>
+            @endif
             @canany(['create', 'viewAny'], App\Models\Cas::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap" data-bs-toggle="dropdown"><i class="fas fa-balance-scale"></i>Gestion des cas juridique</a>

@@ -14,12 +14,7 @@
             <div class="prgm-zone">
                 <div class="programme-liste">
                     <h6>Programmes</h6>
-                    <ul class="liste_affec">
-                        <li><button type="submit" class="btn btn-prgm m-2" data-programme-id="1" data-bs-toggle="modal" data-bs-target="#modal_ListePlacePrgm" data-bs-placement="top" title="Afficher les lieux">Prgm1</button></li>
-                        <li><button type="submit" class="btn btn-prgm m-2" data-programme-id="1" data-bs-toggle="modal" data-bs-target="#modal_ListePlacePrgm" data-bs-placement="top" title="Afficher les lieux">Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2 Prgm2
-                            Prgm2</button></li>
-                        <li><button type="submit" class="btn btn-prgm m-2" data-programme-id="1" data-bs-toggle="modal" data-bs-target="#modal_ListePlacePrgm" data-bs-placement="top" title="Afficher les lieux">Prgm2</button></li>
-                        <li><button type="submit" class="btn btn-prgm m-2" data-programme-id="1" data-bs-toggle="modal" data-bs-target="#modal_ListePlacePrgm" data-bs-placement="top" title="Afficher les lieux">Prgm3</button></li>
+                    <ul class="liste_affec" id="list-programmes">
                     </ul>
                 </div>
                 <!-- Modal -->
@@ -41,7 +36,7 @@
                                                 <th>Nom Place</th> 
                                                 <th>Date programme</th> 
                                                 <th>Résultat</th>
-                                                <th colspan="2" class="actions">Action</th>
+                                                {{-- <th colspan="2" class="actions">Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody id="tbl_place">
@@ -54,11 +49,7 @@
                 </div>
                 <div class="zone-liste">
                     <h6>Zones</h6>
-                    <ul class="liste_affec">
-                        <li>Zone1 Zone1 Zone1Zone1</li>
-                        <li>Zone2</li>
-                        <li>Zone3</li>
-                        <li>Zone4</li>
+                    <ul class="liste_affec" id="list-zones">
                     </ul>
                 </div>
             </div>
@@ -67,5 +58,6 @@
     <!-- Show All Users End -->
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/atelier/all-ateliers.js') }}"></script>
+    <script src="{{ asset('jsApi/zone/affected-zone.js') }}"></script>
+    <script src="{{ asset('jsApi/programme/affected-programme.js') }}"></script>
 @endsection
