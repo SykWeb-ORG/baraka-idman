@@ -689,6 +689,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('superUser.ShowPartenaire');
     })->name('show-partenaire');
     Route::get('/programme-zone-affected', function (Request $request) {
+        if (!Auth::user()->intervenant) {
+            abort(403);
+        }
         return view('superUser.ShowAffectedPrgm&Zone');
     })->name('programme-zone-affected');
     Route::put('/activation-account-user/{user}', function (ActiveStatusUserRequest $request, User $user) {
@@ -727,6 +730,30 @@ Route::middleware('auth:sanctum')->group(function () {
         return response()->json(
             [
                 'services' => $services,
+            ]
+        );
+    });
+    Route::get('all-affected-zones', function (Request $request) {
+        if (Auth::user()->intervenant) {
+            $zones = Auth::user()->intervenant->zones;
+        } else {
+            $zones = null;
+        }
+        return response()->json(
+            [
+                'zones' => $zones,
+            ]
+        );
+    });
+    Route::get('all-affected-programmes', function (Request $request) {
+        if (Auth::user()->intervenant) {
+            $programmes = Auth::user()->intervenant->programmes;
+        } else {
+            $programmes = null;
+        }
+        return response()->json(
+            [
+                'programmes' => $programmes,
             ]
         );
     });
