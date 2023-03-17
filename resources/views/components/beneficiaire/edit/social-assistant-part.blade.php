@@ -306,8 +306,16 @@
     </div>
 </div>
 <div class="mb-3">
-    <label for="phone-number-benef" class="form-label">Duree Addiction</label>
-    <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="number" name="duree_addiction" class="form-control" id="phone-number-benef" value="{{$beneficiaire->duree_addiction}}">
+    <label for="duree-addiction-benef" class="form-label">Duree Addiction</label>
+    <div class="dure-both">
+        <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="number" name="duree_addiction" class="form-control" id="duree-addiction-benef" value="{{$beneficiaire->duree_addiction}}">
+        <select name="unite_addiction" class="form-select unite" aria-label="Default select example" id="unite-addiction-benef">
+            <option value="">Selectionner unité</option>
+            <option value="jour" {{($beneficiaire->unite_addiction == 'jour')? 'selected' : ''}}>Jour</option>
+            <option value="mois" {{($beneficiaire->unite_addiction == 'mois')? 'selected' : ''}}>Mois</option>
+            <option value="annee" {{($beneficiaire->unite_addiction == 'annee')? 'selected' : ''}}>Année</option>
+        </select>
+    </div>
 </div>
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-2 pt-0">TS</legend>

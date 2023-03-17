@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BeneficiaireRequest extends FormRequest
 {
@@ -23,6 +24,11 @@ class BeneficiaireRequest extends FormRequest
      */
     public function rules()
     {
+        $unities_values = [
+            'jour',
+            'mois',
+            'annee',
+        ];
         return [
             'prenom' => [
                 'required',
@@ -49,6 +55,10 @@ class BeneficiaireRequest extends FormRequest
                 'sometimes',
                 'numeric',
                 'unique:App\Models\Beneficiaire,nb_dosier',
+            ],
+            'unite_addiction' => [
+                'required',
+                Rule::in($unities_values),
             ],
         ];
     }
