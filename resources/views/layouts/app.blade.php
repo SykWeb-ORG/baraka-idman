@@ -25,8 +25,9 @@
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
 </head>
 <body>
-    <div class="alert showAlert hide d-none">
+    <div class="alert success showAlert hide d-none">
         <span class="fas fa-check"></span>
+        {{-- <span class="fas fa-exclamation-circle"></span> --}}
         <span class="msg"></span>
         <span class="close-btn" id="close-btn">
             <span class="fas fa-times"></span>
