@@ -57,7 +57,7 @@ class BeneficiaireRequest extends FormRequest
                 'unique:App\Models\Beneficiaire,nb_dosier',
             ],
             'unite_addiction' => [
-                'required',
+                'sometimes',
                 Rule::in($unities_values),
             ],
         ];
