@@ -25,8 +25,8 @@ class IntegrationStatusBeneficiaireRequest extends FormRequest
     public function rules()
     {
         $integration_status_values = [
-            'intégration',
-            'pré intégration',
+            'integration',
+            'pre integration',
         ];
         return [
             'integration_status' => [

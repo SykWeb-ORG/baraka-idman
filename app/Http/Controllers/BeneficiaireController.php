@@ -244,4 +244,43 @@ class BeneficiaireController extends Controller
         session()->flash('icon', $icon);
         return back();
     }
+
+    function search(Request $request)
+    {
+        $nomOrPrenomOrCINOrCode = $request->query('criteria');
+        $service = $request->query('service');
+        $mois = $request->query('mois');
+        $annee = $request->query('year');
+        $integration = $request->query('integrated');
+        if (!$nomOrPrenomOrCINOrCode && !$service && !$mois && !$annee && !$integration) {
+            return redirect()->route('beneficiaires.index');
+        } else {
+            $beneficiaires = Beneficiaire::where(function ($query) use ($nomOrPrenomOrCINOrCode) {
+                    $query->where('prenom', 'like', '%' . $nomOrPrenomOrCINOrCode . '%')
+                    ->orWhere('nom', 'like', '%' . $nomOrPrenomOrCINOrCode . '%')
+                    ->orWhere('cin', 'like', '%' . $nomOrPrenomOrCINOrCode . '%')
+                    ->orWhere('code', 'like', '%' . $nomOrPrenomOrCINOrCode . '%');
+                })
+                ->when($service, function ($query, $service) {
+                    $query = $query->whereRelation('services', 'service_id', $service);
+                    if (!Auth::user()->admin && !Auth::user()->social_assistant) {
+                        $query->whereRelation('users', 'user_id', Auth::id());
+                    }
+                    return $query;
+                })
+                ->when($integration, function ($query, $integration) {
+                    return $query->where('integration_status', $integration);
+                })
+                ->when($mois, function ($query, $mois) {
+                    return $query->whereMonth('created_at', $mois);
+                })
+                ->when($annee, function ($query, $annee) {
+                    return $query->whereYear('created_at', $annee);
+                })
+                // ->dd();
+                ->get();
+            // return response()->json($users);
+            return view('interTerrain.listing', compact('beneficiaires'));
+        }
+    }
 }
