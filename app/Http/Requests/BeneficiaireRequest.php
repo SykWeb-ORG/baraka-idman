@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Beneficiaire;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class BeneficiaireRequest extends FormRequest
@@ -24,6 +26,10 @@ class BeneficiaireRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == Request::METHOD_PUT) {
+            $beneficiaire = Beneficiaire::where('nb_dosier', $this->nb_dossier)
+                                        ->first();
+        }
         $unities_values = [
             'jour',
             'mois',
@@ -58,7 +64,7 @@ class BeneficiaireRequest extends FormRequest
             'nb_dossier' => [
                 'sometimes',
                 'numeric',
-                'unique:App\Models\Beneficiaire,nb_dosier',
+                ($this->method() != Request::METHOD_PUT)?'unique:App\Models\Beneficiaire,nb_dosier':Rule::unique('beneficiaires', 'nb_dosier')->ignore($beneficiaire),
             ],
             'unite_addiction' => [
                 'sometimes',

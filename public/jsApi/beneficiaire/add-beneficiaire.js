@@ -61,6 +61,9 @@ const showDialogResponse = (data) => {
         attachServices(beneficiaire);
         attachSuicideCauses(beneficiaire);
         attachViolenceTypes(beneficiaire);
+        if (data.validate) {
+            validationSociale(beneficiaire, data.validate);
+        }
         alertMsg(msg);
         $(".form-benefaicaire").trigger("reset");
     } else if (data.status == 409) {
@@ -140,4 +143,12 @@ const attachViolenceTypes = (beneficiaire) => {
         "violence_types": violenceTypes,
     }
     updateData(`match-beneficiaire-violence_types/${beneficiaire.id}`, dataToSend, (data) => { console.log(data);});
+}
+/**
+ * Validation sociale
+ * @param {Object} beneficiaire new beneficiaire
+ * @param {int} validatorUser social assistant that will validate the beneficiaire
+ */
+const validationSociale = (beneficiaire, validatorUser) => {
+    updateData(`validation-state/${beneficiaire.id}/${validatorUser}/`, {}, (data) => { console.log(data);});
 }
