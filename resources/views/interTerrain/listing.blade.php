@@ -498,17 +498,4 @@ Liste des Bénéficiaires
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{asset('jsApi/beneficiaire/all-beneficiaires.js')}}"></script>
-    <script>
-        let YearDropdown = document.getElementById('year'); 
-       
-       let currentYear = new Date().getFullYear();    
-       let earliestYear = 2000;     
-       while (currentYear >= earliestYear) {      
-         let YearOption = document.createElement('option');          
-         YearOption.text = currentYear;      
-         YearOption.value = currentYear;        
-         YearDropdown.add(YearOption);      
-         currentYear -= 1;    
-       }
-    </script>
 @endsection

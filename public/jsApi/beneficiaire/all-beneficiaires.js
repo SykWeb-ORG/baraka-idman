@@ -6,6 +6,7 @@
 /// *****************************
 $(document).ready(function () {
     $("input[type='radio']").click(changeIntegrationStatus);
+    FillSelectYear();
     getAllData(`all-affected-services`, fillSelectServices);
     $(".service_item").click(function (e) {
         let filterValue = $(this).data(`filter-val`);
@@ -59,4 +60,16 @@ const fillSelectServices = (data) => {
     $("select#service").select2({
         placeholder: 'Séléctionner un service ...',
     });
+}
+function FillSelectYear(){
+    let YearDropdown = document.getElementById('year'); 
+    let currentYear = new Date().getFullYear();    
+    let earliestYear = 2000;     
+    while (currentYear >= earliestYear) {      
+      let YearOption = document.createElement('option');          
+      YearOption.text = currentYear;      
+      YearOption.value = currentYear;        
+      YearDropdown.add(YearOption);      
+      currentYear -= 1;    
+    }
 }
