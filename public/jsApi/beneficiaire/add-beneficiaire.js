@@ -19,6 +19,7 @@ const addBeneficiaire = (e) => {
     let dataToSend = {
         "prenom": $("input#first-name-benef").val(),
         "nom": $("input#last-name-benef").val(),
+        "date_naissance": $("input#date-naissance-benef").val(),
         "adresse": $("input#adresse-benef").val(),
         "sexe": $(`input[name="sexe"][type="radio"]:checked`).val(),
         "cin": $("input#cin-benef").val(),
@@ -52,9 +53,9 @@ const addBeneficiaire = (e) => {
  * @param {object} data response from the server that contains new beneficiaire
  */
 const showDialogResponse = (data) => {
+    let msg = data.msg;
     if (data.status == 200) {
         let beneficiaire = data.result;
-        let msg = data.msg;
         attachCouverturesMedicales(beneficiaire);
         attachDrogueTypes(beneficiaire);
         attachServices(beneficiaire);
@@ -62,6 +63,8 @@ const showDialogResponse = (data) => {
         attachViolenceTypes(beneficiaire);
         alertMsg(msg);
         $(".form-benefaicaire").trigger("reset");
+    } else if (data.status == 409) {
+        alertMsg(msg, "danger");
     } else {
         let errors = data.errors;
         console.log(errors);

@@ -36,6 +36,10 @@ class BeneficiaireRequest extends FormRequest
             'nom' => [
                 'required',
             ],
+            'date_naissance' => [
+                'required',
+                'date',
+            ],
             'adresse' => [
                 'required',
             ],
