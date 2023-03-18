@@ -11,6 +11,10 @@
     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="text" name="nom" class="form-control" id="last-name-benef" value="{{$beneficiaire->nom}}">
 </div>
 <div class="mb-3">
+    <label for="date-naissance-benef" class="form-label">Date naissance</label>
+    <input type="date" name="date_naissance" class="form-control" id="date-naissance-benef" required value="{{ ($beneficiaire->date_naissance)? $beneficiaire->date_naissance : (new \Carbon\Carbon)->today()->format('Y-m-d')}}">
+</div>
+<div class="mb-3">
     <label for="adresse-benef" class="form-label">Adresse</label>
     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="text" name="adresse" class="form-control" id="adresse-benef" value="{{$beneficiaire->adresse}}">
 </div>

@@ -62,8 +62,18 @@ function changeTextContent(sender, input_id) {
     const fileChosen = document.getElementById('file-chosen' + input_id);
     fileChosen.textContent = sender.files[0].name
 }
-const alertMsg = (msg) => {
+const alertMsg = (msg, classDanger = "") => {
     let divAlert = $("div.showAlert");
+    divAlert.find("span:first").remove();
+    if (classDanger == "danger") {
+        divAlert.addClass(classDanger);
+        divAlert.removeClass("success");
+        divAlert.prepend(`<span class="fas fa-exclamation-circle"></span>`);
+    } else {
+        divAlert.addClass("success");
+        divAlert.removeClass("danger");
+        divAlert.prepend(`<span class="fas fa-check"></span>`);
+    }
     divAlert.find(`span.msg`).text(msg);
     divAlert.toggleClass(["hide", "d-none", "show"]);
     setTimeout(function () {

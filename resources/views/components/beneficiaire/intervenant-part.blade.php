@@ -11,6 +11,10 @@
     <input type="text" name="nom" class="form-control" id="last-name-benef">
 </div>
 <div class="mb-3">
+    <label for="date-naissance-benef" class="form-label">Date naissance</label>
+    <input type="date" name="date_naissance" class="form-control" id="date-naissance-benef" required value="{{(new \Carbon\Carbon)->today()->format('Y-m-d')}}">
+</div>
+<div class="mb-3">
     <label for="adresse-benef" class="form-label">Adresse</label>
     <input type="text" name="adresse" class="form-control" id="adresse-benef">
 </div>

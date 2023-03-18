@@ -67,52 +67,68 @@ class BeneficiaireController extends Controller
      */
     public function store(BeneficiaireRequest $request)
     {
-        $beneficiaire = new Beneficiaire;
-        $code = "";
-        do {
-            global $code;
-            $code = "";
-            for ($i=0; $i < 6; $i++) { 
-                $code .= strval(rand(0, 9));
-            }
-        } while (Beneficiaire::where('code', $code)->first());
-        $beneficiaire->code = $code;
-        $beneficiaire->nb_dosier = $request->nb_dossier;
-        $beneficiaire->prenom = $request->prenom;
-        $beneficiaire->nom = $request->nom;
-        $beneficiaire->adresse = $request->adresse;
-        $beneficiaire->sexe = $request->sexe;
-        $beneficiaire->cin = $request->cin;
-        $beneficiaire->telephone = $request->telephone;
-        $beneficiaire->created_at = $request->created_at;
-        $beneficiaire->type_travail = $request->type_travail;
-        $beneficiaire->niveau_scolaire = $request->niveau_scolaire;
-        $beneficiaire->situation_familial = $request->situation_familial;
-        $beneficiaire->orphelin = $request->orphelin;
-        $beneficiaire->profession = $request->profession;
-        $beneficiaire->zone_habitation = $request->zone_habitation;
-        $beneficiaire->localisation = $request->localisation;
-        $beneficiaire->famille_informee = $request->famille_informee;
-        $beneficiaire->famille_integre = $request->famille_integre;
-        $beneficiaire->addiction_cause = $request->addiction_cause;
-        $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
-        $beneficiaire->duree_addiction = $request->duree_addiction;
-        $beneficiaire->unite_addiction = $request->unite_addiction;
-        $beneficiaire->ts = $request->ts;
-        if (Auth::user()->registred_beneficiaires()->save($beneficiaire)) {
-            // give an appointment
-            if ($request->has('social_visite_date')) {
-                $social_visite = new SocialeVisite;
-                $social_visite->visite_date = $request->social_visite_date;
-                $beneficiaire->sociale_visites()->save($social_visite);
-            }
-            $result = $beneficiaire;
-            $msg = 'Bénéficiaire ajouté avec success.';
-            $status = 200;
-        } else {
+        $exists = Beneficiaire::where(
+            [
+                ['nom', $request->nom],
+                ['prenom', $request->prenom],
+                ['cin', $request->cin],
+                ['date_naissance', $request->date_naissance],
+            ]
+        )
+        ->first();
+        if ($exists) {
             $result = null;
-            $status = 500;
-            $msg = 'probleme au serveur.';
+            $msg = 'Bénéficiaire dèjá existe.';
+            $status = 409;
+        } else {   
+            $beneficiaire = new Beneficiaire;
+            $code = "";
+            do {
+                global $code;
+                $code = "";
+                for ($i=0; $i < 6; $i++) { 
+                    $code .= strval(rand(0, 9));
+                }
+            } while (Beneficiaire::where('code', $code)->first());
+            $beneficiaire->code = $code;
+            $beneficiaire->nb_dosier = $request->nb_dossier;
+            $beneficiaire->prenom = $request->prenom;
+            $beneficiaire->nom = $request->nom;
+            $beneficiaire->date_naissance = $request->date_naissance;
+            $beneficiaire->adresse = $request->adresse;
+            $beneficiaire->sexe = $request->sexe;
+            $beneficiaire->cin = $request->cin;
+            $beneficiaire->telephone = $request->telephone;
+            $beneficiaire->created_at = $request->created_at;
+            $beneficiaire->type_travail = $request->type_travail;
+            $beneficiaire->niveau_scolaire = $request->niveau_scolaire;
+            $beneficiaire->situation_familial = $request->situation_familial;
+            $beneficiaire->orphelin = $request->orphelin;
+            $beneficiaire->profession = $request->profession;
+            $beneficiaire->zone_habitation = $request->zone_habitation;
+            $beneficiaire->localisation = $request->localisation;
+            $beneficiaire->famille_informee = $request->famille_informee;
+            $beneficiaire->famille_integre = $request->famille_integre;
+            $beneficiaire->addiction_cause = $request->addiction_cause;
+            $beneficiaire->age_debut_addiction = $request->age_debut_addiction;
+            $beneficiaire->duree_addiction = $request->duree_addiction;
+            $beneficiaire->unite_addiction = $request->unite_addiction;
+            $beneficiaire->ts = $request->ts;
+            if (Auth::user()->registred_beneficiaires()->save($beneficiaire)) {
+                // give an appointment
+                if ($request->has('social_visite_date')) {
+                    $social_visite = new SocialeVisite;
+                    $social_visite->visite_date = $request->social_visite_date;
+                    $beneficiaire->sociale_visites()->save($social_visite);
+                }
+                $result = $beneficiaire;
+                $msg = 'Bénéficiaire ajouté avec success.';
+                $status = 200;
+            } else {
+                $result = null;
+                $status = 500;
+                $msg = 'probleme au serveur.';
+            }
         }
         return response()->json(
             [
@@ -165,48 +181,65 @@ class BeneficiaireController extends Controller
      */
     public function update(BeneficiaireRequest $request, Beneficiaire $beneficiaire)
     {
-        $beneficiaire->nb_dosier = $request->nb_dossier;
-        $beneficiaire->prenom = $request->prenom;
-        $beneficiaire->nom = $request->nom;
-        $beneficiaire->adresse = $request->adresse;
-        $beneficiaire->sexe = $request->sexe;
-        $beneficiaire->cin = $request->cin;
-        $beneficiaire->telephone = $request->telephone;
-        $beneficiaire->type_travail = $request->type_travail;
-        $beneficiaire->created_at = $request->created_at;
-        $beneficiaire->niveau_scolaire = ($request->has('niveau_scolaire'))? $request->niveau_scolaire : $beneficiaire->niveau_scolaire;
-        $beneficiaire->situation_familial = ($request->has('situation_familial'))? $request->situation_familial : $beneficiaire->situation_familial;
-        $beneficiaire->orphelin = ($request->has('orphelin'))? $request->orphelin : $beneficiaire->orphelin;
-        $beneficiaire->profession = ($request->has('profession'))? $request->profession : $beneficiaire->profession;
-        $beneficiaire->zone_habitation = ($request->has('zone_habitation'))? $request->zone_habitation: $beneficiaire->zone_habitation;
-        $beneficiaire->localisation = ($request->has('localisation'))? $request->localisation : $beneficiaire->localisation;
-        $beneficiaire->famille_informee = ($request->has('famille_informee'))? $request->famille_informee : $beneficiaire->famille_informee;
-        $beneficiaire->famille_integre = ($request->has('famille_integre'))? $request->famille_integre : $beneficiaire->famille_integre;
-        $beneficiaire->addiction_cause = ($request->has('addiction_cause'))? $request->addiction_cause : $beneficiaire->addiction_cause;
-        $beneficiaire->age_debut_addiction = ($request->has('age_debut_addiction'))? $request->age_debut_addiction : $beneficiaire->age_debut_addiction;
-        $beneficiaire->duree_addiction = ($request->has('duree_addiction'))? $request->duree_addiction : $beneficiaire->duree_addiction;
-        $beneficiaire->unite_addiction = $request->unite_addiction;
-        $beneficiaire->ts = ($request->has('ts'))? $request->ts : $beneficiaire->ts;
-        // update the appointment
-        if ($request->has('social_visite_date')) {
-            $social_visite = $beneficiaire->sociale_visites->first();
-            if ($social_visite) {
-                $social_visite->visite_date = $request->social_visite_date;
-                $social_visite->save();
-            } else {
-                $social_visite = new SocialeVisite;
-                $social_visite->visite_date = $request->social_visite_date;
-                $beneficiaire->sociale_visites()->save($social_visite);
-            }
-        }
-        if ($beneficiaire->update()) {
-            $result = $beneficiaire;
-            $msg = 'Bénéficiaire modifié avec success.';
-            $status = 200;
-        } else {
+        $exists = Beneficiaire::where(
+            [
+                ['nom', $request->nom],
+                ['prenom', $request->prenom],
+                ['cin', $request->cin],
+                ['date_naissance', $request->date_naissance],
+                ['id', '<>', $beneficiaire->id],
+            ]
+        )
+        ->first();
+        if ($exists) {
             $result = null;
-            $status = 500;
-            $msg = 'probleme au serveur.';
+            $msg = 'Bénéficiaire dèjá existe.';
+            $status = 409;
+        }else {
+            $beneficiaire->nb_dosier = $request->nb_dossier;
+            $beneficiaire->prenom = $request->prenom;
+            $beneficiaire->nom = $request->nom;
+            $beneficiaire->date_naissance = $request->date_naissance;
+            $beneficiaire->adresse = $request->adresse;
+            $beneficiaire->sexe = $request->sexe;
+            $beneficiaire->cin = $request->cin;
+            $beneficiaire->telephone = $request->telephone;
+            $beneficiaire->type_travail = $request->type_travail;
+            $beneficiaire->created_at = $request->created_at;
+            $beneficiaire->niveau_scolaire = ($request->has('niveau_scolaire'))? $request->niveau_scolaire : $beneficiaire->niveau_scolaire;
+            $beneficiaire->situation_familial = ($request->has('situation_familial'))? $request->situation_familial : $beneficiaire->situation_familial;
+            $beneficiaire->orphelin = ($request->has('orphelin'))? $request->orphelin : $beneficiaire->orphelin;
+            $beneficiaire->profession = ($request->has('profession'))? $request->profession : $beneficiaire->profession;
+            $beneficiaire->zone_habitation = ($request->has('zone_habitation'))? $request->zone_habitation: $beneficiaire->zone_habitation;
+            $beneficiaire->localisation = ($request->has('localisation'))? $request->localisation : $beneficiaire->localisation;
+            $beneficiaire->famille_informee = ($request->has('famille_informee'))? $request->famille_informee : $beneficiaire->famille_informee;
+            $beneficiaire->famille_integre = ($request->has('famille_integre'))? $request->famille_integre : $beneficiaire->famille_integre;
+            $beneficiaire->addiction_cause = ($request->has('addiction_cause'))? $request->addiction_cause : $beneficiaire->addiction_cause;
+            $beneficiaire->age_debut_addiction = ($request->has('age_debut_addiction'))? $request->age_debut_addiction : $beneficiaire->age_debut_addiction;
+            $beneficiaire->duree_addiction = ($request->has('duree_addiction'))? $request->duree_addiction : $beneficiaire->duree_addiction;
+            $beneficiaire->unite_addiction = $request->unite_addiction;
+            $beneficiaire->ts = ($request->has('ts'))? $request->ts : $beneficiaire->ts;
+            // update the appointment
+            if ($request->has('social_visite_date')) {
+                $social_visite = $beneficiaire->sociale_visites->first();
+                if ($social_visite) {
+                    $social_visite->visite_date = $request->social_visite_date;
+                    $social_visite->save();
+                } else {
+                    $social_visite = new SocialeVisite;
+                    $social_visite->visite_date = $request->social_visite_date;
+                    $beneficiaire->sociale_visites()->save($social_visite);
+                }
+            }
+            if ($beneficiaire->update()) {
+                $result = $beneficiaire;
+                $msg = 'Bénéficiaire modifié avec success.';
+                $status = 200;
+            } else {
+                $result = null;
+                $status = 500;
+                $msg = 'probleme au serveur.';
+            }
         }
         return response()->json(
             [
