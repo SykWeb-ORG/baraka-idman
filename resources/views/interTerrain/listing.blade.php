@@ -199,8 +199,13 @@ Liste des Bénéficiaires
                             @can('update', $beneficiaire)
                             <td class="QactionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a></td>
                             @endcan
+                            <td>
+                                @can('view', $beneficiaire)
+                                <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher beneficiaire'><i class="fas fa-user"></i></a>
+                                @endcan
+                            </td>
                             @can('delete', $beneficiaire)
-                            <td class="QactionD">
+                            {{-- <td class="QactionD">
                                 <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -228,7 +233,7 @@ Liste des Bénéficiaires
                                     </div>
                                     <!--End Modal-->
                                 </form>
-                            </td>
+                            </td> --}}
                             @endcan
                             @if (!Auth::user()->intervenant)
                             <td class="QactionMenu">
@@ -254,9 +259,9 @@ Liste des Bénéficiaires
                                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer beneficiaire'><i class="fas fa-user-minus"></i></button>
                                                 </form>
                                                 @endcan
-                                                @can('view', $beneficiaire)
+                                                {{-- @can('view', $beneficiaire)
                                                 <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher beneficiaire'><i class="fas fa-user"></i></a>
-                                                @endcan
+                                                @endcan --}}
                                                 @if (!Auth::user()->social_assistant)
                                                     <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
                                                         @csrf
