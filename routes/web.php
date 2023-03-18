@@ -114,6 +114,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('validation-state/{beneficiaire}/{user}', function (Beneficiaire $beneficiaire, User $user) {
         if ($user->social_assistant) {
             $beneficiaire->validation_social_assistant = Auth::id();
+            $beneficiaire->update();
+            return;
         } elseif ($user->admin) {
             $beneficiaire->validation_directive = Auth::id();
         } elseif ($user->medical_assistant) {

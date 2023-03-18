@@ -257,11 +257,13 @@ Liste des Bénéficiaires
                                                 @can('view', $beneficiaire)
                                                 <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher beneficiaire'><i class="fas fa-user"></i></a>
                                                 @endcan
-                                                <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Valider beneficiaire'><i class="fas fa-check"></i></button>
-                                                </form>
+                                                @if (!Auth::user()->social_assistant)
+                                                    <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Valider beneficiaire'><i class="fas fa-check"></i></button>
+                                                    </form>
+                                                @endif
                                                 @can('archive-beneficiaire-ability')
                                                 <form action="{{ route('archive-beneficiaire', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
                                                     @method('PUT')
@@ -434,11 +436,13 @@ Liste des Bénéficiaires
                                                                 @can('view', $beneficiaire)
                                                                 <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher beneficiaire'><i class="fas fa-user"></i></a>
                                                                 @endcan
-                                                                <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
-                                                                    @csrf
-                                                                    @method('PUT')
-                                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Validier beneficiaire'><i class="fas fa-check"></i></button>
-                                                                </form>
+                                                                @if (!Auth::user()->social_assistant)
+                                                                    <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Validier beneficiaire'><i class="fas fa-check"></i></button>
+                                                                    </form>
+                                                                @endif
                                                                 @can('archive-beneficiaire-ability')
                                                                 <form action="{{ route('archive-beneficiaire', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
                                                                     @method('PUT')

@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label for="matricule-benef" class="form-label">Numéro De Benéficiaire</label>
-    <input type="text" name="matricule" class="form-control" id="matricule-benef">
+    <input type="text" name="matricule" class="form-control" id="matricule-benef" value="{{$beneficiaire->nb_dosier}}">
 </div>
 <div class="mb-3">
     <label for="first-name-benef" class="form-label">Prénom</label>

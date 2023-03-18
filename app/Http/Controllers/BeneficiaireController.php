@@ -135,6 +135,7 @@ class BeneficiaireController extends Controller
                 'result' => $result,
                 'msg' => $msg,
                 'status' => $status,
+                'validate' => (Auth::user()->social_assistant ? Auth::id() : null),
             ],
             $status
         );
@@ -246,6 +247,7 @@ class BeneficiaireController extends Controller
                 'result' => $result,
                 'msg' => $msg,
                 'status' => $status,
+                'validate' => (Auth::user()->social_assistant ? Auth::id() : null),
             ],
             $status
         );
