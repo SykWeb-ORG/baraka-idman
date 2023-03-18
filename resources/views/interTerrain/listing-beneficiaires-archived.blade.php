@@ -19,10 +19,10 @@ L'historique des bénéficiaires
                             <th scope="col">Code</th>
                             <th scope="col">prénom</th>
                             <th scope="col">Nom</th>
-                            <th scope="col">Adresse</th>
-                            <th scope="col">Sexe</th>
+                            {{-- <th scope="col">Adresse</th>
+                            <th scope="col">Sexe</th> --}}
                             <th scope="col">CIN</th>
-                            <th scope="col">N° de telephone</th>
+                            {{-- <th scope="col">N° de telephone</th>
                             <th scope="col">Type de travail</th>
                             <th scope="col">Niveau Scolaire</th>
                             <th scope="col">Situation Familiale</th>
@@ -35,7 +35,7 @@ L'historique des bénéficiaires
                             <th scope="col">Cause d'addiction</th>
                             <th scope="col">Age Debut Addiction</th>
                             <th scope="col">Duree Addiction</th>
-                            <th scope="col">TS</th>
+                            <th scope="col">TS</th> --}}
                             @if (Auth::user()->intervenant == null)
                                 <th scope="col">Validation sociale</th>
                             @endif
@@ -45,7 +45,7 @@ L'historique des bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <th scope="col">Validation médicale</th>
                             @endif
-                            <th scope="col" colspan="7" class="actions">Action</th>
+                            <th scope="col" colspan="7" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,10 +59,10 @@ L'historique des bénéficiaires
                             <td>{{$beneficiaire->id}}</td>
                             <td>{{$beneficiaire->prenom}}</td>
                             <td>{{$beneficiaire->nom}}</td>
-                            <td>{{$beneficiaire->adresse}}</td>
-                            <td>{{$beneficiaire->sexe}}</td>
+                            {{-- <td>{{$beneficiaire->adresse}}</td>
+                            <td>{{$beneficiaire->sexe}}</td> --}}
                             <td>{{$beneficiaire->cin}}</td>
-                            <td>{{$beneficiaire->telephone}}</td>
+                            {{-- <td>{{$beneficiaire->telephone}}</td>
                             <td>{{$beneficiaire->type_travail}}</td>
                             <td>{{$beneficiaire->niveau_scolaire}}</td>
                             <td>{{$beneficiaire->situation_familial}}</td>
@@ -75,7 +75,7 @@ L'historique des bénéficiaires
                             <td>{{$beneficiaire->addiction_cause}}</td>
                             <td>{{$beneficiaire->age_debut_addiction}}</td>
                             <td>{{$beneficiaire->duree_addiction}}</td>
-                            <td>{{($beneficiaire->ts)? "oui" : "non"}}</td>
+                            <td>{{($beneficiaire->ts)? "oui" : "non"}}</td> --}}
                             @if (Auth::user()->intervenant == null)
                                 <td>{{($beneficiaire->validation_social_assistant)? "oui" : "non"}}</td>
                             @endif
@@ -85,7 +85,7 @@ L'historique des bénéficiaires
                             @if (Auth::user()->medical_assistant)
                                 <td>{{($beneficiaire->validation_medical_assistant)? "oui" : "non"}}</td>
                             @endif
-                            @can('update', $beneficiaire)
+                            {{-- @can('update', $beneficiaire)
                             <td class="actionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-edit"></i></a></td>
                             @endcan
                             @can('delete', $beneficiaire)
@@ -96,9 +96,18 @@ L'historique des bénéficiaires
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"><i class="fas fa-user-minus"></i></button>
                                 </form>
                             </td>
-                            @endcan
-                            @if (!Auth::user()->intervenant)
-                            <td class="actionMenu">
+                            @endcan --}}
+                            <td>
+                                @can('desuarchive-beneficiaire-ability')
+                                                    <form action="{{ route('desuarchive-beneficiaire', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Désarchiver beneficiaire'><i class="fas fa-trash-restore"></i></button>
+                                                    </form>
+                                                    @endcan
+                                @if (!Auth::user()->intervenant)
+                            </td>
+                            {{-- <td class="actionMenu">
                                 <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add{{$loop->iteration}}"><i class="fas fa-ellipsis-h"></i></button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="modal_Add{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
@@ -140,7 +149,7 @@ L'historique des bénéficiaires
                                         </div>
                                     </div>
                                 </div>
-                            </td>
+                            </td> --}}
                             @endif
                             {{-- <td><a href='{{ route('couverture-medical', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2">Couverture et types de drogues</a></td>
                             <td><a href='{{ route('violence', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn  btn-primary m-2">Types de violence</a></td>
