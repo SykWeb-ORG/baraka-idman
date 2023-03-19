@@ -344,9 +344,14 @@
 }
 .div_perm .permissions_check .perm{
     margin-bottom: 10px;
-    border: 2px solid rgb(219, 139, 139);
+    background: #41464b;
     margin-right: 5px;
     padding: 5px;
+    border-radius: 5rem;
+    color: #fff;
+}
+.form-check-input[type=checkbox] {
+    margin: 5px;
 }
 /* couverture medical */
 .couv-medic {
