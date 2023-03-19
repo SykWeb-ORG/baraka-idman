@@ -41,7 +41,7 @@
                 <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'bac+')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="bac+"
                     value="bac+">
                 <label class="form-check-label" for="bac+">
-                    bac+
+                    Bac+
                 </label>
             </div>
         </div>
