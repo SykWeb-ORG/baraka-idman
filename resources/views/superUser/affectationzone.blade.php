@@ -8,7 +8,7 @@ Attacher des zones à l'intervenant
     <div class="d-flex align-items-center justify-content-between mb-4">
         <h6 class="mb-0">Attacher les zones à l'intervenant</h6>
     </div>
-    <div class="div_zone">
+    <div class="div_perm">
         <fieldset class="mb-4">
             <legend>Les zones</legend>
             <div class="permissions_check" id="zone_check">
