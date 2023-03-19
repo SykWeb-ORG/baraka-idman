@@ -38,7 +38,6 @@ const editBeneficiaire = (e) => {
         "addiction_cause": $(`input[name="addiction_cause"][type="radio"]:checked`).val(),
         "age_debut_addiction": $(`input[name="age_debut_addiction"][type="radio"]:checked`).val(),
         "duree_addiction": $("input#duree-addiction-benef").val(),
-        "unite_addiction": $("select#unite-addiction-benef").val(),
         "ts": $(`input[name="ts"][type="radio"]:checked`).val(),
     }
     if ($(`input[name="registred_date"]`).val()) {
@@ -46,6 +45,9 @@ const editBeneficiaire = (e) => {
     }
     if ($("input#matricule-benef").val()) {
         dataToSend["nb_dossier"] = $("input#matricule-benef").val();
+    }
+    if ($("select#unite-addiction-benef").val()) {
+        dataToSend["unite_addiction"] = $("select#unite-addiction-benef").val();
     }
     updateData(`beneficiaires/${beneficiaire.id}`, dataToSend, showDialogResponse);
 }
