@@ -31,6 +31,13 @@
                 </label>
             </div>
             <div class="form-check d-inline-block">
+                <input class="form-check-input" type="radio" name="niveau_scolaire" id="bac"
+                    value="bac">
+                <label class="form-check-label" for="bac">
+                    Bac
+                </label>
+            </div>
+            <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="niveau_scolaire" id="bac+"
                     value="bac+">
                 <label class="form-check-label" for="bac+">
