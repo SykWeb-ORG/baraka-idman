@@ -33,12 +33,12 @@
     });
 
 
-    // Progress Bar
-    $('.pg-bar').waypoint(function () {
-        $('.progress .progress-bar').each(function () {
-            $(this).css("width", $(this).attr("aria-valuenow") + '%');
-        });
-    }, {offset: '80%'});
+    // // Progress Bar
+    // $('.pg-bar').waypoint(function () {
+    //     $('.progress .progress-bar').each(function () {
+    //         $(this).css("width", $(this).attr("aria-valuenow") + '%');
+    //     });
+    // }, {offset: '80%'});
 
     
 })(jQuery);
@@ -79,4 +79,25 @@ const alertMsg = (msg, classDanger = "") => {
     setTimeout(function () {
         divAlert.toggleClass(["hide", "d-none", "show"]);
     }, 3000);
+}
+function interveantLogin(){
+    var password =document.getElementById('passw-input');
+    var email =document.getElementById('email-input');
+    var interLiNK =document.getElementById('log-inter');
+    var title = document.getElementById('Sign-title');
+    var interMatricule = document.getElementById('matricule-input')
+    if(password.style.display != 'none'){
+        password.style.display = 'none';
+        email.style.display = 'none';
+        interLiNK.textContent = "Tu n'es pas un intervenant ?";
+        title.textContent = "Sign In For Intervenant";
+        interMatricule.style.display = 'block';
+    }
+    else{
+        password.style.display = 'block';
+        email.style.display = 'block';
+        interLiNK.textContent = "T'es un intervenant ?";
+        title.textContent = "Sign In";
+        interMatricule.style.display = 'none';
+    }
 }

@@ -86,28 +86,28 @@
                     </div>
                     <form action="{{ route('login') }}" method="post">
                         @csrf
-                        <div class="bg-light rounded p-sm-5 mx-3">
+                        <div class="bg-light rounded p-sm-4 mx-3">
                             {{-- <img src="{{ asset('images/baraka-idman.jpeg') }}" alt="" class="logo-login"> --}}
                             <div class="d-flex flex-column align-items-center justify-content-between mb-1 mt-6">
-                                <h3>Sign In</h3>
+                                <h3 id="Sign-title">Sign In</h3>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-3 matricule" id="matricule-input">
+                                <input type="number" class="form-control" id="inter-matricule" name="inter-matricule">
+                                <label for="floatingInput">Matricule Number</label>
+                            </div>
+                            <div class="form-floating mb-3" id="email-input">
                                 <input type="email" class="form-control" id="floatingInput" name="email"
                                     placeholder="name@example.com">
                                 <label for="floatingInput">Email address</label>
                             </div>
-                            <div class="form-floating mb-4">
+                            <div class="form-floating mb-4" id="passw-input">
                                 <input type="password" class="form-control" id="floatingPassword" name="password"
                                     placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                             </div>
-                            {{-- <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="remember">
-                                    <label class="form-check-label" for="remember">Remember me</label>
-                                </div>
-                                <a href="">Forgot Password</a>
-                            </div> --}}
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <a href="#" id="log-inter" onclick="interveantLogin()">T'es un intervenant?</a>
+                            </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                         </div>
                     </form>

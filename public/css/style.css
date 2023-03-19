@@ -50,6 +50,7 @@
     grid-template-columns: repeat(3,1fr);
     align-content: center;
     justify-content: center;
+    margin-top: 15px;
 }
 
 /*** Spinner ***/
@@ -973,6 +974,9 @@ table tbody tr .userEdit{
 }
 .liste_affec > :nth-of-type(2n) .btn-prgm:hover{
     color: var(--primary);
+}
+.matricule{
+    display: none;
 }
 
 
