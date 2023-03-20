@@ -765,4 +765,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/show-program-type', function (Request $request) {
         return view('superUser.ShowTypeProgramme');
     })->name('show-program-type');
+    Route::get('/AddServiceType', function (Request $request) {
+        return view('superUser.AddServiceType');
+    })->name('AddServiceType');
 });
