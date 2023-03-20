@@ -85,6 +85,9 @@
                                     <option value="">+18</option>
                                 </select>
                             </div>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <button class="btn btn-primary">Filtrer</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,6 +100,9 @@
             <label for="social-appointment" class="form-label">Date de la Fin</label>
             <input type="date" name="social_visite_date" class="date-periode" id="" value=""
                 required>
+            <div class="mb-3 d-flex justify-content-center">
+                <button class="btn btn-primary">Séléctionner date</button>
+            </div>
         </div>
         <div class="statistics-both">
             {{-- Statistiques selon les programmes --}}
