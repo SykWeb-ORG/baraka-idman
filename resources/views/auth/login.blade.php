@@ -92,8 +92,9 @@
                                 <h3 id="Sign-title">Sign In</h3>
                             </div>
                             <div class="form-floating mb-3 matricule" id="matricule-input">
-                                <input type="number" class="form-control" id="inter-matricule" name="inter-matricule">
-                                <label for="floatingInput">Matricule Number</label>
+                                <input type="number" class="form-control" id="floatingMat" name="matricule"
+                                placeholder="123456">
+                                <label for="floatingMat">Matricule Number</label>
                             </div>
                             <div class="form-floating mb-3" id="email-input">
                                 <input type="email" class="form-control" id="floatingInput" name="email"
