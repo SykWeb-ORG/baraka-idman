@@ -15,6 +15,7 @@
                         <tr class="text-dark">
                             <th scope="col">N°</th>
                             <th>Nom Du Service</th>
+                            <th>Type Du Service</th>
                             <th colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
@@ -37,6 +38,15 @@
                                     <div class="mb-3">
                                         <label for="service_nom" class="form-label">Nom du Service</label>
                                         <input type="text" name="service_nom" class="form-control" id="service_nom">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="service-type" class="form-label">Type Du Service</label>
+                                        <select name="service-type" class="form-select" aria-label="Default select example" id="service-type">
+                                            <option value="">Selectionner Un Type De Service</option>
+                                            <option value="">Serv1</option>
+                                            <option value="">Serv2</option>
+                                            <option value="">Serv3</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <button id="btn-edit-service" class="btn btn-primary">Modifier</button>
