@@ -983,6 +983,29 @@ table tbody tr .userEdit{
 .matricule{
     display: none;
 }
+/*Rapport*/
+.title-rapport{
+    font-size: 30px;
+    font-weight: 900;
+}
+.sous-pole-table table tr th {
+    background: grey;
+}
+.pole {
+    text-align: center;
+    color: var(--bs-primary);
+    font-size: 25px;
+    font-weight: 700;
+}
+.sous-pole{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 1rem;
+}
+.pole-center{
+    display: flex;
+    justify-content: center;
+}
 
 
 @media (max-width:576px) {
