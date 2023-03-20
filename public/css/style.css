@@ -1006,7 +1006,9 @@ table tbody tr .userEdit{
     display: flex;
     justify-content: center;
 }
-
+.perm_modal {
+    grid-template-columns: repeat(1,1fr)!important;
+}
 
 @media (max-width:576px) {
     .statistics-both{

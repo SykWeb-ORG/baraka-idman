@@ -447,3 +447,47 @@
         </table>
     </div>
 </div>
+<div class="mb-3 d-flex justify-content-center">
+    <button type="button" id="btn-affect-cas-juridiques" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#modal_AffectCasJuridique"><i class="fas fa-balance-scale me-2"></i> Modifier Cas Juridiques Affectés</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal_AffectCasJuridique" data-bs-backdrop="static" data-bs-keyboard="false"
+tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modifier Cas Juridiques Affectés</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            </button>
+        </div>
+        <div class="modal-bodyEdit">
+            <form class="form-user" action="" method="POST">
+                <div class="div_perm">
+                    <fieldset class="mb-4">
+                        <legend>Cas Juridique Affectés</legend>
+                        <div class="permissions_check perm_modal" id="cas_juridique_check">
+                            <div class="perm">
+                                <input type="checkbox" class="form-check-input" value="">
+                                <label>cas 1</label>
+                            </div>
+                            <div class="perm">
+                                <input type="checkbox" class="form-check-input" value="">
+                                <label>cas 2</label>
+                            </div>
+                            <div class="perm">
+                                <input type="checkbox" class="form-check-input" value="">
+                                <label>cas 3</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="mb-3">
+                        <button id="btn-link-cas-juridiques" class="btn btn-primary">Modifier</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!--End Modal-->
