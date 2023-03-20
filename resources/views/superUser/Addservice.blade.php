@@ -16,6 +16,15 @@ Ajout d'un service
                             <input type="text" name="nom-service" class="form-control" id="nom-service">
                         </div>
                         <div class="mb-3">
+                            <label for="service-type" class="form-label">Type Du Service</label>
+                            <select name="service-type" class="form-select" aria-label="Default select example" id="service-type">
+                                <option value="">Selectionner Un Type De Service</option>
+                                <option value="">Serv1</option>
+                                <option value="">Serv2</option>
+                                <option value="">Serv3</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <button id="btn-add-service" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
