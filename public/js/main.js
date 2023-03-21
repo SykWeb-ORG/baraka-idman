@@ -103,7 +103,7 @@ function interveantLogin(){
 }
 function SelectDB(){
     var formSociete =document.getElementById('form-societe');
-    var selectDatabase = document.getElementById('societe-db');
+    var selectDatabase = document.getElementById('switch-db');
     if(selectDatabase.value !=""){
         formSociete.style.display = 'block';
     }
