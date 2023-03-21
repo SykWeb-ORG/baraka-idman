@@ -1009,6 +1009,22 @@ table tbody tr .userEdit{
 .perm_modal {
     grid-template-columns: repeat(1,1fr)!important;
 }
+.box-item{
+    font-size: 18;
+    font-weight: bolder;
+}
+.div-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.societe{
+    display: none;
+}
+.societe-db{
+    width: 70%;
+    margin-left: 10px;
+}
 
 @media (max-width:576px) {
     .statistics-both{
@@ -1044,6 +1060,11 @@ table tbody tr .userEdit{
         margin-left: 0;
         margin-right: 0;
     }
-
+    .div-select{
+        flex-direction: column;
+    }
+    .box{
+        margin-left: 10px;
+    }
 }
 

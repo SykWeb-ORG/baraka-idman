@@ -771,4 +771,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/ShowServiceType', function (Request $request) {
         return view('superUser.ShowServiceType');
     })->name('ShowServiceType');
+    Route::get('/Settings', function (Request $request) {
+        return view('superUser.settings');
+    })->name('Settings');
 });

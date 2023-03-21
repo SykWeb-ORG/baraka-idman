@@ -101,3 +101,14 @@ function interveantLogin(){
         interMatricule.style.display = 'none';
     }
 }
+function SelectDB(){
+    var formSociete =document.getElementById('form-societe');
+    var selectDatabase = document.getElementById('societe-db');
+    if(selectDatabase.value !=""){
+        formSociete.style.display = 'block';
+    }
+    else{
+        formSociete.style.display = 'none';
+    }
+
+}
