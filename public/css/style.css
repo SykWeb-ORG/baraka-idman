@@ -959,26 +959,25 @@ table tbody tr .userEdit{
     grid-template-columns: repeat(2,1fr);
 }
 .liste_affec{
-    display: grid;
-	grid-template-columns: 1 1fr;
-	gap: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     font-weight: 700;
 }
 .liste_affec > * {
-	background: indianred;
-	padding: 1rem;
+	margin-bottom: 10px;
+    background: #41464b;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5rem;
+    color: #fff;
 }
 .liste_affec > :nth-of-type(2n) {
-	background: antiquewhite;
+	background: brown;
 }
 .btn-prgm{
     font-weight: 700;
-}
-.liste_affec > * .btn-prgm:hover{
     color: #fff;
-}
-.liste_affec > :nth-of-type(2n) .btn-prgm:hover{
-    color: var(--primary);
 }
 .matricule{
     display: none;
