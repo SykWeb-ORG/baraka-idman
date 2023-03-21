@@ -91,10 +91,10 @@ var ctscol = document.getElementById('myChartScol').getContext('2d');
 var myChartScol = new Chart(ctscol, {
     type: 'pie',
     data: {
-        labels: ['NON Scolarisé','Primaire','Collège','Lycée','Bac+'],
+        labels: ['NON Scolarisé','Primaire','Collège','Lycée','Bac','Bac+'],
         datasets: [{
             label: 'Homme',
-            data: [14442, 1000,238,5338,4234],
+            data: [14442, 1000,238,5338,4234,1762],
             backgroundColor: [
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 99, 132, 1)',
