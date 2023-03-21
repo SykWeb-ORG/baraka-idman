@@ -26,11 +26,15 @@
                         </tr>
                     </thead>
                     <tbody id="tbl_cas_juridique">
-                        <tr class="text-dark">
+                        <tr class="text-dark support">
                             <td>1</td>
                             <td>Le suivi, l’accompagnement et la prise en charge des addictes</td>
                             <td>
-                                <img src="{{ asset('images/rech1.jpeg') }}" alt="">
+                                <div class="supp-img" data-aos="zoom-in">
+                                    <a href="images/rech1.jpeg">
+                                        <img src="{{ asset('images/rech1.jpeg') }}" alt="">
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -47,11 +51,15 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr class="text-dark">
+                        <tr class="text-dark support">
                             <td>2</td>
                             <td>Toxicomanie & violence (Addiction et comportement agressif)</td>
                             <td>
-                                <img src="{{ asset('images/rech2.jpeg') }}" alt="">
+                                <div class="supp-img" data-aos="zoom-in">
+                                    <a href="images/rech2.jpeg">
+                                        <img src="{{ asset('images/rech2.jpeg') }}" alt="">
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -68,11 +76,15 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr class="text-dark">
+                        <tr class="text-dark support">
                             <td>3</td>
                             <td>L’addiction aux drogues et le travail associatif</td>
                             <td>
-                                <img src="{{ asset('images/rech3.jpeg') }}" alt="">
+                                <div class="supp-img" data-aos="zoom-in">
+                                    <a href="images/rech3.jpeg">
+                                        <img src="{{ asset('images/rech3.jpeg') }}" alt="">
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
@@ -89,11 +101,15 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr class="text-dark">
+                        <tr class="text-dark support">
                             <td>4</td>
                             <td>Association Baraka Idman une entreprise sociale</td>
                             <td>
-                                <img src="{{ asset('images/rech4.jpeg') }}" alt="">
+                                <div class="supp-img" data-aos="zoom-in">
+                                    <a href="images/rech4.jpeg">
+                                        <img src="{{ asset('images/rech4.jpeg') }}" alt="">
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'

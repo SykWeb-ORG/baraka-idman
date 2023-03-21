@@ -21,6 +21,11 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">
 
+    <!-- magnific popup css cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
+    integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Template Stylesheet -->
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
 </head>
@@ -77,6 +82,12 @@
     <script src="{{asset("js/main.js")}}"></script>
     <script src="{{asset("jsApi/axios-app.js")}}"></script>
     <script src="{{asset("jsApi/app.js")}}"></script>
+    <!-- magnific popup js link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"
+    integrity="sha512-C1zvdb9R55RAkl6xCLTPt+Wmcz6s+ccOvcr6G57lbm8M2fbgn2SUjUJbQ13fEyjuLViwe97uJvwa1EUf4F1Akw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- aos js file cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     @yield('custom_scripts')
     @if (session('msg'))
