@@ -85,8 +85,8 @@ Liste des Visites Juridiques
                             </div>
                             <div class="modal-bodyEdit">
                                     <div class="mb-3 mt-3">
-                                        <button id="btn-delete-visite-Juridique" class="btn btn-secondary">Oui</button>
-                                        <button class="btn btn-primary">Non</button>
+                                        <button id="btn-delete-visite-Juridique" class="btn btn-secondary" data-bs-dismiss="modal">Oui</button>
+                                        <button class="btn btn-primary" data-bs-dismiss="modal">Non</button>
                                     </div>
                             </div>
                         </div>
