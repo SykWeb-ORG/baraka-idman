@@ -66,7 +66,7 @@ Liste des utilisateurs
                             <th>Email</th>
                             <th>Rôle</th>
                             <th>Active</th>
-                            <th colspan="5" class="actions">Action</th>
+                            <th colspan="5" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,8 +95,8 @@ Liste des utilisateurs
                                     @endphp
                                 </td>
                                 <td><input type="checkbox" {{ ($user->active)? "checked" : "" }} data-user-id="{{$user->id}}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></td>
-                                <td class="userEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a></td>
-                                <td class="userDest">
+                                <td class="QuserEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a></td>
+                                <td class="QuserDest">
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
@@ -125,7 +125,7 @@ Liste des utilisateurs
                                         <!--End Modal-->
                                     </form>
                                 </td>
-                                <td class="actionMenu">
+                                <td class="QactionMenu">
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_Add{{$loop->iteration}}"><i class="fas fa-ellipsis-h"></i></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="modal_Add{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
