@@ -18,7 +18,7 @@ $(document).ready(function () {
 const getAllProgrammes = (data) => {
     programmes = data.programmes;
     $.each(programmes, function (indexInArray, programme) {
-        let li = $(`<li><button type="submit" class="btn btn-prgm m-2" data-programme-id="${programme.id}" data-bs-toggle="modal" data-bs-target="#modal_ListePlacePrgm" data-bs-placement="top" title="Afficher les lieux">${programme.programme_nom}</button></li>`);
+        let li = $(`<li><button type="submit" class="btn btn-prgm p-0" data-programme-id="${programme.id}" data-bs-toggle="modal" data-bs-target="#modal_ListePlacePrgm" data-bs-placement="top" title="Afficher les lieux">${programme.programme_nom}</button></li>`);
         $("ul#list-programmes").append(li);
     });
     $("button.btn-prgm").bind('click', showPlaces);
