@@ -52,6 +52,7 @@ Modification d'un utilisateur
                                 <option {{($user->intervenant != null)? 'selected' : ''}} value="intervenant">Intervenant</option>
                                 <option {{($user->social_assistant != null)? 'selected' : ''}} value="social assistant">Social Assistant</option>
                                 <option {{($user->medical_assistant != null)? 'selected' : ''}} value="medical assistant">Medical Assistant</option>
+                                <option {{($user->juridique_assistant != null)? 'selected' : ''}} value="juridique assistant">Juridique Assistant</option>
                             </select>
                         </div>
                         @endif

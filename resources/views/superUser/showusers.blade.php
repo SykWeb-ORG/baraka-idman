@@ -91,6 +91,8 @@ Liste des utilisateurs
                                             echo 'social assistant';
                                         }elseif ($user->medical_assistant) {
                                             echo 'medical assistant';
+                                        }elseif ($user->juridique_assistant) {
+                                            echo 'juridique assistant';
                                         }
                                     @endphp
                                 </td>

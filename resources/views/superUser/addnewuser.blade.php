@@ -44,6 +44,7 @@ Ajout d'un utilisateur
                                 <option value="intervenant">Intervenant</option>
                                 <option value="social assistant">Social Assistant</option>
                                 <option value="medical assistant">Medical Assistant</option>
+                                <option value="juridique assistant">Juridique Assistant</option>
                             </select>
                         </div>
                         <div class="mb-3">
