@@ -36,6 +36,7 @@ use App\Models\Couverture;
 use App\Models\Formation;
 use App\Models\Groupe;
 use App\Models\Intervenant;
+use App\Models\JuridiqueVisite;
 use App\Models\MedicalAssistant;
 use App\Models\MedicaleVisite;
 use App\Models\Partenaire;
@@ -545,8 +546,11 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function (Request $request) {
             return response()->json("pas de participant", 404);
         });
-    Route::get('/AddVisiteJuridique', function (Beneficiaire $beneficiaire) {
-        return view('superUser.AddVisiteJuridique', compact('beneficiaire'));
+    Route::get('/AddVisiteJuridique', function (Request $request) {
+        if (!Gate::allows('create', JuridiqueVisite::class)) {
+            abort(403);
+        }
+        return view('superUser.AddVisiteJuridique');
     })->name('AddVisiteJuridique');
     Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
         return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
