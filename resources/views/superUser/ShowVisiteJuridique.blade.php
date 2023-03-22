@@ -18,6 +18,9 @@ Liste des Visites Juridiques
                             <th>Remarque de la visite</th>
                             <th>Bénéficiaire</th>
                             <th>Pièce jointe</th>
+                            @if (Auth::user()->admin)
+                                <th>Assistant Juridique</th>
+                            @endif
                             <th colspan="2" class="actions">Actions</th>
                         </tr>
                     </thead>
@@ -26,12 +29,7 @@ Liste des Visites Juridiques
                 </table>
                 <!--Edit Visite Juridique-->
                 <!-- Modal -->
-                <button
-                      class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#modal_EditMedicaleJuridique">
-                      <i class="fas fa-edit"></i>
-                  </button>
-                <div class="modal fade" id="modal_EditMedicaleJuridique" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="modal_EditVisite_Juridique" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -52,10 +50,10 @@ Liste des Visites Juridiques
                                             <option value=""></option>
                                         </select>
                                     </div>
-                                    <label for="recipient-name" class="form-label">Pièce jointe:</label>
+                                    <label for="recipient-name" class="form-label">Pièce jointe (optionelle):</label>
                                     <div class="input-group-outline mb-3 d-flex align-items-center justify-content-center">
-                                        <input type="file" name="image_url" id="service_img" hidden onchange="changeTextContent(this, '')">
-                                        <label for="service_img" class="lbl_img_upload">Choisir fichier</label>
+                                        <input type="file" name="image_url" id="visite-juridique-preuve" hidden onchange="changeTextContent(this, '')">
+                                        <label for="visite-juridique-preuve" class="lbl_img_upload">Choisir fichier</label>
                                         <span id="file-chosen"></span>
                                     </div>
                                     <div class="mb-3">
@@ -69,12 +67,7 @@ Liste des Visites Juridiques
                 <!--End Modal-->
                 <!--Delete Visite Juridique-->
                 <!-- Modal -->
-                <button
-                      class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#modal_DeleteMedicaleJuridique">
-                      <i class="fas fa-trash"></i>
-                  </button>
-                <div class="modal fade" id="modal_DeleteMedicaleJuridique" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="modal_DeleteVisite_juridique" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -97,4 +90,9 @@ Liste des Visites Juridiques
         </div>
     </div>
     <!-- Show All Users End -->
+@endsection
+@section('custom_scripts')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('jsApi/juridiqueVisite/all-juridique-visites.js') }}"></script>
 @endsection
