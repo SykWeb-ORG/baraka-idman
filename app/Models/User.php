@@ -53,6 +53,7 @@ class User extends Authenticatable
         'intervenant',
         'medical_assistant.medicale_visites',
         'social_assistant.sociale_visites',
+        'juridique_assistant',
     ];
 
 
@@ -86,6 +87,14 @@ class User extends Authenticatable
     public function social_assistant()
     {
         return $this->hasOne(SocialAssistant::class);
+    }
+
+    /**
+     * Get the juridique assistant associated with the user.
+     */
+    public function juridique_assistant()
+    {
+        return $this->hasOne(JuridiqueAssistant::class);
     }
 
     /**

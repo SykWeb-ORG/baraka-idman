@@ -66,6 +66,8 @@ class AuthServiceProvider extends ServiceProvider
             $role = 'admin';
         } elseif ($user->medical_assistant) {
             $role = 'medical assistant';
+        } elseif ($user->juridique_assistant) {
+            $role = 'juridique assistant';
         } elseif ($user->social_assistant) {
             $role = 'social assistant';
         } elseif ($user->intervenant) {

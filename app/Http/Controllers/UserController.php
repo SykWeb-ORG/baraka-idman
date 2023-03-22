@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Intervenant;
+use App\Models\JuridiqueAssistant;
 use App\Models\MedicalAssistant;
 use App\Models\SocialAssistant;
 use Illuminate\Http\Request;
@@ -38,6 +39,8 @@ class UserController extends Controller
                 return redirect()->route('beneficiaires.index');
             }elseif ($user->intervenant) {
                 return redirect()->route('beneficiaires.create');
+            }elseif ($user->juridique_assistant) {
+                return redirect()->route('beneficiaires.index');
             }
         }else {
             $result = 'Email ou(et) mot de passe no valid';
@@ -119,6 +122,19 @@ class UserController extends Controller
             }elseif ($request->role == 'medical assistant') {
                 $medicalAssistant = new MedicalAssistant;
                 if (($result = $medicalAssistant->user()->associate($user)) && $medicalAssistant->save()) {
+                    // $status = 200;
+                    $result = 'Utilisateur ajouté avec success';
+                    $status = 'success';
+                    $icon = 'fa-check';
+                } else {
+                    $result = 'probleme au serveur.';
+                    // $status = 500;
+                    $status = 'danger';
+                    $icon = 'fa-times';        
+                }
+            }elseif ($request->role == 'juridique assistant') {
+                $juridiqueAssistant = new JuridiqueAssistant;
+                if (($result = $juridiqueAssistant->user()->associate($user)) && $juridiqueAssistant->save()) {
                     // $status = 200;
                     $result = 'Utilisateur ajouté avec success';
                     $status = 'success';
@@ -212,6 +228,8 @@ class UserController extends Controller
                 $role = 'social assistant';
             }elseif ($user->medical_assistant != null) {
                 $role = 'medical assistant';
+            }elseif ($user->juridique_assistant != null) {
+                $role = 'juridique assistant';
             }
             // check if the role was modified ..
             if ($request->role != $role) {
@@ -224,6 +242,8 @@ class UserController extends Controller
                     $user->social_assistant()->delete();
                 } elseif ($role == 'medical assistant') {
                     $user->medical_assistant()->delete();
+                } elseif ($role == 'juridique assistant') {
+                    $user->juridique_assistant()->delete();
                 }
                 // give him new role ..
                 if ($request->role == 'admin') {
@@ -265,6 +285,19 @@ class UserController extends Controller
                         $status = 'danger';
                         $icon = 'fa-times';
                     }
+                }elseif ($request->role == 'juridique assistant') {
+                    $juridiqueAssistant = new JuridiqueAssistant;
+                    if (($result = $juridiqueAssistant->user()->associate($user)) && $juridiqueAssistant->save()) {
+                        // $status = 200;
+                        $result = 'Utilisateur modifié avec succés';
+                        $status = 'success';
+                        $icon = 'fa-check';
+                    } else {
+                        $result = 'probleme au serveur.';
+                        // $status = 500;
+                        $status = 'danger';
+                        $icon = 'fa-times';
+                    }
                 }elseif ($request->role == 'intervenant') {
                     $intervenant = new Intervenant;
                     if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
@@ -293,7 +326,7 @@ class UserController extends Controller
                     $icon = 'fa-times';
                 }
                 // unset user_id from beneficiaire_service_user because the role is changed:
-                $user->beneficiaires()->update(['user_id' => null]);
+                $user->beneficiaires()->update(['beneficiaire_service_user.user_id' => null]);
             }
         } else {
             // just update the data of the user without changing his role ..
@@ -384,6 +417,10 @@ class UserController extends Controller
                 } elseif ($role == 'medical assistant') {
                     $users = $users->filter(function ($user, $key) {
                         return $user->medical_assistant;
+                    });
+                } elseif ($role == 'juridique assistant') {
+                    $users = $users->filter(function ($user, $key) {
+                        return $user->juridique_assistant;
                     });
                 }
             }
