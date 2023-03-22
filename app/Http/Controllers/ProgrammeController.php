@@ -181,4 +181,22 @@ class ProgrammeController extends Controller
             $status
         );
     }
+
+    public function programmesPerDates(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $programmes = Programme::when($start_date, function ($query, $start_date) {
+            return $query->whereRelation('places', 'programme_date', '>=', $start_date);
+        })
+        ->when($end_date, function ($query, $end_date) {
+            return $query->whereRelation('places', 'programme_date', '<=', $end_date);
+        })
+        ->get();
+        return response()->json(
+            [
+                'programmes' => $programmes,
+            ]
+        );
+    }
 }

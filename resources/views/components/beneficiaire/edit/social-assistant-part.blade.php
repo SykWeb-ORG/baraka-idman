@@ -3,8 +3,8 @@
     <fieldset>
         <div class="Nv-scolaire">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'NON Scolarisé')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="non_scolarisé"
-                    value="NON Scolarisé">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'NON Scolarise')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="non_scolarisé"
+                    value="NON Scolarise">
                 <label class="form-check-label" for="non_scolarisé">
                     NON Scolarisé
                 </label>
@@ -17,15 +17,15 @@
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Collège')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="college"
-                    value="Collège">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'College')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="college"
+                    value="College">
                 <label class="form-check-label" for="college">
                     Collège
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Lycée')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="lycee"
-                    value="Lycée">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->niveau_scolaire == 'Lycee')? 'checked': ''}} class="form-check-input" type="radio" name="niveau_scolaire" id="lycee"
+                    value="Lycee">
                 <label class="form-check-label" for="lycee">
                     Lycée
                 </label>
@@ -52,22 +52,22 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'Célibataire')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="celib"
-                    value="Célibataire">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'celibataire')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="celib"
+                    value="celibataire">
                 <label class="form-check-label" for="celib">
                     Célibataire
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'marié')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="marié"
-                    value="marié">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'marie')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="marié"
+                    value="marie">
                 <label class="form-check-label" for="marié">
                     marié
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'divorcé')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="divorcé"
-                    value="divorcé">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->situation_familial == 'divorce')? 'checked': ''}} class="form-check-input" type="radio" name="situation_familial" id="divorcé"
+                    value="divorce">
                 <label class="form-check-label" for="divorcé">
                     divorcé
                 </label>
@@ -167,15 +167,15 @@
     <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}}  {{($beneficiaire->localisation == 'A l\'intérieur de la clôture')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="local_inter"
-                    value="A l'intérieur de la clôture">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}}  {{($beneficiaire->localisation == 'interne')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="local_inter"
+                    value="interne">
                 <label class="form-check-label" for="local_inter">
                     A l'intérieur de la clôture
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->localisation == 'A l\'extérieur de la clôture')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="local_exter"
-                    value="A l'extérieur de la clôture">
+                <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->localisation == 'externe')? 'checked': ''}} class="form-check-input" type="radio" name="localisation" id="local_exter"
+                    value="externe">
                 <label class="form-check-label" for="local_exter">
                     A l'extérieur de la clôture
                 </label>
