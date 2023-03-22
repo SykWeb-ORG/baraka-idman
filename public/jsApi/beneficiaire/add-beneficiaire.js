@@ -24,7 +24,7 @@ const addBeneficiaire = (e) => {
         "sexe": $(`input[name="sexe"][type="radio"]:checked`).val(),
         "cin": $("input#cin-benef").val(),
         "telephone": $("input#phone-number-benef").val(),
-        "type_travail": $("input#type-travail-benef").val(),
+        // "type_travail": $("input#type-travail-benef").val(),
         "social_visite_date": $("input#social-appointment").val(),
         "niveau_scolaire": $(`input[name="niveau_scolaire"][type="radio"]:checked`).val(),
         "situation_familial": $(`input[name="situation_familial"][type="radio"]:checked`).val(),
