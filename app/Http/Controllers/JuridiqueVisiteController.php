@@ -121,6 +121,22 @@ class JuridiqueVisiteController extends Controller
      */
     public function destroy(JuridiqueVisite $juridiqueVisite)
     {
-        //
+        if ($juridiqueVisite->delete()) {
+            $result = $juridiqueVisite;
+            $status = 200;
+            $msg = "Visite sociale supprimée avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
