@@ -21,7 +21,18 @@ class JuridiqueVisiteController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->admin) {
+            $juridique_visites = JuridiqueVisite::all();
+            $juridique_visites->loadMissing('juridique_assistant.user');
+        } else {
+            $juridique_visites = Auth::user()->juridique_assistant->juridique_visites;
+        }
+        return response()->json(
+            [
+                'juridique_visites' => $juridique_visites,
+            ],
+            200
+        );
     }
 
     /**
