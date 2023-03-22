@@ -7,6 +7,8 @@ use App\Models\Beneficiaire;
 use App\Models\JuridiqueVisite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class JuridiqueVisiteController extends Controller
 {
@@ -110,7 +112,32 @@ class JuridiqueVisiteController extends Controller
      */
     public function update(Request $request, JuridiqueVisite $juridiqueVisite)
     {
-        //
+        $juridiqueVisite->visite_remarque = $request->visite_remarque;
+        if ($request->has('visite_preuve')) {
+            if ($juridiqueVisite->visite_preuve) {
+                Storage::delete(Str::of($juridiqueVisite->visite_preuve)->remove('storage/'));
+            }
+            $path = $request->file('visite_preuve')->store('juridique_preuves'); 
+            $juridiqueVisite->visite_preuve = 'storage/' . $path;
+        }
+        $beneficiaire = Beneficiaire::find($request->beneficiaire);
+        if ($beneficiaire->juridique_visites()->save($juridiqueVisite)) {
+            $result = $juridiqueVisite;
+            $status = 200;
+            $msg = "Visite juridique modifiée avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Proléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
