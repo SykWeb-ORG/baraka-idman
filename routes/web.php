@@ -7,6 +7,7 @@ use App\Http\Controllers\CouvertureController;
 use App\Http\Controllers\DrogueTypeController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\JuridiqueVisiteController;
 use App\Http\Controllers\ManagementBeneficiaireAteliersController;
 use App\Http\Controllers\ManagementBeneficiaireCasController;
 use App\Http\Controllers\ManagementBeneficiaireCouvertureController;
@@ -774,4 +775,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/Settings', function (Request $request) {
         return view('superUser.settings');
     })->name('Settings');
+    Route::resource('juridiqueVisites', JuridiqueVisiteController::class)
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de visite juridique',
+                ],
+                404
+            );
+        });
 });

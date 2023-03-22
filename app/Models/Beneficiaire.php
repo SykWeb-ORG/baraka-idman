@@ -118,6 +118,14 @@ class Beneficiaire extends Model
     }
 
     /**
+     * Get the juridique visites for the beneficiaire.
+     */
+    public function juridique_visites()
+    {
+        return $this->hasMany(JuridiqueVisite::class);
+    }
+
+    /**
      * The cas juridiques that belong to the beneficiaire.
      */
     public function cas()
