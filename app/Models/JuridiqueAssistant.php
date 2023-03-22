@@ -16,4 +16,12 @@ class JuridiqueAssistant extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    /**
+     * Get the juridique visites for the juridique assistant.
+     */
+    public function juridique_visites()
+    {
+        return $this->hasMany(JuridiqueVisite::class);
+    }
 }
