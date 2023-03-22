@@ -552,8 +552,11 @@ Route::middleware('auth:sanctum')->group(function () {
         }
         return view('superUser.AddVisiteJuridique');
     })->name('AddVisiteJuridique');
-    Route::get('/ShowVisiteJuridique', function (Beneficiaire $beneficiaire) {
-        return view('superUser.ShowVisiteJuridique', compact('beneficiaire'));
+    Route::get('/ShowVisiteJuridique', function (Request $request) {
+        if (!Gate::allows('viewAny', JuridiqueVisite::class)) {
+            abort(403);
+        }
+        return view('superUser.ShowVisiteJuridique');
     })->name('ShowVisiteJuridique');
     Route::get('/addzoneIntervenant', function (Request $request) {
         if (!Gate::allows('create', Zone::class)) {
