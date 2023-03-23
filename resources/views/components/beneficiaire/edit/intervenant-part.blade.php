@@ -45,10 +45,10 @@
     <label for="phone-number-benef" class="form-label">N° de telephone</label>
     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="text" name="telephone" class="form-control" id="phone-number-benef" value="{{$beneficiaire->telephone}}">
 </div>
-<div class="mb-3">
+{{-- <div class="mb-3">
     <label for="type-travail-benef" class="form-label">Type de travail</label>
     <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} type="text" name="type_travail" class="form-control" id="type-travail-benef" value="{{$beneficiaire->type_travail}}">
-</div>
+</div> --}}
 <div class="mb-3">
     <label for="social-appointment" class="form-label">Date de la visite sociale</label>
     <input type="date" {{(count($beneficiaire->sociale_visites) > 1)? 'disabled': ''}} name="social_visite_date" class="form-control" id="social-appointment" value="{{(count($beneficiaire->sociale_visites) > 0)? $beneficiaire->sociale_visites[0]->visite_date : (new \Carbon\Carbon)->today()->format('Y-m-d')}}" required>

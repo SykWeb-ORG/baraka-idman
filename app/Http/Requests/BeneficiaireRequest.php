@@ -58,9 +58,9 @@ class BeneficiaireRequest extends FormRequest
             'telephone' => [
                 'required',
             ],
-            'type_travail' => [
-                'required',
-            ],
+            // 'type_travail' => [
+            //     'required',
+            // ],
             'nb_dossier' => [
                 'sometimes',
                 'numeric',

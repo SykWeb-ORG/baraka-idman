@@ -45,10 +45,10 @@
     <label for="phone-number-benef" class="form-label">N° de telephone</label>
     <input type="text" name="telephone" class="form-control" id="phone-number-benef">
 </div>
-<div class="mb-3">
+{{-- <div class="mb-3">
     <label for="type-travail-benef" class="form-label">Type de travail</label>
     <input type="text" name="type_travail" class="form-control" id="type-travail-benef">
-</div>
+</div> --}}
 <div class="mb-3">
     <label for="social-appointment" class="form-label">Date de la visite sociale</label>
     <input type="date" name="social_visite_date" class="form-control" id="social-appointment" required value="{{(new \Carbon\Carbon)->today()->format('Y-m-d')}}">
