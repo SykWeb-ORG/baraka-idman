@@ -98,7 +98,10 @@ const attachDrogueTypes = (beneficiaire) => {
     let drogueTypes = {};
     $.each($(`input[name="drogue_types[]"]`), function (index, elem) {
         if (elem.checked) {
-            drogueTypes[$(this).val()] = {'frequence' : $(`input[name="frequences[]"]`)[index].value};
+            drogueTypes[$(this).val()] = {
+                'frequence' : $(`input[name="frequences[]"]`)[index].value,
+                'unite_frequence' : $(`select[name="unite_frequences[]"]`)[index].value,
+            };
         }
     });
     let dataToSend = {
