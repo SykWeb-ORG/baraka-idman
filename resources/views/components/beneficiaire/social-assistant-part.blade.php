@@ -201,6 +201,7 @@
                 <tr class="text-dark">
                     <th scope="col">Types de drogue</th>
                     <th scope="col">Quantité utilisée / fréquence</th>
+                    <th scope="col">Unité</th>
                 </tr>
             </thead>
             <tbody id="tbodyDrogueTypes">
@@ -208,6 +209,16 @@
                     <tr>
                         <td><input type="checkbox" class="form-check-input" name="drogue_types[]" id="drogue_type{{$loop->iteration}}" value="{{$drogue_type->id}}"><label for="drogue_type{{$loop->iteration}}">{{$drogue_type->drogue_nom}}</label></td>
                         <td><input type="number" name="frequences[]" id=""></td>
+                        <td>
+                            <select class="form-select" name="unite_frequences[]" id="unite-frequence">
+                                <option value="">Séléctionner unité</option>
+                                <option value="heure">Heure</option>
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                                <option value="mois">Mois</option>
+                                <option value="annee">Année</option>
+                            </select>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

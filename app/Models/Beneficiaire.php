@@ -88,7 +88,7 @@ class Beneficiaire extends Model
     public function drogue_types()
     {
         return $this->belongsToMany(DrogueType::class)
-                    ->withPivot('frequence')
+                    ->withPivot(['frequence', 'unite_frequence'])
                     ->as('beneficiaire_drogue_type')
                     ->withTimestamps();
     }
