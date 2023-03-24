@@ -137,8 +137,8 @@
     </fieldset>
 </div>
 <div class="mb-3">
-    <label for="intervenant-benef" class="form-label">Zone Habitation</label>
-    <fieldset class="row mb-3">
+    <label for="zone-habitation" class="form-label">Zone Habitation</label>
+    {{-- <fieldset class="row mb-3">
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
                 <input {{(Auth::user()->cannot('update', $beneficiaire))? 'disabled' : ''}} {{($beneficiaire->zone_habitation == 'Urbain')? 'checked': ''}} class="form-check-input" type="radio" name="zone_habitation" id="zone_urbain"
@@ -155,7 +155,12 @@
                 </label>
             </div>
         </div>
-    </fieldset>
+    </fieldset> --}}
+    <select class="form-select" name="zone_habitation" id="zone">
+        @foreach ($zones as $zone)
+            <option value="{{ $zone->id }}" {{ ($beneficiaire->zone && $beneficiaire->zone->id == $zone->id) ? 'selected' : '' }}>{{ $zone->zone_nom}}</option>
+        @endforeach
+    </select>
 </div>
 <div class="mb-3">
     <label for="intervenant-benef" class="form-label">Localisation</label>

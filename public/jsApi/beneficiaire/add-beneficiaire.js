@@ -5,6 +5,7 @@
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
+    getAllData("zones", fillSelectZones);
     $("button#btn-add-beneficiaire").click(addBeneficiaire);
 });
 /// *****************************
@@ -30,7 +31,7 @@ const addBeneficiaire = (e) => {
         "situation_familial": $(`input[name="situation_familial"][type="radio"]:checked`).val(),
         "orphelin": $(`input[name="orphelin"][type="radio"]:checked`).val(),
         "profession": $(`input[name="profession"][type="radio"]:checked`).val(),
-        "zone_habitation": $(`input[name="zone_habitation"][type="radio"]:checked`).val(),
+        "zone_habitation": $(`select[name="zone_habitation"]`).val(),
         "localisation": $(`input[name="localisation"][type="radio"]:checked`).val(),
         "famille_informee": $(`input[name="famille_informee"][type="radio"]:checked`).val(),
         "famille_integre": $(`input[name="famille_integre"][type="radio"]:checked`).val(),
@@ -156,4 +157,20 @@ const attachViolenceTypes = (beneficiaire) => {
  */
 const validationSociale = (beneficiaire, validatorUser) => {
     updateData(`validation-state/${beneficiaire.id}/${validatorUser}/`, {}, (data) => { console.log(data);});
+}
+/**
+ * Fill the select field with all zones
+ * @param {object} data response from the server that contains all zones
+ */
+const fillSelectZones = (data) => {
+    let zones = data.zones;
+    $.each(zones, function (indexInArray, zone) {
+        let option = $("<option>");
+        option.text(zone.zone_nom);
+        option.val(zone.id);
+        $("select#zone").append(option);
+    });
+    // $("select#zone").select2({
+    //     placeholder: 'Séléctionner un zone ...',
+    // });
 }

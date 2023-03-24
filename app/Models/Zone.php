@@ -35,4 +35,12 @@ class Zone extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * Get the beneficiaires for the zone.
+     */
+    public function beneficiaires()
+    {
+        return $this->hasMany(Beneficiaire::class, 'zone_habitation');
+    }
 }

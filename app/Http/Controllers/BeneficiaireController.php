@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\SocialeVisite;
 use App\Models\SuicideCause;
 use App\Models\ViolenceType;
+use App\Models\Zone;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -164,12 +165,14 @@ class BeneficiaireController extends Controller
         $drogue_types = DrogueType::all();
         $services = Service::all();
         $violence_types = ViolenceType::all();
+        $zones = Zone::all();
         return view('interTerrain.modifier', compact(
             'beneficiaire',
             'couvertures',
             'drogue_types',
             'services',
             'violence_types',
+            'zones',
         ));
     }
 
