@@ -95,7 +95,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\Couverture::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-briefcase"></i>Couvertures</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-blanket me-2"></i>Couvertures</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\Couverture::class)
                             <a href="{{ route('AddCouvertureMedical') }}" class="dropdown-item">Ajouter</a>
@@ -243,7 +243,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\JuridiqueVisite::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-comment-alt me-2"></i>Visites juridiques</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-gavel me-2"></i>Visites juridiques</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\JuridiqueVisite::class)
                             <a href="{{ route('AddVisiteJuridique') }}" class="dropdown-item">Ajouter</a>
