@@ -65,6 +65,7 @@ const showDialogResponse = (data) => {
         attachServices(beneficiaire);
         attachSuicideCauses(beneficiaire);
         attachViolenceTypes(beneficiaire);
+        attachCasJuridiques(beneficiaire);
         if (data.validate) {
             validationSociale(beneficiaire, data.validate);
         }
@@ -174,3 +175,17 @@ const validationSociale = (beneficiaire, validatorUser) => {
 //     //     placeholder: 'Séléctionner un zone ...',
 //     // });
 // }
+/**
+ * Attach the checked cas juridiques with the new beneficiaire
+ * @param {object} beneficiaire new beneficiaire
+ */
+const attachCasJuridiques = (beneficiaire) => {
+    let casJuridique = [];
+    $.each($(`input[name="cas_juridiques[]"][type="checkbox"]:checked`), function () {
+        casJuridique.push($(this).val());
+    });
+    let dataToSend = {
+        "cas": casJuridique,
+    }
+    updateData(`match-beneficiaire-cas/${beneficiaire.id}`, dataToSend, (data) => { console.log(data);});
+}
