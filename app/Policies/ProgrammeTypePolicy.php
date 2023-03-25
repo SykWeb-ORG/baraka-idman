@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
+use App\Models\ProgrammeType;
 use App\Models\Role;
-use App\Models\ServiceType;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ServiceTypePolicy
+class ProgrammeTypePolicy
 {
     use HandlesAuthorization;
 
@@ -19,19 +19,19 @@ class ServiceTypePolicy
      */
     public function viewAny(User $user)
     {
-        return $this->checkAbilityByAction($user, 'afficher type de service');
+        return $this->checkAbilityByAction($user, 'afficher type de programme');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ServiceType  $serviceType
+     * @param  \App\Models\ProgrammeType  $programmeType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ServiceType $serviceType)
+    public function view(User $user, ProgrammeType $programmeType)
     {
-        return $this->viewAny($user);
+        $this->viewAny($user);
     }
 
     /**
@@ -42,41 +42,41 @@ class ServiceTypePolicy
      */
     public function create(User $user)
     {
-        return $this->checkAbilityByAction($user, 'ajouter type de service');
+        return $this->checkAbilityByAction($user, 'ajouter type de programme');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ServiceType  $serviceType
+     * @param  \App\Models\ProgrammeType  $programmeType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ServiceType $serviceType)
+    public function update(User $user, ProgrammeType $programmeType)
     {
-        return $this->checkAbilityByAction($user, 'modifier type de service');
+        return $this->checkAbilityByAction($user, 'modifier type de programme');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ServiceType  $serviceType
+     * @param  \App\Models\ProgrammeType  $programmeType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ServiceType $serviceType)
+    public function delete(User $user, ProgrammeType $programmeType)
     {
-        return $this->checkAbilityByAction($user, 'supprimer type de service');
+        return $this->checkAbilityByAction($user, 'supprimer type de programme');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ServiceType  $serviceType
+     * @param  \App\Models\ProgrammeType  $programmeType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ServiceType $serviceType)
+    public function restore(User $user, ProgrammeType $programmeType)
     {
         //
     }
@@ -85,10 +85,10 @@ class ServiceTypePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ServiceType  $serviceType
+     * @param  \App\Models\ProgrammeType  $programmeType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ServiceType $serviceType)
+    public function forceDelete(User $user, ProgrammeType $programmeType)
     {
         //
     }
