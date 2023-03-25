@@ -45,6 +45,7 @@ use App\Models\Partenaire;
 use App\Models\Participant;
 use App\Models\Place;
 use App\Models\Programme;
+use App\Models\ProgrammeType;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\ServiceType;
@@ -771,6 +772,9 @@ Route::middleware('auth:sanctum')->group(function () {
         );
     });
     Route::get('/add-program-type', function (Request $request) {
+        if (!Gate::allows('create', ProgrammeType::class)) {
+            abort(403);
+        }
         return view('superUser.AddTypeProgramme');
     })->name('add-program-type');
     Route::get('/show-program-type', function (Request $request) {

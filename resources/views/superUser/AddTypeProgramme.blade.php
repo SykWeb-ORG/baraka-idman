@@ -11,8 +11,8 @@ Ajout d'un type de programme
                     <h6 id="title-form" class="mb-4">Ajouter Type Programme</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="programme_type_nom" class="form-label">Nom Du Type De Programme</label>
-                            <input type="text" name="programme_type_nom" class="form-control" id="programme_type_nom">
+                            <label for="nom-programme-type" class="form-label">Nom Du Type De Programme</label>
+                            <input type="text" name="programme_type_nom" class="form-control" id="nom-programme-type">
                         </div>
                         <div class="mb-3">
                             <button id="btn-add-programme_type" class="btn btn-primary">Ajouter</button>
@@ -24,5 +24,5 @@ Ajout d'un type de programme
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/') }}"></script>
+    <script src="{{ asset('jsApi/programmeType/add-programme-type.js') }}"></script>
 @endsection
