@@ -23,7 +23,7 @@
                 </table>
                 <!--Edit Type De Programme-->
                 <!-- Modal -->
-                <div class="modal fade" id="modal_EditTypeProgramme" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="modal_EditProgrammeType" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -35,8 +35,8 @@
                             <div class="modal-bodyEdit">
                                 <form class="form-user" action="" method="POST">
                                     <div class="mb-3">
-                                        <label for="programme_type_nom" class="form-label">Nom du Type De Programme</label>
-                                        <input type="text" name="programme_type_nom" class="form-control" id="programme_type_nom">
+                                        <label for="nom-programme-type" class="form-label">Nom du Type De Programme</label>
+                                        <input type="text" name="programme_type_nom" class="form-control" id="nom-programme-type">
                                     </div>
                                     <div class="mb-3">
                                         <button id="btn-edit-programme-type" class="btn btn-primary">Modifier</button>
@@ -50,7 +50,7 @@
                 <!--End Edit Type De Programme-->
                 <!--Delete Type De Programme-->
                 <!-- Modal -->
-                <div class="modal fade" id="modal_DeleteTypeProgramme" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="modal_DeleteProgrammeType" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -75,5 +75,5 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/') }}"></script>
+    <script src="{{ asset('jsApi/programmeType/all-programme-types.js') }}"></script>
 @endsection
