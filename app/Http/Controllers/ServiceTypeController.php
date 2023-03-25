@@ -123,6 +123,22 @@ class ServiceTypeController extends Controller
      */
     public function destroy(ServiceType $serviceType)
     {
-        //
+        if ($serviceType->delete()) {
+            $result = $serviceType;
+            $status = 200;
+            $msg = "Type de service supprimé avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
