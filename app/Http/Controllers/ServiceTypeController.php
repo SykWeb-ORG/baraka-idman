@@ -19,7 +19,10 @@ class ServiceTypeController extends Controller
      */
     public function index()
     {
-        //
+        $service_types = ServiceType::all();
+        return response()->json([
+            'service_types' => $service_types,
+        ]);
     }
 
     /**
