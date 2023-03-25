@@ -160,4 +160,12 @@ class Beneficiaire extends Model
     {
         return $this->belongsTo(User::class, 'validation_medical_assistant', 'id');
     }
+
+    /**
+     * Get the zone that hold the beneficiaire.
+     */
+    public function zone()
+    {
+        return $this->belongsTo(Zone::class, 'zone_habitation');
+    }
 }
