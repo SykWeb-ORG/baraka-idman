@@ -46,6 +46,7 @@ use App\Models\Place;
 use App\Models\Programme;
 use App\Models\Role;
 use App\Models\Service;
+use App\Models\ServiceType;
 use App\Models\SocialAssistant;
 use App\Models\SocialeVisite;
 use App\Models\User;
@@ -775,6 +776,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('superUser.ShowTypeProgramme');
     })->name('show-program-type');
     Route::get('/AddServiceType', function (Request $request) {
+        if (!Gate::allows('create', ServiceType::class)) {
+            abort(403);
+        }
         return view('superUser.AddServiceType');
     })->name('AddServiceType');
     Route::get('/ShowServiceType', function (Request $request) {
