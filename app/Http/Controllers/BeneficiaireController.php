@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BeneficiaireRequest;
 use App\Models\Beneficiaire;
+use App\Models\Cas;
 use App\Models\Couverture;
 use App\Models\DrogueType;
 use App\Models\Service;
@@ -166,6 +167,7 @@ class BeneficiaireController extends Controller
         $services = Service::all();
         $violence_types = ViolenceType::all();
         $zones = Zone::all();
+        $cases = Cas::all();
         return view('interTerrain.modifier', compact(
             'beneficiaire',
             'couvertures',
@@ -173,6 +175,7 @@ class BeneficiaireController extends Controller
             'services',
             'violence_types',
             'zones',
+            'cases',
         ));
     }
 

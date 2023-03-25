@@ -15,7 +15,7 @@ Modification du Bénéficiaire
                         @method('PUT')
                         <x-beneficiaire.edit.intervenant-part :beneficiaire="$beneficiaire" />
                         @if (!Auth::user()->intervenant)
-                        <x-beneficiaire.edit.social-assistant-part :couvertures="$couvertures" :drogue-types="$drogue_types" :services="$services" :violence-types="$violence_types" :beneficiaire="$beneficiaire" :zones="$zones" />
+                        <x-beneficiaire.edit.social-assistant-part :couvertures="$couvertures" :drogue-types="$drogue_types" :services="$services" :violence-types="$violence_types" :beneficiaire="$beneficiaire" :zones="$zones" :cases="$cases" />
                         @endif
                         @if(!request()->has('page'))
                         <div class="mb-3">

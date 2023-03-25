@@ -483,7 +483,7 @@ tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <fieldset class="mb-4">
                         <legend>Cas Juridique</legend>
                         <div class="permissions_check perm_modal" id="cas_juridique_check">
-                            <div class="perm">
+                            {{-- <div class="perm">
                                 <input type="checkbox" class="form-check-input" value="">
                                 <label>cas 1</label>
                             </div>
@@ -494,12 +494,12 @@ tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="perm">
                                 <input type="checkbox" class="form-check-input" value="">
                                 <label>cas 3</label>
-                            </div>
+                            </div> --}}
                         </div>
                     </fieldset>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <button id="btn-link-cas-juridiques" class="btn btn-primary">Lier</button>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
         </div>

@@ -6,6 +6,7 @@
 /// *****************************
 $(document).ready(function () {
     getAllData("zones", fillSelectZones);
+    getAllData("cas", createCheckboxesCasJuridiques);
     $("button#btn-add-beneficiaire").click(addBeneficiaire);
 });
 /// *****************************
@@ -64,6 +65,7 @@ const showDialogResponse = (data) => {
         attachServices(beneficiaire);
         attachSuicideCauses(beneficiaire);
         attachViolenceTypes(beneficiaire);
+        attachCasJuridiques(beneficiaire);
         if (data.validate) {
             validationSociale(beneficiaire, data.validate);
         }
@@ -173,4 +175,35 @@ const fillSelectZones = (data) => {
     // $("select#zone").select2({
     //     placeholder: 'Séléctionner un zone ...',
     // });
+}
+/**
+ * Create checkboxes for each cas juridique
+ * @param {object} cas contains the cas juridiques
+ */
+const createCheckboxesCasJuridiques = (data) => {
+    let cas = data.cases;
+    let divCheckboxesCasJuridiques = $("div#cas_juridique_check");
+    $.each(cas, function (indexInArray, oneCas) {
+        let divContainerCasJuridique = $("<div class=perm>");
+        let checkboxCasJuridique = $("<input name='cas_juridiques[]' type=checkbox class='form-check-input'>");
+        checkboxCasJuridique.val(oneCas.id);
+        let labelCasJuridique = $("<label>");
+        labelCasJuridique.text(oneCas.cas_nom);
+        divContainerCasJuridique.append(checkboxCasJuridique, labelCasJuridique);
+        divCheckboxesCasJuridiques.append(divContainerCasJuridique);
+    });
+}
+/**
+ * Attach the checked cas juridiques with the new beneficiaire
+ * @param {object} beneficiaire new beneficiaire
+ */
+const attachCasJuridiques = (beneficiaire) => {
+    let casJuridique = [];
+    $.each($(`input[name="cas_juridiques[]"][type="checkbox"]:checked`), function () {
+        casJuridique.push($(this).val());
+    });
+    let dataToSend = {
+        "cas": casJuridique,
+    }
+    updateData(`match-beneficiaire-cas/${beneficiaire.id}`, dataToSend, (data) => { console.log(data);});
 }

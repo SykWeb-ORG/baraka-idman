@@ -483,23 +483,17 @@ tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <fieldset class="mb-4">
                         <legend>Cas Juridique Affectés</legend>
                         <div class="permissions_check perm_modal" id="cas_juridique_check">
-                            <div class="perm">
-                                <input type="checkbox" class="form-check-input" value="">
-                                <label>cas 1</label>
-                            </div>
-                            <div class="perm">
-                                <input type="checkbox" class="form-check-input" value="">
-                                <label>cas 2</label>
-                            </div>
-                            <div class="perm">
-                                <input type="checkbox" class="form-check-input" value="">
-                                <label>cas 3</label>
-                            </div>
+                            @foreach ($cases as $cas)
+                                <div class="perm">
+                                    <input name="cas_juridiques[]" type="checkbox" {{($beneficiaire->cas->contains($cas))? 'checked' : ''}} class="form-check-input" value="{{ $cas->id }}">
+                                    <label>{{ $cas->cas_nom }}</label>
+                                </div>
+                            @endforeach
                         </div>
                     </fieldset>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <button id="btn-link-cas-juridiques" class="btn btn-primary">Modifier</button>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
         </div>

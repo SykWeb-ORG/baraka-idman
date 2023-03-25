@@ -11,19 +11,21 @@ class SocialAssistantPart extends Component
     public $services;
     public $violence_types;
     public $zones;
+    public $cases;
     public $beneficiaire;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($couvertures, $drogueTypes, $services, $violenceTypes, $beneficiaire, $zones)
+    public function __construct($couvertures, $drogueTypes, $services, $violenceTypes, $beneficiaire, $zones, $cases)
     {
         $this->couvertures = $couvertures;
         $this->drogue_types = $drogueTypes;
         $this->services = $services;
         $this->violence_types = $violenceTypes;
         $this->zones = $zones;
+        $this->cases = $cases;
         $this->beneficiaire = $beneficiaire;
     }
 
