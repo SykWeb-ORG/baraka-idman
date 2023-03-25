@@ -95,7 +95,7 @@ class ProgrammeTypeController extends Controller
     public function update(Request $request, ProgrammeType $programmeType)
     {
         $programmeType->programme_type_nom = $request->programme_type_nom;
-        if ($programmeType->save()) {
+        if ($programmeType->update()) {
             $result = $programmeType;
             $status = 200;
             $msg = "Type de programme modifié avec success.";
@@ -122,6 +122,22 @@ class ProgrammeTypeController extends Controller
      */
     public function destroy(ProgrammeType $programmeType)
     {
-        //
+        if ($programmeType->delete()) {
+            $result = $programmeType;
+            $status = 200;
+            $msg = "Type de programme supprimé avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
