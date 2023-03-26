@@ -95,7 +95,24 @@ class ServiceTypeController extends Controller
      */
     public function update(Request $request, ServiceType $serviceType)
     {
-        //
+        $serviceType->service_type_nom = $request->service_type_nom;
+        if ($serviceType->update()) {
+            $result = $serviceType;
+            $status = 200;
+            $msg = "Type de service modifié avec success.";
+        }else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
