@@ -75,5 +75,5 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/serviceType/all-drogue-types.js') }}"></script>
+    <script src="{{ asset('jsApi/serviceType/all-service-types.js') }}"></script>
 @endsection
