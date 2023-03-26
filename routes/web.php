@@ -23,6 +23,7 @@ use App\Http\Controllers\MedicaleVisiteController;
 use App\Http\Controllers\PartenaireController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ProgrammeController;
+use App\Http\Controllers\ProgrammeTypeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\SocialeVisiteController;
@@ -806,6 +807,16 @@ Route::middleware('auth:sanctum')->group(function () {
                 [
                     'result' => null,
                     'msg' => 'Pas de type de service',
+                ],
+                404
+            );
+        });
+    Route::resource('programmeTypes', ProgrammeTypeController::class)
+        ->missing(function (Request $request) {
+            return response()->json(
+                [
+                    'result' => null,
+                    'msg' => 'Pas de type de programme',
                 ],
                 404
             );
