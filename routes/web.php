@@ -782,6 +782,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('superUser.AddServiceType');
     })->name('AddServiceType');
     Route::get('/ShowServiceType', function (Request $request) {
+        if (!Gate::allows('viewAny', ServiceType::class)) {
+            abort(403);
+        }
         return view('superUser.ShowServiceType');
     })->name('ShowServiceType');
     Route::get('/Settings', function (Request $request) {

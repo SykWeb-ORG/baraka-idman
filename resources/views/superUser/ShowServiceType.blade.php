@@ -18,12 +18,12 @@
                             <th colspan="2" class="actions">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="tbl_services">
+                    <tbody id="tbl_service_types">
                     </tbody>
                 </table>
                 <!--Edit Service Type-->
                 <!-- Modal -->
-                <div class="modal fade" id="modal_EditService" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="modal_EditServiceType" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -35,8 +35,8 @@
                             <div class="modal-bodyEdit">
                                 <form class="form-user" action="" method="POST">
                                     <div class="mb-3">
-                                        <label for="service-type" class="form-label">Type du Service</label>
-                                        <input type="text" name="service-type" class="form-control" id="service-type">
+                                        <label for="nom-service-type" class="form-label">Type du Service</label>
+                                        <input type="text" name="service_type_nom" class="form-control" id="nom-service-type">
                                     </div>
                                     <div class="mb-3">
                                         <button id="btn-edit-service-type" class="btn btn-primary">Modifier</button>
@@ -50,7 +50,7 @@
                 <!--End Edit Service Type-->
                 <!--Delete Service Type-->
                 <!-- Modal -->
-                <div class="modal fade" id="modal_DeleteService" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade" id="modal_DeleteServiceType" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -62,7 +62,7 @@
                             <div class="modal-bodyEdit">
                                     <div class="mb-3 mt-3">
                                         <button id="btn-delete-service-type" class="btn btn-secondary" data-bs-dismiss="modal">Oui</button>
-                                        <button id="btn-delete-service-type" class="btn btn-primary" data-bs-dismiss="modal">Non</button>
+                                        <button class="btn btn-primary" data-bs-dismiss="modal">Non</button>
                                     </div>
                             </div>
                         </div>
@@ -75,5 +75,5 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/') }}"></script>
+    <script src="{{ asset('jsApi/serviceType/all-drogue-types.js') }}"></script>
 @endsection

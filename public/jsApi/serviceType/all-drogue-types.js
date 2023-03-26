@@ -1,88 +1,88 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
-var drogueTypes = null;
-var drogueTypeToOperate = null;
+var serviceTypes = null;
+var serviceTypeToOperate = null;
 /// *****************************
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    getAllData("drogueTypes", getAllDrogueType);
-    $("button#btn-edit-drogue-type").click(editDrogueType);
-    $("button#btn-delete-drogue-type").click(deleteDrogueType);
+    getAllData("serviceTypes", getAllServiceType);
+    $("button#btn-edit-service-type").click(editServiceType);
+    $("button#btn-delete-service-type").click(deleteServiceType);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Edit drogue 
+ * Edit service type
  * @param {Event} e Information about the event
  */
-const editDrogueType = (e) => {
+const editServiceType = (e) => {
     e.preventDefault();
-    let nomDrogueType = $("input#nom-drogue-type").val();
+    let nomServiceType = $("input#nom-service-type").val();
     let dataToSend = {
-        "drogue_nom": nomDrogueType,
+        "service_type_nom": nomServiceType,
     }
-    updateData(`drogueTypes/${drogueTypeToOperate.id}`, dataToSend, showDialogResponse);
+    updateData(`serviceTypes/${serviceTypeToOperate.id}`, dataToSend, showDialogResponse);
 }
 /**
- * Delete drogue 
+ * Delete service type
  * @param {Event} e Information about the event
  */
-const deleteDrogueType = (e) => {
+const deleteServiceType = (e) => {
     e.preventDefault();
-    deleteData(`drogueTypes/${drogueTypeToOperate.id}`, showDialogResponse);
+    deleteData(`serviceTypes/${serviceTypeToOperate.id}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains new drogue 
+ * @param {object} data response from the server that contains new service type 
  */
 const showDialogResponse = (data) => {
     if (data.status == 200) {
-        let drogueType = data.result;
+        let serviceType = data.result;
         let msg = data.msg;
         alertMsg(msg);
-        $("tbody#tbl_drogue_types").empty();
-        getAllData("drogueTypes", getAllDrogueType);
+        $("tbody#tbl_service_types").empty();
+        getAllData("serviceTypes", getAllServiceType);
     } else {
         let errors = data.errors;
         console.log(errors);
     }
 }
 /**
- * Retrieve all drogues from the server
- * @param {object} data response from the server that contains all drogues
+ * Retrieve all service types from the server
+ * @param {object} data response from the server that contains all service types
  */
-const getAllDrogueType = (data)=>{
-    drogueTypes = data.drogue_types;
-    $.each(drogueTypes, function (indexInArray, drogueType) {
+const getAllServiceType = (data)=>{
+    serviceTypes = data.service_types;
+    $.each(serviceTypes, function (indexInArray, serviceType) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
-        let tdNameDrogueType = $("<td>");
-        tdNameDrogueType.text(drogueType.drogue_nom);
-        let tdEditDrogueType = $(`<td class="text-center">`);
-        let btnEditDrogueType = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-drogue-type-id=${drogueType.id} data-bs-toggle='modal' data-bs-target='#modal_EditTypeDrogue'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier drogue'>`);
-        btnEditDrogueType.append("<i class='fas fa-edit'></i>");
-        btnEditDrogueType.click(function (e) { 
+        let tdNameServiceType = $("<td>");
+        tdNameServiceType.text(serviceType.service_type_nom);
+        let tdEditServiceType = $(`<td class="text-center">`);
+        let btnEditServiceType = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-service-type-id=${serviceType.id} data-bs-toggle='modal' data-bs-target='#modal_EditServiceType'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier type de service'>`);
+        btnEditServiceType.append("<i class='fas fa-edit'></i>");
+        btnEditServiceType.click(function (e) { 
             e.preventDefault();
-            fillModalEditDrogueType($(this).data("drogue-type-id"));
+            fillModalEditServiceType($(this).data("service-type-id"));
         });
-        tdEditDrogueType.append(btnEditDrogueType);
-        let tdDeleteDrogueType = $(`<td class="text-center">`);
-        let btnDeleteDrogueType = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-drogue-type-id=${drogueType.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteTypeDrogue"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer drogue'>`);
-        btnDeleteDrogueType.append(`<i class="fas fa-trash"></i>`);
-        btnDeleteDrogueType.click(function (e) {
+        tdEditServiceType.append(btnEditServiceType);
+        let tdDeleteServiceType = $(`<td class="text-center">`);
+        let btnDeleteServiceType = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-service-type-id=${serviceType.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteServiceType"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer type de service'>`);
+        btnDeleteServiceType.append(`<i class="fas fa-trash"></i>`);
+        btnDeleteServiceType.click(function (e) {
             e.preventDefault();
-            drogueTypeToOperate = drogueTypes.find(oneDrogueType => oneDrogueType.id == $(this).data("drogue-type-id"));
+            serviceTypeToOperate = serviceTypes.find(oneServiceType => oneServiceType.id == $(this).data("service-type-id"));
         });
-        tdDeleteDrogueType.append(btnDeleteDrogueType);
-        tr.append(tdNb, tdNameDrogueType, tdEditDrogueType, tdDeleteDrogueType);
-        $("tbody#tbl_drogue_types").append(tr);
+        tdDeleteServiceType.append(btnDeleteServiceType);
+        tr.append(tdNb, tdNameServiceType, tdEditServiceType, tdDeleteServiceType);
+        $("tbody#tbl_service_types").append(tr);
     });
 }
-const fillModalEditDrogueType = (drogueTypeId) => {
-    drogueTypeToOperate = drogueTypes.find(drogueType => drogueType.id == drogueTypeId);
-    $("input#nom-drogue-type").val(drogueTypeToOperate.drogue_nom);
+const fillModalEditServiceType = (serviceTypeId) => {
+    serviceTypeToOperate = serviceTypes.find(serviceType => serviceType.id == serviceTypeId);
+    $("input#nom-service-type").val(serviceTypeToOperate.service_type_nom);
 }
