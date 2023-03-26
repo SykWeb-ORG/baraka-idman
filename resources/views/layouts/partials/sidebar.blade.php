@@ -132,6 +132,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\ServiceType::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fab fa-product-hunt"></i>Types de service</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\ServiceType::class)
+                            <a href="{{ route('AddServiceType') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\ServiceType::class)
+                            <a href="{{ route('ShowServiceType') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @if (Auth::user()->admin)
             {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
                 <div class="nav-item dropdown">

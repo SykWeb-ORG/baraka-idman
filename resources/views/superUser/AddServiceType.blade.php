@@ -12,8 +12,8 @@ Ajout d'un type de service
                     <h6 id="title-form" class="mb-4">Ajouter Type Du Service</h6>
                     <form class="form-user" action="" method="POST">
                         <div class="mb-3">
-                            <label for="service-type" class="form-label">Type Du Service</label>
-                            <input type="text" name="service-type" class="form-control" id="service-type">
+                            <label for="nom-service-type" class="form-label">Type Du Service</label>
+                            <input type="text" name="service_type_nom" class="form-control" id="nom-service-type">
                         </div>
                         <div class="mb-3">
                             <button id="btn-add-service-type" class="btn btn-primary">Ajouter</button>
@@ -26,5 +26,5 @@ Ajout d'un type de service
     <!-- Form End -->
 @endsection
 @section('custom_scripts')
-    <script src="{{ asset('jsApi/') }}"></script>
+    <script src="{{ asset('jsApi/serviceType/add-service-type.js') }}"></script>
 @endsection
