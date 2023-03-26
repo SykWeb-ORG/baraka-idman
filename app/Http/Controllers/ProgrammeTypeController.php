@@ -18,7 +18,10 @@ class ProgrammeTypeController extends Controller
      */
     public function index()
     {
-        //
+        $programme_types = ProgrammeType::all();
+        return response()->json([
+            'programme_types' => $programme_types,
+        ]);
     }
 
     /**
