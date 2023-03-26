@@ -212,6 +212,19 @@
                     </div>
                 </div>
             @endcanany
+            @canany(['create', 'viewAny'], App\Models\ProgrammeType::class)
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fab fa-product-hunt"></i>Types de programme</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        @can('create', App\Models\ProgrammeType::class)
+                            <a href="{{ route('add-program-type') }}" class="dropdown-item">Ajouter</a>
+                        @endcan
+                        @can('viewAny', App\Models\ProgrammeType::class)
+                            <a href="{{ route('show-program-type') }}" class="dropdown-item">Afficher</a>
+                        @endcan
+                    </div>
+                </div>
+            @endcanany
             @canany(['create', 'viewAny'], App\Models\Formation::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-school me-2"></i>Formations</a>
