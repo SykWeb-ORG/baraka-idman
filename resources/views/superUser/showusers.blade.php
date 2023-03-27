@@ -52,6 +52,12 @@ Liste des utilisateurs
                     </div>
                 </div>
             </div>
+            @if (session('matricule'))
+                <div class="mb-3">
+                    <label for="matricule-generated" class="form-label">Code généré</label>
+                    <input type="text" value="{{ session('matricule') }}" disabled class="form-control" id="matricule-generated">
+                </div>
+            @endif
             <div class="table-responsive table-height">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>

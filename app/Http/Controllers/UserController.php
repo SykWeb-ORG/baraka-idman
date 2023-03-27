@@ -27,7 +27,12 @@ class UserController extends Controller
         if (Auth::check()) {
             return redirect()->back();
         }
-        if (Auth::attempt($request->only(['email', 'password']))) {
+        if ($request->filled('matricule')) {
+            if ($intervenant = $this->check_matricule($request->matricule)) {
+                Auth::login($intervenant->user);
+                return redirect()->route('beneficiaires.create');
+            }
+        } elseif (Auth::attempt($request->only(['email', 'password']))) {
             $request->session()->regenerate();
             $user = Auth::user();
             if ($user->admin) {
@@ -42,17 +47,16 @@ class UserController extends Controller
             }elseif ($user->juridique_assistant) {
                 return redirect()->route('beneficiaires.index');
             }
-        }else {
-            $result = 'Email ou(et) mot de passe no valid';
-            // $status = 403;
-            $status = 'danger';
-            $icon = 'fa-times'; 
-            // return response()->json($result, $status);
-            $request->session()->flash('msg', $result);
-            $request->session()->flash('status', $status);
-            $request->session()->flash('icon', $icon);
-            return back();
         }
+        $result = 'Email ou(et) mot de passe no valid';
+        // $status = 403;
+        $status = 'danger';
+        $icon = 'fa-times'; 
+        // return response()->json($result, $status);
+        $request->session()->flash('msg', $result);
+        $request->session()->flash('status', $status);
+        $request->session()->flash('icon', $icon);
+        return back();
     }
     /**
      * Display a listing of the resource.
@@ -147,6 +151,13 @@ class UserController extends Controller
                 }
             }elseif ($request->role == 'intervenant') {
                 $intervenant = new Intervenant;
+                do {
+                    static $matricule = "";
+                    for ($i=0; $i < 6; $i++) { 
+                        $matricule .= strval(rand(0, 9));
+                    }
+                } while ($this->check_matricule($matricule));
+                $intervenant->code = Hash::make($matricule);
                 if (($result = $intervenant->user()->associate($user)) && $intervenant->save()) {
                     // $status = 200;
                     $result = 'Utilisateur ajouté avec success';
@@ -170,6 +181,9 @@ class UserController extends Controller
         $request->session()->flash('msg', $result);
         $request->session()->flash('status', $status);
         $request->session()->flash('icon', $icon);
+        if (isset($matricule)) {
+            $request->session()->flash('matricule', $matricule);
+        }
         return back();
     }
 
@@ -429,4 +443,15 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Check whether generated code already exists or not
+     * @param string $code The matricule to be checked if exists already at intervenant
+     * @return Intervenant whether code aleardy exists or not
+     */
+    private function check_matricule($code)
+    {
+        return Intervenant::all()->first(function ($intervenant, $key) use ($code) {
+            return Hash::check($code, $intervenant->code);
+        });
+    }
 }

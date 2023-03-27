@@ -33,11 +33,11 @@ Modification d'un utilisateur
                             <label for="phone-number-user" class="form-label">N° de telephone</label>
                             <input type="text" name="phone_number" class="form-control" id="phone-number-user" value="{{$user->phone_number}}">
                         </div>
-                        <div class="mb-3">
-                            <label for="email-user" class="form-label">Adresse Email</label>
-                            <input type="text" name="email" class="form-control" id="email-user" value="{{$user->email}}">
-                        </div>
-                        @if (request()->has('page'))
+                        @if (request()->has('page') && !Auth::user()->intervenant)
+                            <div class="mb-3">
+                                <label for="email-user" class="form-label">Adresse Email</label>
+                                <input type="text" name="email" class="form-control" id="email-user" value="{{$user->email}}">
+                            </div>
                             <div class="mb-3">
                                 <label for="password-user" class="form-label">Nouveau mot de passe</label>
                                 <input type="text" name="password" class="form-control" id="password-user">

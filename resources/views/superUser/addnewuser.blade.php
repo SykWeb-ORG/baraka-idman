@@ -47,6 +47,12 @@ Ajout d'un utilisateur
                                 <option value="juridique assistant">Juridique Assistant</option>
                             </select>
                         </div>
+                        @if (session('matricule'))
+                        <div class="mb-3">
+                            <label for="matricule-generated" class="form-label">Code généré</label>
+                            <input type="text" value="{{ session('matricule') }}" disabled class="form-control" id="matricule-generated">
+                        </div>
+                        @endif
                         <div class="mb-3">
                             <button id="btn-manip-user" class="btn btn-primary">Ajouter</button>
                         </div>
