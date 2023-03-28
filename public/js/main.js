@@ -80,7 +80,7 @@ const alertMsg = (msg, classDanger = "") => {
         divAlert.toggleClass(["hide", "d-none", "show"]);
     }, 3000);
 }
-function interveantLogin(){
+function intervenantLogin(){
     var password =document.getElementById('passw-input');
     var email =document.getElementById('email-input');
     var interLiNK =document.getElementById('log-inter');
@@ -88,7 +88,9 @@ function interveantLogin(){
     var interMatricule = document.getElementById('matricule-input')
     if(password.style.display != 'none'){
         password.style.display = 'none';
+        $("input#passwd").val("");
         email.style.display = 'none';
+        $("input#email").val("");
         interLiNK.textContent = "Tu n'es pas un intervenant ?";
         title.textContent = "Sign In For Intervenant";
         interMatricule.style.display = 'block';
@@ -99,6 +101,7 @@ function interveantLogin(){
         interLiNK.textContent = "T'es un intervenant ?";
         title.textContent = "Sign In";
         interMatricule.style.display = 'none';
+        $("input#matricule").val("");
     }
 }
 function SelectDB(){

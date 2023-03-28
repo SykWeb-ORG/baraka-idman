@@ -92,28 +92,28 @@
                                 <h3 id="Sign-title">Sign In</h3>
                             </div>
                             <div class="form-floating mb-3 matricule" id="matricule-input">
-                                <input type="number" class="form-control" id="floatingMat" name="matricule"
+                                <input type="number" class="form-control" id="matricule" name="matricule"
                                 placeholder="123456">
-                                <label for="floatingMat">Matricule Number</label>
+                                <label for="matricule">Matricule Number</label>
                             </div>
                             <div class="form-floating mb-3" id="email-input">
-                                <input type="email" class="form-control" id="floatingInput" name="email"
+                                <input type="email" class="form-control" id="email" name="email"
                                     placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                                <label for="email">Email address</label>
                             </div>
                             <div class="form-floating mb-4" id="passw-input">
-                                <input type="password" class="form-control" id="floatingPassword" name="password"
+                                <input type="password" class="form-control" id="passwd" name="password"
                                     placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                                <label for="passwd">Password</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <a href="#" id="log-inter" onclick="interveantLogin()">T'es un intervenant?</a>
+                                <a href="#" id="log-inter" onclick="intervenantLogin()">T'es un intervenant?</a>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                         </div>
                     </form>
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -122,7 +122,7 @@
                         </div>
                     @endif
                     @if ($msg = session()->get('msg'))
-                        <div class="alert alert-{{ session()->get('status') }} alert-dismissible fade show"
+                        <div class="alert-{{ session()->get('status') }} alert-dismissible fade show"
                             role="alert">
                             <i class="fas {{ session()->get('icon') }}"></i> {{ $msg }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"

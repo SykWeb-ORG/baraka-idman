@@ -165,12 +165,27 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('match-beneficiaire-suicide_causes/{beneficiaire}', [ManagementBeneficiaireSuicideController::class, 'matchBeneficiaireSuicideCauses'])->name('match-beneficiaire-suicide_causes');
     Route::put('reinit/{user}', function (Request $request, User $user) {
         $user->password = Hash::make('demo0000');
+        if ($user->intervenant) {
+            do {
+                static $matricule = "";
+                for ($i=0; $i < 6; $i++) { 
+                    $matricule .= strval(rand(0, 9));
+                }
+            } while (Intervenant::all()->first(function ($intervenant, $key) use ($matricule) {
+                return Hash::check($matricule, $intervenant->code);
+            }));
+            $user->intervenant->code = Hash::make($matricule);
+            $user->intervenant->update();
+        }
         if ($user->update()) {
             // $result = $user;
             // $status = 200;
             $result = 'Réinitialisation du compte avec succés';
             $status = 'success';
             $icon = 'fa-check';
+            if (isset($matricule)) {
+                $request->session()->flash('matricule', $matricule);
+            }
         } else {
             $result = 'probleme au serveur.';
             // $status = 500;

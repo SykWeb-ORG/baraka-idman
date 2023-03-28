@@ -25,13 +25,17 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => [
+                'exclude_unless:matricule,null',
                 'email',
                 'required',
-                'present',
             ],
             'password' => [
+                'exclude_unless:matricule,null',
                 'required',
-                'present',
+            ],
+            'matricule' => [
+                'exclude_unless:email,null',
+                'required',
             ],
         ];
     }
