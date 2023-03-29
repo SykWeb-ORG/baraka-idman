@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProgrammeRequest;
+use App\Models\Partenaire;
 use App\Models\Place;
 use App\Models\Programme;
 use App\Models\ProgrammeType;
@@ -53,6 +54,11 @@ class ProgrammeController extends Controller
         $request->whenFilled('programme_type', function ($input) use ($programme) {
             if ($programme_type = ProgrammeType::find($input)) {
                 $programme_type->programmes()->save($programme);
+            }
+        });
+        $request->whenFilled('partenaire', function ($input) use ($programme) {
+            if ($partenaire = Partenaire::find($input)) {
+                $partenaire->programmes()->save($programme);
             }
         });
         if ($programme->save()) {
@@ -123,6 +129,11 @@ class ProgrammeController extends Controller
         $request->whenFilled('programme_type', function ($input) use ($programme) {
             if ($programme_type = ProgrammeType::find($input)) {
                 $programme_type->programmes()->save($programme);
+            }
+        });
+        $request->whenFilled('partenaire', function ($input) use ($programme) {
+            if ($partenaire = Partenaire::find($input)) {
+                $partenaire->programmes()->save($programme);
             }
         });
         if ($programme->update()) {

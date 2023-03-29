@@ -7,6 +7,7 @@ var places = [];
 /// *****************************
 $(document).ready(function () {
     getAllData("programmeTypes", fillSelectProgrammeTypes);
+    getAllData("partenaires", fillSelectPartenaires);
     $("button#btn-add-programme").click(addProgramme);
     $("button#btn-add-place").click(function (e) {
         e.preventDefault();
@@ -35,9 +36,11 @@ const addProgramme = (e) => {
     e.preventDefault();
     let nomProgramme = $("input#nom-programme").val();
     let typeProgramme = $("select#type-programme").val();
+    let partenaire = $("select#partenaire").val();
     let dataToSend = {
         "programme_nom": nomProgramme,
         "programme_type": typeProgramme,
+        "partenaire": partenaire,
         "places": places,
     }
     addData("programmes", dataToSend, showDialogResponse);
@@ -156,5 +159,21 @@ const fillSelectProgrammeTypes = (data)=>{
     });
     $("select#type-programme").select2({
         placeholder: 'Séléctionner un type programme...',
+    });
+}
+/**
+ * Fill the select field with all partenaires
+ * @param {object} data response from the server that contains all partenaires
+ */
+const fillSelectPartenaires = (data)=>{
+    let partenaires = data.partenaires;
+    $.each(partenaires, function (indexInArray, partenaire) {
+        let option = $("<option>");
+        option.text(partenaire.partenaire_nom);
+        option.val(partenaire.id);
+        $("select#partenaire").append(option);
+    });
+    $("select#partenaire").select2({
+        placeholder: 'Séléctionner un partenaire...',
     });
 }

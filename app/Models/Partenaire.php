@@ -14,4 +14,12 @@ class Partenaire extends Model
         'partenaire_objectif',
         'partenaire_logo',
     ];
+
+    /**
+     * Get the programmes for the partanaire.
+     */
+    public function programmes()
+    {
+        return $this->hasMany(Programme::class);
+    }
 }

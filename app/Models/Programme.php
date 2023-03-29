@@ -26,6 +26,7 @@ class Programme extends Model
     protected $with = [
         'places',
         'programme_type',
+        'partenaire',
     ];
 
     /**
@@ -52,5 +53,13 @@ class Programme extends Model
     public function programme_type()
     {
         return $this->belongsTo(ProgrammeType::class, 'programme_type');
+    }
+    
+    /**
+     * The partenaire that own the programme.
+     */
+    public function partenaire()
+    {
+        return $this->belongsTo(Partenaire::class);
     }
 }
