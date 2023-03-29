@@ -40,12 +40,8 @@
                                         <input type="text" name="service_nom" class="form-control" id="service_nom">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="service-type" class="form-label">Type Du Service</label>
-                                        <select name="service-type" class="form-select" aria-label="Default select example" id="service-type">
-                                            <option value="">Selectionner Un Type De Service</option>
-                                            <option value="">Serv1</option>
-                                            <option value="">Serv2</option>
-                                            <option value="">Serv3</option>
+                                        <label for="type-service" class="form-label">Type Du Service</label>
+                                        <select name="type-service" class="form-select" aria-label="Default select example" id="type-service">
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -85,5 +81,7 @@
     </div>
 @endsection
 @section('custom_scripts')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('jsApi/servicesRoles/allServices.js') }}"></script>
 @endsection

@@ -16,6 +16,7 @@ class Service extends Model
      */
     protected $with = [
         'users',
+        'service_type',
     ];
 
     /**
@@ -46,5 +47,13 @@ class Service extends Model
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * The service type that own the service.
+     */
+    public function service_type()
+    {
+        return $this->belongsTo(ServiceType::class);
     }
 }

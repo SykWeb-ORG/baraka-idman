@@ -28,6 +28,10 @@ class ServiceRequest extends FormRequest
                 'required',
                 'present',
             ],
+            'service_type'=>[
+                'required',
+                'present',
+            ],
         ];
     }
 }
