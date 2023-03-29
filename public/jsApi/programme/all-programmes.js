@@ -10,6 +10,7 @@ var places = [];
 $(document).ready(function () {
     getAllData("programmes", getAllProgrammes);
     getAllData("programmeTypes", fillSelectProgrammeTypes);
+    getAllData("partenaires", fillSelectPartenaires);
     $("button#btn-edit-program").click(editProgramme);
     $("button#btn-delete-program").click(deleteProgramme);
     $("button#btn-add-place").click(function (e) {
@@ -46,9 +47,11 @@ const editProgramme = (e) => {
     e.preventDefault();
     let nomProgramme = $("input#nom-program").val();
     let typeProgramme = $("select#type-programme").val();
+    let partenaire = $("select#partenaire").val();
     let dataToSend = {
         "programme_nom": nomProgramme,
         "programme_type": typeProgramme,
+        "partenaire": partenaire,
     }
     updateData(`programmes/${programmeToOperate.id}`, dataToSend, showDialogResponse);
 }
@@ -89,7 +92,9 @@ const getAllProgrammes = (data) => {
         let tdNameProgramme = $("<td>");
         tdNameProgramme.text(programme.programme_nom);
         let tdTypeProgramme = $("<td>");
-        tdTypeProgramme.text(programme.programme_type.programme_type_nom);
+        tdTypeProgramme.text(programme.programme_type ? programme.programme_type.programme_type_nom : "");
+        let tdPartenaire = $("<td>");
+        tdPartenaire.text(programme.partenaire ? programme.partenaire.partenaire_nom : "");
         let tdEditProgramme = $(`<td class="text-center">`);
         let btnEditProgramme = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-programme-id=${programme.id} data-bs-toggle='modal' data-bs-target='#modal_EditPrgrm'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Programme'>`);
         btnEditProgramme.append("<i class='fas fa-edit'></i>");
@@ -117,7 +122,7 @@ const getAllProgrammes = (data) => {
             addPlaceToTable();
         });
         tdListePlaces.append(btnListePlaces);
-        tr.append(tdNb, tdNameProgramme, tdTypeProgramme, tdEditProgramme, tdDeleteProgramme, tdListePlaces);
+        tr.append(tdNb, tdNameProgramme, tdTypeProgramme, tdPartenaire, tdEditProgramme, tdDeleteProgramme, tdListePlaces);
         $("tbody#tbl_programme").append(tr);
     });
 }
@@ -128,8 +133,10 @@ const getAllProgrammes = (data) => {
 const fillModalEditProgramme = (programmeId) => {
     programmeToOperate = programmes.find(programme => programme.id == programmeId);
     $("input#nom-program").val(programmeToOperate.programme_nom);
-    $("select#type-programme").val(programmeToOperate.programme_type.id);
+    $("select#type-programme").val(programmeToOperate.programme_type ? programmeToOperate.programme_type.id : "");
     $("select#type-programme").trigger('change');
+    $("select#partenaire").val(programmeToOperate.partenaire ? programmeToOperate.partenaire.id : "");
+    $("select#partenaire").trigger('change');
 }
 /**
  * Add new place to the programme
@@ -242,5 +249,21 @@ const fillSelectProgrammeTypes = (data)=>{
     });
     $("select#type-programme").select2({
         placeholder: 'Séléctionner un type programme...',
+    });
+}
+/**
+ * Fill the select field with all partenaires
+ * @param {object} data response from the server that contains all partenaires
+ */
+const fillSelectPartenaires = (data)=>{
+    let partenaires = data.partenaires;
+    $.each(partenaires, function (indexInArray, partenaire) {
+        let option = $("<option>");
+        option.text(partenaire.partenaire_nom);
+        option.val(partenaire.id);
+        $("select#partenaire").append(option);
+    });
+    $("select#partenaire").select2({
+        placeholder: 'Séléctionner un partenaire...',
     });
 }

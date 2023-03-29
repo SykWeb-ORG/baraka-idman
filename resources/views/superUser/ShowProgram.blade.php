@@ -18,6 +18,7 @@ Liste des Programs
                             <th scope="col">N°</th>
                             <th>Nom du Programme</th>
                             <th>Type Du Programme</th>
+                            <th>Partenaire</th>
                             <th colspan="3" class="actions">Action</th>
                         </tr>
                     </thead>
@@ -116,6 +117,12 @@ Liste des Programs
                                     <div class="mb-3">
                                         <label for="type-programme" class="form-label">Type Du Programme</label>
                                         <select type="text" name="type-programme" class="form-control" id="type-programme">
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="partenaire" class="form-label">Partenaire</label>
+                                        <select name="partenaire" class="form-select" aria-label="Default select example" id="partenaire">
+                                            <option value="">Selectionner un partenaire</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
