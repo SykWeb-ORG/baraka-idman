@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProgrammeRequest;
 use App\Models\Place;
 use App\Models\Programme;
+use App\Models\ProgrammeType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -48,8 +49,12 @@ class ProgrammeController extends Controller
     public function store(ProgrammeRequest $request)
     {
         $programme = new Programme;
-        $programme->programme_type = $request->programme_type;
         $programme->programme_nom = $request->programme_nom;
+        $request->whenFilled('programme_type', function ($input) use ($programme) {
+            if ($programme_type = ProgrammeType::find($input)) {
+                $programme_type->programmes()->save($programme);
+            }
+        });
         if ($programme->save()) {
             if ($request->has('places')) {
                 $places = collect([]);
@@ -114,8 +119,12 @@ class ProgrammeController extends Controller
      */
     public function update(ProgrammeRequest $request, Programme $programme)
     {
-        $programme->programme_type = $request->programme_type;
         $programme->programme_nom = $request->programme_nom;
+        $request->whenFilled('programme_type', function ($input) use ($programme) {
+            if ($programme_type = ProgrammeType::find($input)) {
+                $programme_type->programmes()->save($programme);
+            }
+        });
         if ($programme->update()) {
             $result = $programme;
             $status = 200;
