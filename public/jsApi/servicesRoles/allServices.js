@@ -9,6 +9,7 @@ var serviceToOperate = null;
 /// *****************************
 $(document).ready(function () {
     getAllData("all-services", getAllServices);
+    getAllData("serviceTypes", fillSelectServiceTypes);
     $("button#btn-edit-service").click(editService);
     $("button#btn-delete-service").click(deleteService);
 
@@ -25,8 +26,10 @@ $(document).ready(function () {
 const editService = (e) => {
     e.preventDefault();
     let nomService = $("input#service_nom").val();
+    let serviceType = $("select#type-service").val();
     let dataToSend = {
         "service_nom": nomService,
+        "service_type": serviceType,
     }
     updateData(`services/${serviceToOperate.id}`, dataToSend, showDialogResponse);
 }
@@ -49,6 +52,8 @@ const showDialogResponse = (data) => {
         let service = data.result;
         let msg = data.msg;
         alertMsg(msg);
+        $("select#type-service").val("");
+        $("select#type-service").trigger('change');
         $("tbody#tbl_services").empty();
         getAllData("all-services", getAllServices);
     } else {
@@ -70,6 +75,8 @@ const getAllServices = (data) => {
         tdNb.text(indexInArray + 1);
         let tdNameService = $("<td>");
         tdNameService.text(oneService.service_nom);
+        let tdServiceType = $("<td>");
+        tdServiceType.text(oneService.service_type ? oneService.service_type.service_type_nom : "");
 
         let tdEditService = $(`<td class="text-center">`);
         let btnEditService = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-service-id=${oneService.id} data-bs-toggle='modal' data-bs-target='#modal_EditService'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Service'>`);
@@ -89,7 +96,7 @@ const getAllServices = (data) => {
         });
         tdDeleteService.append(btnDeleteService);
 
-        tr.append(tdNb, tdNameService, tdEditService, tdDeleteService);
+        tr.append(tdNb, tdNameService, tdServiceType, tdEditService, tdDeleteService);
         $("tbody#tbl_services").append(tr);
     });
 }
@@ -97,5 +104,22 @@ const getAllServices = (data) => {
 const fillModalEditService = (serviceId) => {
     serviceToOperate = services.find(oneService => oneService.id == serviceId);
     $("input#service_nom").val(serviceToOperate.service_nom);
+    $("select#type-service").val(serviceToOperate.service_type ? serviceToOperate.service_type.id : "");
+    $("select#type-service").trigger('change');
 }
-
+/**
+ * Fill the select field with all service types
+ * @param {object} data response from the server that contains all service types
+ */
+const fillSelectServiceTypes = (data)=>{
+    let service_types = data.service_types;
+    $.each(service_types, function (indexInArray, service_type) {
+        let option = $("<option>");
+        option.text(service_type.service_type_nom);
+        option.val(service_type.id);
+        $("select#type-service").append(option);
+    });
+    $("select#type-service").select2({
+        placeholder: 'Séléctionner un type service...',
+    });
+}

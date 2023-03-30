@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
+use App\Models\ServiceType;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -45,6 +46,11 @@ class ServiceController extends Controller
     {
         $service = new Service;
         $service->service_nom = $request->service_nom;
+        $request->whenFilled('service_type', function ($input) use ($service) {
+            if ($service_type = ServiceType::find($input)) {
+                $service_type->services()->save($service);
+            }
+        });
         if ($service->save()) {
             $result = $service;
             $status = 200;
@@ -96,6 +102,11 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request, Service $service)
     {
         $service->service_nom = $request->service_nom;
+        $request->whenFilled('service_type', function ($input) use ($service) {
+            if ($service_type = ServiceType::find($input)) {
+                $service_type->services()->save($service);
+            }
+        });
         if ($service->update()) {
             $result = $service;
             $status = 200;
