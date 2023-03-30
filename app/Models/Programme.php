@@ -25,6 +25,7 @@ class Programme extends Model
      */
     protected $with = [
         'places',
+        'programme_type',
     ];
 
     /**
@@ -43,5 +44,13 @@ class Programme extends Model
         return $this->belongsToMany(Intervenant::class)
                     ->as('intervenant_programme')
                     ->withTimestamps();
+    }
+
+    /**
+     * The programme type that own the programme.
+     */
+    public function programme_type()
+    {
+        return $this->belongsTo(ProgrammeType::class, 'programme_type');
     }
 }

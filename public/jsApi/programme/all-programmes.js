@@ -9,6 +9,7 @@ var places = [];
 /// *****************************
 $(document).ready(function () {
     getAllData("programmes", getAllProgrammes);
+    getAllData("programmeTypes", fillSelectProgrammeTypes);
     $("button#btn-edit-program").click(editProgramme);
     $("button#btn-delete-program").click(deleteProgramme);
     $("button#btn-add-place").click(function (e) {
@@ -44,7 +45,7 @@ $(document).ready(function () {
 const editProgramme = (e) => {
     e.preventDefault();
     let nomProgramme = $("input#nom-program").val();
-    let typeProgramme = $("input#type-program").val();
+    let typeProgramme = $("select#type-programme").val();
     let dataToSend = {
         "programme_nom": nomProgramme,
         "programme_type": typeProgramme,
@@ -88,7 +89,7 @@ const getAllProgrammes = (data) => {
         let tdNameProgramme = $("<td>");
         tdNameProgramme.text(programme.programme_nom);
         let tdTypeProgramme = $("<td>");
-        tdTypeProgramme.text(programme.programme_type);
+        tdTypeProgramme.text(programme.programme_type.programme_type_nom);
         let tdEditProgramme = $(`<td class="text-center">`);
         let btnEditProgramme = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-programme-id=${programme.id} data-bs-toggle='modal' data-bs-target='#modal_EditPrgrm'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Programme'>`);
         btnEditProgramme.append("<i class='fas fa-edit'></i>");
@@ -127,7 +128,8 @@ const getAllProgrammes = (data) => {
 const fillModalEditProgramme = (programmeId) => {
     programmeToOperate = programmes.find(programme => programme.id == programmeId);
     $("input#nom-program").val(programmeToOperate.programme_nom);
-    $("input#type-program").val(programmeToOperate.programme_type);
+    $("select#type-programme").val(programmeToOperate.programme_type.id);
+    $("select#type-programme").trigger('change');
 }
 /**
  * Add new place to the programme
@@ -225,4 +227,20 @@ function editProgrammePlaces() {
         "places": places,
     }
     updateData(`link-places-with-programme/${programmeToOperate.id}`, dataToSend, (data)=>{console.log(data);});
+}
+/**
+ * Fill the select field with all programme types
+ * @param {object} data response from the server that contains all programme types
+ */
+const fillSelectProgrammeTypes = (data)=>{
+    let programme_types = data.programme_types;
+    $.each(programme_types, function (indexInArray, programme_type) {
+        let option = $("<option>");
+        option.text(programme_type.programme_type_nom);
+        option.val(programme_type.id);
+        $("select#type-programme").append(option);
+    });
+    $("select#type-programme").select2({
+        placeholder: 'Séléctionner un type programme...',
+    });
 }

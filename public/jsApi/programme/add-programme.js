@@ -6,6 +6,7 @@ var places = [];
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
+    getAllData("programmeTypes", fillSelectProgrammeTypes);
     $("button#btn-add-programme").click(addProgramme);
     $("button#btn-add-place").click(function (e) {
         e.preventDefault();
@@ -33,7 +34,7 @@ $(document).ready(function () {
 const addProgramme = (e) => {
     e.preventDefault();
     let nomProgramme = $("input#nom-programme").val();
-    let typeProgramme = $("input#type-programme").val();
+    let typeProgramme = $("select#type-programme").val();
     let dataToSend = {
         "programme_nom": nomProgramme,
         "programme_type": typeProgramme,
@@ -140,4 +141,20 @@ const createPlaceObject = () => {
         "programme_resultat": resultatProgramme,
     }
     return place;
+}
+/**
+ * Fill the select field with all programme types
+ * @param {object} data response from the server that contains all programme types
+ */
+const fillSelectProgrammeTypes = (data)=>{
+    let programme_types = data.programme_types;
+    $.each(programme_types, function (indexInArray, programme_type) {
+        let option = $("<option>");
+        option.text(programme_type.programme_type_nom);
+        option.val(programme_type.id);
+        $("select#type-programme").append(option);
+    });
+    $("select#type-programme").select2({
+        placeholder: 'Séléctionner un type programme...',
+    });
 }
