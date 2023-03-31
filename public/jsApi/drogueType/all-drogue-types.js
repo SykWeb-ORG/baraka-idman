@@ -63,16 +63,16 @@ const getAllDrogueType = (data)=>{
         let tdNameDrogueType = $("<td>");
         tdNameDrogueType.text(drogueType.drogue_nom);
         let tdEditDrogueType = $(`<td class="text-center">`);
-        let btnEditDrogueType = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-drogue-type-id=${drogueType.id} data-bs-toggle='modal' data-bs-target='#modal_EditTypeDrogue'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier drogue'>`);
-        btnEditDrogueType.append("<i class='fas fa-edit'></i>");
+        let btnEditDrogueType = $(`<button type='submit' class='btn btn-primary m-2' data-drogue-type-id=${drogueType.id} data-bs-toggle='modal' data-bs-target='#modal_EditTypeDrogue'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier drogue'>`);
+        btnEditDrogueType.append("<i class='fas fa-edit'></i>Modifier");
         btnEditDrogueType.click(function (e) { 
             e.preventDefault();
             fillModalEditDrogueType($(this).data("drogue-type-id"));
         });
         tdEditDrogueType.append(btnEditDrogueType);
         let tdDeleteDrogueType = $(`<td class="text-center">`);
-        let btnDeleteDrogueType = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-drogue-type-id=${drogueType.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteTypeDrogue"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer drogue'>`);
-        btnDeleteDrogueType.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteDrogueType = $(`<button type="submit" class="btn btn-primary m-2" data-drogue-type-id=${drogueType.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteTypeDrogue"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer drogue'>`);
+        btnDeleteDrogueType.append(`<i class="fas fa-trash"></i>Supprimer`);
         btnDeleteDrogueType.click(function (e) {
             e.preventDefault();
             drogueTypeToOperate = drogueTypes.find(oneDrogueType => oneDrogueType.id == $(this).data("drogue-type-id"));

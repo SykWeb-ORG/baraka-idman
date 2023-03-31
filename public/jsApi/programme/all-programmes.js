@@ -96,24 +96,24 @@ const getAllProgrammes = (data) => {
         let tdPartenaire = $("<td>");
         tdPartenaire.text(programme.partenaire ? programme.partenaire.partenaire_nom : "");
         let tdEditProgramme = $(`<td class="text-center">`);
-        let btnEditProgramme = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-programme-id=${programme.id} data-bs-toggle='modal' data-bs-target='#modal_EditPrgrm'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Programme'>`);
-        btnEditProgramme.append("<i class='fas fa-edit'></i>");
+        let btnEditProgramme = $(`<button type='submit' class='btn btn-primary m-2' data-programme-id=${programme.id} data-bs-toggle='modal' data-bs-target='#modal_EditPrgrm'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Programme'>`);
+        btnEditProgramme.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditProgramme.click(function (e) { 
             e.preventDefault();
             fillModalEditProgramme($(this).data("programme-id"));
         });
         tdEditProgramme.append(btnEditProgramme);
         let tdDeleteProgramme = $(`<td class="text-center">`);
-        let btnDeleteProgramme = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-programme-id=${programme.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteProgram"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Programme'>`);
-        btnDeleteProgramme.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteProgramme = $(`<button type="submit" class="btn btn-primary m-2" data-programme-id=${programme.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteProgram"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Programme'>`);
+        btnDeleteProgramme.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeleteProgramme.click(function (e) {
             e.preventDefault();
             programmeToOperate = programmes.find(oneProgramme => oneProgramme.id == $(this).data("programme-id"));
         });
         tdDeleteProgramme.append(btnDeleteProgramme);
         let tdListePlaces = $(`<td class="text-center">`);
-        let btnListePlaces = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-programme-id=${programme.id} data-bs-toggle="modal" data-bs-target="#modal_ListePlace"  data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher les lieux'>`);
-        btnListePlaces.append(`<i class="fas fa-list"></i>`);
+        let btnListePlaces = $(`<button type="submit" class="btn btn-primary m-2" data-programme-id=${programme.id} data-bs-toggle="modal" data-bs-target="#modal_ListePlace"  data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher les lieux'>`);
+        btnListePlaces.append(`<i class="fas fa-list me-2"></i>Liste</button>`);
         btnListePlaces.click(function (e) {
             e.preventDefault();
             debugger

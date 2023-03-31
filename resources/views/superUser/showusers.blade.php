@@ -103,13 +103,13 @@ Liste des utilisateurs
                                     @endphp
                                 </td>
                                 <td><input type="checkbox" {{ ($user->active)? "checked" : "" }} data-user-id="{{$user->id}}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></td>
-                                <td class="QuserEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit"></i></a></td>
+                                <td class="QuserEdit"><a href='{{ route('users.edit', ['user'=>$user->id]) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier utilisateur'><i class="fas fa-user-edit me-2 align-item-center"></i>Modifier</a></td>
                                 <td class="QuserDest">
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-sm-square btn-primary m-2" type="button"
-                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteUser{{$loop->iteration}}" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus"></i></button>
+                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteUser{{$loop->iteration}}" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus me-2"></i>Supprimer</button>
                                         <!--Delete user-->
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal_DeleteUser{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -155,15 +155,15 @@ Liste des utilisateurs
                                                     <form action="{{ route('reinit', ['user'=>$user->id]) }}" method="post">
                                                         @csrf
                                                         @method('PUT')
-                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Reinitialiser compte'><i class="fas fa-sync"></i></button>
+                                                        <button type="submit" class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Reinitialiser compte'><i class="fas fa-sync me-2"></i>Réinitialiser</button>
                                                     </form>
                                                     @if ($user->intervenant)
                                                         @can('intervenant-zones-ability')
-                                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier intervenant avec les zones'><i class="fas fa-map-marker"></i></a>
+                                                        <a href='{{ route('all-zones', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier intervenant avec les zones'><i class="fas fa-map-marker me-2"></i>Zones</a>
                                                         @endcan
                                                     @endif
                                                     @if ($user->intervenant)
-                                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier intervenant avec les programmes'><i class="fab fa-product-hunt"></i></a>
+                                                        <a href='{{ route('all-programmes', ['intervenant'=>$user->intervenant->id]) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier intervenant avec les programmes'><i class="fab fa-product-hunt me-2"></i>Programmes</a>
                                                     @endif
                                                 </div>
                                             </div>

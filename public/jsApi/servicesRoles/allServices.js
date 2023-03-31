@@ -79,8 +79,8 @@ const getAllServices = (data) => {
         tdServiceType.text(oneService.service_type ? oneService.service_type.service_type_nom : "");
 
         let tdEditService = $(`<td class="text-center">`);
-        let btnEditService = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-service-id=${oneService.id} data-bs-toggle='modal' data-bs-target='#modal_EditService'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Service'>`);
-        btnEditService.append("<i class='fas fa-edit'></i>");
+        let btnEditService = $(`<button type='submit' class='btn btn-primary m-2' data-service-id=${oneService.id} data-bs-toggle='modal' data-bs-target='#modal_EditService'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Service'>`);
+        btnEditService.append("<i class='fas fa-edit'></i>Modifier");
         btnEditService.click(function (e) { 
             e.preventDefault();
             fillModalEditService($(this).data("service-id"));
@@ -88,8 +88,8 @@ const getAllServices = (data) => {
         tdEditService.append(btnEditService);
 
         let tdDeleteService = $(`<td class="text-center">`);
-        let btnDeleteService = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-service-id=${oneService.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteService"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Service'>`);
-        btnDeleteService.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteService = $(`<button type="submit" class="btn btn-primary m-2" data-service-id=${oneService.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteService"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Service'>`);
+        btnDeleteService.append(`<i class="fas fa-trash"></i>Supprimer`);
         btnDeleteService.click(function (e) {
             e.preventDefault();
             serviceToOperate = services.find(oneService => oneService.id == $(this).data("service-id"));

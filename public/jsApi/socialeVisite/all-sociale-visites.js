@@ -88,16 +88,16 @@ const getAllSocialeVisites = (data) => {
         let tdBeneficiaire = $("<td>");
         tdBeneficiaire.text(`${socialeVisite.beneficiaire.nom} ${socialeVisite.beneficiaire.prenom}`);
         let tdEditSocialeVisite = $(`<td class="text-center">`);
-        let btnEditSocialeVisite = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-sociale-visite-id=${socialeVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditVisite_Sociale'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite sociale'>`);
-        btnEditSocialeVisite.append("<i class='fas fa-edit'></i>");
+        let btnEditSocialeVisite = $(`<button type='submit' class='btn btn-primary m-2' data-sociale-visite-id=${socialeVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditVisite_Sociale'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite sociale'>`);
+        btnEditSocialeVisite.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditSocialeVisite.click(function (e) {
             e.preventDefault();
             fillModalEditSocialeVisite($(this).data("sociale-visite-id"));
         });
         tdEditSocialeVisite.append(btnEditSocialeVisite);
         let tdDeleteSocialeVisite = $(`<td class="text-center">`);
-        let btnDeleteSocialeVisite = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-sociale-visite-id=${socialeVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteVisite_sociale"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite sociale'>`);
-        btnDeleteSocialeVisite.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteSocialeVisite = $(`<button type="submit" class="btn btn-primary m-2" data-sociale-visite-id=${socialeVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteVisite_sociale"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite sociale'>`);
+        btnDeleteSocialeVisite.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeleteSocialeVisite.click(function (e) {
             e.preventDefault();
             socialeVisiteToOperate = socialeVisites.find(oneSocialeVisite => oneSocialeVisite.id == $(this).data("sociale-visite-id"));

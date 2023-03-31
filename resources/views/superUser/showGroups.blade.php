@@ -19,7 +19,7 @@ Liste des Groupes
                             <th>Nom du groupe</th>
                             <th>Capacity du groupe</th>
                             <th>Atelier</th>
-                            <th colspan="2" class="actions">Action</th>
+                            <th colspan="2" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_group">

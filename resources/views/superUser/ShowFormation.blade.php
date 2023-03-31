@@ -22,7 +22,7 @@
                             <th>Organisme chargé de la Formation</th>
                             <th>Formateur</th>
                             <th>Objet</th>
-                            <th colspan="2" class="actions">Action</th>
+                            <th colspan="2" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_formation">
@@ -30,9 +30,9 @@
                 </table>
                 <!--List Participant-->
                 <!-- Modal -->
-                <button class="btn btn-sm btn-sm-square btn-primary m-2"type="button" data-bs-toggle="modal"
+                <button class="btn btn-primary m-2"type="button" data-bs-toggle="modal"
                     data-bs-target="#modal_ListePart">
-                    <i class="fas fa-list"></i>
+                    <i class="fas fa-list me-2"></i>Liste
                 </button>
                 <div class="modal" id="modal_ListePart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -241,9 +241,9 @@
                 <!--End List Part-->
                 <!--Delete Formation-->
                 <!-- Modal -->
-                <button class="btn btn-sm btn-sm-square btn-primary m-2"type="button" data-bs-toggle="modal"
+                <button class="btn btn-primary m-2"type="button" data-bs-toggle="modal"
                     data-bs-target="#modal_DeleteFormation">
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash me-2"></i>Supprimer
                 </button>
                 <div class="modal fade" id="modal_DeleteFormation" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -266,9 +266,9 @@
                 <!--End Modal-->
                 <!--End Delete Formation-->
                 <button
-                      class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
+                      class="btn btn-primary m-2"type="button"
                       data-bs-toggle="modal" data-bs-target="#modal_EditPrgrm">
-                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-edit me-2"></i>Modifier
                   </button>
                     <!--Edit Program-->
                     <!-- Modal -->

@@ -63,16 +63,16 @@ const getAllCas = (data)=>{
         let tdNameCas = $("<td>");
         tdNameCas.text(oneCas.cas_nom);
         let tdEditCas = $(`<td class="text-center">`);
-        let btnEditCas = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-cas-id=${oneCas.id} data-bs-toggle='modal' data-bs-target='#modal_Edit'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Cas Juridique'>`);
-        btnEditCas.append("<i class='fas fa-edit'></i>");
+        let btnEditCas = $(`<button type='submit' class='btn btn-primary me-2' data-cas-id=${oneCas.id} data-bs-toggle='modal' data-bs-target='#modal_Edit'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Cas Juridique'>`);
+        btnEditCas.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditCas.click(function (e) { 
             e.preventDefault();
             fillModalEditCas($(this).data("cas-id"));
         });
         tdEditCas.append(btnEditCas);
         let tdDeleteCas = $(`<td class="text-center">`);
-        let btnDeleteCas = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-cas-id=${oneCas.id} data-bs-toggle="modal" data-bs-target="#modal_Delete"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Cas Juridique'>`);
-        btnDeleteCas.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteCas = $(`<button type="submit" class="btn btn-primary me-2" data-cas-id=${oneCas.id} data-bs-toggle="modal" data-bs-target="#modal_Delete"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Cas Juridique'>`);
+        btnDeleteCas.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeleteCas.click(function (e) {
             e.preventDefault();
             casToOperate = cas.find(oneCas => oneCas.id == $(this).data("cas-id"));

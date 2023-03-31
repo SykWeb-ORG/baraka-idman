@@ -15,7 +15,7 @@
                         <tr class="text-dark">
                             <th scope="col">N°</th>
                             <th>Nom Du Type De Drogue</th>
-                            <th colspan="2" class="actions">Action</th>
+                            <th colspan="2" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_drogue_types">

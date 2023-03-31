@@ -23,7 +23,7 @@ Liste des Visites Medicales
                             @if (Auth::user()->admin)
                                 <th>Assistant Medical</th>
                             @endif
-                            <th colspan="2" class="actions">Actions</th>
+                            <th colspan="2" class="Qactions">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_medicale_visites">

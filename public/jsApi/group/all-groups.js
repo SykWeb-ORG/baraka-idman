@@ -74,16 +74,16 @@ const getAllGroups = (data)=>{
         let tdAtelier = $("<td>");
         tdAtelier.text(group.atelier.atelier_nom);
         let tdEditGroup = $(`<td class="text-center">`);
-        let btnEditGroup = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-group-id=${group.id} data-bs-toggle='modal' data-bs-target='#modal_EditGrp'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Groupe'>`);
-        btnEditGroup.append("<i class='fas fa-edit'></i>");
+        let btnEditGroup = $(`<button type='submit' class='btn btn-primary m-2' data-group-id=${group.id} data-bs-toggle='modal' data-bs-target='#modal_EditGrp'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Groupe'>`);
+        btnEditGroup.append("<i class='fas fa-edit'></i>Modifier");
         btnEditGroup.click(function (e) { 
             e.preventDefault();
             fillModalEditGroup($(this).data("group-id"));
         });
         tdEditGroup.append(btnEditGroup);
         let tdDeleteGroup = $(`<td class="text-center">`);
-        let btnDeleteGroup = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-group-id=${group.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteGrp"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Groupe'>`);
-        btnDeleteGroup.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteGroup = $(`<button type="submit" class="btn btn-primary m-2" data-group-id=${group.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteGrp"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Groupe'>`);
+        btnDeleteGroup.append(`<i class="fas fa-trash"></i>Supprimer`);
         btnDeleteGroup.click(function (e) {
             e.preventDefault();
             groupToOperate = groupes.find(oneGroup => oneGroup.id == $(this).data("group-id"));
