@@ -19,7 +19,7 @@ Liste des Programs
                             <th>Nom du Programme</th>
                             <th>Type Du Programme</th>
                             <th>Partenaire</th>
-                            <th colspan="3" class="actions">Action</th>
+                            <th colspan="3" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_programme">
@@ -49,7 +49,7 @@ Liste des Programs
                                                 <th>Nom Place</th> 
                                                 <th>Date programme</th> 
                                                 <th>Résultat</th>
-                                                <th colspan="2" class="actions">Action</th>
+                                                <th colspan="2" class="Qactions">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbl_place">

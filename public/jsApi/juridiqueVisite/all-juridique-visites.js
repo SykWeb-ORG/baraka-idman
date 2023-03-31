@@ -98,16 +98,16 @@ const getAllJuridiqueVisites = (data) => {
         let tdPreuve = $("<td>");
         tdPreuve.html(`<img src="${baseUrl + juridiqueVisite.visite_preuve}" style="width: 40px; height: 40px;">`);
         let tdEditJuridiqueVisite = $(`<td class="text-center">`);
-        let btnEditJuridiqueVisite = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-juridique-visite-id=${juridiqueVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditVisite_Juridique'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite juridique'>`);
-        btnEditJuridiqueVisite.append("<i class='fas fa-edit'></i>");
+        let btnEditJuridiqueVisite = $(`<button type='submit' class='btn btn-primary m-2' data-juridique-visite-id=${juridiqueVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditVisite_Juridique'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite juridique'>`);
+        btnEditJuridiqueVisite.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditJuridiqueVisite.click(function (e) {
             e.preventDefault();
             fillModalEditJuridiqueVisite($(this).data("juridique-visite-id"));
         });
         tdEditJuridiqueVisite.append(btnEditJuridiqueVisite);
         let tdDeleteJuridiqueVisite = $(`<td class="text-center">`);
-        let btnDeleteJuridiqueVisite = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-juridique-visite-id=${juridiqueVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteVisite_juridique"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite juridique'>`);
-        btnDeleteJuridiqueVisite.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteJuridiqueVisite = $(`<button type="submit" class="btn btn-primary m-2" data-juridique-visite-id=${juridiqueVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteVisite_juridique"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite juridique'>`);
+        btnDeleteJuridiqueVisite.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeleteJuridiqueVisite.click(function (e) {
             e.preventDefault();
             juridiqueVisiteToOperate = juridiqueVisites.find(oneJuridiqueVisite => oneJuridiqueVisite.id == $(this).data("juridique-visite-id"));

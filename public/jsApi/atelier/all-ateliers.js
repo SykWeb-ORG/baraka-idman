@@ -63,16 +63,16 @@ const getAllAteliers = (data)=>{
         let tdNameAtelier = $("<td>");
         tdNameAtelier.text(atelier.atelier_nom);
         let tdEditAtelier = $(`<td class="text-center">`);
-        let btnEditAtelier = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-atelier-id=${atelier.id} data-bs-toggle='modal' data-bs-target='#modal_EditAtelier'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Atelier'>`);
-        btnEditAtelier.append("<i class='fas fa-edit'></i>");
+        let btnEditAtelier = $(`<button type='submit' class='btn btn-primary m-2' data-atelier-id=${atelier.id} data-bs-toggle='modal' data-bs-target='#modal_EditAtelier'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Atelier'>`);
+        btnEditAtelier.append("<i class='fas fa-edit'></i>Modifier");
         btnEditAtelier.click(function (e) { 
             e.preventDefault();
             fillModalEditAtelier($(this).data("atelier-id"));
         });
         tdEditAtelier.append(btnEditAtelier);
         let tdDeleteAtelier = $(`<td class="text-center">`);
-        let btnDeleteAtelier = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-atelier-id=${atelier.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteAtelier"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Atelier'>`);
-        btnDeleteAtelier.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteAtelier = $(`<button type="submit" class="btn btn-primary m-2" data-atelier-id=${atelier.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteAtelier"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Atelier'>`);
+        btnDeleteAtelier.append(`<i class="fas fa-trash"></i>Supprimer`);
         btnDeleteAtelier.click(function (e) {
             e.preventDefault();
             atelierToOperate = ateliers.find(oneAtelier => oneAtelier.id == $(this).data("atelier-id"));

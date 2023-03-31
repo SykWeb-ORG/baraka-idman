@@ -63,16 +63,16 @@ const getAllZones = (data)=>{
         let tdNameZone = $("<td>");
         tdNameZone.text(zone.zone_nom);
         let tdEditZone = $(`<td class="text-center">`);
-        let btnEditZone = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-zone-id=${zone.id} data-bs-toggle='modal' data-bs-target='#modal_EditZone'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Zone'>`);
-        btnEditZone.append("<i class='fas fa-edit'></i>");
+        let btnEditZone = $(`<button type='submit' class='btn btn-primary m-2' data-zone-id=${zone.id} data-bs-toggle='modal' data-bs-target='#modal_EditZone'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Zone'>`);
+        btnEditZone.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditZone.click(function (e) { 
             e.preventDefault();
             fillModalEditZone($(this).data("zone-id"));
         });
         tdEditZone.append(btnEditZone);
         let tdDeleteZone = $(`<td class="text-center">`);
-        let btnDeleteZone = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-zone-id=${zone.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteZone"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Zone'>`);
-        btnDeleteZone.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteZone = $(`<button type="submit" class="btn btn-primary m-2" data-zone-id=${zone.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteZone"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Zone'>`);
+        btnDeleteZone.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeleteZone.click(function (e) {
             e.preventDefault();
             zoneToOperate = zones.find(oneZone => oneZone.id == $(this).data("zone-id"));

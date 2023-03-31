@@ -17,7 +17,7 @@ Liste des Ateliers
                         <tr class="text-dark">
                             <th scope="col">N°</th>
                             <th>Nom d'atelier</th>
-                            <th colspan="2" class="actions">Action</th>
+                            <th colspan="2" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_atelier">

@@ -73,16 +73,16 @@ const getAllPartenaires = (data) => {
         let tdLogoPartenaire = $("<td>");
         tdLogoPartenaire.html(`<img src="${baseUrl + partenaire.partenaire_logo}" style="width: 40px; height: 40px;">`);
         let tdEditPartenaire = $(`<td class="text-center">`);
-        let btnEditPartenaire = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-partenaire-id=${partenaire.id} data-bs-toggle='modal' data-bs-target='#modal_EditPartenaire'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Partenaire'>`);
-        btnEditPartenaire.append("<i class='fas fa-edit'></i>");
+        let btnEditPartenaire = $(`<button type='submit' class='btn btn-primary m-2' data-partenaire-id=${partenaire.id} data-bs-toggle='modal' data-bs-target='#modal_EditPartenaire'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Partenaire'>`);
+        btnEditPartenaire.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditPartenaire.click(function (e) {
             e.preventDefault();
             fillModalEditPartenaire($(this).data("partenaire-id"));
         });
         tdEditPartenaire.append(btnEditPartenaire);
         let tdDeletePartenaire = $(`<td class="text-center">`);
-        let btnDeletePartenaire = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-partenaire-id=${partenaire.id} data-bs-toggle="modal" data-bs-target="#modal_DeletePartenaire"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Partenaire'>`);
-        btnDeletePartenaire.append(`<i class="fas fa-trash"></i>`);
+        let btnDeletePartenaire = $(`<button type="submit" class="btn btn-primary m-2" data-partenaire-id=${partenaire.id} data-bs-toggle="modal" data-bs-target="#modal_DeletePartenaire"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Partenaire'>`);
+        btnDeletePartenaire.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeletePartenaire.click(function (e) {
             e.preventDefault();
             partenaireToOperate = partenaires.find(onePartenaire => onePartenaire.id == $(this).data("partenaire-id"));

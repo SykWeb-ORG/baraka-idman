@@ -22,7 +22,7 @@
                             <th scope="col">N°</th>
                             <th>Nom</th>
                             <th>Support</th>
-                            <th colspan="2" class="actions">Action</th>
+                            <th colspan="2" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_cas_juridique">
@@ -37,17 +37,17 @@
                                 </div>
                             </td>
                             <td>
-                                <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
+                                <button type='submit' class='btn btn-primary m-2'
                                     data-bs-toggle='modal' data-bs-target='#modal_Edit' data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Modifier recherche'>
-                                    <i class='fas fa-edit'></i>
+                                    <i class='fas fa-edit me-2'></i>Modifier
                                 </button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"
+                                <button type="submit" class="btn btn-primary m-2"
                                     data-bs-toggle="modal" data-bs-target="#modal_Delete" data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Supprimer recherche'>
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash me-2"></i>Supprimer
                                 </button>
                             </td>
                         </tr>
@@ -62,17 +62,17 @@
                                 </div>
                             </td>
                             <td>
-                                <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
+                                <button type='submit' class='btn btn-primary m-2'
                                     data-bs-toggle='modal' data-bs-target='#modal_Edit' data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Modifier recherche'>
-                                    <i class='fas fa-edit'></i>
+                                    <i class='fas fa-edit me-2'></i>Modifier
                                 </button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"
+                                <button type="submit" class="btn btn-primary m-2"
                                     data-bs-toggle="modal" data-bs-target="#modal_Delete" data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Supprimer recherche'>
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash me-2"></i>Supprimer
                                 </button>
                             </td>
                         </tr>
@@ -87,17 +87,17 @@
                                 </div>
                             </td>
                             <td>
-                                <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
+                                <button type='submit' class='btn btn-primary m-2'
                                     data-bs-toggle='modal' data-bs-target='#modal_Edit' data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Modifier recherche'>
-                                    <i class='fas fa-edit'></i>
+                                    <i class='fas fa-edit me-2'></i>Modifier
                                 </button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"
+                                <button type="submit" class="btn btn-primary m-2"
                                     data-bs-toggle="modal" data-bs-target="#modal_Delete" data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Supprimer recherche'>
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash me-2"></i>Supprimer
                                 </button>
                             </td>
                         </tr>
@@ -112,17 +112,17 @@
                                 </div>
                             </td>
                             <td>
-                                <button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2'
+                                <button type='submit' class='btn btn-primary m-2'
                                     data-bs-toggle='modal' data-bs-target='#modal_Edit' data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Modifier recherche'>
-                                    <i class='fas fa-edit'></i>
+                                    <i class='fas fa-edit me-2'></i>Modifier
                                 </button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2"
+                                <button type="submit" class="btn btn-primary m-2"
                                     data-bs-toggle="modal" data-bs-target="#modal_Delete" data-bs-toggle='tooltip'
                                     data-bs-placement='top' title='Supprimer recherche'>
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash me-2"></i>Supprimer
                                 </button>
                             </td>
                         </tr>

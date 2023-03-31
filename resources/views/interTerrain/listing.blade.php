@@ -197,11 +197,11 @@ Liste des Bénéficiaires
                             </td>
                             @endif
                             @can('update', $beneficiaire)
-                            <td class="QactionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a></td>
+                            <td class="QactionU"><a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i>Modifier</a></td>
                             @endcan
                             <td>
                                 @can('view', $beneficiaire)
-                                <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher beneficiaire'><i class="fas fa-user"></i></a>
+                                <a href='{{ route('beneficiaires.show', ['beneficiaire'=>$beneficiaire->id, 'page'=>'La fiche d\'inscription']) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher beneficiaire'><i class="fas fa-user me-2"></i>Afficher</a>
                                 @endcan
                             </td>
                             @can('delete', $beneficiaire)
@@ -250,13 +250,13 @@ Liste des Bénéficiaires
                                             </div>
                                             <div class="modal-body">
                                                 @can('update', $beneficiaire)
-                                                <a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="actionModal btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i></a>
+                                                <a href='{{ route('beneficiaires.edit', ['beneficiaire'=>$beneficiaire->id]) }}' class="actionModal btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier beneficiaire'><i class="fas fa-user-edit"></i>Modifier</a>
                                                 @endcan
                                                 @can('delete', $beneficiaire)
                                                 <form action="{{ route('beneficiaires.destroy', ['beneficiaire'=>$beneficiaire->id]) }}" method="post" class="actionModal">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer beneficiaire'><i class="fas fa-user-minus"></i></button>
+                                                    <button type="submit" class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer beneficiaire'><i class="fas fa-user-minus me-2"></i>Supprimer</button>
                                                 </form>
                                                 @endcan
                                                 {{-- @can('view', $beneficiaire)
@@ -266,21 +266,21 @@ Liste des Bénéficiaires
                                                     <form action="{{ route('validation-state', ['beneficiaire' => $beneficiaire->id, 'user' => Auth::id()]) }}" method="post">
                                                         @csrf
                                                         @method('PUT')
-                                                        <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Valider beneficiaire'><i class="fas fa-check"></i></button>
+                                                        <button type="submit" class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Valider beneficiaire'><i class="fas fa-check me-2"></i>Valider</button>
                                                     </form>
                                                 @endif
                                                 @can('archive-beneficiaire-ability')
                                                 <form action="{{ route('archive-beneficiaire', ['beneficiaire' => $beneficiaire->id]) }}" method="post">
                                                     @method('PUT')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Archiver beneficiaire'><i class="fas fa-archive"></i></button>
+                                                    <button type="submit" class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Archiver beneficiaire'><i class="fas fa-archive me-2"></i>Archiver</button>
                                                 </form>
                                                 @endcan
                                                 @can('beneficiaire-ateliers-ability')
-                                                <a href='{{ route('all-ateliers', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier avec les ateliers'><i class="fas fa-briefcase"></i></a>
+                                                <a href='{{ route('all-ateliers', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier avec les ateliers'><i class="fas fa-briefcase me-2"></i>Ateliers</a>
                                                 @endcan
                                                 @can('beneficiaire-cas-ability')
-                                                <a href='{{ route('all-cas', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-sm btn-sm-square btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier avec les cas juridiques'><i class="fas fa-balance-scale"></i></a>
+                                                <a href='{{ route('all-cas', ['beneficiaire'=>$beneficiaire->id]) }}' class="btn btn-primary m-2" data-bs-toggle='tooltip' data-bs-placement='top' title='Lier avec les cas juridiques'><i class="fas fa-balance-scale me-2"></i>Cas Juridique</a>
                                                 @endcan
                                             </div>
                                         </div>

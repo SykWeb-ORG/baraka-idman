@@ -16,7 +16,7 @@
                             <th scope="col">N°</th>
                             <th>Nom Du Service</th>
                             <th>Type Du Service</th>
-                            <th colspan="2" class="actions">Action</th>
+                            <th colspan="2" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_services">

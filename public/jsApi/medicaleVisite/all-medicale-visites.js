@@ -92,16 +92,16 @@ const getAllMedicaleVisites = (data) => {
         let tdBeneficiaire = $("<td>");
         tdBeneficiaire.text(`${medicaleVisite.beneficiaire.nom} ${medicaleVisite.beneficiaire.prenom}`);
         let tdEditMedicaleVisite = $(`<td class="text-center">`);
-        let btnEditMedicaleVisite = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-medicale-visite-id=${medicaleVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditMedicaleVisite'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite medicale'>`);
-        btnEditMedicaleVisite.append("<i class='fas fa-edit'></i>");
+        let btnEditMedicaleVisite = $(`<button type='submit' class='btn btn-primary m-2' data-medicale-visite-id=${medicaleVisite.id} data-bs-toggle='modal' data-bs-target='#modal_EditMedicaleVisite'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Visite medicale'>`);
+        btnEditMedicaleVisite.append("<i class='fas fa-edit me-2'></i>Modifier");
         btnEditMedicaleVisite.click(function (e) {
             e.preventDefault();
             fillModalEditMedicaleVisite($(this).data("medicale-visite-id"));
         });
         tdEditMedicaleVisite.append(btnEditMedicaleVisite);
         let tdDeleteMedicaleVisite = $(`<td class="text-center">`);
-        let btnDeleteMedicaleVisite = $(`<button type="submit" class="btn btn-sm btn-sm-square btn-primary m-2" data-medicale-visite-id=${medicaleVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteMedicaleVisite"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite medicale'>`);
-        btnDeleteMedicaleVisite.append(`<i class="fas fa-trash"></i>`);
+        let btnDeleteMedicaleVisite = $(`<button type="submit" class="btn btn-primary m-2" data-medicale-visite-id=${medicaleVisite.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteMedicaleVisite"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Visite medicale'>`);
+        btnDeleteMedicaleVisite.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
         btnDeleteMedicaleVisite.click(function (e) {
             e.preventDefault();
             medicaleVisiteToOperate = medicaleVisites.find(oneMedicaleVisite => oneMedicaleVisite.id == $(this).data("medicale-visite-id"));

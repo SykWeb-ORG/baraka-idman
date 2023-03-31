@@ -21,7 +21,7 @@ Liste des Visites Juridiques
                             @if (Auth::user()->admin)
                                 <th>Assistant Juridique</th>
                             @endif
-                            <th colspan="2" class="actions">Actions</th>
+                            <th colspan="2" class="Qactions">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_juridique_visites">
