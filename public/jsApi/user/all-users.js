@@ -51,6 +51,7 @@ const fillSelectRoles = (data) => {
     });
     $("select#role").select2({
         placeholder: 'Séléctionner un role ...',
+        dropdownParent: $('.modal-bodyF'),
     });
 }
 /**
@@ -67,5 +68,6 @@ const fillSelectZones = (data) => {
     });
     $("select#zone").select2({
         placeholder: 'Séléctionner un zone ...',
+        dropdownParent: $('.modal-bodyF'),
     });
 }

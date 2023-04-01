@@ -77,6 +77,7 @@ const fillSelectBeneficiaires = (data) => {
     });
     $("select#beneficiaire").select2({
         placeholder: 'Séléctionner un beneficiaire ...',
+        dropdownParent: $('.modal-bodyEdit'),
     });
 }
 /**
