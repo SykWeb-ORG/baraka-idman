@@ -799,7 +799,7 @@ table tbody tr .userEdit{
 }
 .statistics-both{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-left: 50px;
 }
@@ -1040,12 +1040,15 @@ table tbody tr .userEdit{
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
 }
-
+.table-dash{
+    max-height: 290px !important;
+}
 
 @media (max-width:576px) {
     .statistics-both{
         flex-direction: column;
         margin-left: auto;
+        justify-content: center;
     }
     .periode{
         flex-direction: column;
