@@ -143,3 +143,10 @@ $(document).ready(function () {
         }
     })
 });
+$(document).ready(function() {
+    var LoaderDiv = $('.loader');
+    var MainDiv = $('.dash');
+    var delayTime = 4000;
+    LoaderDiv.delay(delayTime).fadeOut();
+    MainDiv.delay(delayTime).fadeIn();
+  });

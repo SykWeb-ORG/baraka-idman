@@ -1086,4 +1086,63 @@ table tbody tr .userEdit{
         margin-left: 10px;
     }
 }
-
+.dash{
+    display: none;
+}
+.center-body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+}
+.loader-circle-48 {
+	position: relative;
+	width: 70px;
+	height: 70px;
+}
+.loader-circle-48:after,
+.loader-circle-48:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0px;
+	margin: auto;
+	border: 8px solid red;
+	border-radius: 50%;
+}
+.loader-circle-48:after {
+	transform: rotate(90deg);
+	animation: loader-circle-48-spin 4s linear infinite, loader-circle-48-pulse 1s linear infinite alternate;
+}
+.loader-circle-48:before {
+	animation: loader-circle-48-spin2 4s linear infinite, loader-circle-48-pulse 1s linear infinite alternate;
+}
+@keyframes loader-circle-48-spin {
+	100% {
+		transform: rotate(450deg);
+	}
+}
+@keyframes loader-circle-48-spin2 {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes loader-circle-48-pulse {
+	0% {
+		width: 5px;
+		height: 70px;
+	}
+	100% {
+		width: 70px;
+		height: 5px;
+	}
+	0% {
+		width: 5px;
+		height: 70px;
+	}
+}
