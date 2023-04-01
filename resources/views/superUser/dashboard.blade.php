@@ -108,7 +108,7 @@
             {{-- Statistiques selon les programmes --}}
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon les programmes</h6>
-                <div class="table-responsive table-height">
+                <div class="table-responsive table-height table-dash">
                     <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                         <thead>
                             <tr class="text-dark">
@@ -145,7 +145,7 @@
             {{-- Statistiques selon les intervenants --}}
             <div class="mb-4">
                 <h6 class="mb-3">Statistiques selon les intervenants</h6>
-                <div class="table-responsive table-height">
+                <div class="table-responsive table-height table-dash">
                     <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                         <thead>
                             <tr class="text-dark">
@@ -236,7 +236,7 @@
         {{-- Statistiques selon la localisation --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon la localisation</h6>
-            <div class="table-responsive table-height">
+            <div class="table-responsive table-height table-dash">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>
                         <tr class="text-dark">
@@ -253,7 +253,7 @@
         {{-- Statistiques selon la couverture médicale --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon la couverture médicale</h6>
-            <div class="table-responsive table-height">
+            <div class="table-responsive table-height table-dash">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>
                         <tr class="text-dark">
@@ -295,7 +295,7 @@
         {{-- Statistiques selon la situation familiale --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon la situation familiale</h6>
-            <div class="table-responsive table-height">
+            <div class="table-responsive table-height table-dash">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>
                         <tr class="text-dark">
@@ -424,7 +424,7 @@
         {{-- Statistiques selon le service --}}
         <div class="mb-4">
             <h6 class="mb-3">Statistiques selon le service</h6>
-            <div class="table-responsive table-height">
+            <div class="table-responsive table-height table-dash">
                 <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableUser">
                     <thead>
                         <tr class="text-dark">
