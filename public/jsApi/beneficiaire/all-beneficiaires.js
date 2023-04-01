@@ -59,6 +59,7 @@ const fillSelectServices = (data) => {
     });
     $("select#service").select2({
         placeholder: 'Séléctionner un service ...',
+        dropdownParent: $('.modal-bodyF'),
     });
 }
 function FillSelectYear(){

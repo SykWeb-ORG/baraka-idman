@@ -121,5 +121,6 @@ const fillSelectServiceTypes = (data)=>{
     });
     $("select#type-service").select2({
         placeholder: 'Séléctionner un type service...',
+        dropdownParent: $('.modal-bodyEdit'),
     });
 }

@@ -249,6 +249,7 @@ const fillSelectProgrammeTypes = (data)=>{
     });
     $("select#type-programme").select2({
         placeholder: 'Séléctionner un type programme...',
+        dropdownParent: $('.modal-bodyListe'),
     });
 }
 /**
