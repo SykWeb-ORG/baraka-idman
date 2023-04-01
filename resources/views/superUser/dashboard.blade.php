@@ -4,7 +4,10 @@
     Dashboard
 @endsection
 @section('content_page')
-    <div class="container-fluid pt-4 px-4">
+    <div class="center-body loader">
+        <div class="loader-circle-48"></div>
+    </div>
+    <div class="container-fluid pt-4 px-4 dash">
         <h4 class="mb-3">Dashboard</h4>
         <div class="filtre">
             <h5 for="" class="form-label">Filtre:</h5>
