@@ -22,6 +22,16 @@
                         </div>
                         <div class="modal-bodyF">
                             <div class="filtre_item">
+                                <label for="social-appointment" class="form-label">Date Du Début</label>
+                                <input type="date" name="social_visite_date" class="date-periode" id="" value=""
+                                    required>
+                            </div>
+                            <div class="filtre_item">
+                                <label for="social-appointment" class="form-label">Date de la Fin</label>
+                                <input type="date" name="social_visite_date" class="date-periode" id="" value=""
+                                    required>
+                            </div>
+                            <div class="filtre_item">
                                 <label for="" class="form-label">Filtre Par Programme</label>
                                 <select name="" id="" class="filter_select">
                                     <option value="">Prg1</option>
@@ -93,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="periode">
+        {{-- <div class="periode">
             <label for="social-appointment" class="form-label">Date Du Début</label>
             <input type="date" name="social_visite_date" class="date-periode" id="" value=""
                 required>
@@ -103,7 +113,7 @@
             <div class="mb-3 d-flex justify-content-center">
                 <button class="btn btn-primary">Séléctionner date</button>
             </div>
-        </div>
+        </div> --}}
         <div class="statistics-both">
             {{-- Statistiques selon les programmes --}}
             <div class="mb-4">
