@@ -134,7 +134,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\ServiceType::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fab fa-product-hunt"></i>Types de service</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-headset"></i>Types de service</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\ServiceType::class)
                             <a href="{{ route('AddServiceType') }}" class="dropdown-item">Ajouter</a>
@@ -214,7 +214,7 @@
             @endcanany
             @canany(['create', 'viewAny'], App\Models\ProgrammeType::class)
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fab fa-product-hunt"></i>Types de programme</a>
+                    <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-chalkboard-teacher"></i>Types de programme</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         @can('create', App\Models\ProgrammeType::class)
                             <a href="{{ route('add-program-type') }}" class="dropdown-item">Ajouter</a>
