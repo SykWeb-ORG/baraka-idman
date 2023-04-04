@@ -4,7 +4,7 @@
         <div class="Nv-scolaire">
             <div class="form-check d-inline-block mr-5">
                 <input class="form-check-input" type="radio" name="niveau_scolaire" id="non_scolarisé"
-                    value="NON Scolarisé">
+                    value="NON Scolarise">
                 <label class="form-check-label" for="non_scolarisé">
                     NON Scolarisé
                 </label>
@@ -18,14 +18,14 @@
             </div>
             <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="niveau_scolaire" id="college"
-                    value="Collège">
+                    value="College">
                 <label class="form-check-label" for="college">
                     Collège
                 </label>
             </div>
             <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="niveau_scolaire" id="lycee"
-                    value="Lycée">
+                    value="Lycee">
                 <label class="form-check-label" for="lycee">
                     Lycée
                 </label>
@@ -53,21 +53,21 @@
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
                 <input class="form-check-input" type="radio" name="situation_familial" id="celib"
-                    value="Célibataire">
+                    value="celibataire">
                 <label class="form-check-label" for="celib">
                     Célibataire
                 </label>
             </div>
             <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="situation_familial" id="marié"
-                    value="marié">
+                    value="marie">
                 <label class="form-check-label" for="marié">
                     marié
                 </label>
             </div>
             <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="situation_familial" id="divorcé"
-                    value="divorcé">
+                    value="divorce">
                 <label class="form-check-label" for="divorcé">
                     divorcé
                 </label>
@@ -165,14 +165,14 @@
         <div id="sexe-benef" class="col-sm-10">
             <div class="form-check d-inline-block mr-5">
                 <input class="form-check-input" type="radio" name="localisation" id="local_inter"
-                    value="A l'intérieur de la clôture">
+                    value="interne">
                 <label class="form-check-label" for="local_inter">
                     A l'intérieur de la clôture
                 </label>
             </div>
             <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="localisation" id="local_exter"
-                    value="A l'extérieur de la clôture">
+                    value="externe">
                 <label class="form-check-label" for="local_exter">
                     A l'extérieur de la clôture
                 </label>

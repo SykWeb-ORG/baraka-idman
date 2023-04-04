@@ -4,6 +4,7 @@ use App\Http\Controllers\AtelierController;
 use App\Http\Controllers\BeneficiaireController;
 use App\Http\Controllers\CasController;
 use App\Http\Controllers\CouvertureController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrogueTypeController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\GroupeController;
@@ -199,6 +200,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return back();
     })->name('reinit');
     Route::resource('zones', ZoneController::class);
+    Route::get('/programmes-per-dates', [ProgrammeController::class, 'programmesPerDates'])->name('programmes-per-dates');
     Route::resource('programmes', ProgrammeController::class);
     Route::get('all-zones/{intervenant}', function (Request $request, Intervenant $intervenant) {
         if (!Gate::allows('intervenant-zones-ability')) {
@@ -840,4 +842,33 @@ Route::middleware('auth:sanctum')->group(function () {
                 404
             );
         });
+    Route::group([
+        'name' => 'dashboard.',
+        'prefix' => 'dashboard',
+        'controller' => DashboardController::class,
+    ], function () {
+        Route::get('/per-programme/{programme}', 'beneficiairesPerProgramme')->name('per-programme');
+        Route::get('/per-intervenant/{intervenant}', 'beneficiairesPerIntervenant')->name('per-intervenant');
+        Route::get('/per-age', 'beneficiairesPerAge')->name('per-age');
+        Route::get('/per-gender', 'beneficiairesPerGender')->name('per-gender');
+        Route::get('/per-cin', 'beneficiairesPerCIN')->name('per-cin');
+        Route::get('/per-localisation', 'beneficiairesPerLocalisation')->name('per-localisation');
+        Route::get('/per-couverture-medicale/{couverture}', 'beneficiairesPerCouvertureMedicale')->name('per-couverture-medicale');
+        Route::get('/per-situation-familiale', 'beneficiairesPerSituationFamiliale')->name('per-situation-familiale');
+        Route::get('/per-scolarisation', 'beneficiairesPerScolarisation')->name('per-scolarisation');
+        Route::get('/per-visites-medicales-presence', 'beneficiairesPerVisitesMedicalesPresence')->name('per-visites-medicales-presence');
+        Route::get('/per-visites-sociales-presence', 'beneficiairesPerVisitesSocialesPresence')->name('per-visites-sociales-presence');
+        Route::get('/per-cause-addiction', 'beneficiairesPerCauseAddiction')->name('per-cause-addiction');
+        Route::get('/per-drogue-type/{drogueType}', 'beneficiairesPerTypeDrogue')->name('per-drogue-type');
+        Route::get('/per-service/{service}', 'beneficiairesPerService')->name('per-service');
+        Route::get('/per-all', 'beneficiairesPerAll')->name('per-all');
+    });
+    Route::get('intervenants', function (Request $request) {
+        $intervenants = Intervenant::with('user')->get();
+        return response()->json(
+            [
+                'intervenants' => $intervenants,
+            ]
+        );
+    });
 });

@@ -4,16 +4,23 @@ var baseUrl = `http://${location.host}/`;
 // GET a SUNCTUM CSRF
 $(document).ready(function(){
   axios.get('/sanctum/csrf-cookie');
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 });
 
 // GET Function with Axios
-function getAllData(endUrl,fctOutput) {
+function getAllData(endUrl,fctOutput, dataObject = {}) {
     axios
       .get(baseUrl+endUrl, {
-        timeout: 5000
+        // timeout: 5000,
+        params:dataObject,
       })
-      .then(res => fctOutput(res.data))
+      .then(res => fctOutput(res.data, dataObject))
       .catch(err => {
+        console.log(err);
         fctOutput(err.response.data);
     });
 }
@@ -59,4 +66,25 @@ function uploading(endUrl, dataObject, fctOutput) {
     .catch(err => {
       fctOutput(err.response.data);
     });
+}
+// GET Function with Axios (For Dashboard)
+function getAllDataForDashboard(endUrl, dataObject) {
+  try {
+    let nbBeneficiairesObject = null;
+    $.ajax({
+      type: "get",
+      url: baseUrl + endUrl,
+      data: dataObject,
+      async:false,
+      success: function (response) {
+        nbBeneficiairesObject = response
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+    return nbBeneficiairesObject;
+  } catch (error) {
+    console.log(error);
+  }
 }
