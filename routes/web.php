@@ -871,4 +871,7 @@ Route::middleware('auth:sanctum')->group(function () {
             ]
         );
     });
+    Route::get('/showProjet', function (Request $request) {
+        return view('superUser.ShowProject');
+    })->name('showProjet');
 });
