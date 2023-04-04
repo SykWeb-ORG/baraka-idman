@@ -186,7 +186,7 @@
                 </div>
             </div>
         </div>
-        <div class="statistics-both">
+        <div class="statistics-three">
             {{-- Statistiques selon l'âge --}}
             <div class="mb-4" id="age_stats">
                 <h6 class="mb-3">Statistiques selon l'âge</h6>
@@ -290,7 +290,7 @@
                 </table>
             </div>
         </div>
-        <div class="statistics-both">
+        <div class="statistics-three">
             {{-- Statistiques selon CIN --}}
             <!-- BEGIN: Stastics based on gender -->
             {{-- Statistiques selon la scolarité --}}
