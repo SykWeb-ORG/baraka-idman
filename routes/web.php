@@ -216,7 +216,7 @@ Route::middleware('auth:sanctum')->group(function () {
             'intervenant',
         ));
     })->name('all-programmes');
-    Route::post('match-intervenant-programmes/{intervenant}', [ManagementIntervenantProgrammeController::class, 'matchIntervenantProgrammes']);
+    Route::put('match-intervenant-programmes/{intervenant}', [ManagementIntervenantProgrammeController::class, 'matchIntervenantProgrammes']);
     Route::put('archive-beneficiaire/{beneficiaire}', function (Request $request, Beneficiaire $beneficiaire) {
         if (!Gate::allows('archive-beneficiaire-ability')) {
             abort(403);

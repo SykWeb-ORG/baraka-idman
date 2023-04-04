@@ -8,10 +8,10 @@ Attacher des programmes à l'intervenant
     <div class="d-flex align-items-center justify-content-between mb-4">
         <h6 class="mb-0">Attacher les programmes à l'intervenant</h6>
     </div>
-    <div class="div_programme">
+    <div class="div_perm">
         <fieldset class="mb-4">
             <legend>Les programmes</legend>
-            <div class="programme_check" id="programme_check">
+            <div class="permissions_check" id="programme_check">
                 
             </div>
         </fieldset>
@@ -26,5 +26,5 @@ Attacher des programmes à l'intervenant
 <script>
     var intervenant = {{ Illuminate\Support\Js::from($intervenant) }};
 </script>
-<script src="{{asset("jsApi\superadmin\intervenant-programme.js")}}"></script>
+<script src="{{asset("jsApi/intervenantsProgrammes/affectIntervenantToProgrammes.js")}}"></script>
 @endsection
