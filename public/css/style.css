@@ -804,8 +804,8 @@ table tbody tr .userEdit{
     margin-left: 50px;
 }
 .statistics-three{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
 }
 .modal-bodyF{
     max-height: 300px;
@@ -1049,6 +1049,9 @@ table tbody tr .userEdit{
         flex-direction: column;
         margin-left: auto;
         justify-content: center;
+    }
+    .statistics-three{
+        grid-template-columns: repeat(1,1fr);
     }
     .periode{
         flex-direction: column;
