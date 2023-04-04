@@ -22,6 +22,7 @@ $(document).ready(function () {
     getLocalisations();
     getSituations();
     getNbBeneficiairesPerScolarisation();
+    getNbBeneficiairesPerVisitesSocialesPresence();
     getNbBeneficiairesPerVisitesMedicalesPresence();
     getNbBeneficiairesPerCauseAddiction();
 });
@@ -135,6 +136,7 @@ const filterPerDates = (e) => {
         getLocalisations(dataToSend);
         getSituations(dataToSend);
         getNbBeneficiairesPerScolarisation(dataToSend);
+        getNbBeneficiairesPerVisitesSocialesPresence(dataToSend);
         getNbBeneficiairesPerVisitesMedicalesPresence(dataToSend);
         getNbBeneficiairesPerCauseAddiction(dataToSend);
     }
