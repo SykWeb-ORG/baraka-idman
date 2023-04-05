@@ -145,20 +145,20 @@
                     </div>
                 </div>
             @endcanany
-            @if (Auth::user()->admin)
-            {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
+            @canany(['create', 'viewAny'], App\Models\Projet::class)
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-code-branch me-2"></i>Projets</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        {{-- @can('create', App\Models\Service::class) --}}
+                        @can('create', App\Models\Projet::class)
                             <a href="{{ route('add-projet') }}" class="dropdown-item">Ajouter</a>
-                        {{-- @endcan --}}
-                        {{-- @can('viewAny', App\Models\Service::class)
+                        @endcan
+                        {{-- @can('viewAny', App\Models\Projet::class)
                             <a href="{{ route('showService') }}" class="dropdown-item">Afficher</a>
                         @endcan --}}
                     </div>
                 </div>
-            {{-- @endcanany --}}
+            @endcanany
+            @if (Auth::user()->admin)
             {{-- @canany(['create', 'viewAny'], App\Models\Service::class) --}}
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle d-flex text-wrap align-items-center" data-bs-toggle="dropdown"><i class="fas fa-flask me-2"></i>Recherche scientifiques</a>
