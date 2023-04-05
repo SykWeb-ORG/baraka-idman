@@ -122,7 +122,48 @@ class ProjetController extends Controller
      */
     public function update(ProjetRequest $request, Projet $projet)
     {
-        //
+        $projet->projet_num_concention = $request->projet_num_concention;
+        $projet->projet_titre = $request->projet_titre;
+        $request->whenFilled('projet_partenaire', function ($input) use ($projet) {
+            if ($partenaire = Partenaire::find($input)) {
+                $partenaire->projets()->save($projet);
+            }
+        });
+        $request->whenFilled('projet_description', function ($input) use ($projet) {
+            $projet->projet_description = $input;
+        });
+        $request->whenFilled('projet_objectif_homme', function ($input) use ($projet) {
+            $projet->projet_objectif_homme = $input;
+        });
+        $request->whenFilled('projet_objectif_femme', function ($input) use ($projet) {
+            $projet->projet_objectif_femme = $input;
+        });
+        $request->whenFilled('projet_objectif_15', function ($input) use ($projet) {
+            $projet->projet_objectif_15 = $input;
+        });
+        $request->whenFilled('projet_objectif_15_18', function ($input) use ($projet) {
+            $projet->projet_objectif_15_18 = $input;
+        });
+        $request->whenFilled('projet_objectif_18', function ($input) use ($projet) {
+            $projet->projet_objectif_18 = $input;
+        });
+        if ($projet->update()) {
+            $result = $projet;
+            $status = 200;
+            $msg = "Projet modifié avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
