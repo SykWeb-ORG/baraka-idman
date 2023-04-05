@@ -20,7 +20,12 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        //
+        $projets = Projet::all();
+        return response()->json(
+            [
+                'projets' => $projets,
+            ]
+        );
     }
 
     /**
