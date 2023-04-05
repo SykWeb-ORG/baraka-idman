@@ -174,6 +174,22 @@ class ProjetController extends Controller
      */
     public function destroy(Projet $projet)
     {
-        //
+        if ($projet->delete()) {
+            $result = $projet;
+            $status = 200;
+            $msg = "Projet supprimé avec success.";
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = "Probléme au serveur.";
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
