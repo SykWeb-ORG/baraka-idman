@@ -48,6 +48,7 @@ use App\Models\Participant;
 use App\Models\Place;
 use App\Models\Programme;
 use App\Models\ProgrammeType;
+use App\Models\Projet;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\ServiceType;
@@ -670,6 +671,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('superUser.rapport');
     })->name('rapport');
     Route::get('/add-projet', function (Request $request) {
+        if (!Gate::allows('create', Projet::class)) {
+            abort(403);
+        }
         return view('superUser.AddProject');
     })->name('add-projet');
     Route::get('/add-recherche', function (Request $request) {
