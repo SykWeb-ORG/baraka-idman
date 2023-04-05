@@ -108,7 +108,7 @@ Liste des utilisateurs
                                     <form action="{{ route('users.destroy', ['user'=>$user->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-sm-square btn-primary m-2" type="button"
+                                        <button class="btn btn-primary m-2" type="button"
                                         data-bs-toggle="modal" data-bs-target="#modal_DeleteUser{{$loop->iteration}}" data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer utilisateur'><i class="fas fa-user-minus me-2"></i>Supprimer</button>
                                         <!--Delete user-->
                                         <!-- Modal -->
