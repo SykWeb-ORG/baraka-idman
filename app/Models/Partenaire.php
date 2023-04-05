@@ -16,10 +16,18 @@ class Partenaire extends Model
     ];
 
     /**
-     * Get the programmes for the partanaire.
+     * Get the programmes for the partenaire.
      */
     public function programmes()
     {
         return $this->hasMany(Programme::class);
+    }
+    
+    /**
+     * Get the projets for the partenaire.
+     */
+    public function projets()
+    {
+        return $this->hasMany(Projet::class);
     }
 }
