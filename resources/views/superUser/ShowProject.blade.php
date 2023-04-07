@@ -22,12 +22,37 @@ Liste des Projets
                             <th>Description</th>
                             <th>Objectif Du Projet (Sexe)</th>
                             <th>Objectif Du Projet (âge)</th>
+                            <th>Progression Du Projet</th>
                             <th colspan="3" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_projet">
                     </tbody>
                 </table>
+                <button
+                      class="btn btn-primary m-2"type="button"
+                      data-bs-toggle="modal" data-bs-target="#modal_Progress">
+                      <i class="fas fa-spinner me-2"></i>Afficher
+                  </button>
+                <!--Progress Modal -->
+                <div class="modal fade" id="modal_Progress" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Progression Du Projet</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-bodyEdit">
+                                <div class="circular-progress">
+                                    <span class="progress-value">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Progress Modal -->
                 <!--Edit projet-->
                 <!-- Modal -->
                 <div class="modal fade" id="modal_Editprojet" data-bs-backdrop="static" data-bs-keyboard="false"
