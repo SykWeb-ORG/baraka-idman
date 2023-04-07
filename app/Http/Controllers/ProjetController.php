@@ -72,6 +72,9 @@ class ProjetController extends Controller
         $request->whenFilled('projet_objectif_18', function ($input) use ($projet) {
             $projet->projet_objectif_18 = $input;
         });
+        $request->whenFilled('projet_periode', function ($input) use ($projet) {
+            $projet->projet_periode = $input;
+        });
         if ($projet->save()) {
             $result = $projet;
             $status = 200;
@@ -146,6 +149,9 @@ class ProjetController extends Controller
         });
         $request->whenFilled('projet_objectif_18', function ($input) use ($projet) {
             $projet->projet_objectif_18 = $input;
+        });
+        $request->whenFilled('projet_periode', function ($input) use ($projet) {
+            $projet->projet_periode = $input;
         });
         if ($projet->update()) {
             $result = $projet;

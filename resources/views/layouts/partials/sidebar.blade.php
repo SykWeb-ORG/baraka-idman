@@ -152,9 +152,9 @@
                         @can('create', App\Models\Projet::class)
                             <a href="{{ route('add-projet') }}" class="dropdown-item">Ajouter</a>
                         @endcan
-                        {{-- @can('viewAny', App\Models\Projet::class)
-                            <a href="{{ route('showService') }}" class="dropdown-item">Afficher</a>
-                        @endcan --}}
+                        @can('viewAny', App\Models\Projet::class)
+                            <a href="{{ route('showProjet') }}" class="dropdown-item">Afficher</a>
+                        @endcan
                     </div>
                 </div>
             @endcanany
