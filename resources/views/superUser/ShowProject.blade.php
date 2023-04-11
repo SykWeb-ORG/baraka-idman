@@ -33,11 +33,6 @@ Liste des Projets
                     <tbody id="tbl_projet">
                     </tbody>
                 </table>
-                <button
-                      class="btn btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#modal_Progress">
-                      <i class="fas fa-spinner me-2"></i>Afficher
-                  </button>
                 <!--Progress Modal -->
                 <div class="modal fade" id="modal_Progress" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
