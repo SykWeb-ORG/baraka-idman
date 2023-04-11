@@ -20,7 +20,7 @@ Ajout d'une Formation
                             <input type="date" name="date_formation" class="form-control" id="date_formation">
                         </div>
                         <div class="mb-3">
-                            <label for="heure_formation" class="form-label">Date De la Formation :</label>
+                            <label for="heure_formation" class="form-label">Heure De la Formation :</label>
                             <input type="time" name="heure_formation" class="form-control" id="heure_formation">
                         </div>
                         <div class="mb-3">

@@ -233,7 +233,11 @@ function editProgrammePlaces() {
     let dataToSend = {
         "places": places,
     }
-    updateData(`link-places-with-programme/${programmeToOperate.id}`, dataToSend, (data)=>{console.log(data);});
+    updateData(`link-places-with-programme/${programmeToOperate.id}`, dataToSend, (data)=>{
+        console.log(data);
+        $("tbody#tbl_programme").empty();
+        getAllData("programmes", getAllProgrammes);
+    });
 }
 /**
  * Fill the select field with all programme types
