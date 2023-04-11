@@ -33,6 +33,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
 use App\Http\Requests\ActiveStatusUserRequest;
 use App\Http\Requests\IntegrationStatusBeneficiaireRequest;
+use App\Http\Requests\ProjetStatusRequest;
 use App\Models\Atelier;
 use App\Models\Beneficiaire;
 use App\Models\Cas;
@@ -880,6 +881,9 @@ Route::middleware('auth:sanctum')->group(function () {
         );
     });
     Route::get('/showProjet', function (Request $request) {
+        if (!Gate::allows('viewAny', Projet::class)) {
+            abort(403);
+        }
         return view('superUser.ShowProject');
     })->name('showProjet');
     Route::resource('projets', ProjetController::class)
@@ -892,4 +896,24 @@ Route::middleware('auth:sanctum')->group(function () {
                 404
             );
         });
+    Route::put('/status-projet/{projet}', function (ProjetStatusRequest $request, Projet $projet) {
+        $projet->projet_status = $request->projet_status;
+        if ($projet->update()) {
+            $result = $projet;
+            $status = 200;
+            $msg = 'Le statut du projet changé avec succès.';
+        } else {
+            $result = null;
+            $status = 500;
+            $msg = 'Probléme au serveur.';
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'msg' => $msg,
+                'status' => $status,
+            ],
+            $status
+        );
+    })->name('status-projet');
 });

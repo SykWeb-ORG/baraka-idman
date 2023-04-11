@@ -23,6 +23,8 @@ class Projet extends Model
         'projet_objectif_15',
         'projet_objectif_15_18',
         'projet_objectif_18',
+        'projet_periode',
+        'projet_status',
         'partenaire_id',
     ];
 

@@ -151,21 +151,17 @@ $(document).ready(function() {
     MainDiv.delay(delayTime).fadeIn();
   });
 /*Progress bar*/
-let circularProgress = document.querySelector(".circular-progress"),
-    progressValue = document.querySelector(".progress-value");
-
-let progressStartValue = 0,    
-    progressEndValue = 90,    
-    speed = 50;
-    
-let progress = setInterval(() => {
-    progressStartValue++;
-
-    progressValue.textContent = `${progressStartValue}%`
-    circularProgress.style.background = `conic-gradient(var(--primary) ${progressStartValue * 3.6}deg, #ededed 0deg)`
-
-    if(progressStartValue == progressEndValue){
-        clearInterval(progress);
-    }    
-}, speed);
- 
+function configureProgressBar(progressEndValue) {
+    let circularProgress = document.querySelector(".circular-progress"),
+        progressValue = document.querySelector(".progress-value");
+    let progressStartValue = 0,      
+        speed = 50; 
+    let progress = setInterval(() => {
+        progressValue.textContent = `${progressStartValue}%`;
+        circularProgress.style.background = `conic-gradient(var(--primary) ${progressStartValue * 3.6}deg, #ededed 0deg)`;
+        if(progressStartValue == progressEndValue){
+            clearInterval(progress);
+        }    
+        progressStartValue++;
+    }, speed);
+}

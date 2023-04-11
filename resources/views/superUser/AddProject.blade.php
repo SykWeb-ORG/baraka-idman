@@ -26,6 +26,10 @@ Ajout d'un projet
                             <input type="text" name="projet_titre" class="form-control" id="projet-titre">
                         </div>
                         <div class="mb-3">
+                            <label for="projet-periode" class="form-label">Période du projet</label>
+                            <input type="date" name="projet_periode" class="form-control" id="projet-periode">
+                        </div>
+                        <div class="mb-3">
                             <label for="projet-description" class="form-label">Description</label>
                             <textarea name="projet_description" class="form-control" id="projet-description"></textarea>
                         </div>
@@ -33,14 +37,14 @@ Ajout d'un projet
                             <legend class="col-form-label col-sm-2 pt-0">Objectif du projet (sexe)</legend>
                             <div id="presence-benef" class="col-sm-10">
                                 <div class="form-check d-inline-block mr-5">
-                                    <input class="form-control" type="text" name="presence" id="projet-objectif-homme"
+                                    <input class="form-control" type="text" name="" id="projet-objectif-homme"
                                         value="0">
                                     <label class="form-check-label" for="projet-objectif-homme">
                                         Homme
                                     </label>
                                 </div>
                                 <div class="form-check d-inline-block">
-                                    <input class="form-control" type="text" name="presence" id="projet-objectif-femme"
+                                    <input class="form-control" type="text" name="" id="projet-objectif-femme"
                                         value="0">
                                     <label class="form-check-label" for="projet-objectif-femme">
                                         Femme
@@ -52,21 +56,21 @@ Ajout d'un projet
                             <legend class="col-form-label col-sm-2 pt-0">Objectif du projet (age)</legend>
                             <div id="presence-benef" class="col-sm-10">
                                 <div class="form-check d-inline-block mr-5">
-                                    <input class="form-control" type="text" name="presence" id="projet-objectif-15"
+                                    <input class="form-control" type="text" name="" id="projet-objectif-15"
                                         value="0">
                                     <label class="form-check-label" for="projet-objectif-15">
                                         -15 ans
                                     </label>
                                 </div>
                                 <div class="form-check d-inline-block">
-                                    <input class="form-control" type="text" name="presence" id="projet-objectif-15-18"
+                                    <input class="form-control" type="text" name="" id="projet-objectif-15-18"
                                         value="0">
                                     <label class="form-check-label" for="projet-objectif-15-18">
                                         15-18 ans
                                     </label>
                                 </div>
                                 <div class="form-check d-inline-block">
-                                    <input class="form-control" type="text" name="presence" id="projet-objectif-18"
+                                    <input class="form-control" type="text" name="" id="projet-objectif-18"
                                         value="0">
                                     <label class="form-check-label" for="projet-objectif-18">
                                         +18 ans

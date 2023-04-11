@@ -1,270 +1,239 @@
 /// *****************************
 /// DEFINE GLOBAL VARIABLES
 /// *****************************
-var programmes = null;
-var programmeToOperate = null;
-var places = [];
+var projets = null;
+var projetToOperate = null;
 /// *****************************
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    getAllData("programmes", getAllProgrammes);
-    getAllData("programmeTypes", fillSelectProgrammeTypes);
+    getAllData("projets", getAllProjets);
     getAllData("partenaires", fillSelectPartenaires);
-    $("button#btn-edit-program").click(editProgramme);
-    $("button#btn-delete-program").click(deleteProgramme);
-    $("button#btn-add-place").click(function (e) {
-        e.preventDefault();
-        debugger
-        let action = $(this).data(`action`);
-        let place = createPlaceObject();
-        if (action == "add") {
-            addPlace(place);
-        } else if (action == "edit") {
-            editPlace(place, $(this).data(`place-index`));
-            $("button#btn-add-place").text(`Ajouter place`);
-            $(this).data(`action`, `add`);
-            $("button#btn-add-place").data(`place-index`, undefined);
-            $("button#btn-show-modal-add-place").trigger("click");
-        }
-        editProgrammePlaces();
-        $("form#form-place input").val("");
-    });
-    $("button#btn-show-modal-add-place").click(function (e) {
-        e.preventDefault();
-        debugger
-        $("#place-modal-title").text(`Ajouter place`);
-    });
+    $("button#btn-edit-projet").click(editProjet);
+    $("button#btn-delete-projet").click(deleteProjet);
+    $("select#filter-value").change(getProgressBarParameters);
 });
 /// *****************************
 /// DEFINE YOUR FUNCTIONS
 /// *****************************
 /**
- * Edit programme
+ * Edit projet
  * @param {Event} e Information about the event
  */
-const editProgramme = (e) => {
+const editProjet = (e) => {
     e.preventDefault();
-    let nomProgramme = $("input#nom-program").val();
-    let typeProgramme = $("select#type-programme").val();
-    let partenaire = $("select#partenaire").val();
+    let numConcentionProjet = $("input#projet-num-concention").val();
+    let titreProjet = $("input#projet-titre").val();
+    let periodeProjet = $("input#projet-periode").val();
+    let descriptionProjet = $("textarea#projet-description").val();
+    let objectifHomme = $("input#projet-objectif-homme").val();
+    let objectifFemme = $("input#projet-objectif-femme").val();
+    let objectif15 = $("input#projet-objectif-15").val();
+    let objectif1518 = $("input#projet-objectif-15-18").val();
+    let objectif18 = $("input#projet-objectif-18").val();
+    let partenaire = $("select#projet-partenaire").val();
     let dataToSend = {
-        "programme_nom": nomProgramme,
-        "programme_type": typeProgramme,
-        "partenaire": partenaire,
+        "projet_num_concention": numConcentionProjet,
+        "projet_titre": titreProjet,
     }
-    updateData(`programmes/${programmeToOperate.id}`, dataToSend, showDialogResponse);
+    if (periodeProjet) {
+        dataToSend["projet_periode"] = periodeProjet;
+    }
+    if (descriptionProjet) {
+        dataToSend["projet_description"] = descriptionProjet;
+    }
+    if (objectifHomme) {
+        dataToSend["projet_objectif_homme"] = objectifHomme;
+    }
+    if (objectifFemme) {
+        dataToSend["projet_objectif_femme"] = objectifFemme;
+    }
+    if (objectif15) {
+        dataToSend["projet_objectif_15"] = objectif15;
+    }
+    if (objectif1518) {
+        dataToSend["projet_objectif_15_18"] = objectif1518;
+    }
+    if (objectif18) {
+        dataToSend["projet_objectif_18"] = objectif18;
+    }
+    if (partenaire) {
+        dataToSend["projet_partenaire"] = partenaire;
+    }
+    updateData(`projets/${projetToOperate.id}`, dataToSend, showDialogResponse);
 }
 /**
- * Delete programme
+ * Delete projet
  * @param {Event} e Information about the event
  */
-const deleteProgramme = (e) => {
+const deleteProjet = (e) => {
     e.preventDefault();
-    deleteData(`programmes/${programmeToOperate.id}`, showDialogResponse);
+    deleteData(`projets/${projetToOperate.id}`, showDialogResponse);
 }
 /**
  * Show dialog modal to display server response
- * @param {object} data response from the server that contains modified programme 
+ * @param {object} data response from the server that contains modified projet 
  */
 const showDialogResponse = (data) => {
     if (data.status == 200) {
-        let programme = data.result;
+        let projet = data.result;
         let msg = data.msg;
         alertMsg(msg);
-        $("tbody#tbl_programme").empty();
-        getAllData("programmes", getAllProgrammes);
+        $("tbody#tbl_projet").empty();
+        getAllData("projets", getAllProjets);
     } else {
         let errors = data.errors;
         console.log(errors);
     }
 }
 /**
- * Retrieve all programmes from the server
- * @param {object} data response from the server that contains all programmes
+ * Retrieve all projets from the server
+ * @param {object} data response from the server that contains all projets
  */
-const getAllProgrammes = (data) => {
-    programmes = data.programmes;
-    $.each(programmes, function (indexInArray, programme) {
+const getAllProjets = (data) => {
+    projets = data.projets;
+    $.each(projets, function (indexInArray, projet) {
         let tr = $("<tr>");
         let tdNb = $("<td>");
         tdNb.text(indexInArray + 1);
-        let tdNameProgramme = $("<td>");
-        tdNameProgramme.text(programme.programme_nom);
-        let tdTypeProgramme = $("<td>");
-        tdTypeProgramme.text(programme.programme_type ? programme.programme_type.programme_type_nom : "");
+        let tdNumConcentionProjet = $("<td>");
+        tdNumConcentionProjet.text(projet.projet_num_concention);
+        let tdTitreProjet = $("<td>");
+        tdTitreProjet.text(projet.projet_titre);
+        let tdPeriodeProjet = $("<td>");
+        tdPeriodeProjet.text(projet.projet_periode);
+        let tdDescriptionProjet = $("<td>");
+        tdDescriptionProjet.text(projet.projet_description);
+        let tdObjectifHomme = $("<td>");
+        tdObjectifHomme.text(projet.projet_objectif_homme);
+        let tdObjectifFemme = $("<td>");
+        tdObjectifFemme.text(projet.projet_objectif_femme);
+        let tdObjectif15 = $("<td>");
+        tdObjectif15.text(projet.projet_objectif_15);
+        let tdObjectif1518 = $("<td>");
+        tdObjectif1518.text(projet.projet_objectif_15_18);
+        let tdObjectif18 = $("<td>");
+        tdObjectif18.text(projet.projet_objectif_18);
+        let tdStatusProjet = $("<td>");
+        tdStatusProjet.html(`<input type="checkbox" ${projet.projet_status == "termine" ? "checked" : ""} data-projet-id="${projet.id}" data-toggle="toggle" data-onstyle="success" data-offstyle="warning" data-on="Terminé" data-off="En cours...">`);
         let tdPartenaire = $("<td>");
-        tdPartenaire.text(programme.partenaire ? programme.partenaire.partenaire_nom : "");
-        let tdEditProgramme = $(`<td class="text-center">`);
-        let btnEditProgramme = $(`<button type='submit' class='btn btn-primary m-2' data-programme-id=${programme.id} data-bs-toggle='modal' data-bs-target='#modal_EditPrgrm'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Programme'>`);
-        btnEditProgramme.append("<i class='fas fa-edit me-2'></i>Modifier");
-        btnEditProgramme.click(function (e) { 
+        tdPartenaire.text(projet.partenaire ? projet.partenaire.partenaire_nom : "");
+        let tdEditProjet = $(`<td class="text-center">`);
+        let btnEditProjet = $(`<button type='submit' class='btn btn-primary m-2' data-projet-id=${projet.id} data-bs-toggle='modal' data-bs-target='#modal_Editprojet'  data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier Projet'>`);
+        btnEditProjet.append("<i class='fas fa-edit me-2'></i>Modifier");
+        btnEditProjet.click(function (e) {
             e.preventDefault();
-            fillModalEditProgramme($(this).data("programme-id"));
+            fillModalEditProjet($(this).data("projet-id"));
         });
-        tdEditProgramme.append(btnEditProgramme);
-        let tdDeleteProgramme = $(`<td class="text-center">`);
-        let btnDeleteProgramme = $(`<button type="submit" class="btn btn-primary m-2" data-programme-id=${programme.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteProgram"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Programme'>`);
-        btnDeleteProgramme.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
-        btnDeleteProgramme.click(function (e) {
+        tdEditProjet.append(btnEditProjet);
+        let tdDeleteProjet = $(`<td class="text-center">`);
+        let btnDeleteProjet = $(`<button type="submit" class="btn btn-primary m-2" data-projet-id=${projet.id} data-bs-toggle="modal" data-bs-target="#modal_DeleteProjet"  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer Projet'>`);
+        btnDeleteProjet.append(`<i class="fas fa-trash me-2"></i>Supprimer`);
+        btnDeleteProjet.click(function (e) {
             e.preventDefault();
-            programmeToOperate = programmes.find(oneProgramme => oneProgramme.id == $(this).data("programme-id"));
+            projetToOperate = projets.find(oneProjet => oneProjet.id == $(this).data("projet-id"));
         });
-        tdDeleteProgramme.append(btnDeleteProgramme);
-        let tdListePlaces = $(`<td class="text-center">`);
-        let btnListePlaces = $(`<button type="submit" class="btn btn-primary m-2" data-programme-id=${programme.id} data-bs-toggle="modal" data-bs-target="#modal_ListePlace"  data-bs-toggle='tooltip' data-bs-placement='top' title='Afficher les lieux'>`);
-        btnListePlaces.append(`<i class="fas fa-list me-2"></i>Liste</button>`);
-        btnListePlaces.click(function (e) {
+        tdDeleteProjet.append(btnDeleteProjet);
+        let tdProgressionProjet = $(`<td class="text-center">`);
+        let btnProgressionProjet = $(`<button type="submit" class="btn btn-primary m-2" data-projet-id=${projet.id} data-bs-toggle="modal" data-bs-target="#modal_Progress"  data-bs-toggle='tooltip' data-bs-placement='top' title='Progression du Projet'>`);
+        btnProgressionProjet.append(`<i class="fas fa-spinner me-2"></i>Progression`);
+        btnProgressionProjet.click(function (e) {
             e.preventDefault();
-            debugger
-            programmeToOperate = programmes.find(oneProgramme => oneProgramme.id == $(this).data("programme-id"));
-            places = programmeToOperate.places;
-            addPlaceToTable();
+            projetToOperate = projets.find(oneProjet => oneProjet.id == $(this).data("projet-id"));
+            getProgressBarParameters(e);
         });
-        tdListePlaces.append(btnListePlaces);
-        tr.append(tdNb, tdNameProgramme, tdTypeProgramme, tdPartenaire, tdEditProgramme, tdDeleteProgramme, tdListePlaces);
-        $("tbody#tbl_programme").append(tr);
+        tdProgressionProjet.append(btnProgressionProjet);
+        tr.append(tdNb, tdPartenaire, tdNumConcentionProjet, tdTitreProjet, tdPeriodeProjet, tdDescriptionProjet, tdObjectifHomme, tdObjectifFemme, tdObjectif15, tdObjectif1518, tdObjectif18, tdStatusProjet, tdEditProjet, tdDeleteProjet, tdProgressionProjet);
+        $("tbody#tbl_projet").append(tr);
     });
+    $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle(); // to apply the library of toggle button.
+    $("div.toggle").click(changeProjetStatus);
 }
 /**
- * Fill all inputs to modify a programme
- * @param {int} index The index of the selected programme to be modified
+ * Fill all inputs to modify a projet
+ * @param {int} index The index of the selected projet to be modified
  */
-const fillModalEditProgramme = (programmeId) => {
-    programmeToOperate = programmes.find(programme => programme.id == programmeId);
-    $("input#nom-program").val(programmeToOperate.programme_nom);
-    $("select#type-programme").val(programmeToOperate.programme_type ? programmeToOperate.programme_type.id : "");
-    $("select#type-programme").trigger('change');
-    $("select#partenaire").val(programmeToOperate.partenaire ? programmeToOperate.partenaire.id : "");
-    $("select#partenaire").trigger('change');
-}
-/**
- * Add new place to the programme
- * @param {object} place The place to be added
- */
-const addPlace = (place) => {
-    places.push(place);
-    addPlaceToTable();
-}
-/**
- * Add the new place to the table
- * @param {int} index The index of the new place
- * @param {object} place The place to be added
- */
-const addPlaceToTable = () => {
-    $("tbody#tbl_place").empty();
-    $.each(places, function (index, place) {
-        let tr = $(`<tr id=${index}>`);
-        let tdNb = $("<td>");
-        tdNb.text(index + 1);
-        let tdNomPlace = $(`<td>`);
-        tdNomPlace.text(place.lieu);
-        let tdDateProgramme = $(`<td>`);
-        tdDateProgramme.text(place.programme_date);
-        let tdResultatProgramme = $(`<td>`);
-        tdResultatProgramme.text(place.programme_resultat);
-        let tdEditPlace = $(`<td>`);
-        let btnEditPlace = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-place-index=${index} data-bs-toggle='modal' data-bs-target='#modal_EditPlace' data-bs-toggle='tooltip' data-bs-placement='top' title='Modifier lieu'>`);
-        btnEditPlace.append(`<i class='fas fa-edit' data-place-index=${index}></i>`);
-        btnEditPlace.click(function (e) {
-            e.preventDefault();
-            fillInputsWithSelectedPlace($(this).data(`place-index`));
-            $("button#btn-add-place").text(`Modifier place`);
-            $("button#btn-add-place").data(`action`, `edit`);
-            $("button#btn-add-place").data(`place-index`, $(this).data(`place-index`));
-            $("#place-modal-title").text(`Modifier place`);
-        });
-        tdEditPlace.append(btnEditPlace);
-        let tdDeletePlace = $(`<td>`);
-        let btnDeletePlace = $(`<button type='submit' class='btn btn-sm btn-sm-square btn-primary m-2' data-place-index=${index}  data-bs-toggle='tooltip' data-bs-placement='top' title='Supprimer lieu'>`);
-        btnDeletePlace.append(`<i class="fas fa-trash" data-place-index=${index}></i>`);
-        btnDeletePlace.click(function (e) {
-            e.preventDefault();
-            debugger
-            places = places.filter((onePlace, indexPlace) => {
-                return indexPlace != e.target.dataset.placeIndex;
-            });
-            editProgrammePlaces();
-            addPlaceToTable();
-        });
-        tdDeletePlace.append(btnDeletePlace);
-        tr.append(tdNb, tdNomPlace, tdDateProgramme, tdResultatProgramme, tdEditPlace, tdDeletePlace);
-        $("tbody#tbl_place").append(tr);
-    });
-}
-/**
- * Fill all inputs to modify a place
- * @param {int} index The index of the selected place to be modified
- */
-const fillInputsWithSelectedPlace = (index) => {
-    let modifiedPlace = places[index];
-    $("input#nom-place").val(modifiedPlace.lieu);
-    $("input#date-programme").val(modifiedPlace.programme_date);
-    $("input#resultat-programme").val(modifiedPlace.programme_resultat);
-}
-/**
- * Edit a place
- * @param {object} place The place to be modified
- * @param {int} index The index of the place to be modified
- */
-const editPlace = (place, index) => {
-    places[index] = place;
-    addPlaceToTable();
-}
-/**
- * Create place object
- * @returns {Array} The new created place
- */
-const createPlaceObject = () => {
-    let lieu = $("input#nom-place").val();
-    let dateProgramme = $("input#date-programme").val();
-    let resultatProgramme = $("input#resultat-programme").val();
-    let place = {
-        "lieu": lieu,
-        "programme_date": dateProgramme,
-        "programme_resultat": resultatProgramme,
-    }
-    return place;
-}
-/**
- * Add/edit/remove tied places with a programme
- */
-function editProgrammePlaces() {
-    let dataToSend = {
-        "places": places,
-    }
-    updateData(`link-places-with-programme/${programmeToOperate.id}`, dataToSend, (data)=>{console.log(data);});
-}
-/**
- * Fill the select field with all programme types
- * @param {object} data response from the server that contains all programme types
- */
-const fillSelectProgrammeTypes = (data)=>{
-    let programme_types = data.programme_types;
-    $.each(programme_types, function (indexInArray, programme_type) {
-        let option = $("<option>");
-        option.text(programme_type.programme_type_nom);
-        option.val(programme_type.id);
-        $("select#type-programme").append(option);
-    });
-    $("select#type-programme").select2({
-        placeholder: 'Séléctionner un type programme...',
-        dropdownParent: $('.modal-bodyListe'),
-    });
+const fillModalEditProjet = (projetId) => {
+    projetToOperate = projets.find(projet => projet.id == projetId);
+    $("input#projet-num-concention").val(projetToOperate.projet_num_concention);
+    $("input#projet-titre").val(projetToOperate.projet_titre);
+    $("input#projet-periode").val(projetToOperate.projet_periode);
+    $("textarea#projet-description").val(projetToOperate.projet_description);
+    $("input#projet-objectif-homme").val(projetToOperate.projet_objectif_homme);
+    $("input#projet-objectif-femme").val(projetToOperate.projet_objectif_femme);
+    $("input#projet-objectif-15").val(projetToOperate.projet_objectif_15);
+    $("input#projet-objectif-15-18").val(projetToOperate.projet_objectif_15_18);
+    $("input#projet-objectif-18").val(projetToOperate.projet_objectif_18);
+    $("select#projet-partenaire").val(projetToOperate.partenaire ? projetToOperate.partenaire.id : "");
+    $("select#projet-partenaire").trigger('change');
 }
 /**
  * Fill the select field with all partenaires
  * @param {object} data response from the server that contains all partenaires
  */
-const fillSelectPartenaires = (data)=>{
+const fillSelectPartenaires = (data) => {
     let partenaires = data.partenaires;
     $.each(partenaires, function (indexInArray, partenaire) {
         let option = $("<option>");
         option.text(partenaire.partenaire_nom);
         option.val(partenaire.id);
-        $("select#partenaire").append(option);
+        $("select#projet-partenaire").append(option);
     });
-    $("select#partenaire").select2({
+    $("select#projet-partenaire").select2({
         placeholder: 'Séléctionner un partenaire...',
+        dropdownParent: $('.modal-bodyEdit'),
     });
+}
+/**
+ * Change the projet status of the selected projet
+ * @param {Event} e Information about the event
+ */
+const changeProjetStatus = (e) => {
+    debugger
+    let toggleInp = $(e.target).parents("td").find("input[type=checkbox]");
+    let dataToSend = {
+        "projet_status": (!toggleInp.prop("checked")) ? "termine" : "en cours",
+    }
+    updateData(`status-projet/${toggleInp.data(`projet-id`)}`, dataToSend, showDialogResponse);
+}
+/**
+ * Get all parameters of the progess bar
+ * @param {Event} e Information about the event
+ */
+const getProgressBarParameters = (e) => {
+    let dataToSend = {
+        "start_date": projetToOperate.projet_periode,
+    };
+    let filter = $("select#filter-value option:selected").data('filter');
+    if (filter) {
+        filterValue = $("select#filter-value").val();
+        dataToSend[filter] = filterValue;
+    }
+    getAllData(`dashboard/per-all`, showProjetProgression, dataToSend);
+}
+/**
+ * Show the progression of the selected projet
+ * @param {Event} e Information about the event
+ */
+const showProjetProgression = (data, dataObject) => {
+    let nb_beneficiaires = data.nb_beneficiaires_all;
+    console.log(nb_beneficiaires);
+    let nb_beneficiaires_total = 0;
+    if (filterValue == `Homme`) {
+        nb_beneficiaires_total = projetToOperate.projet_objectif_homme;
+    } else if (filterValue == `Femme`) {
+        nb_beneficiaires_total = projetToOperate.projet_objectif_femme;
+    } else if (filterValue == `-15`) {
+        nb_beneficiaires_total = projetToOperate.projet_objectif_15;
+    } else if (filterValue == `15-18`) {
+        nb_beneficiaires_total = projetToOperate.projet_objectif_15_18;
+    } else if (filterValue == `+18`) {
+        nb_beneficiaires_total = projetToOperate.projet_objectif_18;
+    }
+    if (!nb_beneficiaires_total) {
+        configureProgressBar(0);
+    }else{
+        let nb_beneficiaires_percentage = Math.round(nb_beneficiaires * 100 / nb_beneficiaires_total);
+        configureProgressBar(nb_beneficiaires_percentage);
+    }
 }

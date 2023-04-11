@@ -66,6 +66,10 @@ class ProjetRequest extends FormRequest
                 'sometimes',
                 'numeric',
             ],
+            'projet_periode' => [
+                'sometimes',
+                'date',
+            ],
         ];
     }
 }
