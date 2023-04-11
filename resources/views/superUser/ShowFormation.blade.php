@@ -18,11 +18,12 @@
                             <th scope="col">N°</th>
                             <th>Titre de la Formation</th>
                             <th>Date De la Formation</th>
+                            <th>Heure De la Formation</th>
                             <th>Durée De la Formation / jours</th>
                             <th>Organisme chargé de la Formation</th>
                             <th>Formateur</th>
                             <th>Objet</th>
-                            <th colspan="2" class="Qactions">Action</th>
+                            <th colspan="3" class="Qactions">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbl_formation">
@@ -30,16 +31,16 @@
                 </table>
                 <!--List Participant-->
                 <!-- Modal -->
-                <button class="btn btn-primary m-2"type="button" data-bs-toggle="modal"
-                    data-bs-target="#modal_ListePart">
-                    <i class="fas fa-list me-2"></i>Liste
-                </button>
                 <div class="modal" id="modal_ListePart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Liste Participants</h5>
+                                <button id="btn-show-modal-add-participant" class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
+                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
@@ -58,178 +59,6 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tbl_participant">
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit">
-                                                    <button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td>zzzzzzzz</td>
-                                                <td class="actionEdit"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_Editparticipant">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button></td>
-                                                <td class="actionDelete"><button
-                                                        class="btn btn-sm btn-sm-square btn-primary m-2"type="button"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_DeleteFormation">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -241,10 +70,6 @@
                 <!--End List Part-->
                 <!--Delete Formation-->
                 <!-- Modal -->
-                <button class="btn btn-primary m-2"type="button" data-bs-toggle="modal"
-                    data-bs-target="#modal_DeleteFormation">
-                    <i class="fas fa-trash me-2"></i>Supprimer
-                </button>
                 <div class="modal fade" id="modal_DeleteFormation" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -256,7 +81,7 @@
                             </div>
                             <div class="modal-bodyEdit">
                                 <div class="mb-3 mt-3">
-                                    <button id="btn-delete-group" class="btn btn-secondary" data-bs-dismiss="modal">Oui</button>
+                                    <button id="btn-delete-formation" class="btn btn-secondary" data-bs-dismiss="modal">Oui</button>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">Non</button>
                                 </div>
                             </div>
@@ -265,19 +90,14 @@
                 </div>
                 <!--End Modal-->
                 <!--End Delete Formation-->
-                <button
-                      class="btn btn-primary m-2"type="button"
-                      data-bs-toggle="modal" data-bs-target="#modal_EditPrgrm">
-                      <i class="fas fa-edit me-2"></i>Modifier
-                  </button>
-                    <!--Edit Program-->
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal_EditPrgrm" data-bs-backdrop="static" data-bs-keyboard="false"
+                <!--Edit Formation-->
+                <!-- Modal -->
+                <div class="modal fade" id="modal_EditFormation" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modifier Programme</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modifier Formation</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
@@ -292,8 +112,12 @@
                                         <input type="date" name="date_formation" class="form-control" id="date_formation">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="durée_formation" class="form-label">Durée De la Formation par jours :</label>
-                                        <input type="number" name="durée_formation" class="form-control" id="duree_formation">
+                                        <label for="heure_formation" class="form-label">Heure De la Formation :</label>
+                                        <input type="time" name="heure_formation" class="form-control" id="heure_formation">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="duree_formation" class="form-label">Durée De la Formation par jours :</label>
+                                        <input type="number" name="duree_formation" class="form-control" id="duree_formation">
                                     </div>
                                     <div class="mb-3">
                                         <label for="organisme-formation" class="form-label">Organisme chargé de la Formation :</label>
@@ -308,7 +132,7 @@
                                         <input type="text" name="objet" class="form-control" id="objet">
                                     </div>
                                     <div class="mb-3">
-                                        <button id="btn-edit-program" class="btn btn-primary">Modifier</button>
+                                        <button id="btn-edit-formation" class="btn btn-primary">Modifier</button>
                                     </div>
                                 </form>
                             </div>
@@ -316,7 +140,7 @@
                     </div>
                 </div>
                 <!--End Modal-->
-                <!--End Edit Programm-->
+                <!--End Edit Formationm-->
                 <!--Edit participant-->
                 <!-- Modal -->
                 <div class="modal fade" id="modal_Editparticipant" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -324,12 +148,12 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modifier participant</h5>
+                                <h5 class="modal-title" id="participant-modal-title">Modifier participant</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
                             <div class="modal-bodyEdit">
-                                <form class="form-user" action="" method="POST">
+                                <form id="form-participant" class="form-user" action="" method="POST">
                                     <div class="mb-3">
                                         <label for="nom-participant" class="form-label">Nom :</label>
                                         <input type="text" name="nom-participant" class="form-control"
@@ -351,7 +175,7 @@
                                             id="numero-participant">
                                     </div>
                                     <div class="mb-3">
-                                        <button id="btn-edit-participant" class="btn btn-primary">Modifier</button>
+                                        <button id="btn-add-participant" class="btn btn-primary" data-action="add">Ajouter</button>
                                     </div>
                                 </form>
                             </div>
@@ -366,4 +190,5 @@
     <!-- Show All Users End -->
 @endsection
 @section('custom_scripts')
+    <script src="{{ asset('jsApi/formations/all-formations.js') }}"></script>
 @endsection
