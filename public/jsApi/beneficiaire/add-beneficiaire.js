@@ -16,7 +16,7 @@ $(document).ready(function () {
  * Add new beneficiaire
  * @param {Event} e Information about the event
  */
-const addBeneficiaire = (e) => {
+const addBeneficiaire = async (e) => {
     e.preventDefault();
     let dataToSend = {
         "prenom": $("input#first-name-benef").val(),
@@ -50,7 +50,11 @@ const addBeneficiaire = (e) => {
     if ($("select#unite-addiction-benef").val()) {
         dataToSend["unite_addiction"] = $("select#unite-addiction-benef").val();
     }
-    addData("beneficiaires", dataToSend, showDialogResponse);
+    if (await checkOnlineStatus()) {
+        addData("beneficiaires", dataToSend, showDialogResponse);
+    } else {
+        insertBeneficiaire(dataToSend);
+    }
 }
 /**
  * Show dialog modal to display server response
