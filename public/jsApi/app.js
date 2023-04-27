@@ -88,3 +88,17 @@ function getAllDataForDashboard(endUrl, dataObject) {
     console.log(error);
   }
 }
+const checkOnlineStatus = async () => {
+  try {
+    const online = await fetch(`/img/testimonial-1.jpg`);
+    return online.status >= 200 && online.status < 300; // either true or false
+  } catch (err) {
+    return false; // definitely offline
+  }
+};
+setInterval(async () => {
+  const result = await checkOnlineStatus();
+  if (result) {
+    getAllBeneficiaires();
+  }
+}, 3000); // probably too often, try 30000 for every 30 seconds
