@@ -6,24 +6,6 @@ var db = null;
         console.log(`Your browser doesn't support IndexedDB`);
         return;
     }
-    // open "baraka_idman" database with the version 1
-    request = indexedDB.open("baraka_idman", 1);
-    // create beneficiaires object store
-    request.onupgradeneeded = (event) => {
-        let db = event.target.result;
-        // create "beneficiaires" object store with auto-increment id (As beneficiaires table)
-        let beneficiaires_table = db.createObjectStore('beneficiaires', {
-            autoIncrement: true,
-        });
-    };
-    // handle the error event
-    request.onerror = (event) => {
-        console.error(`Database error: ${event.target.errorCode}`);
-    };
-    // handle the success event
-    request.onsuccess = (event) => {
-        db = event.target.result;
-    };
 })();
 function insertBeneficiaire(beneficiaire) {
     // create a new transaction
