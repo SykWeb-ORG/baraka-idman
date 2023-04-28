@@ -53,8 +53,8 @@ function getAllBeneficiaires() {
         if (beneficiaires) {
             do {
                 let beneficiaire = beneficiaires.value;
-                addData("beneficiaires", beneficiaire, (beneficiaire) => {
-                    deleteBeneficiaire(beneficiaire.id);
+                addData("beneficiaires", beneficiaire, (data) => {
+                    deleteBeneficiaire(data.result.id);
                 });
                 console.log(beneficiaire);
             } while (beneficiaires.continue()); // continue next record
