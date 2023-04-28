@@ -29,7 +29,7 @@ function getAllData(endUrl,fctOutput, dataObject = {}) {
 function addData(endUrl,dataObject,fctOutput) {
     axios
       .post(baseUrl+endUrl, dataObject)
-      .then(res => fctOutput(res.data))
+      .then(res => fctOutput(res.data, dataObject))
       .catch(err => {
         fctOutput(err.response.data);
     });
