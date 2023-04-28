@@ -99,6 +99,24 @@ const checkOnlineStatus = async () => {
 setInterval(async () => {
   const result = await checkOnlineStatus();
   if (result) {
-    getAllBeneficiaires();
+    // open "baraka_idman" database with the version 1
+    request = indexedDB.open("baraka_idman", 1);
+    // handle the error event
+    request.onerror = (event) => {
+      console.error(`Database error: ${event.target.errorCode}`);
+    };
+    // create beneficiaires object store (called only one time, when the first connection with the DB)
+    request.onupgradeneeded = (event) => {
+      let db = event.target.result;
+      // create "beneficiaires" object store with auto-increment id (As beneficiaires table)
+      let beneficiaires_table = db.createObjectStore('beneficiaires', {
+        autoIncrement: true,
+      });
+    };
+    // handle the success event
+    request.onsuccess = (event) => {
+      db = event.target.result;
+      getAllBeneficiaires();
+    };
   }
 }, 3000); // probably too often, try 30000 for every 30 seconds

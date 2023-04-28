@@ -53,7 +53,17 @@ const addBeneficiaire = async (e) => {
     if (await checkOnlineStatus()) {
         addData("beneficiaires", dataToSend, showDialogResponse);
     } else {
-        insertBeneficiaire(dataToSend);
+        // open "baraka_idman" database with the version 1
+        request = indexedDB.open("baraka_idman", 1);
+        // handle the error event
+        request.onerror = (event) => {
+            console.error(`Database error: ${event.target.errorCode}`);
+        };
+        // handle the success event
+        request.onsuccess = (event) => {
+            db = event.target.result;
+            insertBeneficiaire(dataToSend);
+        };
     }
 }
 /**
