@@ -916,4 +916,7 @@ Route::middleware('auth:sanctum')->group(function () {
             $status
         );
     })->name('status-projet');
+        Route::get('/SMSTemplate', function (Request $request) {
+            return view('superUser.ChangeSMS');
+        })->name('SMSTemplate');
 });
