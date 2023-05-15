@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormationRequest;
 use App\Models\Formation;
 use App\Models\Participant;
+use App\Providers\ParticipantAdded;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
@@ -67,6 +68,9 @@ class FormationController extends Controller
                 }
                 $formation->participants()->saveMany($participants->all());
                 $formation->refresh();
+                foreach ($formation->participants as $participant) {
+                    ParticipantAdded::dispatch($participant->participant_tele);
+                }
             }
             $result = $formation;
             $status = 200;
