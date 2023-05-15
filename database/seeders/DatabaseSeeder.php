@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
                 ZoneSeeder::class,
                 ProgrammeSeeder::class,
                 PlaceSeeder::class,
+                SMSTemplateSeeder::class,
             ]
         );
     }
