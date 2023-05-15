@@ -28,4 +28,12 @@ class Participant extends Model
     {
         return $this->belongsTo(Formation::class);
     }
+
+    /**
+     * Get the sms_responses for the participant.
+     */
+    public function sms_responses()
+    {
+        return $this->hasMany(SmsResponse::class);
+    }
 }

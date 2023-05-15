@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SmsResponse;
 use App\Models\SMSTemplate;
 use App\Providers\ParticipantAdded;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -33,7 +34,7 @@ class SendSMSNotification
         $data = [
             'user' => 'stopdrogue',
             'password' => 'sToPdr0gUE2023',
-            'gsm' => $event->participant_num,
+            'gsm' => $event->participant->participant_tele,
             'sms' => $message,
         ];
         $options = [
@@ -44,6 +45,9 @@ class SendSMSNotification
             ],
         ];
         $context  = stream_context_create($options);
-        file_get_contents($url, false, $context);
+        $response = file_get_contents($url, false, $context);
+        $smsResponse = new SmsResponse;
+        $smsResponse->content_response = $response;
+        $event->participant->sms_responses()->save($sms_template);
     }
 }

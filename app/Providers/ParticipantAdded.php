@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Participant;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,15 +15,16 @@ class ParticipantAdded
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $participant_num;
+    public $participant;
     /**
      * Create a new event instance.
      *
+     * @param Participant $participant
      * @return void
      */
-    public function __construct($participant_num)
+    public function __construct(Participant $participant)
     {
-        $this->participant_num = $participant_num;
+        $this->participant = $participant;
     }
 
     /**
