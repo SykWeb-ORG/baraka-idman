@@ -63,7 +63,6 @@ class BeneficiaireRequest extends FormRequest
             // ],
             'nb_dossier' => [
                 'sometimes',
-                'numeric',
                 ($this->method() != Request::METHOD_PUT)?'unique:App\Models\Beneficiaire,nb_dosier':Rule::unique('beneficiaires', 'nb_dosier')->ignore($beneficiaire),
             ],
             'unite_addiction' => [
