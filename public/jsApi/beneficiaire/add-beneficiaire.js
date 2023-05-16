@@ -5,7 +5,7 @@
 /// CALL YOUR FUNCTIONS
 /// *****************************
 $(document).ready(function () {
-    getAllData("zones", fillSelectZones);
+    getAllData("zones-beneficiaire", fillSelectZones);
     getAllData("cas", createCheckboxesCasJuridiques);
     $("button#btn-add-beneficiaire").click(addBeneficiaire);
 });
