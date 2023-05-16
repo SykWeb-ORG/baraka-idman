@@ -919,4 +919,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/SMSTemplate', function (Request $request) {
             return view('superUser.ChangeSMS');
         })->name('SMSTemplate');
+    Route::get('zones-beneficiaire', function (Request $request) {
+        $zones = Zone::all();
+        return response()->json(
+            [
+                'zones' => $zones,
+            ]
+        );
+    });
 });
