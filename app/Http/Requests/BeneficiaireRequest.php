@@ -71,4 +71,16 @@ class BeneficiaireRequest extends FormRequest
             ],
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'date_naissance' => 'date de naissance',
+        ];
+    }
 }
