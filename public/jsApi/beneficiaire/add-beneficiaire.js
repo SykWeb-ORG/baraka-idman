@@ -90,6 +90,7 @@ const showDialogResponse = (data) => {
     } else {
         let errors = data.errors;
         console.log(errors);
+        alertMsg(Object.values(errors)[0], "danger");
     }
     window.scrollTo(0, 0);
 }
