@@ -297,6 +297,7 @@ Liste des Bénéficiaires
                     </tbody>
                 </table>
             </div>
+            {{ $beneficiaires->links() }}
             @if (isset($services))
                 @if ($services != null)
                     @foreach ($services as $service)
