@@ -319,7 +319,7 @@ class BeneficiaireController extends Controller
                     return $query->whereYear('created_at', $annee);
                 })
                 // ->dd();
-                ->get();
+                ->paginate(10);
             // return response()->json($users);
             return view('interTerrain.listing', compact('beneficiaires'));
         }
