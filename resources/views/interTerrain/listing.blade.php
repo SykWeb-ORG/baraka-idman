@@ -104,6 +104,7 @@ Liste des Bénéficiaires
                         <tr class="text-dark">
                             {{-- <th scope="col"><input class="form-check-input" type="checkbox"></th> --}}
                             <th scope="col">N°</th>
+                            <th scope="col">N° de dossier</th>
                             <th scope="col">Code</th>
                             <th scope="col">prénom</th>
                             <th scope="col">Nom</th>
@@ -147,6 +148,7 @@ Liste des Bénéficiaires
                         <tr>
                             {{-- <td><input class="form-check-input" type="checkbox"></td> --}}
                             <td>{{$loop->iteration}}</td>
+                            <td>{{$beneficiaire->nb_dosier}}</td>
                             <td>{{$beneficiaire->code}}</td>
                             <td>{{$beneficiaire->prenom}}</td>
                             <td>{{$beneficiaire->nom}}</td>
@@ -308,6 +310,7 @@ Liste des Bénéficiaires
                                         <tr class="text-dark">
                                             {{-- <th scope="col"><input class="form-check-input" type="checkbox"></th> --}}
                                             <th scope="col">N°</th>
+                                            <th scope="col">N° de dossier</th>
                                             <th scope="col">Code</th>
                                             <th scope="col">prénom</th>
                                             <th scope="col">Nom</th>
@@ -354,7 +357,8 @@ Liste des Bénéficiaires
                                         <tr>
                                             {{-- <td><input class="form-check-input" type="checkbox"></td> --}}
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$beneficiaire->id}}</td>
+                                            <td>{{$beneficiaire->nb_dosier}}</td>
+                                            <td>{{$beneficiaire->code}}</td>
                                             <td>{{$beneficiaire->prenom}}</td>
                                             <td>{{$beneficiaire->nom}}</td>
                                             {{-- <td>{{$beneficiaire->adresse}}</td>
