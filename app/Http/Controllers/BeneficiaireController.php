@@ -34,9 +34,9 @@ class BeneficiaireController extends Controller
     {
         $services = Service::all();
         if (Auth::user()->admin || Auth::user()->social_assistant) {
-            $beneficiaires = Beneficiaire::paginate(10);
+            $beneficiaires = Beneficiaire::orderBy('nb_dosier', 'desc')->paginate(10);
         }else{
-            $beneficiaires = Auth::user()->registred_beneficiaires()->paginate(10);
+            $beneficiaires = Auth::user()->registred_beneficiaires()->orderBy('nb_dosier', 'desc')->paginate(10);
         }
         return view('interTerrain.listing', compact('beneficiaires', 'services'));
     }
